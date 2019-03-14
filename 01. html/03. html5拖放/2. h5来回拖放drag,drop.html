@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>html5来回拖放</title>
+    <style>
+        #div1,#div2 { border: 2px solid black; width: 500px; height: 200px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div id='div1' ondragover='allowDrop(event)' ondrop='drop(event)'></div>
+    <div id='div2' ondragover='allowDrop(event)' ondrop='drop(event)'>
+        <img id='drag1' src="logo.png" draggable='true' ondragstart='drag(event)' />
+    </div>
+    <script>
+        function drag(ev){
+            ev.dataTransfer.setData('Text',ev.target.id);
+        };
+
+        function drop(ev){
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData('Text');
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+    </script>
+</body>
+</html>

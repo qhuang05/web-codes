@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>html视频</title>
+</head>
+<body>
+
+<h1>在页面中插入<span style="color:#F00">视频</span>文件，可以使用embed,object,<span style="color:#F00">video</span>标签，其中embed,video均为html5标签，使用情况如下:</h1>
+
+<h3>方法1： 使用object标签</h3>
+<i>注：打开页面后会自动播放。可以定义也可以不定义width,height属性</i><br />
+<object data="flash3821/flash3821.swf"></object>
+<br /><br /><br /><br />
+
+
+<h3>方法2： 使用embed标签(html5标签)</h3>
+<i>注:打开页面后会自动播放。embed标签用来定义嵌入的内容，比如插件，除了音频之外，还可以插入 flash等。</i><br />
+<embed src="flash3821/flash3821.swf" width="300px" height="300px"></embed>
+<br /><br /><br /><br />
+
+
+<h3>方法3： 使用video标签(html5标签)</h3>
+<i>注：常用的属性有src,width,height,controls,autoplay,loop等。video元素只支持三种视频格式ogg,mpeg4,webM, 可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息。</i><br />
+<video controls="controls" width="500" height="350" autoplay="autoplay" loop="loop">
+	<source src="mov_bbb.ogg" type="video/ogg" />
+    您的浏览器不支持video标签
+</video>
+<br /><br /><br /><br />
+
+
+<!--
+最好的HTML解决方法:
+<video controls="controls">
+	<source src="videoMyFurture.avi" type="video/avi" />
+    <object data="videoMyFurture.avi">
+		<embed src="videoMyFurture.avi" width="300px" height="70px" />
+	</object>
+    您的浏览器不支持video标签
+</video>
+-->
+
+
+<h3>方法4： 上传到优酷，然后使用embed插入地址即可。</h3>
+<embed src="http://player.youku.com/player.php/sid/XMzI2NTc4NTMy/v.swf" width="600px" height="600px" type="application/x-shockwave-flash"></embed>
+<br /><br /><br /><br />
+
+
+<h3>方法5： 使用超链接，浏览器会启用插件(又称：辅助应用程序)来播放该文件</h3>
+<a href="mov_bbb.ogg" target="_blank">蝴蝶与熊.ogg</a>
+<br /><br /><br /><br />
+
+</body>
+</html>

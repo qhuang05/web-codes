@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>html音频</title>
+</head>
+<body>
+
+<h1>在页面中插入<span style="color:#F00">音频</span>文件，可以使用embed,object,audio标签，其中embed,audio均为html5标签，使用情况如下:</h1>
+
+<h3>方法1： 使用object标签</h3>
+<i>注：打开页面后会自动播放。</i><br />
+<object data="桃花岛.mp3" width="500px" height="100px"></object>
+<br /><br /><br /><br />
+
+
+<h3>方法2： 使用embed标签(html5标签)</h3>
+<i>注:打开页面后会自动播放。embed标签用来定义嵌入的内容，比如插件，除了音频之外，还可以插入 flash等。</i><br />
+<embed src="桃花岛.mp3" width="300px" height="70px"></embed>
+<br /><br /><br /><br />
+
+
+<h3>方法3： 使用audio标签(html5标签)</h3>
+<em>注：一定要有controls="controls"属性，不然页面显示不出控件。与video对比，audio没有width,height属性，浏览器会自动显示一个合适的大小。常用的还有autoplay,loop属性。可以在开始标签和结束标签之间放置文本内容，这样老的浏览器就可以显示出不支持该标签的信息。audio元素只支持三种音频格式ogg Vorbis,mp3,wav</em><br />
+<audio controls="controls" autoplay="autoplay" loop="loop">
+	<source src="桃花岛.mp3" type="audio/mp3" />
+    您的浏览器不支持audio标签。
+</audio>
+<br /><br /><br /><br />
+
+
+<!--
+最好的HTML解决方法:
+<audio controls="controls">
+	<source src="桃花岛.mp3" type="audio/mp3" />
+<embed src="桃花岛.mp3" width="300px" height="70px"></embed>
+</audio>
+-->
+
+
+<h3>方法4： 使用雅虎媒体播放器</h3>
+<p><a href="桃花岛.mp3" target="_blank">桃花岛.mp3</a></p>
+<p><a href="六月的雨.mp3">六月的雨.mp3</a></p>
+<script type="application/javascript" src="http://mediaplayer.yahoo.com/js"></script>
+<br /><br /><br /><br />
+
+
+<h3>方法5： 使用超链接，浏览器会启用插件(又称：辅助应用程序)来播放该文件</h3>
+<a href="桃花岛.mp3" target="_blank">桃花岛.mp3</a>
+<br />
+
+</body>
+</html>

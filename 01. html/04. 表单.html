@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <style>
+        fieldset{ width:400px; border:2px solid red}
+        input:focus{ background: greenyellow}
+    </style>
+</head>
+
+<body>
+<form action="mailto:qiuhuang.huang@deltaww.com.cn" method="get" target="_new" id="myH4Form">
+    <fieldset>
+        <legend>个人信息：</legend>
+         <!--label隐式和显示(for)表示方法 -->
+        <label for="username">用户名：</label><input type="text" name="username" id="username" value="" placeholder="请输入用户名"/><br />
+        <label for="password">密码：</label><input type="password" name="password" id="password" placeholder="请输入密码"/><br />
+        性别：
+        <label>男<input type="radio" checked="checked" value="0" name="sex" /></label>
+        <label>女<input type="radio" value="1" name="sex" /></label>
+        <br />
+        是否个体户：<input name="个体户" type="checkbox" value="" /><br/>
+        喜欢的运动:
+        <label>篮球<input type="checkbox" name="喜欢的运动项目" value="0" id="喜欢的运动项目_0" /></label>
+        <label>足球<input type="checkbox" name="喜欢的运动项目" value="1" id="喜欢的运动项目_1" /></label>
+        <label>羽毛球<input type="checkbox" name="喜欢的运动项目" value="2" id="喜欢的运动项目_2" /></label><br />
+        注册日期：
+        <select name="day" size="3" multiple="multiple" value="">
+            <optgroup label="group1">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+            </optgroup>
+            <optgroup label="group2">
+                <option value="Wednesday" selected="selected">Wednesday</option>
+                <option value="Thursday" disabled="disabled">Thursday</option>
+            </optgroup>
+        </select><br />
+        <input type="text" value="" placeholder="请输入文本内容" width="100px"/><br/>
+        <textarea rows="5" cols="40" placeholder="请输入评论内容(500字以下)"></textarea><br />
+        <input type="submit" name="submit" value="提交" />
+        <input type="reset" name="cancel" value="重置" />
+        <!--<button type="reset">重置</button>-->
+         <!--button与input的不同之处在于button元素内部可以放置内容如图片或文本等 -->
+         <!--备注：form标签里面可以包含div等块元素 -->
+    </fieldset>
+</form>
+
+<hr/>
+
+<!--html5表单-->
+<form action="/formSubmit" method="post" id="myH5Form" >
+    E-mail:<input type="email" name="myEmail" placeholder="请输入电子邮箱" /><br />
+    Number:<input type="number" name="myNumber" min="1" max="10" value="2" step="2" /><br />
+    Range:<input type="range" name="myRange" min="0" max="1" value="0" step="0.1" /><br />
+    Date:<input type="date" name="myDate" required /><br />
+    Month:<input type="month" name="myMonth" /><br />
+    Week:<input type="week" name="myWeek" /><br />
+    Time:<input type="time" name="myTime" /><br />
+    Search:<input type="search" name="mySearch" /><br />
+    <input type="submit" value="提交" />
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>html5 video+DOM</title>
+</head>
+
+<body>
+	<!-- video视频 -->
+    <h2><a href="2.h5视频video.html">html5视频:video</a></h2><br /><br /><br />
+    <h2>使用DOM控制html5视频video:</h2><br />
+    <div>
+    	<button type="button" onClick="playPause()">播放/暂停</button>
+        <button type="button" onClick="toBig()">变大</button>
+        <button type="button" onClick="toNormal()">正常</button>
+        <button type="button" onClick="toSmall()">变小</button><br />
+    	<video src="mov_bbb.ogg" type="video/ogg" id="myVideo" width="420" loop="loop"></video>
+    </div>
+    <script type="application/javascript">
+		var oVideo=document.getElementById("myVideo");
+		function playPause() {
+			if(oVideo.paused)
+				oVideo.play();	
+			else 
+				oVideo.pause();
+		}
+		function toBig() {oVideo.width="600"}	<!-- 写成oVideo.width="600px"会有问题 -->
+		function toNormal() {oVideo.width="420"}
+		function toSmall() {oVideo.width="320"}
+	</script>
+    <br /><br /><br />
+    
+     
+	<!-- radio音频频 -->
+    <h2><a href="1.h5音频audio.html">html5音频:audio</a></h2>
+</body>
+</html>

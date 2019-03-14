@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>html5拖放</title>
+    <style>
+        #div1 { border: 2px solid black; width: 500px; height: 200px; }
+    </style>
+</head>
+<body>
+    <div id='div1'></div>
+    <img id='img1' src="logo.png" draggable='true' />
+    <div id='msgDiv'></div>
+    <script>
+        var oDiv,oImg;
+        function drag(ev){
+            ev.dataTransfer.setData('imgID',ev.target.id);
+        }
+        function drop(ev){
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData('imgID');
+            ev.target.appendChild(document.getElementById(data));
+        }
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            var oImg=document.getElementById('img1');
+            var msgDiv=document.getElementById('msgDiv');
+
+            function showObj(obj){
+                var s='';
+                for(var i in obj){
+                    s+=i+':'+obj[i]+'<br />';
+                }
+                msgDiv.innerHTML=s;
+            }
+            oImg.ondragstart=drag;
+            oDiv.ondragover=allowDrop;
+            oDiv.ondrop=drop;
+            oDiv.ondragenter=function(ev){
+                showObj(ev);
+            };
+        };
+    </script>
+</body>
+</html>

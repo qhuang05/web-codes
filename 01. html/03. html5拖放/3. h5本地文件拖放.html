@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>html5本地文件拖放</title>
+    <style>
+        #div1 { border: 2px solid black; width: 500px; height: 200px; }
+    </style>
+</head>
+<body>
+    <div id='div1'></div>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            oDiv.ondragover=function(ev){
+                ev.preventDefault();
+            };
+            oDiv.ondrop=function(ev){
+                ev.preventDefault();
+                var file=ev.dataTransfer.files[0];
+                var fr=new FileReader();
+                fr.onload=function(event){
+                    oDiv.innerHTML='<img src=\"'+fr.result+'\">';
+//                    oDiv.innerHTML='<input type="file" src=\"'+fr.result+'\">';
+                };
+                fr.readAsDataURL(file);
+            };
+        };
+    </script>
+</body>
+</html>

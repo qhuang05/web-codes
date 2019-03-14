@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>frameset框架布局</title>
+</head>
+<!--
+    重要提示:
+    body标签与frameset不能同时使用！
+    noframes标签必须嵌套于body标签内！
+-->
+<frameset rows="20%,70%,10%">
+	<frame src="page1.html" noresize="noresize" />
+    <frameset cols="30%,70%">
+        <frame src="page2.html" />
+        <frame src="page3.html" />
+    </frameset>
+    <frame src="page1.html" />
+    
+    <noframes>
+    	<body>您的浏览器无法处理框架！</body>
+    </noframes>
+</frameset>
+
+</html>
