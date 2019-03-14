@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单向数据流</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+</head>
+<body>
+	<div id="app">
+		<h3>最终计算结果为：{{count}}</h3>
+		<custom-count :count="count" @count-handle="getCountResult"></custom-count>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script type="text/javascript">
+		// 单向数据流：
+		// 数据从父组件传递给子组件只能单向绑定，子组件内部不应该修改父组件传递过来的数据。
+		// 改变prop的情况：1.作为data中局部数据的初始值使用；2.作为子组件中computed树属性。
+		Vue.component('custom-count', {
+			props:['count'],
+			data:function(){
+				return {
+					inCount: this.count
+				}
+			},
+			// computed:{
+			// 	inCount2(){
+			// 		return this.inCount;
+			// 	}
+			// },
+			template:`<div><input type="button" value="计数器" @click="increaceCount" />{{inCount}}</div>`,
+			methods:{
+				increaceCount(){
+					this.inCount++;
+					this.$emit('count-handle', this.inCount);
+				}
+			}
+		});
+		let app = new Vue({
+			el: '#app',
+			data: {
+				count:0
+			},
+			methods:{
+				getCountResult(value){
+					this.count = value;
+				}
+			}
+		});
+		
+	</script>
+</body>
+</html>

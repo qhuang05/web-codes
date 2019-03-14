@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>事件冒泡</title>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 200px;
+            background: #ccc;
+            display: none
+        }
+    </style>
+    <script>
+        //事件冒泡: 事件从子级往上传递给父级, 导致对子级的操作同时也会触发父级的动作。
+        window.onload = function () {
+            var oBtn = document.getElementById("btn");
+            var oDiv = document.getElementById("div1");
+            oBtn.onclick = function (ev) {
+                oDiv.style.display = "block";
+                //取消事件冒泡：
+                var oEvent = ev || event;
+                oEvent.cancelBubble = true;
+//		oEvent.stopPropagation();	//等价于oEvent.cancelBubble=true;
+            };
+            document.onclick = function () {
+                oDiv.style.display = "none";
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button type="button" id="btn">显示</button>
+    <div id="div1"></div>
+</body>
+</html>

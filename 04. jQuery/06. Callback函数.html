@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>Callback函数,动画完成100%后执行</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("button").click(function(){
+			$("p").hide(1000,function(){alert("The paraphrase is hidden.");})	
+			//alert做为callback函数参数传递，使段落完全隐藏后再弹出提示框; 否则js将在段落隐藏动作未完成后执行弹框。
+		});
+	});	
+	</script>
+
+</head>
+
+<body>
+	<button type="button">点击隐藏</button>
+	<p>This is a paraphrase.</p>
+</body>
+</html>

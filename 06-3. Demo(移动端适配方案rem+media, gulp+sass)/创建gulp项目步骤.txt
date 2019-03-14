@@ -1,0 +1,20 @@
+1、安装nodejs环境
+2、创建项目文件夹gulp_project
+3、新建package.json文件： 
+	gulp_project>cnpm init
+4、全局安装gulp: 
+	cnpm install gulp -g
+5、局部安装gulp: 
+	gulp_project>cnpm install gulp --save-dev
+
+6、新建gulpfile.js文件并进行任务编写：
+   安装需要用到的插件cnpm install gulp-sass gulp-autoprefixer gulp-minify-css gulp-filter gulp-uglify --save-dev
+7、运行项目：
+	gulp_project>gulp default
+
+========================================================
+cnpm init
+cnpm install gulp -g
+cnpm install gulp --save-dev
+cnpm install gulp-sass gulp-autoprefixer gulp-minify-css gulp-filter gulp-uglify --save-dev
+gulp default

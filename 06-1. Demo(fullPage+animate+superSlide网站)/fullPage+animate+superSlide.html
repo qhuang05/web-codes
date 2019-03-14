@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fullPage+Animate+SuperSlid网站实践</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="css/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/myTest.css" />
+    <style>
+        .animated-delay-0{ animation-delay: 0.5s; -webkit-animation-delay: 0.5s}
+        .animated-delay-1{ animation-delay: 1s; -webkit-animation-delay: 1s}
+        .animated-delay-2{ animation-delay: 1.5s; -webkit-animation-delay: 1.5s}
+        .animated-delay-3{ animation-delay: 2s; -webkit-animation-delay: 2s}
+    </style>
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <img src="images/logo.png" alt="logo" />
+        <ul class="menu">
+            <li class="active"><a href="javascript:;">菜单一</a></li>
+            <li><a href="javascript:;">菜单二</a></li>
+            <li><a href="javascript:;">菜单三</a></li>
+            <li><a href="javascript:;">菜单四</a></li>
+        </ul>
+    </div>
+</header>
+<div id="pageContain">
+    <div class="page page1 current">
+        <div class="contain">
+            <div id="slideBox" class="slideBox">
+                <div class="hd">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="bd">
+                    <ul>
+                        <li class="play-1">
+                            <img src="images/p1.jpg" />
+                            <section>
+                                <p>这是描述文字--001</p>
+                                <p>这是描述文字--002</p>
+                                <p>这是描述文字--003</p>
+                            </section>
+                        </li>
+                        <li class="play-2">
+                            <img src="images/p2.jpg" />
+                            <section>
+                                <p>焦点图2: 001</p>
+                                <p>焦点图2: 002</p>
+                            </section>
+                        </li>
+                        <li class="play-3">
+                            <img src="images/p3.jpg" />
+                            <section>
+                                <p>
+                                    这是最后一张图片<br/>
+                                    焦点图文字测试结束...
+                                </p>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="page page2">
+        <div class="contain">
+            <h3>第2屏 - 标题</h3>
+            <p class="animated infinite bounce">第2屏 - 段落1</p>
+            <p class="animated infinite shake">第2屏 - 段落2</p>
+        </div>
+    </div>
+
+    <div class="page page3">
+        <div class="contain">
+            <h3>第3屏 - 标题</h3>
+            <p class="animated slideInDown animated-delay-0">第3屏 - 段落1</p>
+            <p class="animated lightSpeedIn animated-delay-2">第3屏 - 段落2</p>
+        </div>
+    </div>
+</div>
+
+<ul id="navBar">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script src="js/jquery1.42.min.js"></script>
+<script src="js/fullPage.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+$(document).ready(function(){
+    var runPage = new FullPage({
+        id: 'pageContain',
+        slideTime: 400,
+        effect: {
+            transform: {
+                translate: 'Y'
+            },
+            opacity: [0, 1]
+        },
+        mode: 'wheel, touch, nav:navBar',
+        easing: 'ease-out',
+        callback: function(index, indexPage){
+//            if(index == 1){     //第2屏
+//                $('.page2 p, .page3 p').removeClass().hide();
+//                $('.page2 p').eq(0).show().addClass('animated infinite bounce');
+//                $('.page2 p').eq(1).show().addClass('animated infinite rubberBand');
+//                setTimeout(function(){
+//                    $('.page2 p').show();
+//                },1000);
+//            }
+        }
+    });
+
+    $(".slideBox").slide({
+        mainCell:".bd ul",
+        effect: 'leftLoop',
+        autoPlay: true,
+        mouseOverStop: false,
+        startFun: function(i,c){
+            if(i == 0){
+                $('li.play-1 p').removeClass().hide();
+            }
+            if(i == 1){
+                $('li.play-2 p').removeClass().hide();
+            }
+            if(i == 2){
+                $('li.play-3 p').removeClass().hide();
+            }
+        },
+        endFun: function(i,c){
+            if(i == 0){
+                $('li.play-1 p').eq(0).show().addClass('animated bounceInLeft');
+                $('li.play-1 p').eq(1).show().addClass('animated bounceInRight');
+                $('li.play-1 p').eq(2).show().addClass('animated bounceInUp');
+                setTimeout(function(){
+                    $('li.play-1 p').removeClass();
+                }, 1000);
+            }
+            if(i == 1){
+                $('li.play-2 p').eq(0).show().addClass('animated slideInLeft');
+                $('li.play-2 p').eq(1).show().addClass('animated slideInRight');
+                setTimeout(function(){
+                    $('li.play-2 p').removeClass();
+                }, 1000);
+            }
+            if(i == 2){
+                $('li.play-3 p').show().addClass('animated fadeInUpBig');
+                setTimeout(function(){
+                    $('li.play-3 p').removeClass();
+                }, 1000);
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>正则表达子项使用</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                var str = oTxt1.value;
+                var reg = /(b+)/g;
+                var result = str.replace(reg, function($0, $1){
+                    return $1.toUpperCase();
+                })
+                oTxt1.value = result;
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type='text' value="abbcdefbggbbb" id='txt1'/>
+    <button type='button' id='btn'>测试</button>
+</body>
+</html>

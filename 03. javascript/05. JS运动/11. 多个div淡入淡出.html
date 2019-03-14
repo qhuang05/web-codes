@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多个div淡入淡出</title>
+	<style>
+		div { width: 100px; height: 100px; background: red; margin:10px; filter:alpha(opacity=30); opacity: 0.3; float:left; }
+	</style>
+	<script>
+	function startFade(obj,iTarget){
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var speed=(iTarget-obj.alpha)/8;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(obj.alpha==iTarget) {
+				clearInterval(obj.timer);
+			}		
+			else {
+				obj.alpha+=speed;
+				obj.style.filter="alpha(opacity="+obj.alpha+")";
+				obj.style.opacity=obj.alpha/100;
+			}	
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName("div");
+		for(var i=0; i<oDiv.length; i++) {
+			oDiv[i].timer=null;				//timer不能共用在多个div中
+			oDiv[i].alpha=30;				//透明度也不能共用在多个div中
+			oDiv[i].onmouseover=function(){
+				startFade(this,100);
+			};
+			oDiv[i].onmouseout=function(){
+				startFade(this,30);
+			};
+		}
+	};
+	</script>	
+</head>
+
+<body>
+	<div></div>
+	<div></div>
+	<div></div>	
+</body>
+</html>

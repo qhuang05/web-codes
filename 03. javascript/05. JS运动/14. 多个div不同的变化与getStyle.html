@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多个div进行不同变化时与getStyle</title>
+	<style>
+		div {width: 200px; height: 200px; background: green; margin: 10px; float: left;}
+	</style>
+	<script>
+
+	function getStyle(obj,name){
+		if(obj.currentStyle) {
+			return obj.currentStyle[name];
+		}
+		else {
+			return getComputedStyle(obj,false)[name];
+		}
+	}
+
+	function startChange(obj,attr,iTarget){
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			//var cur=parseInt(getStyle(obj,"width"));
+			var cur=parseInt(getStyle(obj,attr));	
+			var speed=(iTarget-cur)/8;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		
+				if(cur==iTarget) {
+					clearInterval(obj.timer);
+				}
+				else {
+					//oDiv.style.width=cur+speed+'px';
+					//oDiv.style["width"]=cur+speed+'px';
+					obj.style[attr]=cur+speed+'px';
+				}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName("div");
+		for(var i=0; i<oDiv.length; i++){
+			oDiv[i].timer=null;
+		}
+		oDiv[0].onmouseover=function(){
+			startChange(this,'height',300);
+		};	
+
+		oDiv[1].onmouseover=function(){
+			startChange(this,'width',50);
+		};
+		oDiv[2].onmouseover=function(){
+			startChange(this,'fontSize',50);
+		};
+	};
+	//以上代码的弊端是无法解决opacity透明度的问题
+	</script>	
+</head>
+
+<body>
+	<div>变高</div>	
+	<div>变宽</div>	
+	<div>字体变大</div>	
+
+</body>
+</html>

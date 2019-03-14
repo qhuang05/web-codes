@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>图片淡入淡出</title>
+	<style>
+		#div1 { width:200px; height: 200px; background: blue; filter:alpha(opacity:30); opacity:0.3;}
+	</style>
+	<script>
+	var alpha=30;
+	var timer=null;
+	function startFade(iTarget){
+		var oDiv=document.getElementById("div1");
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=0;
+			if(alpha<iTarget) {
+				speed=5;
+			}
+			else {
+				speed=-5;
+			}
+			if(alpha==iTarget) {
+				clearInterval(timer);
+			}
+			else {
+				alpha+=speed;
+				oDiv.style.filter='alpha(opacity:'+alpha+')';
+				oDiv.style.opacity=alpha/100;
+			}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		//var timer=null;			
+		//var alpha=30;				//timer和alpha不能定义在window.onload中，因为在startFade()函数用到这两个变量,需要作为全局变量。
+		oDiv.onmouseover=function(){
+			startFade(100);
+		};
+		oDiv.onmouseout=function(){
+			startFade(30);
+		};
+	};
+
+	</script>	
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+</html>

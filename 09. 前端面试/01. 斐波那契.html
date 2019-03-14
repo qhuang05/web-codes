@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斐波那契数列</title>
+	<!-- 斐波那契数列规则，两两相加等于后一个数，例如1,1,2,3,5,8,13,21...... -->
+</head>
+<body>
+<script>
+	// 方法1： 递归
+	// function feb(n){	
+	// 	if(n<=2){
+	// 		return 1;
+	// 	}
+	// 	return feb(n-1) + feb(n-2);
+	// }
+	// var result = feb(8);
+	// alert(result);
+
+
+	// 方法2
+	function feb(n){
+		var f1 = 1,
+			f2 = 1,
+			fn = 0;
+		for(var i=0; i<n-2; i++){
+			fn = f1 + f2;
+			f1 = f2;
+			f2 = fn;
+		}
+		return fn;
+	}
+	var result = feb(8);
+	alert(result);
+</script>
+</body>
+</html>

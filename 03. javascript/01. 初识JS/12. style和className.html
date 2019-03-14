@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>style和className</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black
+        }
+
+        .box {
+            background: #0F0
+        }
+    </style>
+    <script>
+        function toRed() {
+            var oDiv = document.getElementById('div1');
+            oDiv.style.background = 'red';
+        }
+        function toGreen() {
+            var oDiv = document.getElementById('div1');
+            oDiv.className = 'box';
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="变红" onclick="toRed()"/>
+    <input type="button" value="变绿" onclick="toGreen()"/>
+    <div id="div1"></div>
+    <!--由于style行间样式优先级高于class,当先点击‘变红’再点击‘变绿’时，‘变绿’按钮不生效.-->
+</body>
+</html>

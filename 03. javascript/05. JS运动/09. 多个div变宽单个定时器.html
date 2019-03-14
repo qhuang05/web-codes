@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多物体运动单个定时器</title>
+	<style>
+		div { width: 100px; height: 40px; background: red; margin:10px;}
+	</style>
+	<script>
+	var timer=null;
+	function startMove(obj,iTarget){
+		var oDiv=document.getElementsByTagName("div");
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=(iTarget-obj.offsetWidth)/10;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(obj.offsetWidth==iTarget) {
+				clearInterval(timer);
+			}
+			else {
+				obj.style.width=obj.offsetWidth+speed+'px';
+			}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName("div");
+		for(var i=0; i<oDiv.length; i++){
+			oDiv[i].onmouseover=function(){
+				startMove(this,400);
+			};
+			oDiv[i].onmouseout=function(){
+				startMove(this,100);
+			};			
+		}
+	};
+
+	</script>	 	
+</head>
+
+<body>
+	<div></div>
+	<div></div>
+	<div></div>	
+</body>
+</html>

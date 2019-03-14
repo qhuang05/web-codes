@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件绑定-封闭成函数</title>
+<script>
+function myAddEvent(obj,ev,fn) {
+	if(obj.attachEvent) {
+		obj.attachEvent('on'+ev,fn);
+	}
+	else {
+		obj.addEventListener(ev, fn,false);
+	}
+}
+window.onload=function(){
+	var oBtn=document.getElementById('btn');
+	myAddEvent(oBtn,'click',function(){
+		alert('a');
+	});
+	myAddEvent(oBtn,'click',function(){
+		alert('b');
+	});
+};
+</script>
+</head>
+
+<body>
+	<button id="btn" type="button">按钮</button>
+</body>
+</html>

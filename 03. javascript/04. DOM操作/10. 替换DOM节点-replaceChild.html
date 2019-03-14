@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>替换DOM节点-replaceChild</title>
+</head>
+
+<body>
+<div id="mydiv">
+    <p id="p1">This is the 1st paraphrase.</p>
+    <p id="p2">This is the 2nd paraphrase.</p>
+</div>
+
+<script>
+    var para = document.createElement("p");
+    var node = document.createTextNode("This is the 3rd paraphrase");
+    para.appendChild(node);
+
+    var oDiv = document.getElementById("mydiv");
+    var para1 = document.getElementById("p1");
+    oDiv.replaceChild(para, para1);
+</script>
+</body>
+</html>

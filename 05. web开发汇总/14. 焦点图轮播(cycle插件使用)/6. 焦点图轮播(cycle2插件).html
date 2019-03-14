@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点图轮播-cycle2插件</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <script src="../plugins/cycle2/jquery.cycle2.js"></script>
+    <script src="../plugins/cycle2/jquery.cycle2.center.js"></script>
+    <style>
+        .div1{ width: 400px; height: 200px; margin:0 auto; position: relative}
+        .cycle-slideshow{ width: 400px; height: 200px; position: absolute; z-index:0}
+        .switchIcons{width: 100%; height: 20px; position: absolute; bottom: 20px; text-align: center; z-index:99}
+        .switchIcons a{ width: 20px; height: 20px; display: inline-block; background: #fff; border-radius: 50%; cursor:pointer; margin:0 5px; text-decoration: none; color: deepskyblue}
+        .switchIcons a.active{ background: gold}
+        .prevBtn{ position: absolute; left:0; top:60px; z-index: 99}
+        .nextBtn{ position: absolute; right:0; top:60px; z-index: 99}
+        .controls{ width:100%; height: 22px; background: gold; position: absolute; bottom:-22px; text-align: center}
+    </style>
+</head>
+
+<body>
+<div class="div1">
+    <div id="wrapper" class="cycle-slideshow"
+         data-cycle-fx="scrollHorz"
+         data-cycle-speed="500"
+         data-cycle-timeout=1000
+         data-cycle-pause-on-hover="true"
+         data-cycle-prev="#prev"
+         data-cycle-next="#next"
+         data-cycle-pager="#pager"
+         data-cycle-pager-template=""
+         data-cycle-pager-event="mouseover"
+         data-cycle-center-horz=true
+         data-cycle-center-vert=true>
+        <img src="../images/red.png">
+        <img src="../images/green.png">
+        <img src="../images/blue.png">
+        <img src="../images/black.png">
+    </div>
+
+    <div id="pager" class="switchIcons">
+        <a class="active"></a>
+        <a></a>
+        <a></a>
+        <a></a>
+    </div>
+
+    <button id="prev" class="prevBtn">上一张</button>
+    <button id="next" class="nextBtn">下一张</button>
+
+    <div class="controls">
+        <button id="pause">暂停</button>
+        <button id="resume">恢复</button>
+        <button id="goto">跳转到最后一张</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#pause').click(function () {
+            $('.cycle-slideshow').cycle('pause');
+        });
+        $('#resume').click(function () {
+            $('.cycle-slideshow').cycle('resume');
+        });
+        $('#goto').click(function () {
+            $('.cycle-slideshow').cycle('goto', 3);
+        });
+
+        // 回调函数
+        $('#wrapper').on('cycle-before', function (event, opts, curr, next, fwdFlag) {
+            console.log(opts);
+            console.log(curr);
+            console.log(event);
+            console.log(fwdFlag);
+//            alert(next.src);
+            $(curr).addClass('active');
+        });
+
+        $('#wrapper').on('cycle-after', function (event, opts, curr, next, fwdFlag) {
+            console.log(opts);
+            console.log(curr);
+            console.log(event);
+            console.log(fwdFlag);
+        });
+    });
+</script>
+
+</body>
+</html>

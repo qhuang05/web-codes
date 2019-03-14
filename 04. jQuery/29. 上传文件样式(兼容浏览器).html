@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件样式(兼容浏览器)</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+        #fileUpload input{ width:160px; height: 25px; line-height: 25px; border:1px solid #ccc}
+        #fileUpload button{ display:inline-block; height:25px; background: #00a7e3; color:#fff; border:0; padding:5px 15px;}
+    </style>
+</head>
+
+<body>
+<input type="file" name="file" id="myFile" style="display:none" />
+<div id="fileUpload">
+    <input type="text" value="" id="fileUrl" placeholder="请选择文件" disabled/>
+    <button>浏览</button>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#fileUpload button").click(function () {
+            $("#myFile").trigger('click');
+        });
+        $("#myFile").change(function () {
+            var path = $(this).val();
+//            path = path.split('\\');
+//            path = path[path.length-1];
+            $('#fileUpload input').val(path);
+        });
+    });
+</script>
+
+</body>
+</html>

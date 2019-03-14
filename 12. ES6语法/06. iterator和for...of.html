@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iterator</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 1、手写iterator接口
+	function makeIterator(data){
+		let index = 0;
+		return {
+			next: function(){
+				return index<data.length ? {value:data[index++], done:false} : {value:undefined, done:true}
+			}
+		}
+	}
+	let arr = [1, 2, 3];
+	let iter = makeIterator(arr);
+	// iter.next();	//{value: 1, done: false}
+	// iter.next();	//{value: 2, done: false}
+	// iter.next();	//{value: 3, done: false}
+	// iter.next();	//{value: undefined, done: true}
+	
+
+	
+	// 2、凡是具有Symbol.iterator属性的数据结构都具有iterator接口
+	var data1 = [1,2,3,4];
+	var data2 = {name: 'sandy', age: 29}; //普通对象没有Symbol.iterator属性，不能使用for...of循环
+	var data3 = new Set([1,2,3,3]);
+	var data4 = new Map([[{'a': 'one'}, 1], ['b', 2]]);
+	var it1 = data1[Symbol.iterator]();
+	// it1.next();		//{value: 1, done: false}
+	// it1.next();		//{value: 2, done: false}
+	// it1.next();		//{value: 3, done: false}
+	// it1.next(); 		//{value: 4, done: false}
+	// it1.next(); 		//{value: undefined, done: true}	
+	var it3 = data3[Symbol.iterator]();
+	// it3.next();		//{value: 1, done: false}
+	// it3.next();		//{value: 2, done: false}
+	// it3.next();		//{value: 3, done: false}
+	// it3.next();		//{value: undefined, done: true}
+	var it4 = data4[Symbol.iterator]();
+	// it4.next();		//{value: [{'a': 'one'}, 1], done: false}
+	// it4.next();		//{value: ['b', 2], done: false}
+	// it4.next();		//{value: undefined, done: true}
+
+
+
+	// 3、部署iterator接口的一个简便方法，就是Symbol.iterator方法直接引用数组的iterator接口
+	jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+</script>
+</body>
+</html>

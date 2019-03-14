@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>居中弹窗-无动画</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        .mask { width: 100%; height: 100%; background: black; opacity: 0.3; filter: Alpha(opacity=30); position: absolute; top: 0; left:0; z-index: 10; display: none }
+        .popup { width: 400px; height: 400px; background: #ccc; text-align: center; position: absolute; z-index: 999; display: none}
+        .popup .header { width: 100%; height: 30px; line-height: 30px; background: indianred }
+        .popup .body { width: 100%; height: 350px; line-height:350px; background: darkseagreen }
+        .popup .footer { width: 100%; height: 30px; line-height: 30px; background: cadetblue; cursor: pointer }
+    </style>
+</head>
+
+<body>
+
+<div style="height: 500px">内容......</div>
+<button id="btn1">点击弹窗</button>
+<div style="height: 500px">内容......</div>
+
+<div class="mask"></div>
+<div class="popup toHide" id="pop1">
+    <div class="header">标题</div>
+    <div class="body">内容</div>
+    <div class="footer close">关闭</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#btn1').on('click',function(){
+        popup('#pop1', '.mask');
+    });
+
+    $('.close').on('click', function(){
+        var target = $(this).parents('.popup').attr('id');
+        pophide('#'+target, '.mask');
+    });
+
+    // 调整窗口大小或滚动条滚动时，始终保持窗口居中
+    wScroll('#pop1', '.mask');
+});
+
+//居中弹窗 公共函数
+function popup(popName, mask){
+    var _windowWidth = $(window).width(),
+        _windowHeight = $(window).height(),
+        _scrollHeight = $(document).scrollTop(),
+        _popupWidth = $(popName).width(),
+        _popupHeigth = $(popName).height(),
+        _top = (_windowHeight - _popupHeigth)/2 + _scrollHeight,
+        _left = (_windowWidth - _popupWidth)/2
+    //冻结body滚动条(不完善--键盘鼠标操作要取消默认事件,兼容性问题等)
+    $('body').css({'overflow':'hidden'});
+    $(mask).css({'top':_scrollHeight+'px'}).show();
+    $(popName).css({'left':_left+'px', 'top':_top+'px'}).show();
+}
+
+function pophide(popName,mask){
+    //恢复body滚动条
+    $('body').css({'overflow':'auto'});
+    $(mask).hide();
+    $(popName).hide();
+}
+
+function wScroll(popName, mask){
+    window.onresize = window.onscroll = function(){
+        if($(popName).css('display') == 'block'){
+            popup(popName, mask);
+        }
+    };
+}
+
+</script>
+</body>
+</html>

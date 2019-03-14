@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@import "../../common/sm.min";
+@import "../../common/common";
+#orderListPage {
+    .buttons-tab {
+        border-bottom: 1px solid $colorBorder;
+    }
+}
+.order-card {
+    border-top: 1px solid $colorBorder;
+    border-bottom: 1px solid $colorGrayd1;
+    margin-top: toRem(15);
+    background:#fff;
+    .head{
+        padding: 0 toRem(25);
+        height: 1.4rem;
+        line-height: 1.4rem;
+        color: $colorGray89;
+        border-bottom:1px solid $colorBorder;
+        span {
+            font-size: .7rem;
+            &.price {
+                float: left;
+            }
+            &.state {
+                float: right;
+                &.green{color: $colorGreen}
+                &.red{ color: $colorRed}
+                &.blue{ color: $colorBlue}
+                &.gray{ color: $colorGray89}
+            }
+        }
+        
+    }
+    .body{
+        padding: .5rem toRem(20);
+        > p{
+            margin: .2rem 0;
+            height: rem;
+            line-height: 1rem;
+            .time {
+                font-size: .85rem;
+            }
+            .type{
+                display: inline-block;
+                vertical-align: middle;
+                margin: -2px 0 0 3px;
+                height: .9rem;
+                line-height: .8rem;
+                padding: 0 0.3rem;
+                color: $colorRed;
+                font-size: .65rem;
+                border:1px solid $colorRed;
+                @include border-radius(2.2rem);
+                margin-left: 0.4rem;
+                span {
+                    color: $baseColor;
+                }
+            }
+            &.address {
+                overflow: hidden;
+                font-size: .7rem;
+                @include singleline-ellipsis(90%);
+            }
+        }
+    }
+}

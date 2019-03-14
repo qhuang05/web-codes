@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="renderer" content="webkit">
+	<title>CSS3 响应式纵向滚屏翻页，支持键盘，鼠标操作</title>
+	<link rel="stylesheet" href="../plugins/pageScroll/pageScroll.css" />
+	<!--[if lte IE 8]>
+	<style type="text/css">
+		html,body{width:100%; height:100%; overflow:scroll}
+		.section-btn{display:none;}
+	</style>
+	<![endif]-->
+</head>
+
+<body>
+	<section class="section-wrap">
+		<div class="section section-1">
+			<div class="title active">
+				<p class="tit">CSS3 纵向滚屏翻页，支持键盘，鼠标滚轮操作</p>
+			</div>
+		</div>
+		<div class="section section-2">
+			<div class="title">
+				<p class="tit">随便写写意思下!</p>
+			</div>
+		</div>
+		<div class="section section-3">
+			<div class="title">
+				<p class="tit">随便写写意思下</p>
+			</div>
+		</div>
+		<div class="section section-4">
+			<div class="title">
+				<p class="tit">随便写写意思下</p>
+			</div>
+		</div>
+		<div class="section section-5">
+			<div class="title">
+				<p class="tit">随便写写意思下</p>
+			</div>
+		</div>
+	</section>
+	<ul class="section-btn">
+	  <li class="on"></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	</ul>
+	<div class="arrow">&laquo;</div>
+
+<script src="../plugins/jquery-1.11.3.min.js"></script>
+<script src="../plugins/pageScroll/pageScroll.js"></script>
+</body>
+</html>

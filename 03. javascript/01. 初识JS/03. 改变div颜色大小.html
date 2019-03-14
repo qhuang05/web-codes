@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>改变DIV的颜色大小</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 50px;
+            background: #F00
+        }
+    </style>
+    <script>
+        function toGreen(id) {
+            var x = document.getElementById(id);
+            x.style.width = '200px';
+            x.style.height = '100px';
+            x.style.background = 'green';
+        }
+        function toRed(id) {
+            var x = document.getElementById(id);
+            x.style.width = '100px';
+            x.style.height = '50px';
+            x.style.background = 'red';
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1" onmouseover="toGreen('div1')" onmouseout="toRed('div1')"></div>
+</body>
+</html>

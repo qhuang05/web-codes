@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>全选反选与不选</title>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var oCh = oDiv.getElementsByTagName('input');
+            //全选
+            var oBtn1 = document.getElementById('btn1');
+            oBtn1.onclick = function () {
+                for (var i = 0; i<oCh.length; i++) {
+                    oCh[i].checked = true;
+                }
+            };
+            //不选
+            var oBtn2 = document.getElementById('btn2');
+            oBtn2.onclick = function () {
+                for (var i = 0; i<oCh.length; i++) {
+                    oCh[i].checked = false;
+                }
+            };
+            //反选
+            var oBtn3 = document.getElementById('btn3');
+            oBtn3.onclick = function () {
+                for (var i = 0; i<oCh.length; i++) {
+                    if (oCh[i].checked == false) {
+                        oCh[i].checked = true;
+                    }
+                    else {
+                        oCh[i].checked = false;
+                    }
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type="button" value="全选" id="btn1"/>
+    <input type="button" value="不选" id="btn2"/>
+    <input type="button" value="反选" id="btn3"/><br/>
+
+    <div id="div1">
+        <label><input type="checkbox"/><span>星期一</span></label><br/>
+        <label><input type="checkbox"/><span>星期二</span></label><br/>
+        <label><input type="checkbox"/><span>星期三</span></label><br/>
+        <label><input type="checkbox"/><span>星期四</span></label><br/>
+        <label><input type="checkbox"/><span>星期五</span></label><br/>
+        <label><input type="checkbox"/><span>星期六</span></label><br/>
+        <label><input type="checkbox"/><span>星期日</span></label><br/>
+    </div>
+</body>
+</html>

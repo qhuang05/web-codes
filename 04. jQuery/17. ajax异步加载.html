@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>aJax异步加载页面</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // 异步加载/刷新页面.load()
+        $('#btn2').click(function(){
+            alert('正在加载，请稍候...');
+            $('#div2').load('data/content.html');
+//            $('#div2').load('data/content.html',function(response, status, XMLHttpResponse){
+//                if(status=='success'){
+//                    alert('加载成功');
+//                    console.log(response);
+//                    $('#div2').text(XMLHttpResponse.status);        // 200
+//                    $('#div2').text(XMLHttpResponse);               // [Object Object]
+//                }
+//                else if(status=='error'){
+//                    alert('加载失败');
+//                    $('#div2').text(XMLHttpResponse.status);        //404
+//                }
+//            });
+        });
+
+        // 异步加载js: $.getScript(), 在需要使用时才去加载文件
+        $('#btn22').click(function(){
+            $.getScript('js/ajax异步加载.js').complete(function(){        //或.success()
+                loadJs();
+            }).fail(function(){
+                alert('加载失败');
+            });
+        });
+    });
+</script>
+</head>
+
+<body>
+    <div id="div1">aJax异步加载页面测试:</div>
+    <button id="btn2">点击, 异步加载外部html文件</button>
+    <div id="div2"></div>
+
+    <hr />
+
+    <div id="div11">aJax异步加载js文件测试:</div>
+    <button id="btn22">点击, 异步加载外部js文件</button>
+</body>
+</html>

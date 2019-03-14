@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>选取元素-getElementByID,getElementsByClassName,getElementsByTagName</title>
+</head>
+
+<body>
+<p class="intro">段落1：getElementByClassName测试</p>
+<p class="intro">段落2：getElementByClassName测试</p>
+<div id="mydiv">这是一个div元素</div>
+<ul>
+    <li>列表项001</li>
+    <li>列表项002</li>
+    <li>列表项003</li>
+    <li>列表项004</li>
+</ul>
+
+<script>
+    //getElementsByClassName在IE5,6,7,8中无效
+    var oPara = document.getElementsByClassName("intro");
+    oPara[0].style.color = "blue";
+
+    var oDiv = document.getElementById("mydiv");
+    oDiv.style.background = "red";
+
+    var oList = document.getElementsByTagName("li");
+    oList[0].style.listStyle = "none";
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue属性和方法</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ fullName }}</p>
+    <p>{{ getFullName() }}</p>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    let app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Bill',
+            lastName: 'Gates',
+        },
+        computed: {//计算属性
+            fullName(){
+                return this.firstName + ' ' + this.lastName
+            }
+        },
+        methods: {//自定义方法
+            getFullName(){
+                return this.firstName + ' ' + this.lastName 
+            }
+        },
+        watch: {//用于观察 Vue 实例上的数据变动
+            firstName(newValue, oldValue) {
+                console.log('firstName changed form ' + oldValue + ' to ' + newValue);
+            },
+            lastName(newValue, oldValue){
+                console.log('lastName changed form ' + oldValue + ' to ' + newValue);
+            }
+        }
+    });
+</script>
+</body>
+</html>

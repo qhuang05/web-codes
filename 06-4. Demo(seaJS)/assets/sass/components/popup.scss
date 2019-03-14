@@ -1,0 +1,80 @@
+@charset "utf-8";
+@import "../common/common";
+.no-popup-bg {
+	background: none;
+}
+.custom-popup {
+	padding: 0 toRem(35);
+    margin: auto;
+    @include mid-wrapper(80%,12rem);
+    background: #fff;
+    border-radius: 15px;
+	background: #fff;
+	h2 {
+		padding: toRem(30) 0;
+		font-size: .9rem;
+		text-align: center;
+	}
+	> .bbx-btn-blue {
+		margin: 1rem 0 0;
+		width: 100%;
+		height: toRem(80);
+		line-height: toRem(80);
+	}
+	.custom-close {
+		position: absolute;
+		top: toRem(8);
+		right: toRem(20);
+		color: $colorGrayd1;
+		z-index: 10;
+	}
+}
+
+.custom-modal{
+    padding: toRem(64) toRem(30) toRem(50) toRem(30);
+    background: #fff;
+    @include border-radius(1rem);
+    .modal-inner{
+        background: #fff; font-size: 0.8rem;
+        &:after{ background:none}
+    }
+    .modal-buttons{
+        background: #fff;
+        .modal-button{
+            &:after{
+                background: none;
+            }
+            &:first-child{
+                width:45%;
+                border-radius: 2.2rem;
+                @extend .bbx-btn;
+            }
+            &:last-child{
+                width:45%;
+                border-radius: 2.2rem;
+                @extend .bbx-btn-blue;
+            }
+        }
+    }
+}
+.custom-modal.modal-block{
+    padding: toRem(30) toRem(30) toRem(50) toRem(30);
+    .modal-title{
+        position: absolute;
+        right: -(toRem(10));
+        top: -(toRem(20))
+    }
+    .modal-buttons {
+        .modal-button{
+            &:first-child{
+                width:75%;
+                @extend .bbx-btn-blue;
+                margin-bottom: toRem(40);
+            }
+            &:last-child{
+                width:75%;
+                @extend .bbx-btn;
+            }
+        }
+    }
+}

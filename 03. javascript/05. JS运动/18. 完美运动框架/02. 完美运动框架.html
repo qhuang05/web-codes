@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>完美运动框架</title>
+<style>
+	#div1 { width: 200px; height: 200px; background: red; }
+</style>
+<script src="move3.js"></script>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oBtn=document.getElementById("btn");
+	oBtn.onclick=function(){
+		//startMove(oDiv,'width',400);
+		//startMove(oDiv,'height',400);
+		startMove(oDiv,{'width':300,'height':400});
+	};
+};
+</script>
+</head>
+
+<body>
+	<button type="button" id="btn">运动</button>
+	<div id="div1"></div>
+</body>
+</html>

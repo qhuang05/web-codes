@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "../common/sm.min";
+@import "../common/common";
+
+.order-details {
+    padding:  toRem(26) toRem(50);
+    .details-item {
+        position: relative;
+        padding: toRem(24) 0;
+        border-bottom: 1px solid $colorBorder;
+        .label {
+            float: left;
+            color: $colorGray89;
+        }
+        .info {
+            position: absolute;
+            left: 5rem;
+            right: 0;
+            @include singleline-ellipsis(auto);
+        }
+    }
+}
+
+.order-price {
+    margin: 1.2rem auto 0.2rem;
+    text-align: center;
+    dt {
+        font-size: .85rem;
+        .price-number {
+            font-size: 1.2rem;
+        }
+    }
+    dd {
+        font-size: .8rem;
+    }
+}
+.order-price-explain {
+    font-size: .7rem;
+    color: $colorGray89;
+    text-align: center;
+}

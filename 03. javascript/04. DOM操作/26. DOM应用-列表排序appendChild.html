@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM应用-列表排序</title>
+	<script>
+		window.onload=function(){
+			var oUl1=document.getElementById("ul1");
+			var oUl2=document.getElementById("ul2");
+			var btn=document.getElementById("sort");
+			btn.onclick=function(){
+				oLi=oUl1.children[1];
+				oUl2.appendChild(oLi);	
+			};			
+		};
+	</script>
+</head>
+
+<body>	
+	<button type="button" id="sort">排序</button>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<ul id="ul2">
+		<li>A</li>
+	</ul>
+
+</body>
+</html>

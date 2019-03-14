@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>添加元素append,prepend,before,after</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			$("p").append("<b>后后后</b>");
+			$("ol").append("<li>444</li>");
+			//$("p").after("<b>后后后</b>");
+			//$("ol").after("<li>444</li>");
+			
+			
+			////var oP=document.getElementById("op");
+			////alert(oP.nodeType);			
+			////写成alert($("p").nodeType);是错误的,js和jq可以混用，但是要注意怎么混用;
+		});	
+
+		$("#btn2").click(function(){
+			$("p").prepend("<b>前前前</b>");			
+			$("ol").prepend("<li>000</li>");
+			//$("p").before("<b>前前前</b>");			
+			//$("ol").before("<li>000</li>");
+		});
+
+		$("#btn3").click(function(){
+			$("p").after("<b>前前前</b>");			
+			$("ol").after("<li>444</li>");
+		});
+
+		$("#btn4").click(function(){
+			$("p").before("<b>前前前</b>");			
+			$("ol").before("<li>000</li>");
+		});
+
+	});	
+	</script>
+
+</head>
+
+<body>
+	<p id="op">The 1st paraphrase.<span>span元素</span></p>
+	<ol>
+		<li>11111</li>
+		<li>22222</li>
+		<li>33333</li>
+	</ol>
+	<button type="button" id="btn1">append()</button>
+	<button type="button" id="btn2">prepend()</button>
+	<button type="button" id="btn3">after()</button>
+	<button type="button" id="btn4">before()</button>
+	<p><b>说明：</b>append在元素内部的末尾添加上内容，包含在标签内；而after则是在元素外部紧接着该元素末尾添加上内容，在标签之外。</p>
+</body>
+</html>

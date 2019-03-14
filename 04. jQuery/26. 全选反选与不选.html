@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选反选与不选</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+    <input type="button" value="全选" id="btn1" />
+    <input type="button" value="不选" id="btn2" />
+    <input type="button" value="反选" id="btn3" /><br />
+
+    <div id="div1">
+        <label><input type="checkbox" /><span>星期一</span></label><br />
+        <label><input type="checkbox" /><span>星期二</span></label><br />
+        <label><input type="checkbox" /><span>星期三</span></label><br />
+        <label><input type="checkbox" /><span>星期四</span></label><br />
+        <label><input type="checkbox" /><span>星期五</span></label><br />
+        <label><input type="checkbox" /><span>星期六</span></label><br />
+        <label><input type="checkbox" /><span>星期日</span></label><br />
+    </div>
+
+    <ul id="tt">
+        <li>11111</li>
+        <li>22222</li>
+        <li>33333</li>
+    </ul>
+    <script>
+    //对于固有属性的操作,使用.prop(); 对于自定义的DOM属性,使用.attr()
+    //在用JQ写全选、不选、反选操作时，要使用.prop(),否则不生效
+    //.prop()与.attr()的区别--http://www.cnblogs.com/Showshare/p/different-between-attr-and-prop.html
+    $(document).ready(function(){
+        //全选
+        $('#btn1').click(function(){
+            $('#div1 input:checkbox').prop('checked',true);
+        });
+
+        //不选
+        $('#btn2').click(function(){
+            $('#div1 input:checkbox').prop('checked',false);
+        });
+
+        //反选
+        $('#btn3').click(function(){
+            $('#div1 input:checkbox').each(function(index,element){
+                if($(this).prop('checked')){
+                    $(this).prop('checked',false);
+                }
+                else{
+                    $(this).prop('checked',true);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

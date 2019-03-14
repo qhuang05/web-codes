@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery效果模块$.fx对象</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#btn1').on('click', function(){
+				$.fx.off = true;		//禁用动画效果
+			});
+			$('#btn2').on('click', function(){
+				$.fx.off = false;		//启用动画效果
+			});
+			$('#btn3').on('click', function(){
+				$('#test').fadeToggle(2000);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<button id="btn1">禁用动画</button>
+	<button id="btn2">启用动画</button>
+	<button id="btn3">开始动画</button>
+	<div id="test" style="width: 100px; height: 100px; background: red">
+	</div>
+</body>
+</html>

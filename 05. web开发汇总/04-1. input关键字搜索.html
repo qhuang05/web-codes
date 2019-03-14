@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input关键字搜索</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <script src="plugins/jquery.select.js"></script>
+</head>
+<body>
+    <input type=text id="content" />
+    <script>
+        $(document).ready(function(){
+            var data =[
+                {id: 1, text: "中国联通"},
+                {id: 2, text: "中国移动"},
+                {id: 3, text: "中国建筑"},
+                {id: 4, text: "联想集团"},
+                {id: 5, text: "上海汽车集团"},
+                {id: 6, text: "中国工商银行"},
+                {id: 7, text: "中国建设银行"}
+            ];
+            $.selectSuggest('content', data, 'anything', callback);
+        });
+
+        function  callback() {
+            alert($(this).text());
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery停止动画或效果stop</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("h2").click(function(){
+			$("p").slideDown(9000);
+		});
+
+		$("button").click(function(){
+			$("p").stop();			//stop(stopAll,goToEnd)有2个可选参数
+		});
+	});	
+	</script>
+
+</head>
+
+<body>
+	<h2 style="background:#952ED3; width:400px; margin:0; display:inline-block">点击展开【国际时事】</h2>
+	<button type="button">停止</button>
+	<p style="width:400px; height:700px; background:#ccc; margin:0; display:none"></p>	
+</body>
+</html>

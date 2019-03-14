@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>获取或设置内容text(),html(),val()</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			alert($("p").text());					//返回元素的文本内容
+			$("p").text("这是改变后的文字。");		//设置元素的文本内容
+		});
+
+		$("#btn2").click(function(){
+			alert($("p").html());							//返回元素的内容(包括HTML标记)
+			$("p").html("<h1>这是改变后的文字。</h1>");		//设置元素的内容(包括HTML标记)
+
+		});
+
+		$("#btn3").click(function(){
+			alert($("input").val());					//返回表单字段的值
+			$("input").val("QiuHuang");					//设置表单字段的值
+		});
+	});	
+	//text(), html(), val()有回调函数，详细参考http://www.w3school.com.cn/jquery/jquery_dom_set.asp
+	</script>
+
+</head>
+
+<body>
+	<p>这是一段文字，其中含有<b>粗体文字</b>。</p>
+	姓名：<input type="text" value="Lee" /><br />
+	<button type="button" id="btn1">text()</button>
+	<button type="button" id="btn2">html()</button>
+	<button type="button" id="btn3">val()</button>
+</body>
+</html>

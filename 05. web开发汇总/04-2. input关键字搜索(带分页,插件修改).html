@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input关键字搜索</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <script src="plugins/jquery.select.m.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <input type="text" />
+        <div class="control" style="display:none">
+            <button class="prev">上一页</button>
+            <em class="cur-page">1</em>/<em class="total-page">1</em>
+            <button class="next">下一页</button>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var data = {
+                data: [
+                    {id: 1, text: "中国联通"},
+                    {id: 2, text: "中国移动"},
+                    {id: 3, text: "中国建筑"},
+                    {id: 4, text: "联想集团"},
+                    {id: 5, text: "上海汽车集团"},
+                    {id: 6, text: "中国工商银行"},
+                    {id: 7, text: "中国建设银行"}
+                ],
+                total: 20
+            };
+            var updateApi = {
+                url: '/carsmodule/getcars',
+                perPage: 6
+            };
+            $.selectSuggest('content', data, 'anything', callback, updateApi);
+        });
+
+        function  callback() {
+//            alert($(this).text());
+        }
+    </script>
+</body>
+</html>

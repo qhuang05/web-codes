@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>移动端日期选择</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="js/bbxTimePicker/spinningwheel/spinningwheel.css" />
+    <style>
+        input{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            border:1px solid #efefef;
+        }
+    </style>  
+</head>
+<body>
+<input type="text" id="timePicker" />
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="js/bbxTimePicker/spinningwheel/spinningwheel.js"></script>
+<script src="js/bbxTimePicker/bbxTimePicker.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#timePicker').bbxTimePicker({
+            callback: function(){
+                
+            }
+        });
+    });
+</script>
+</body>
+</html>

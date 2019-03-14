@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>图片上传</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="plugins/webuploader/webuploader.css">
+    <style>
+        .upload-box{
+            width: 800px;
+            margin:0 auto;
+            border: 1px solid #ccc;
+            padding:10px;
+        }
+        .upload-box .file-item,
+        .upload-box .file-add{
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            border:1px dashed #aaa;
+            margin:10px;
+            float:left;
+            position: relative;
+        }
+        .upload-box .file-add{
+            font-size: 30px;
+            color: #ccc;
+        }
+        .upload-box .file-item .img-thumb,
+        .upload-box .file-item img{
+            width:100%;
+            height: 100%;
+            border:0;
+        }
+        .upload-box .file-item .remove{
+            display: inline-block;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            line-height: 12px;
+            border:1px solid #bbb;
+            border-radius: 50%;
+            background: #ffff;
+            color: red;
+            font-size: 30px;
+            text-indent: -9px;
+            position: absolute;
+            right: -10px;
+            top: -10px;
+        }
+    </style>
+</head>
+<body>
+<div class="upload-box">
+    <div class="file-item-box clearfix">
+        <!-- <div class="file-item">
+            <div class="img-thumb"><img src="" /></div>
+            <i class="remove">－</i>
+        </div> -->
+        <div class="file-add" id="fileAdd">＋</div>
+        <input type="button" class="upload-start" id="uploadStart" value="开始上传" hidden />
+    </div>
+</div>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="plugins/webuploader/webuploader.min.js"></script>
+<script src="js/uploader.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#fileAdd').uploaderExt({
+            server: 'http://webuploader.duapp.com/server/fileupload.php',
+            fileNumLimit: 5,
+            triggerObj: $('#uploadStart'),
+            errorMsg: {
+                Q_EXCEED_NUM_LIMIT: function(){
+                    alert('最多只能传9张哦！');
+                }
+            },
+            uploadFinishedCallback: function(error){
+                if(!error){
+                    alert('全部上传成功');
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

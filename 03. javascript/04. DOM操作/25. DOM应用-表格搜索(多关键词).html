@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM应用-表格搜索多关键词</title>
+	<script>
+		window.onload=function(){
+			var oTab=document.getElementById("tab1");
+			var oBtn=document.getElementById("search");
+			var sName=document.getElementById("name");
+			oBtn.onclick=function(){
+				for(i=0; i<oTab.tBodies[0].rows.length; i++) {
+					var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+					var sTxt=sName.value.toLowerCase();
+					var sArr=sTxt.split(" ");
+					oTab.tBodies[0].rows[i].style.background="";
+					//oTab.tBodies[0].rows[i].style.display="none";
+					for(var j=0; j<sArr.length; j++) {
+						if(sTab.search(sArr[j])!=-1) {
+							oTab.tBodies[0].rows[i].style.background="green";
+							//oTab.tBodies[0].rows[i].style.display="block";
+						}	
+						//注意：oTab.tBodies[0].rows[i].style.background="";不能放在j循环中，因为j循环需要全部执行完，只要有其中一个是符合的就高亮显示，所以不能在else设置不符合时的背景色，否则一旦遇到其中一个不符合，就不会高亮显示
+						//else {
+						//	oTab.tBodies[0].rows[i].style.background="";	
+						//}	
+					}
+				}
+			};
+		};
+	</script>
+</head>
+
+<body>	
+	姓名：<input type="text" id="name" />
+	<button type="button" id="search">搜索</button>
+
+	<table width="500px" border="1" id="tab1">
+		<thead>
+			<th>ID</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>20</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Blue</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>王五</td>
+				<td>33</td>
+				<td></td>
+			</tr>		
+			<tr>
+				<td>4</td>
+				<td>许艺</td>
+				<td>26</td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td>5</td>
+				<td>左文</td>
+				<td>30</td>
+				<td></td>
+			</tr>													
+		</tbody>
+	</table>
+</body>
+</html>

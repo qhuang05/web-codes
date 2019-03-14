@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件开发</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>自定义下拉框</h2>
+		<custom-select></custom-select>
+		<h2>自定义下拉框2</h2>
+		<custom-select></custom-select>
+	</div>
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom-select', {
+			template: `<section class="select-wrap">
+						<div class="search-wrap">
+							<input type="text" class="search-input" />
+							<button class="search-btn">Search</button>
+						</div>
+						<div class="result-wrap">
+							<ul>
+								<li>1、html,css</li>
+								<li>2、javascript,jquery</li>
+								<li>3、less,sass</li>
+								<li>4、vue,react,angularJS</li>
+							</ul>
+						</div>
+					</section>`
+		});
+		let app = new Vue({
+			el: '#app'
+		});
+	</script>
+</body>
+</html>

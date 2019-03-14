@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Json的使用</title>
+    <script>
+        var json = {a: 10, b: 20, c: 30};
+        var arr = [11, 22, 33];
+//        alert(json.a);            //10
+        //alert(json['a']);			//json的下标是字符串
+        //alert(arr[0]);			//数组的下标是数字
+
+        //alert(json.length);		//json没有length属性
+        //alert(arr.length);		//数组有lenght属性
+
+        //json循环
+        for (var i in json) {
+            alert('第' + i + '个元素的值是' + json[i]);
+        }
+
+//        //数组循环, 方法1, 常规
+//         for(var i=0; i<arr.length; i++) {
+//            alert('第'+i+'个元素的值是'+arr[i]);
+//         }
+//
+//        //数组循环, 方法2, 同json
+//         for (var i in arr) {
+//             alert('第'+i+'个元素的值是'+arr[i]);
+//         }
+    </script>
+</head>
+
+<body>
+</body>
+</html>

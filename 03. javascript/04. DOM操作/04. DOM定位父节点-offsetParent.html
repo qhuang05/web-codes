@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM定位父节点-offsetParent</title>
+	<style>
+	#div1 { width: 400px; height: 400px; background: #ccc; position: relative;}
+	#div2 { width: 200px; height: 200px; background: #00f; position: absolute; left:50px;}
+	</style>
+	<script>
+		window.onload=function(){
+			var oDiv1=document.getElementById("div1");
+			var oDiv2=document.getElementById("div2");
+			alert(oDiv2.offsetParent);
+		};
+	</script>
+</head>
+
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+</body>
+</html>

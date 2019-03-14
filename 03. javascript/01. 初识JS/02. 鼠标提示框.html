@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>鼠标提示框</title>
+    <style>
+        #tips_10days {
+            width: 200px;
+            height: 32px;
+            border: thin solid #F60;
+            background: #FFC;
+            font: 12px "Courier New", Courier, monospace;
+            color: #F60;
+            display: none
+        }
+    </style>
+
+    <script>
+        function Dshow(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function Dhidden(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</head>
+
+<body>
+    <label>
+        <input type="checkbox"/>
+        <span onmouseover="Dshow('tips_10days')" onmouseout="Dhidden('tips_10days')">十天内自动登入</span>
+    </label>
+    <div id="tips_10days">为了您的信息安全，请不要在网吧或公用电脑上使用此功能！</div>
+</body>
+</html>

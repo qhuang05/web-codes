@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/* 公用样式 Start*/
+html,body{color:#000;background:#fff}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+legend{color:#000}
+ol,ul{list-style:none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+th,address,cite,code,dfn,var,em,strong{font-style:normal;font-weight:normal}
+input,textarea,select{font-family:inherit;font-size:inherit;*font-size:100%;font-weight:inherit;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-modify:read-write-plaintext-only}
+input:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-modify:read-write-plaintext-only;}
+a{ text-decoration: none}
+a:link{}
+a:hover{}
+a:visited{}
+a:focus{outline: none;}
+.clearfix:after{ content: "\200B"; display: block; height: 0; clear: both; }
+.clearfix { *zoom: 1; }
+html, body{font-family:'Microsoft YaHei',Arial,'Helvetica Neue','SimSun';font-size:14px; width:100%; height: 100%;}
+/* 公用样式 End*/
+
+#app{
+	padding: 15px;
+}
+.modal{
+	background:#fff;
+	padding: 15px;
+	border:1px solid #ccc;
+	border-radius: 4px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+    opacity: 0;
+    -webkit-transition: all 0.5s;    
+    -o-transition: all 0.5s;    
+    transition: all 0.5s;
+}
+/*.modal{
+	position: fixed;
+	width:100%;
+	height: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-moz-box-orient: horizontal;
+	-moz-box-direction: normal;
+	-ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	        align-items: center;
+}
+.modal .wrap{
+	border:1px solid #ccc;
+	padding: 15px;
+	border-radius: 4px;
+}*/
+.modal.active{
+	opacity: 1;
+    -webkit-transition: all 0.5s;    
+    -o-transition: all 0.5s;    
+    transition: all 0.5s;
+}
+.modal-header{
+	width:100%;
+	height: 30px;
+	text-align: center;
+}
+.modal-body{
+	padding:10px 0;
+	border-top:1px solid #ccc;
+}
+.modal-footer{
+	text-align:right;
+}
+.modal-footer button{
+	border:1px solid #ccc;
+	padding:5px 10px;
+	outline: 0;
+	margin:0 10px;
+	cursor:pointer;
+}

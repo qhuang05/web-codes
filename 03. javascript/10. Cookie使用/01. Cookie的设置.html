@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cookie</title>
+    <script>
+        //添加cookie:
+        //document.cookie='user=blue';
+        //document.cookie='password=123456';	//添加
+        //alert(document.cookie);
+
+        //设置过期时间:
+        //var oDate=new Date();
+        //oDate.setDate(oDate.getDate()+8);		//设置日期为8天之后
+        //oDate=oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate();
+        //alert(oDate);
+
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + 14);
+        document.cookie = 'userName=blue;expires=' + oDate;
+        alert(document.cookie);
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

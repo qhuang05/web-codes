@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>定时器-setInterval,setTimeout</title>
+    <script>
+        function show() {
+            alert('a');
+        }
+        function show_2() {
+            alert('b');
+        }
+        setInterval("show()", 3000);		//每隔5000ms执行一次show()函数,无限循环
+        setTimeout(show_2, 5000);		//5000ms执行一次show_2()函数，且只执行一次
+    </script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>表单验证</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <style>
+        .form{
+            width: 500px; 
+            margin: 10px 0;
+        }
+        li{
+            margin:10px 0;
+        }
+        .form-item{
+            width: 100%;
+            position: relative;
+        }
+        .form-label{
+            width: 80px;
+            position: absolute;
+        }
+        .form-content{
+            width: 100%;
+            padding-left: 80px;
+        }
+        .form-content input{
+            width:100%;
+            height: 30px;
+            line-height: 30px;
+            border:1px solid #ccc;
+        }
+        .button{
+            display: inline-block;
+            background:#03a9f3;
+            color:#fff;
+            border:0;
+            padding:5px 10px;
+            cursor:pointer;
+        }
+        .error-msg{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<a class="button" id="refresh">刷新</a>
+<div class="form" id="form">
+    <ul>
+        <li>
+            <div class="form-item">
+                <div class="form-label">用户名：</div>
+                <div class="form-content">
+                    <input type="text" name="username" required="yes" checkexpression="NotEmpty" errormsg="用户名不能为空！" />
+                </div>
+            </div>               
+        </li>
+        <li>
+            <div class="form-item">
+                <div class="form-label">邮箱：</div>
+                <div class="form-content">
+                    <input type="text" name="email" required="yes" checkexpression="Email" />
+                </div>
+            </div>           
+        </li>
+        <li>
+            <div class="form-item">
+                <div class="form-label">密码：</div>
+                <div class="form-content">
+                    <input type="password" name="password" required="yes" checkexpression="StrLengthRange" min="6" max="20" errormsg="密码必须为6到20位！" />
+                </div>
+            </div>                
+        </li>
+    </ul>
+    <a class="button" id="submit">提交</a>
+</div>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="js/validator.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#submit').on('click', function(){
+            $("#form").formValidate();
+        });
+    });
+</script>
+</body>
+</html>

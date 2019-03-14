@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>闭包</title>
+    <script>
+        function A(){
+            var count = 1;
+            function B(){
+                count++;
+                alert(count);
+            }
+            return B;
+        }
+        var s = A();
+        s();
+        s();
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-1. 原有数据类型扩展(String, Number, 正则)</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 字符串扩展
+	// 1、 for...of...遍历
+	// 2、 `` 与 ${}
+	// 3、 includes(), startsWith(), endsWith(), repeat()
+	// 4、 String.raw()
+	var str1 = String.raw`Hi\n${2+3}`;	//Hi\n5
+	var str2 = String.raw`Hi\\n${2+3}`;	//Hi\\n5
+	var str3 = String.raw({raw:'test'}, 1,2,3); //t1e2s3t
+
+
+	// 数值扩展
+	// 1、 Number.isFinite(), Number.isNaN(), Number.isInteger()
+	// 2、 Math.trunc()， Math.sign() ......
+
+
+	//正则扩展
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>原型模式-自定义对象</title>
+    <script>
+        function Person() {
+
+        }
+        Person.prototype.name = 'Queena';
+        Person.prototype.age = '27';
+        Person.prototype.showName = function () {
+            alert(this.name);
+        }
+
+        var person1 = new Person();
+        person1.name = 'Queena2';
+        var person2 = new Person();
+        alert(person1.name);    //Queena2, 来自实例
+        alert(person2.name);    //Queena, 来自原型
+
+        // 原型模式的问题: 当属性值是引用类型时，对实例1进行操作会同时改变原型的值，从而影响到实例2的值。
+        // -->所以最普遍的创建自定义对象方法是: 构造函数(定义属性)+原型模式(定义方法)
+    </script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>alert提示框组件实例</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="alert.css?v=11">
+	<script src="../js/vue.js"></script>
+	<script src="../js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<mv-alert type="info" :show-icon="false"></mv-alert>
+		<mv-alert type="success">恭喜,注册成功！</mv-alert>
+		<mv-alert type="warning">注册成功，但存在不安全因素！</mv-alert>
+		<mv-alert type="error">Sorry,注册失败！</mv-alert>
+	</div>
+	<script type="text/javascript">
+		Vue.component('mv-alert', {
+			props:{
+				type:{
+					type: String,
+					default: 'info'
+				},
+				showIcon:{
+					type: Boolean,
+					default: true
+				}
+			},
+			computed:{
+				alertClass(){
+					return `alert-${this.type}`;
+				},
+				iconClass(){
+					return 'icon-'+this.type;
+				},
+				closeClass(){
+					return 'close-'+this.type;
+				}
+			},
+			template: 
+			`<div class="alert" :class="alertClass">
+				<div class="wrap">
+					<i class="icon" :class="iconClass" v-if="showIcon">!</i>
+					<span>
+						<slot>这里有一个消息提示信息！</slot>
+					</span>
+					<em class="close" :class="closeClass">X</em>
+				</div>
+			</div>`,
+			methods:{
+				
+			}
+		});
+		let app = new Vue({
+			el: '#app'
+		});
+	</script>
+</body>
+</html>

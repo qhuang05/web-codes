@@ -1,0 +1,86 @@
+@charset "UTF-8";
+@import "reset";
+@import "../utils/variables";
+@import "../utils/function";
+@import "../utils/mixin";
+
+/* PC端适配方案 */
+/*@media only screen and (min-width: 1024px) {
+  html{font-size: 12px}
+}
+@media only screen and (min-width: 1440px) {
+  html{font-size: 14px}
+}
+@media only screen and (min-width: 1680px) {
+  html{font-size: 14px}
+}
+@media only screen and (min-width: 1920px) {
+  html{font-size: 16px}
+}
+
+html,body{font-family: $baseFontFamily}
+body{font-size:1rem}*/
+
+/* 移动端适配方案 */
+@media only screen and (min-width: 320px) {
+  html{ font-size:17.0666px}
+}
+@media only screen and (min-width: 375px){
+  html{font-size: 20px}
+}
+@media only screen and (min-width: 414px) {
+  html{font-size: 22.08px}
+}
+@media only screen and (min-width: 475px) {
+  html{font-size: 25.3333px}
+}
+@media only screen and (min-width: 768px) {
+  html{font-size: 40.96px}
+}
+@media only screen and (min-width: 960px) {
+  html{font-size: 51.2px}
+}
+html,body{font-family: $baseFontFamily; width: 100%; height: 100%; overflow: hidden}
+body{font-size:0.8rem}
+
+/* 移动端1px解决方案：transform缩放+after伪类 */
+.border-1px{
+  @include border-1px;
+}
+@media (min-device-pixel-ratio: 1.5),(-webkit-min-device-pixel-ratio: 1.5) {
+  .border-1px{
+    &:after{
+      -webkit-transform: scaleY(0.7);
+      -moz-transform: scaleY(0.7);
+      -ms-transform: scaleY(0.7);
+      -o-transform: scaleY(0.7);
+      transform: scaleY(0.7);
+    }
+  }
+}
+@media (min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 2){
+  .border-1px{
+    &:after{
+      -webkit-transform: scaleY(0.5);
+      -moz-transform: scaleY(0.5);
+      -ms-transform: scaleY(0.5);
+      -o-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+
+/* 按钮样式 */
+.btn{
+  display:inline-block;
+  height: toRem(60);
+  padding:0 1rem;
+  background:transparent;
+  border:1px solid $colorBlue;
+  border-radius: 2rem;
+}
+.btn.btn-block{
+  @extend .btn;
+  display:block;
+  width:100%;
+}

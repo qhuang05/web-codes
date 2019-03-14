@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery动画效果animate</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				$("div").animate({
+					left:'300px',
+					width:'+=200px',		//使用相对值 +=
+					height:'+=200px',
+					opacity:'0.3'
+				},3000);
+			});
+
+			$("#btn2").click(function(){
+				$('div').animate({
+					left:'10px',
+					width:'200px',
+					height:'200px',
+					opacity:'1'
+				},3000);
+			});
+
+			$("#btn3").click(function(){
+				$('div').animate({
+					height:'toggle',		//使用预定义值 toggle
+					width:'toggle'
+				},3000);
+			});	
+
+			$("#btn4").click(function(){
+				$('p').animate({
+					fontSize:'3em',
+					marginLeft:'250px'
+				}, 3000);
+			});	
+
+		});
+	</script>
+
+</head>
+
+<body>
+	<button type="button" id="btn1">点击进入动画效果</button>
+	<button type="button" id="btn2">点击还原</button>
+	<button type="button" id="btn3">点击关闭</button>	
+	<button type="button" id="btn4">yellowBox测试</button>	
+
+	<div style="background:#1A27F2; width:200px; height:200px; position:absolute"></div>
+	<p style="background:#F5E86B; width:200px; height:200px; margin:30px">动画测试</p>
+</body>
+<div></div>
+</html>

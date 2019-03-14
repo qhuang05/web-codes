@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css属性选择器</title>
+	<style type="text/css">
+		/*[title] { color:#F00; }*/
+		/*[title=test1] { color:#0F0; }*/
+		/*[title~=test1] { color:#00F; }*/
+		/*[title|=test1] { color:#FF0; }*/
+		/*[title^=t1] { color:#F00; }*/
+		/*[title$=t1] { color:#0FF;}*/
+		/*[title*=test] { color:#F0F; }*/
+		input[type="text"] { color:red; }
+	</style>
+</head>
+
+<body>
+	<div title="test1">属性title="test1"</div>
+	<div title="test2">属性title="test2"</div>
+	<div title="t1 test aaa">属性title="test aaa"</div>
+	<div title="t2 test bbb">属性title="test bbb"</div>
+
+	<input type="text" value="文本1" />
+	<input type="text" value="文本2"  />
+	<input type="button" value="确定" />
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单栏</title>
+    <style>
+        ul,li{ margin: 0; padding: 0; list-style: none}
+
+        .menu1 { width:300px; height:20px; padding-top:3px}
+        .menu1 li { float:left; margin:0 15px}
+        .menu1 li a{ display: inline-block; color: blue; text-decoration: none}
+        .menu1 li a:link{}
+        .menu1 li a:visited{}
+        .menu1 li a:hover{}
+
+        .menu2 { width:300px; height:20px; background:#000; padding-top:3px}
+        .menu2 li { float:left; margin:0 15px}
+        .menu2 li a{ display: inline-block; color: #fff; text-decoration: none}
+        .menu2 li a:link{}
+        .menu2 li a:visited{}
+        .menu2 li a:hover{}
+
+        .menu3_left { background:url(images/menu_bg_left.png) no-repeat left top; width:340px; height:80px; }
+        .menu3_right { background:url(images/menu_bg_right.png) no-repeat right top; }
+        .menu3 { background:url(images/menu_bg_middle.png) repeat-x 0 -1px; height:80px; padding-top:8px; margin:0 33px; }
+        .menu3 li { float:left; margin:0 10px}
+        .menu3 li a{ display: inline-block; color: #fff; text-decoration: none}
+        .menu3 li a:link{}
+        .menu3 li a:visited{}
+        .menu3 li a:hover{}
+    </style>
+</head>
+
+<body>
+    <!--菜单栏的制作,无背景-->
+    <ul class="menu1">
+        <li><a href="index.html" target="_new" >首页</a></li>
+        <li><a href="javascript:;">项目二</a></li>
+        <li><a href="javascript:;">项目三</a></li>
+        <li><a href="javascript:;">项目四</a></li>
+    </ul>
+
+	<!--菜单栏的制作,有背景-->
+    <ul class="menu2">
+        <li><a href="index.html" target="_new" >首页</a></li>
+        <li><a href="javascript:;">项目二</a></li>
+        <li><a href="javascript:;">项目三</a></li>
+        <li><a href="javascript:;">项目四</a></li>
+    </ul>
+
+    <!--菜单栏的制作,使用背景图片-->
+    <div class="menu3_left">
+        <div class="menu3_right">
+            <ul class="menu3">
+                <li><a href="index.html" target="_new" >首页</a></li>
+                <li><a href="javascript:;">项目二</a></li>
+                <li><a href="javascript:;">项目三</a></li>
+                <li><a href="javascript:;">项目四</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

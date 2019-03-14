@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多个div进行不同变化时与getStyle</title>
+	<style>
+		div {width: 200px; height: 200px; background: green; margin: 10px; float: left; filter: alpha(opacity=30); opacity: 0.3; }
+	</style>
+	<script>
+
+	function getStyle(obj,name){
+		if(obj.currentStyle) {
+			return obj.currentStyle[name];
+		}
+		else {
+			return getComputedStyle(obj,false)[name];
+		}
+	}
+
+	function startMove(obj,attr,iTarget){
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var cur=0;
+			if(attr=='opacity') {
+				//cur=parseFloat(getStyle(obj,attr))*100;			//由于计算机无法真正存储一个小数值，所以要取整
+				cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+			}
+			else {
+				cur=parseInt(getStyle(obj,attr));	
+			}
+			var speed=(iTarget-cur)/8;			
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);		
+			if(cur==iTarget) {
+				clearInterval(obj.timer);
+			}
+			else {
+				if(attr=='opacity') {
+					obj.style.filter="alpha(opacity="+(cur+speed)+")";
+					obj.style.opacity=(cur+speed)/100;
+				}
+				else {
+					//oDiv.style.width=cur+speed+'px';
+					//oDiv.style["width"]=cur+speed+'px';
+					obj.style[attr]=cur+speed+'px';
+
+				}
+			}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName("div");
+		oDiv[0].onmouseover=function(){
+			startMove(this,'height',300);
+		};	
+
+		oDiv[1].onmouseover=function(){
+			startMove(this,'width',300);
+		};
+		
+		oDiv[2].onmouseover=function(){
+			startMove(this,'opacity',100);
+		};
+	};
+	</script>	
+</head>
+
+<body>
+	<div>变高</div>	
+	<div>变宽</div>	
+	<div>不透明</div>	
+
+</body>
+</html>

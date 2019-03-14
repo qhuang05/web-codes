@@ -1,0 +1,3 @@
+fullPage.js£º	http://www.dowebok.com/143.html
+Animate.css:	http://www.dowebok.com/98.html
+SuperSlide.js:	http://www.superslide2.com/

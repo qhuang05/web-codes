@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM应用-表格排序</title>
+	<script>
+		window.onload=function(){
+			var oTab=document.getElementById("tab1");
+			var oBtn=document.getElementById("sort");
+			oBtn.onclick=function(){
+				var str=[];
+				for(i=0; i<oTab.tBodies[0].rows.length; i++) {
+					str[i]=oTab.tBodies[0].rows[i];
+				}
+
+				str.sort(function(tr1,tr2){
+					var n1=parseInt(tr1.cells[0].innerHTML);
+					var n2=parseInt(tr2.cells[0].innerHTML);
+					return n1-n2;
+				});
+
+				for(i=0; i<str.length; i++) {
+					//alert(str[i].innerHTML);
+					oTab.tBodies[0].appendChild(str[i]);
+				}
+			};
+		};
+	</script>
+</head>
+
+<body>	
+	<button type="button" id="sort">排序</button>
+
+	<table width="500px" border="1" id="tab1">
+		<thead>
+			<th>ID</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>11</td>
+				<td>张三</td>
+				<td>20</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Blue</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>55</td>
+				<td>王五</td>
+				<td>33</td>
+				<td></td>
+			</tr>		
+			<tr>
+				<td>3</td>
+				<td>许艺</td>
+				<td>26</td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td>7</td>
+				<td>左文</td>
+				<td>30</td>
+				<td></td>
+			</tr>													
+		</tbody>
+	</table>
+</body>
+</html>

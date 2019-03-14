@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>获取或设置css类addClass,removeClass,toggleClass,css_01</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			alert($("#div1").css("font-size"));		//返回div元素的font-size属性值
+			$("#div1").css("font-size","60px");		//设置css
+    		$("#div1").css({"background-color":"yellow","color":"red","width":"400px"})
+    	});
+
+		$("#btn2").click(function(){
+			$("#div2").addClass("div2");
+		});
+
+		$("#btn3").click(function(){
+			$("#div3").removeClass("div3");
+		});
+
+		$("#btn4").click(function(){
+			$("#div3").toggleClass("div3");
+		});		
+
+	});
+	</script>
+
+	<style type="text/css">
+		.div2 { background:#ccc; border:1px solid blue; width:400px; height: 50px; }
+		.div3 { background:#aaa; border:1px dotted black; width:400px; height: 50px; }
+	</style>
+</head>
+
+<body>
+	<div style="font-size: 30px" id="div1">The 1st Div.</div>
+	<div id="div2">The 2nd Div.</div>
+	<div id="div3" class="div3">The 3rd Div.</div>
+
+	<button type="button" id="btn1">div1--css()</button>
+	<button type="button" id="btn2">div2--addClass()</button>
+	<button type="button" id="btn3">div3--removeClass()</button>
+	<button type="button" id="btn4">div3--toggleClass()</button>
+</body>
+</html>

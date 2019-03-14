@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>window.location</title>
+    <script type="text/javascript">
+        document.write(window.location.href + "<br />");
+        document.write(location.pathname + "<br />");
+        document.write(location.port + "<br />");
+        document.write(location.protocol + "<br />");
+        function newDoc() {
+            location.assign("https://www.baidu.com/");
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" onClick="location.reload()">刷新页面, location.reload()</button><br/>
+
+    <button type="button" onClick="newDoc()">点击加载新文档, location.assign()</button>
+    <button type="button">
+        <a href="https://www.baidu.com/">点击加载新文档, href属性</a>
+    </button>
+<!--备注：button标签是没有href属性，点击button按钮链接到其它网址可使用window.location.assign();也可以在button中包含a标签，然后再去设置a标签的href属性-->
+
+</body>
+</html>

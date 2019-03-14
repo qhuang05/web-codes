@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>带框的拖拽</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        .box {
+            border: 2px solid black;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+                var disY = oEvent.clientY - oDiv.offsetTop;
+
+                //创建一个虚框：
+                var oBox = document.createElement("div");
+                oBox.className = 'box';
+                document.body.appendChild(oBox);
+                oBox.style.width = oDiv.offsetWidth - 2 + 'px';
+                oBox.style.height = oDiv.offsetHeight - 2 + 'px';
+                oBox.style.left = oDiv.offsetLeft + 'px';
+                oBox.style.top = oDiv.offsetTop + 'px';
+
+                //把onmousemove,onmouseup相同部分取出来封闭成mouseMove,mouseUp函数
+                function mouseMove(ev) {
+                    //oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+                    var oEvent = ev || event;
+                    oBox.style.left = oEvent.clientX - disX + 'px';
+                    ;
+                    oBox.style.top = oEvent.clientY - disY + 'px';
+                }
+
+                function mouseUp() {
+                    this.onmousemove = null;
+                    this.onmouseup = null;
+                    oDiv.style.left = oBox.offsetLeft + 'px';
+                    oDiv.style.top = oBox.offsetTop + 'px';
+                    document.body.removeChild(oBox);
+                    if (oDiv.releaseCapture) {
+                        oDiv.releaseCapture();
+                    }
+                }
+
+                //for IE:
+                if (oDiv.setCapture) {
+                    oDiv.onmousemove = mouseMove;
+                    oDiv.onmouseup = mouseUp;
+                    oDiv.setCapture();
+                }
+                //for FF,chrome:
+                else {
+                    document.onmousemove = mouseMove;
+                    document.onmouseup = mouseUp;
+                    return false;
+                }
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+</html>

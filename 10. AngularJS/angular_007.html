@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 007</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="notesApp">
+    <div ng-controller="formCtl as ctl">
+        用户名：<input type="text" placeholder="Please enter your name" ng-model="ctl.username"/><br/>
+        密 码： <input type="password" placeholder="Please enter password" ng-model="ctl.password"/><br/>
+        <input type="button" value="重置" ng-click="ctl.reset()" />
+        <input type="submit" value="提交" ng-click="ctl.submit()" />
+    </div>
+    <script>
+        angular.module('notesApp', []).controller('formCtl', [function(){
+            var self = this;
+            self.username = 'test';
+            self.password = '123456';
+            self.reset = function(){
+                self.username = '';
+                self.password = '';
+            };
+            self.submit = function(){
+                alert('your clicked submit!!!');
+                window.location.href = 'http://www.baidu.com/';
+            };
+        }]);
+    </script>
+</body>
+</html>

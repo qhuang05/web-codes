@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>混成模式--构造函数+原型模式</title>
+    <script>
+        function createPerson(name, qq) {
+            this.name = name;
+            this.qq = qq;
+        }
+        createPerson.prototype.showName = function () {
+            alert('我的名字是：' + this.name);
+        };
+        createPerson.prototype.showQQ = function () {
+            alert('我的QQ号是：' + this.qq);
+        };
+        var obj1 = new createPerson('张三', '268384959');
+        var obj2 = new createPerson('李四', '234574542');
+        obj1.showName();
+        obj1.showQQ();
+        obj2.showName();
+        obj2.showQQ();
+        alert(obj1.showName == obj2.showName);		//返回true
+    </script>
+</head>
+
+<body>
+</body>
+</html>

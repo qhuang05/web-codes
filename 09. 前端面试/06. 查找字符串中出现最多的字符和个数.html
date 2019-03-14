@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查找字符串中出现最多的字符和个数</title>
+	<!-- 查找字符串中出现最多的字符和个数, 例如sdjksfssscfssdd->字符最多的是s,出现了7次 -->
+</head>
+<body>
+<script>
+	var str = 'sdjksfssscfssdd';
+
+	// 方法1
+	// function findString(str){
+	// 	var json = {};
+	// 	var arr = str.split('');
+	// 	var value = 0, number = 0;
+	// 	for(var i=0; i<arr.length; i++){
+	// 		if(!json[arr[i]]){
+	// 			json[arr[i]] = 1;
+	// 		} else{
+	// 			json[arr[i]] = json[arr[i]] + 1;
+	// 		}
+	// 	}
+	// 	for(var key in json){
+	// 		if(json[key] > number){
+	// 			number = json[key];
+	// 			value = key;
+	// 		}
+	// 	}
+	// 	alert('最多字符：' + value + ', 出现次数：' + number);
+	// }
+	// findString(str);
+
+	// 方法2(正则表达式)
+	function findString(str){
+		var arr = str.split('').sort();
+		str = arr.join("");
+		var reg = /(\w)\1+/g;	// \1代表子项的复制，可多次出现
+		var value = 0, number = 0;
+		str.replace(reg, function($0,$1){
+			if($0.length > number){
+				number = $0.length;
+				value = $1;
+			}
+		})
+		alert('最多字符：' + value + ', 出现次数：' + number);
+	}
+	findString(str);
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Cookie举例-记录上次登入的用户名</title>
+    <script>
+        function setCookie(name, value, iDay) {
+            var oDate = new Date();
+            oDate.setDate(oDate.getDate() + iDay);
+            document.cookie = name + '=' + value + ';expires=' + oDate;
+        }
+        function getCookie(name) {
+            var arr = document.cookie.split(';');
+            for (var i = 0; i < arr.length; i++) {
+                arr2 = arr[i].split('=');
+                if (arr2[0] == name) {
+                    return arr2[1];
+                }
+            }
+            return '';
+        }
+        function removeCookie(name) {
+            setCookie(name, 1, -1);
+        }
+
+        window.onload = function () {
+            var oForm = document.getElementById('form1');
+            var oUser = document.getElementsByTagName('input')[0];
+            oForm.onsubmit = function () {
+                setCookie('user', oUser.value, 20);
+            };
+            oUser.value = getCookie('user');
+        };
+    </script>
+</head>
+
+<body>
+<form action="https://www.baidu.com/" id="form1">
+    用户名：<input type='text' name='user'/><br/>
+    密码：<input type="password" name='pwd'/><br/>
+    <input type='submit' value='提交'/>
+</form>
+</body>
+</html>

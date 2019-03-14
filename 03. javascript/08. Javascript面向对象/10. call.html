@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>call--改变函数执行的this指向</title>
+    <script>
+        function f1(){
+            console.log('f1: ' + this); //this指向window
+        }
+        f1();
+        f1.call(10); //此时f1中的this指向10
+
+        function f2(a, b){
+            console.log('f2: ' + this); //this指向window
+            console.log(a + ',' + b);
+        }
+        f2();
+        f2.call(10, 1, 2);  //此时f2中的this指向10
+    </script>
+</head>
+<body>
+
+</body>
+</html>

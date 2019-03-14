@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery滑动slideDown,slideUp,slideToggle</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("p").click(function(){
+				$("ul").slideToggle(500);
+			  //$("ul").slideDown();
+			  //$("ul").slideUp();			  
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<p style="width:400px; background:#F0F6B8; margin:0; text-align: center">菜单【点击可收起或展开】</p>
+	<ul style="width:400px; height:200px; background:#CCC; margin:0; padding:0">
+		<li>牛奶：......</li>
+		<li>咖啡：......</li>
+		<li>奶茶：......</li>
+	</ul>
+	<div style="width:400px; height:50px; background:#E495EC;margin:0">......</div>
+</body>
+</html>

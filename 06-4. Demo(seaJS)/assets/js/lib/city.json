@@ -1,0 +1,2173 @@
+var cities = {
+    "app_citys": [
+        {
+            "child_citys": [
+                {
+                    "city": "内蒙古呼和浩特市新城区",
+                    "code": "010000",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "呼和浩特市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "内蒙古呼和浩特市新城区",
+                                    "code": "010000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "010000_to_010000",
+                                    "line_name": "呼和浩特市内",
+                                    "name": "呼和浩特市",
+                                    "service_phone": "9689666"
+                                }
+                            ],
+                            "city": "内蒙古呼和浩特市新城区",
+                            "code": "010000",
+                            "name": "呼和浩特市",
+                            "province": "内蒙古自治区"
+                        }
+                    ]
+                }
+            ],
+            "city": "内蒙古呼和浩特市新城区",
+            "code": "010000",
+            "name": "呼和浩特市",
+            "province": "内蒙古自治区"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "内蒙古包头市",
+                    "code": "0100000",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "包头",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "内蒙古包头市",
+                                    "code": "0100000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "0100000_to_0100000",
+                                    "line_name": "包头市内",
+                                    "name": "包头",
+                                    "service_phone": "95128"
+                                }
+                            ],
+                            "city": "内蒙古包头市",
+                            "code": "0100000",
+                            "name": "包头",
+                            "province": "内蒙古自治区"
+                        }
+                    ]
+                }
+            ],
+            "city": "内蒙古包头市",
+            "code": "0100000",
+            "name": "包头",
+            "province": "内蒙古自治区"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "内蒙古呼和浩特市市辖区",
+                    "code": "014000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "包头市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "内蒙古呼和浩特市市辖区",
+                                    "code": "014000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "014000_to_014000",
+                                    "line_name": "包头市至包头城际线路",
+                                    "name": "包头市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "内蒙古呼和浩特市市辖区",
+                            "code": "014000",
+                            "name": "包头市",
+                            "province": "内蒙古自治区"
+                        }
+                    ]
+                }
+            ],
+            "city": "内蒙古呼和浩特市市辖区",
+            "code": "014000",
+            "name": "包头市",
+            "province": "内蒙古自治区"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "浙江省温州市平阳县",
+                    "code": "325400",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "平阳县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "浙江省温州市平阳县",
+                                    "code": "325405",
+                                    "incity_phone": "915620",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "1",
+                                    "line_id": "325400_to_325405",
+                                    "line_name": "平阳县到水头镇",
+                                    "name": "平阳县水头镇",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "浙江省温州市平阳县",
+                            "code": "325400",
+                            "name": "平阳县",
+                            "province": "浙江省"
+                        }
+                    ]
+                }
+            ],
+            "city": "浙江省温州市平阳县",
+            "code": "325400",
+            "name": "平阳县",
+            "province": "浙江省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省福州市市辖区",
+                    "code": "342400",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "兴国县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省福州市市辖区",
+                                    "code": "342400",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "342400_to_342400",
+                                    "line_name": "兴国县市内",
+                                    "name": "兴国县",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省福州市市辖区",
+                            "code": "342400",
+                            "name": "兴国县",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省福州市市辖区",
+            "code": "342400",
+            "name": "兴国县",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "351100",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "莆田市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省福州市",
+                                    "code": "350000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "351100_to_350000",
+                                    "line_name": "莆田至福州",
+                                    "name": "福州市",
+                                    "service_phone": "9689666"
+                                }
+                            ],
+                            "city": "福建省福州市",
+                            "code": "350000",
+                            "name": "福州市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "351100",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "351100_to_351100",
+                                    "line_name": "莆田至莆田城际线路",
+                                    "name": "莆田市",
+                                    "service_phone": "95128"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "351200",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "351100_to_351200",
+                                    "line_name": "莆田至仙游",
+                                    "name": "仙游县",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "351100",
+                            "name": "莆田市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "351200",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "仙游县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "351100",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "351200_to_351100",
+                                    "line_name": "仙游至莆田",
+                                    "name": "莆田市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "351100",
+                            "name": "莆田市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "351100",
+            "name": "莆田市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省宁德市",
+                    "code": "352000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "宁德市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "355000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "352000_to_355000",
+                                    "line_name": "宁德至福安",
+                                    "name": "福安市",
+                                    "service_phone": "455544"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "355000",
+                            "name": "福安市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省宁德市",
+            "code": "352000",
+            "name": "宁德市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "361000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "厦门市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_361000",
+                                    "line_name": "厦门到厦门",
+                                    "name": "厦门市",
+                                    "service_phone": "9689678"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_362000",
+                                    "line_name": "厦门至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "9689001"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362400",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_362400",
+                                    "line_name": "厦门至安溪",
+                                    "name": "安溪县",
+                                    "service_phone": "9687888"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362700",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_362700",
+                                    "line_name": "厦门至石狮",
+                                    "name": "石狮市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省泉州市",
+                                    "code": "362801",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_362801",
+                                    "line_name": "厦门至泉港",
+                                    "name": "泉港区",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_363000",
+                                    "line_name": "厦门至漳州",
+                                    "name": "漳州市",
+                                    "service_phone": "9689699"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363200",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_363200",
+                                    "line_name": "厦门至漳浦",
+                                    "name": "漳浦县",
+                                    "service_phone": "222222"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363900",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_363900",
+                                    "line_name": "厦门至长泰",
+                                    "name": "长泰县",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363000",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "广东省佛山市三水区",
+                                    "code": "528400",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "361000_to_528400",
+                                    "line_name": "厦门到中山",
+                                    "name": "中山市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "广东省佛山市三水区",
+                            "code": "528400",
+                            "name": "中山市",
+                            "province": "广东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "361000",
+            "name": "厦门市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "361006",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "厦门市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361006",
+                                    "incity_phone": "968856",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "361006_to_361006",
+                                    "line_name": "厦门市内叫车",
+                                    "name": "厦门市",
+                                    "service_phone": "96885689"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361006",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "361006",
+            "name": "厦门市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "山东省",
+                    "code": "361999",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "淄博市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "山东省淄博市博山区",
+                                    "code": "961222",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "361999_to_961222",
+                                    "line_name": "淄博市到博山区",
+                                    "name": "博山市",
+                                    "service_phone": "05334508187"
+                                }
+                            ],
+                            "city": "山东省淄博市博山区",
+                            "code": "961222",
+                            "name": "博山市",
+                            "province": "山东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "山东省",
+            "code": "361999",
+            "name": "淄博市",
+            "province": "山东省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "362000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "泉州市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_361000",
+                                    "line_name": "泉州至厦门",
+                                    "name": "厦门市",
+                                    "service_phone": "968856"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362100",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_362100",
+                                    "line_name": "泉州至惠安",
+                                    "name": "惠安县",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省泉州市",
+                                    "code": "362200",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_362200",
+                                    "line_name": "泉州至晋江",
+                                    "name": "晋江市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省泉州市",
+                                    "code": "362300",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_362300",
+                                    "line_name": "泉州至南安",
+                                    "name": "南安市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362400",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_362400",
+                                    "line_name": "泉州至安溪",
+                                    "name": "安溪县",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362700",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_362700",
+                                    "line_name": "泉州至石狮",
+                                    "name": "石狮市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362000_to_363000",
+                                    "line_name": "泉州到漳州",
+                                    "name": "漳州市",
+                                    "service_phone": "968856"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363000",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "362100",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "惠安县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362100_to_362000",
+                                    "line_name": "惠安至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省泉州市",
+                    "code": "362200",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "晋江市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362200_to_362000",
+                                    "line_name": "晋江至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362700",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362200_to_362700",
+                                    "line_name": "晋江至石狮",
+                                    "name": "石狮市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省泉州市",
+                    "code": "362300",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "南安市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362300_to_362000",
+                                    "line_name": "南安至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "362400",
+                    "is_city": "0",
+                    "is_detail": "1",
+                    "is_new": "0",
+                    "name": "安溪县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362400_to_361000",
+                                    "line_name": "安溪至厦门",
+                                    "name": "厦门市",
+                                    "service_phone": "1111111"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362400_to_362000",
+                                    "line_name": "安溪至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362400",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "1",
+                                    "line_id": "362400_to_362400",
+                                    "line_name": "安溪城际线路",
+                                    "name": "安溪县",
+                                    "service_phone": "968856"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "362700",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "石狮市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362700_to_361000",
+                                    "line_name": "石狮市至厦门市",
+                                    "name": "厦门市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362700_to_362000",
+                                    "line_name": "石狮至泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省泉州市",
+                                    "code": "362200",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "1",
+                                    "line_id": "362700_to_362200",
+                                    "line_name": "石狮至晋江",
+                                    "name": "晋江市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362700",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "1",
+                                    "line_id": "362700_to_362700",
+                                    "line_name": "石狮至石狮城际线路",
+                                    "name": "石狮市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省泉州市",
+                    "code": "362801",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "泉港区",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362801_to_361000",
+                                    "line_name": "泉港至厦门",
+                                    "name": "厦门市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省泉州市",
+                                    "code": "362801",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362801_to_362801",
+                                    "line_name": "泉港至泉港",
+                                    "name": "泉港区",
+                                    "service_phone": "454545"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "362000",
+            "name": "泉州市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "362001",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "泉州市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362001",
+                                    "incity_phone": "21111",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "362001_to_362001",
+                                    "line_name": "泉州市内叫车",
+                                    "name": "泉州市",
+                                    "service_phone": "968856"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362001",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "362001",
+            "name": "泉州市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "河北省石家庄市",
+                    "code": "362009",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "266665",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "河北省石家庄市",
+                                    "code": "362009",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "362009_to_362009",
+                                    "line_name": "测试",
+                                    "name": "266665",
+                                    "service_phone": "9669999"
+                                }
+                            ],
+                            "city": "河北省石家庄市",
+                            "code": "362009",
+                            "name": "266665",
+                            "province": "河北省"
+                        }
+                    ]
+                }
+            ],
+            "city": "河北省石家庄市",
+            "code": "362009",
+            "name": "266665",
+            "province": "河北省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "363000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "漳州市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "361000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363000_to_361000",
+                                    "line_name": "漳州至厦门",
+                                    "name": "厦门市",
+                                    "service_phone": "9689698"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "361000",
+                            "name": "厦门市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "362000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363000_to_362000",
+                                    "line_name": "漳州到泉州",
+                                    "name": "泉州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "362000",
+                            "name": "泉州市",
+                            "province": "福建省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363000_to_363000",
+                                    "line_name": "漳州至漳州城际打车",
+                                    "name": "漳州市",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363200",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363000_to_363200",
+                                    "line_name": "漳州至漳浦",
+                                    "name": "漳浦县",
+                                    "service_phone": "968969"
+                                },
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363900",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363000_to_363900",
+                                    "line_name": "漳州至长泰",
+                                    "name": "长泰县",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363000",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "363200",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "漳浦县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363200_to_363000",
+                                    "line_name": "漳浦至漳州",
+                                    "name": "漳州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363000",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        }
+                    ]
+                },
+                {
+                    "city": "福建省漳州市",
+                    "code": "363900",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "长泰县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "363900_to_363000",
+                                    "line_name": "长泰到漳州",
+                                    "name": "漳州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363000",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "363000",
+            "name": "漳州市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省漳州市",
+                    "code": "363001",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "漳州市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省漳州市",
+                                    "code": "363001",
+                                    "incity_phone": "12121212",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "363001_to_363001",
+                                    "line_name": "漳州市内线路",
+                                    "name": "漳州市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省漳州市",
+                            "code": "363001",
+                            "name": "漳州市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省漳州市",
+            "code": "363001",
+            "name": "漳州市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省福州市市辖区",
+                    "code": "363500",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "诏安县",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "广东省汕头市",
+                                    "code": "515000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "363500_to_515000",
+                                    "line_name": "诏安至汕头",
+                                    "name": "汕头市",
+                                    "service_phone": "96899"
+                                }
+                            ],
+                            "city": "广东省汕头市",
+                            "code": "515000",
+                            "name": "汕头市",
+                            "province": "广东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省福州市市辖区",
+            "code": "363500",
+            "name": "诏安县",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省三明市",
+                    "code": "365007",
+                    "is_city": "1",
+                    "is_detail": "1",
+                    "is_new": "1",
+                    "name": "三明市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省三明市",
+                                    "code": "365007",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "365007_to_365007",
+                                    "line_name": "三明市内",
+                                    "name": "三明市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "福建省三明市",
+                            "code": "365007",
+                            "name": "三明市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省三明市",
+            "code": "365007",
+            "name": "三明市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省龙岩市",
+                    "code": "365009",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "龙岩市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省龙岩市",
+                                    "code": "365009",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "365009_to_365009",
+                                    "line_name": "龙岩至龙门",
+                                    "name": "龙岩市",
+                                    "service_phone": "66888888"
+                                }
+                            ],
+                            "city": "福建省龙岩市",
+                            "code": "365009",
+                            "name": "龙岩市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省龙岩市",
+            "code": "365009",
+            "name": "龙岩市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "吉林省长春市市辖区",
+                    "code": "400000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "cesh",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "北京市",
+                                    "code": "100000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "400000_to_100000",
+                                    "line_name": "555",
+                                    "name": "北京市",
+                                    "service_phone": "966666"
+                                }
+                            ],
+                            "city": "北京市",
+                            "code": "100000",
+                            "name": "北京市",
+                            "province": "北京市"
+                        }
+                    ]
+                }
+            ],
+            "city": "吉林省长春市市辖区",
+            "code": "400000",
+            "name": "cesh",
+            "province": "吉林省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "广东省汕头市",
+                    "code": "515000",
+                    "is_city": "0",
+                    "is_detail": "1",
+                    "is_new": "1",
+                    "name": "汕头市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "广东省汕头市",
+                                    "code": "515000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "515000_to_515000",
+                                    "line_name": "汕头城际线路",
+                                    "name": "汕头市",
+                                    "service_phone": "969888"
+                                }
+                            ],
+                            "city": "广东省汕头市",
+                            "code": "515000",
+                            "name": "汕头市",
+                            "province": "广东省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "广东省汕头市",
+                                    "code": "515001",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "515000_to_515001",
+                                    "line_name": "汕头到普宁",
+                                    "name": "普宁市",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "广东省汕头市",
+                            "code": "515001",
+                            "name": "普宁市",
+                            "province": "广东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "广东省汕头市",
+            "code": "515000",
+            "name": "汕头市",
+            "province": "广东省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "广东省汕头市",
+                    "code": "515001",
+                    "is_city": "0",
+                    "is_detail": "1",
+                    "is_new": "1",
+                    "name": "普宁市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "广东省汕头市",
+                                    "code": "515000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "1",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "515001_to_515000",
+                                    "line_name": "普宁到汕头",
+                                    "name": "汕头市",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "广东省汕头市",
+                            "code": "515000",
+                            "name": "汕头市",
+                            "province": "广东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "广东省汕头市",
+            "code": "515001",
+            "name": "普宁市",
+            "province": "广东省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "贵州省贵阳市",
+                    "code": "520100",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "贵阳市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "贵州省贵阳市",
+                                    "code": "520100",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "520100_to_520100",
+                                    "line_name": "贵阳至贵阳",
+                                    "name": "贵阳市",
+                                    "service_phone": "4009968969"
+                                }
+                            ],
+                            "city": "贵州省贵阳市",
+                            "code": "520100",
+                            "name": "贵阳市",
+                            "province": "贵州省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "贵州省安顺市",
+                                    "code": "520101",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "520100_to_520101",
+                                    "line_name": "贵阳至安顺",
+                                    "name": "安顺市",
+                                    "service_phone": "95128"
+                                }
+                            ],
+                            "city": "贵州省安顺市",
+                            "code": "520101",
+                            "name": "安顺市",
+                            "province": "贵州省"
+                        }
+                    ]
+                }
+            ],
+            "city": "贵州省贵阳市",
+            "code": "520100",
+            "name": "贵阳市",
+            "province": "贵州省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "贵州省安顺市",
+                    "code": "520101",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "安顺市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "贵州省贵阳市",
+                                    "code": "520100",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "520101_to_520100",
+                                    "line_name": "安顺至贵阳",
+                                    "name": "贵阳市",
+                                    "service_phone": "95128"
+                                }
+                            ],
+                            "city": "贵州省贵阳市",
+                            "code": "520100",
+                            "name": "贵阳市",
+                            "province": "贵州省"
+                        }
+                    ]
+                }
+            ],
+            "city": "贵州省安顺市",
+            "code": "520101",
+            "name": "安顺市",
+            "province": "贵州省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省成都市",
+                    "code": "610000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "成都市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省成都市都江堰市",
+                                    "code": "611800",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "610000_to_611800",
+                                    "line_name": "成都至都江堰",
+                                    "name": "都江堰市",
+                                    "service_phone": "699888"
+                                }
+                            ],
+                            "city": "四川省成都市都江堰市",
+                            "code": "611800",
+                            "name": "都江堰市",
+                            "province": "四川省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省成都市成华区",
+                                    "code": "620010",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "610000_to_620010",
+                                    "line_name": "成都至眉山",
+                                    "name": "眉山市",
+                                    "service_phone": "695444"
+                                }
+                            ],
+                            "city": "四川省成都市成华区",
+                            "code": "620010",
+                            "name": "眉山市",
+                            "province": "四川省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省成都市",
+            "code": "610000",
+            "name": "成都市",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "福建省福州市台江区",
+                    "code": "614000",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "乐山市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省乐山市五通桥区",
+                                    "code": "614800",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "614000_to_614800",
+                                    "line_name": "乐山至五通",
+                                    "name": "五通桥区",
+                                    "service_phone": "95128"
+                                }
+                            ],
+                            "city": "四川省乐山市五通桥区",
+                            "code": "614800",
+                            "name": "五通桥区",
+                            "province": "四川省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省成都市成华区",
+                                    "code": "620010",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "614000_to_620010",
+                                    "line_name": "乐山到眉山",
+                                    "name": "眉山市",
+                                    "service_phone": "966688"
+                                }
+                            ],
+                            "city": "四川省成都市成华区",
+                            "code": "620010",
+                            "name": "眉山市",
+                            "province": "四川省"
+                        }
+                    ]
+                }
+            ],
+            "city": "福建省福州市台江区",
+            "code": "614000",
+            "name": "乐山市",
+            "province": "福建省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省乐山市",
+                    "code": "614001",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "乐山市1",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省乐山市五通桥区",
+                                    "code": "614800",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "614001_to_614800",
+                                    "line_name": "乐山1至五通",
+                                    "name": "五通桥区",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "四川省乐山市五通桥区",
+                            "code": "614800",
+                            "name": "五通桥区",
+                            "province": "四川省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省乐山市",
+            "code": "614001",
+            "name": "乐山市1",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省乐山市五通桥区",
+                    "code": "614800",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "五通桥区",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省福州市台江区",
+                                    "code": "614000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "614800_to_614000",
+                                    "line_name": "五通到乐山",
+                                    "name": "乐山市",
+                                    "service_phone": "95128"
+                                }
+                            ],
+                            "city": "福建省福州市台江区",
+                            "code": "614000",
+                            "name": "乐山市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省乐山市五通桥区",
+            "code": "614800",
+            "name": "五通桥区",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省成都市成华区",
+                    "code": "620010",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "眉山市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省成都市",
+                                    "code": "610000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "620010_to_610000",
+                                    "line_name": "眉山至成都",
+                                    "name": "成都市",
+                                    "service_phone": "111111"
+                                }
+                            ],
+                            "city": "四川省成都市",
+                            "code": "610000",
+                            "name": "成都市",
+                            "province": "四川省"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "福建省福州市台江区",
+                                    "code": "614000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "620010_to_614000",
+                                    "line_name": "眉山到乐山",
+                                    "name": "乐山市",
+                                    "service_phone": "69555"
+                                }
+                            ],
+                            "city": "福建省福州市台江区",
+                            "code": "614000",
+                            "name": "乐山市",
+                            "province": "福建省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省成都市成华区",
+            "code": "620010",
+            "name": "眉山市",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省成都市市辖区",
+                    "code": "620011",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "眉山市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省成都市市辖区",
+                                    "code": "620011",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "620011_to_620011",
+                                    "line_name": "眉山市内",
+                                    "name": "眉山市",
+                                    "service_phone": "99899898"
+                                }
+                            ],
+                            "city": "四川省成都市市辖区",
+                            "code": "620011",
+                            "name": "眉山市",
+                            "province": "四川省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省成都市市辖区",
+            "code": "620011",
+            "name": "眉山市",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "四川省资阳市简阳市",
+                    "code": "641401",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "简阳市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "四川省资阳市简阳市",
+                                    "code": "641401",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "641401_to_641401",
+                                    "line_name": "简阳网约",
+                                    "name": "简阳市",
+                                    "service_phone": "95170"
+                                }
+                            ],
+                            "city": "四川省资阳市简阳市",
+                            "code": "641401",
+                            "name": "简阳市",
+                            "province": "四川省"
+                        }
+                    ]
+                }
+            ],
+            "city": "四川省资阳市简阳市",
+            "code": "641401",
+            "name": "简阳市",
+            "province": "四川省"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "新疆乌鲁木齐市天山区",
+                    "code": "830001",
+                    "is_city": "1",
+                    "is_detail": "0",
+                    "is_new": "0",
+                    "name": "乌鲁木齐市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "新疆乌鲁木齐市天山区",
+                                    "code": "830001",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "1",
+                                    "is_new": "0",
+                                    "is_show": "0",
+                                    "line_id": "830001_to_830001",
+                                    "line_name": "乌鲁木齐市内线路",
+                                    "name": "乌鲁木齐市",
+                                    "service_phone": "968969"
+                                }
+                            ],
+                            "city": "新疆乌鲁木齐市天山区",
+                            "code": "830001",
+                            "name": "乌鲁木齐市",
+                            "province": "新疆维吾尔自治区"
+                        },
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "新疆石河子市",
+                                    "code": "832000",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "830001_to_832000",
+                                    "line_name": "乌鲁木齐到石河子市",
+                                    "name": "石河子市",
+                                    "service_phone": "10086"
+                                }
+                            ],
+                            "city": "新疆石河子市",
+                            "code": "832000",
+                            "name": "石河子市",
+                            "province": "新疆维吾尔自治区"
+                        }
+                    ]
+                }
+            ],
+            "city": "新疆乌鲁木齐市天山区",
+            "code": "830001",
+            "name": "乌鲁木齐市",
+            "province": "新疆维吾尔自治区"
+        },
+        {
+            "child_citys": [
+                {
+                    "city": "山东省淄博市博山区",
+                    "code": "961222",
+                    "is_city": "0",
+                    "is_detail": "0",
+                    "is_new": "1",
+                    "name": "博山市",
+                    "to_cities": [
+                        {
+                            "child_citys": [
+                                {
+                                    "city": "山东省",
+                                    "code": "361999",
+                                    "incity_phone": "",
+                                    "incity_type": "1",
+                                    "is_detail": "0",
+                                    "is_incity": "0",
+                                    "is_new": "1",
+                                    "is_show": "0",
+                                    "line_id": "961222_to_361999",
+                                    "line_name": "博山区到淄博市",
+                                    "name": "淄博市",
+                                    "service_phone": "05334508187"
+                                }
+                            ],
+                            "city": "山东省",
+                            "code": "361999",
+                            "name": "淄博市",
+                            "province": "山东省"
+                        }
+                    ]
+                }
+            ],
+            "city": "山东省淄博市博山区",
+            "code": "961222",
+            "name": "博山市",
+            "province": "山东省"
+        }
+    ],
+    "app_code": "10001",
+    "app_interface": 0,
+    "app_name": "帮邦行"
+}

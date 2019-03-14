@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class的使用</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// ES5:
+	const Miao = function(a, b){
+		this.a = a;
+		this.b = b;
+		return this;
+	}
+	Miao.prototype = {
+		constructor: Miao,
+		print: function(){
+			conosle.log(this.a + ',' + this.b);
+		}
+	}
+	////////////////////////////////////////////////
+	// ES6:
+	class Miaov{
+		constructor(a, b){
+			this.a = a;
+			this.b = b;
+			// Object.assign(this, {a, b});
+			return this;
+		}
+		print(){
+			console.log(this.a + ',' + this.b);
+		}
+	}
+	// console.log(typeof Miaov);	//function
+	const m1 = new Miaov('hello','world');
+	m1.print();
+
+
+	// class的继承： extends, static, super-->调用一下父类的构造函数
+	class Human{
+		constructor(){
+			this.hands = 2;
+			this.foots = 2;			
+		}
+		singing(){
+			console.log('I can singing.');
+		}
+	}
+	class Man extends Human{
+		constructor(){
+			super();
+			this.hands = 200;
+			this.head = 1;
+		}
+		singing(){
+			console.log('I can singing, singing...');
+		}
+		run(){
+			console.log('I can running.');
+		}
+	}
+	let h1 = new Human();
+	console.log(h1);
+	h1.singing();
+	let h2 = new Man();
+	console.log(h2);
+	h2.singing();
+	h2.run();
+</script>
+</body>
+</html>

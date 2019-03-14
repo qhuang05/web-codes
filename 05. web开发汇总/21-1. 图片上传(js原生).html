@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传</title>
+</head>
+<body>
+<div class="message_head">
+    <button type="button" onclick="filedata.click()" id="imgtoub">添加图片</button>
+    <p id="preview">
+        <img id="imgtou" src="images/message_logo.png" alt="">
+    </p>
+    <input type="file" style="visibility: hidden; position: absolute;" name="filedata" id="filedata" onchange="previewImage(this)">
+</div>
+<script>
+    //头像图片上传预览，IE是用了滤镜。
+    function previewImage(file)
+    {
+        var MAXWIDTH  = 300;
+        var MAXHEIGHT = 75;
+        var div = document.getElementById('preview');
+        if (file.files && file.files[0]){
+            div.innerHTML ='<img id=imgtou>';
+            var img = document.getElementById('imgtou');
+            img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                //img.width  =  rect.width;
+                //img.height =  rect.height;
+                //img.style.marginLeft = rect.left+'px';
+                //img.style.marginTop = rect.top+'px';
+            }
+            var reader = new FileReader();
+            reader.onload = function(evt){img.src = evt.target.result;}
+            reader.readAsDataURL(file.files[0]);
+        }else{ //兼容IE
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imgtou>';
+            var img = document.getElementById('imgtou');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=imgtou style='"+sFilter+src+"\"'></div>";
+        }
+//        uploadResumePhoto();
+    }
+    function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+        var param = {top:0, left:0, width:width, height:height};
+        if( width>maxWidth || height>maxHeight ){
+            rateWidth = width / maxWidth;
+            rateHeight = height / maxHeight;
+            if( rateWidth > rateHeight ){
+                param.width =  maxWidth;
+                param.height = Math.round(height / rateWidth);
+            }else{
+                param.width = Math.round(width / rateHeight);
+                param.height = maxHeight;
+            }
+        }
+        param.left = Math.round((maxWidth - param.width) / 2);
+        param.top = Math.round((maxHeight - param.height) / 2);
+        return param;
+    }
+
+    /**
+     * 上传简历头像
+     */
+    function uploadResumePhoto(){
+        var data={};
+        data.id=GetCookie(ck_userId);
+        var usid=GetCookie("resume_user_id");
+        usid=usid==undefined||usid=="undefined"?"":usid;
+        data.userId=usid;
+        data.photo=GetCookie("resume_user_url");
+        var jsonData = encodeURIComponent(JSON.stringify(data));
+        $.ajaxFileUpload({
+            url             : "../resumemgr.do?method=saveResumeUpload", //需要链接到服务器地址
+            secureuri       : false,
+            data			: {data:jsonData},
+            fileElementId   : "filedata", //文件选择框的id属性
+            dataType        : "json", //服务器返回的格式
+            success     	: function(d,status){
+                if(d.returnState){
+                    writeCookie("resume_user_id",d.data.userId,3600);
+                    if(d.data.resumePhoto){
+                        writeCookie("resume_user_url",d.data.resumePhoto,3600);
+                        imgtou=d.data.resumePhoto;
+                    }
+                }else{
+                    alert("系统繁忙，请稍候再试");
+                }
+            },
+            error : function(d, status, e){
+                alert("系统繁忙，请稍候再试");
+            }
+        });
+    }
+</script>
+</body>

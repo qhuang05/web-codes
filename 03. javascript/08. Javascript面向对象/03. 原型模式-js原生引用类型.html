@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>原型模式-js原生引用类型</title>
+    <script>
+        //js原生的引用类型都是采用原型模式创建的.如Array
+        var arr1 = new Array(23, 54, 123, 46, 86);
+        var arr2 = new Array(12, 34, 14, 5, 9);
+        Array.prototype.sum = function () {
+//arr1.sum=function() {
+            var result = 0;
+            for (i = 0; i < this.length; i++) {
+                result += this[i];
+            }
+            return result;
+        }
+        alert(arr1.sum());
+        alert(arr2.sum());
+    </script>
+</head>
+
+<body>
+</body>
+</html>

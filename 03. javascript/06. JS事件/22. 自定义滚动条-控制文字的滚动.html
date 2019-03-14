@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>自定义滚动条-控制文字的滚动</title>
+    <style>
+        #parent {
+            width: 600px;
+            height: 20px;
+            background: #ccc;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #div1 {
+            width: 20px;
+            height: 20px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #div2 {
+            width: 400px;
+            height: 300px;
+            background: green;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #txt {
+            width: 400px;
+            position: absolute;
+            left: 0
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var oParent = document.getElementById('parent');
+            var oDiv2 = document.getElementById('div2');
+            var oTxt = document.getElementById('txt');
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+
+                //把onmousemove,onmouseup相同部分取出来封闭成mouseMove,mouseUp函数
+                function mouseMove(ev) {
+                    //oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+                    var oEvent = ev || event;
+                    var x = oEvent.clientX - disX;
+                    if (x < 0) {
+                        x = 0;
+                    }
+                    else if (x > oParent.offsetWidth - oDiv.offsetWidth) {
+                        x = oParent.offsetWidth - oDiv.offsetWidth;
+                    }
+                    oDiv.style.left = x + 'px';
+
+                    var scale = x / (oParent.offsetWidth - oDiv.offsetWidth);
+                    oTxt.style.top = -scale * (oTxt.offsetHeight - oDiv2.offsetHeight) + 'px';
+                }
+
+                function mouseUp() {
+                    this.onmousemove = null;
+                    this.onmouseup = null;
+                    if (oDiv.releaseCapture) {
+                        oDiv.releaseCapture();
+                    }
+                }
+
+                //for IE:
+                if (oDiv.setCapture) {
+                    oDiv.onmousemove = mouseMove;
+                    oDiv.onmouseup = mouseUp;
+                    oDiv.setCapture();
+                }
+                //for FF,chrome:
+                else {
+                    document.onmousemove = mouseMove;
+                    document.onmouseup = mouseUp;
+                    return false;
+                }
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+<div id='parent'>
+    <div id="div1"></div>
+</div>
+<div id="div2">
+    <div id="txt">苹果iPhone 6s/ Plus 今日全球正式上市销售。9月12日预定以来，苹果官网、三大运营商、虚拟运营商以及多家电商平台陆续公布预定数量，相比以前新版iPhone，由于用户具有更多的渠道选择，“黄牛党”似乎遭遇了冷落。
+
+        苹果专卖店：不接受未经预约购买
+
+        苹果中国官网( http://www.apple.com )公布了iPhone 6s及iPhone 6s Plus在中国大陆地区的裸机售价。16GB、64GB、128BG版本iPhone 6s的裸机售价分别为5288元、6088元、6888元人民币。对应三款iPhone 6s
+        Plus的裸机售价分别为6088元、6888元、7788元人民币。苹果中国官方分期付的最低月付为272元。
+
+        新款iPhone在中国、日本的正式上架时间是当地时间周五早晨8:00（中国比日本晚一小时）。在中国大陆、香港、日本和美国部分州，苹果甚至不接受未经预约购买iPhone，在全球各地苹果专卖店门前，仍可能有排队的情况出现。
+
+        三大电信运营商渠道
+
+        中国联通:预约总数量已突破百万台
+
+        中国联通微信服务号宣布，截止9月22日上午，联通官网统计的iPhone 6S/Plus预约总数量已突破了百万台。搜狐科技了解到，广东联通连夜备货，并携手滴滴专车派出宝马车队载着美女靓机送货上门搞眼球促销。
+
+        中国联通宣布将预约iPhone 6S并购买成功赠送2GB流量升级到赠送3GB，所赠送的流量在半年内有效。此前，网友已经曝光了联通版iPhone 6S和iPhone 6S Plus的合约计划，起步价为5299元，“补贴”相比往年有较大的下降。
+
+        北京联通称，预售成功办理合约计划用户，还可获赠3GB省内半年流量包、每月最多2000分钟语音，以及价值195元的增值特权包，同时用户如办理宽带业务，还可享受宽带费+话费最高85折的优惠，此外还可免费办理主副卡业务和零预存免息分期购机。
+
+        今年北京联通的iPhone 6s/Plus合约计划中，共有76元/106元/136元/166元/196元/296元/396元/596元八款套餐，与去年一致。而在合约期方面，则在12个月、24个月、36个月的基础上，加入了30个月期。合约套包价格，iPhone
+        6s的起售价为5299元，其64GB版本和128GB的定价分别为6099元和6899元。至于iPhone 6s Plus，16GB版的价格则为6099元，64GB和128GB的售价为6899元和7799元，与去年相比，相当于每一档均低了200元。
+    </div>
+</div>
+</body>
+</html>

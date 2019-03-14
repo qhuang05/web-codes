@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>拖拽3</title>
+<style>
+#div1 { width: 200px; height: 200px; background: red; position: absolute; }
+</style>
+<script>
+/*
+//原始未合并的函数：
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-oDiv.offsetLeft;
+		var disY=oEvent.clientY-oDiv.offsetTop;
+		//for IE:
+		if(oDiv.setCapture) {
+			oDiv.onmousemove=function(ev){		
+				var oEvent=ev||event;		//oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+				oDiv.style.left=oEvent.clientX-disX+'px';;
+				oDiv.style.top=oEvent.clientY-disY+'px';
+			};
+			oDiv.onmouseup=function(){
+				oDiv.onmousemove=null;
+				oDiv.onmouseup=null;
+				oDiv.releaseCapture();
+			};
+			oDiv.setCapture();	//解决IE8以下拖拽文字被选中问题，及拖拽太快鼠标跑出div问题
+		}
+		//for FF,chrome:
+		else {
+			document.onmousemove=function(ev){		
+				var oEvent=ev||event;		//oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+				oDiv.style.left=oEvent.clientX-disX+'px';;
+				oDiv.style.top=oEvent.clientY-disY+'px';
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			};
+			return false;   //阻止默认事件,修复FF低版本下拖拽的bug,高版本的FF已被修复可以不加这行
+		}	
+	};		
+};
+*/
+
+//将以上代码合并后如下：
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev||event;
+		var disX=oEvent.clientX-oDiv.offsetLeft;
+		var disY=oEvent.clientY-oDiv.offsetTop;
+
+		//把onmousemove,onmouseup相同部分取出来封闭成mouseMove,mouseUp函数
+		function mouseMove(ev){
+			var oEvent=ev||event;		//oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+			oDiv.style.left=oEvent.clientX-disX+'px';;
+			oDiv.style.top=oEvent.clientY-disY+'px';
+		}
+		function mouseUp(){
+			this.onmousemove=null;
+			this.onmouseup=null;
+			if(oDiv.releaseCapture) {
+				oDiv.releaseCapture();
+			}
+		}
+		
+		//for IE:
+		if(oDiv.setCapture) {
+			oDiv.onmousemove=mouseMove;
+			oDiv.onmouseup=mouseUp;
+			oDiv.setCapture();
+		}
+		//for FF,chrome:
+		else {
+			document.onmousemove=mouseMove;
+			document.onmouseup=mouseUp;
+			return false;
+		}
+	};
+
+};
+</script>
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+</html>

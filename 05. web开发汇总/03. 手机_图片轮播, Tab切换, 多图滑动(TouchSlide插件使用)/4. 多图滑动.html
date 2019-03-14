@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport"  content="width=device-width,user-scalable=no">
+	<meta name="copyright" content="Copyright (c) TouchSlide 大话主席 2013">
+	<meta name="Keywords" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<meta name="description" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<title>TouchSlide1.1 多图滑动 触屏滑动特效插件</title>
+	<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+	<script src="../plugins/TouchSlide1.1/TouchSlide.1.1.js"></script>
+	<style type="text/css">
+		.picScroll{ margin:0 auto; text-align:center;  }
+		.picScroll .bd ul{ width:100%;  float:left; padding-top:10px;  }
+		.picScroll .bd li{ width:33%; float:left; font-size:14px; text-align:center;  }
+		.picScroll .bd li a{-webkit-tap-highlight-color:rgba(0, 0, 0, 0); }     /* 取消链接高亮 */
+		.picScroll .bd li img{ width:90px; height:142px;  background:url(images/loading.gif) #fff center center no-repeat;  }
+		.picScroll .hd{ height:40px; line-height:40px; border-bottom:2px solid #80BD6D; background:#f6f6f6; overflow:hidden; text-align:left; padding:0 10px; }
+		.picScroll .hd ul{ float:right; padding-top:16px; }
+		.picScroll .hd li{ float:left; width:8px; height:8px; background:#D0D0D0; margin:0 5px; overflow:hidden;
+			-webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px;  }
+		.picScroll .hd .on{ background:#80BD6D;  }
+		.picScroll .prev,.picScroll .next{ display:block; float:right;  width:18px; height:18px; background:url(images/pisScrollIcons.gif) -6px -7px no-repeat; overflow:hidden; margin:11px 5px 0 5px;  }
+		.picScroll .next{ background-position:-34px -7px; }
+		.picScroll .prevStop{ background-position:-6px -40px; }
+		.picScroll .nextStop{ background-position:-34px -40px; }
+	</style>
+</head>
+<body>
+<div id="picScroll" class="picScroll">
+	<div class="hd">
+		<span class="next"></span>
+		<ul></ul>
+		<span class="prev"></span>
+		<h3>多图滑动</h3>
+	</div>
+	<div class="bd">
+		<ul>
+			<li><a href="#"><img _src="../images/book1.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book2.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book3.jpg" src="../images/blank.png" /></a></li>
+		</ul>
+
+		<ul>
+			<li><a href="#"><img _src="../images/book4.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book5.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book6.jpg" src="../images/blank.png" /></a></li>
+		</ul>
+
+		<ul>
+			<li><a href="#"><img _src="../images/book7.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book8.jpg" src="../images/blank.png" /></a></li>
+			<li><a href="#"><img _src="../images/book9.jpg" src="../images/blank.png" /></a></li>
+		</ul>
+
+	</div>
+</div>
+<script type="text/javascript">
+	TouchSlide({
+		slideCell:"#picScroll",
+		titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		autoPage:true, //自动分页
+        autoPlay: true,
+        effect: 'leftLoop',
+		pnLoop:"false", // 前后按钮不循环
+		switchLoad:"_src" //切换加载，真实图片路径为"_src"
+	});
+</script>
+</body>
+</html>

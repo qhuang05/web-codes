@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS简易日历</title>
+    <style>
+        a:link {  text-decoration: none  }
+        a:visited { text-decoration: none }
+        a:hover {  text-decoration: none  }
+        #calendar {
+            width: 300px;
+            height: 300px;
+            background: #CCC;
+            margin: 0 auto
+        }
+        #calendar li {
+            width: 52px;
+            height: 60px;
+            float: left;
+            background: #FF9;
+            border: 2px solid #000;
+            margin: 1px auto;
+            list-style: none
+        }
+        #calendar .active {
+            background: #F00
+        }
+        #calendar #text {
+            width: 280px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            display: block
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var arr = [
+                '快过年了，大家可以商量着去哪玩吧~',
+                '22222222222',
+                '33333333333',
+                '44444444444444',
+                '555555555555555',
+                '22222222222',
+                '33333333333',
+                '44444444444444',
+                '555555555555555',
+                '22222222222',
+                '33333333333',
+                '44444444444444'
+            ];
+            var oDiv = document.getElementById('calendar');
+            var oLi = oDiv.getElementsByTagName('li');
+            //var oText=oDiv.getElementsByTagName('div')[0];
+            var oText = document.getElementById('text');
+            for (i = 0; i < oLi.length; i++) {
+                oLi[i].index = i;
+                oLi[i].onclick = function () {
+                    for (i = 0; i < oLi.length; i++) {
+                        oLi[i].className = '';
+                    }
+                    this.className = 'active';
+                    oText.innerHTML = '<h2>' + (this.index + 1) + '月份活动</h2><p>' + arr[this.index] + '</p>';
+                    //alert(oText.innerHTML);
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="calendar">
+        <ul>
+            <li class="active"><a href="javascript:;"><span>一月</span><br/><span>11111</span></a></li>
+            <li><a href="javascript:;"><span>二月</span><br/><span>22222</span></a></li>
+            <li><a href="javascript:;"><span>三月</span><br/><span>33333</span></a></li>
+            <li><a href="javascript:;"><span>四月</span><br/><span>44444</span></a></li>
+            <li><a href="javascript:;"><span>五月</span><br/><span>55555</span></a></li>
+            <li><a href="javascript:;"><span>六月</span><br/><span>66666</span></a></li>
+            <li><a href="javascript:;"><span>七月</span><br/><span>77777</span></a></li>
+            <li><a href="javascript:;"><span>八月</span><br/><span>88888</span></a></li>
+            <li><a href="javascript:;"><span>九月</span><br/><span>99999</span></a></li>
+            <li><a href="javascript:;"><span>十月</span><br/><span>aaaaa</span></a></li>
+            <li><a href="javascript:;"><span>十一月</span><br/><span>bbbbb</span></a></li>
+            <li><a href="javascript:;"><span>十二月</span><br/><span>ccccc</span></a></li>
+        </ul>
+        <p style="clear:both"></p>
+        <div id="text">
+            <h2>一月份活动</h2>
+            <p>快过年了，大家可以商量着去哪玩吧~</p>
+        </div>
+    </div>
+</body>
+</html>

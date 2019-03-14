@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>阻止默认行为-弹出自定义右键菜单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 200px;
+            background: #ccc;
+            position: absolute;
+            display: none;
+            border：1px solid balck;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("div1");
+            document.oncontextmenu = function (ev) {
+                //return false;	//阻止默认事件
+                var oEvent = ev || event;
+                oDiv.style.display = "block";
+                oDiv.style.left = oEvent.clientX + 'px';
+                oDiv.style.top = oEvent.clientY + 'px';
+                return false;
+//		oEvent.preventDefault();	//等价于return false;
+            };
+
+            document.onclick = function () {
+                oDiv.style.display = "none";
+            };
+        };
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <ul>
+        <li><a href="https://wwww.baidu.com">111111111</a></li>
+        <li><a href="javascript:;">222222222</a></li>
+        <li><a href="javascript:;">333333333</a></li>
+        <li><a href="javascript:;">444444444</a></li>
+    </ul>
+</div>
+</body>
+</html>

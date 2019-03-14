@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>props数据类型验证</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>	
+<body>
+	<div id="app">
+		<h3>{{count}}</h3>
+		<custom-demo :count="count"></custom-demo>
+	</div>
+	<script type="text/javascript">
+		Vue.component('custom-demo', {
+			props:{
+				count:{
+					// type: Number,
+					type: [Number, String, Boolean, Array, Object, Function],
+					default: 10,
+					required: true,
+					validator: function(value){
+						if(value>10) {
+							return false;
+						}
+						return true;
+					}
+				}
+			},
+			template: `<span>this is a demo：{{count}}</span>`
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				count: 0
+			}
+		});
+	</script>
+</body>
+</html>

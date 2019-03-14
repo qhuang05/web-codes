@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件命名空间</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+<button id="btn1">Btn1, 使用事件命名空间</button><br/>
+<button id="btn2">Btn2, 使用.one()</button>
+
+<script>
+    //事件click.action1, click.action2的后缀是不可见的，可以用来解绑特定处理程序
+    $(document).ready(function () {
+        $("#btn1").bind('click.action1', function () {
+            alert('内容1,只触发1次,后续点击不会再出现...');
+            $("#btn1").unbind('click.action1')
+        });
+        $("#btn1").bind('click.action2', function () {
+            alert('内容2,每次点击都会触发...');
+        });
+    });
+
+    //$(document).ready(function(){...}); 可简写成 $(function(){...});
+    //.one()只触发一次事件, 相当于.bind()+.unbind()
+    $(function () {
+        $("#btn2").one('click', function () {
+            alert("此处使用.one(), 点击事件只触发一次...");
+        });
+    });
+</script>
+</body>
+</html>

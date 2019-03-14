@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片轮播(cycle插件)-自定义图标</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <script src="../plugins/cycle/jquery.cycle.all.js"></script>
+    <script src="../plugins/cycle/jquery.easing.1.3.js"></script>
+    <style>
+        .div1{ width: 400px; height: 200px; position: relative; margin:0 auto; text-align: center}
+        .wrapper{ width: 400px; height: 200px;}
+        .wrapper li{ width: 400px; height: 200px; position: absolute; background: url("../images/p1.jpg") no-repeat; background-size: 100% 100%;}
+        .wrapper li:nth-child(2){background: url("../images/p2.jpg") no-repeat; background-size: 100% 100%;}
+        .wrapper li:nth-child(3){background: url("../images/p3.jpg") no-repeat; background-size: 100% 100%;}
+        .wrapper li:nth-child(4){background: url("../images/p4.jpg") no-repeat; background-size: 100% 100%;}
+        .switchIcons{ width: 100%; height: 20px; position: absolute; bottom: 20px; text-align: center; z-index:99}
+        .switchIcons li{ display: inline-block; margin:0 5px; }
+        .switchIcons li i{ width: 20px; height: 20px; display: inline-block; background: #fff; border-radius: 50%; cursor:pointer}
+        .switchIcons li.activeSlide i{ background: gold}
+        .prevBtn{ position: absolute; left:0; top:60px; z-index: 99}
+        .nextBtn{ position: absolute; right:0; top:60px; z-index: 99}
+    </style>
+</head>
+
+<body>
+<div class="div1">
+    <ul class="wrapper">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!-- 使用自定义滚动图标：-->
+    <ul class="switchIcons">
+        <!--<li><i></i></li>-->
+        <!--<li><i></i></li>-->
+        <!--<li><i></i></li>-->
+        <!--<li><i></i></li>-->
+    </ul>
+
+    <button id="prev" class="prevBtn">上一张</button>
+    <button id="next" class="nextBtn">下一张</button>
+    <button id="stop">暂停</button>
+    <button id="resume">恢复</button>
+    <button id="goto">跳到第4张</button>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.wrapper').cycle({
+            //播放效果,使用'all'每张图片会使用不同的效果，还可以使用'customer'配合cssBefore,cssAfter,animIn,animOut属性来自定义效果
+            fx: 'shuffle',
+            shuffle: {top: 0, left: -500},
+            speed: 500,//播放速度
+            timeout: 2000,//播放间隔，=0时会停止自动轮播，用户要手动点击才会播放
+            nowrap: 0,//1表示从第1张播放到最后一张后会停止动画，不会循环
+//            random: 1,//随机变换，不按顺序
+//            easing: 'easeInBounce',//缓动，使用时需要引入easing插件
+//            sync: 1,
+            startingSlide: 0,//初始值从第1张开始
+            prev: '#prev',//指定触发变动到上一张事件的元素
+            next: '#next',//指定触发变动到下一张事件的元素
+            //鼠标悬念时停止播放,与pause一起使用才生效,默认不定义时会继续播放
+            pause: '1',
+            pauseOnPagerHover: true,
+            pager: '.switchIcons',//指定页码元素,也就是图片滚动时那个数字序号条
+            pagerEvent: 'mouseover',
+            pagerAnchorBuilder:
+                //自定义图标
+                function(idx, slide) {
+                    return "<li><i></i></li>";
+                }
+        });
+
+        //暂停播放
+        $('#stop').on('click',function(){
+            $('.wrapper').cycle('pause');
+        });
+
+        //恢复播放
+        $('#resume').on('click',function(){
+            $('.wrapper').cycle('resume');
+        });
+
+        //跳到第4张
+        $('#goto').on('click',function(){
+            $('.wrapper').cycle(3);
+        });
+    });
+</script>
+
+</body>
+</html>

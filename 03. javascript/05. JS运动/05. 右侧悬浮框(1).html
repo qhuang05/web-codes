@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>右侧悬浮框</title>
+	<style>
+		#div1 { width: 100px; height: 200px; background: red; position: absolute; right: 0; bottom:0; }
+	</style>
+	<script>
+	window.onscroll=function(){
+		//alert(document.body.clientWidth||document.documentElement.clientWidth);
+		var oDiv=document.getElementById("div1");
+		var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+		oDiv.style.top=document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+"px" || document.body.clientHeight-oDiv.offsetHeight+scrollTop+"px";	
+	};
+	</script>	 	
+</head>
+
+<body>
+	<div style="height:2000px"></div>
+	<div id="div1"></div>
+</body>
+</html>

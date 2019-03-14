@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>帮邦行-抢单结果</title>
+    <link rel="stylesheet" href="../../assets/css/pages/graborder/order-grab.css">
+</head>
+<body class="white-body">
+<div class="page-group">
+    <section class="page page-current" id="grabResultPage">
+        <header class="bar bar-nav bbx-header">
+            <a class="iconfont pull-left open-panel">&#xe604;</a>
+            <h1 class="title">行程信息</h1>
+        </header>
+        <article class="content">
+            <section class="grab-status">
+                <!--<dl class="grab-fail">-->
+                    <!--<dt>-->
+                        <!--<i class="iconfont">&#xe690;</i>抢单失败-->
+                    <!--</dt>-->
+                    <!--<dd>订单已被取消</dd>-->
+                <!--</dl>-->
+                <dl class="grab-success">
+                    <dt>
+                        <i class="iconfont">&#xe620;</i>抢单成功
+                    </dt>
+                    <dd>登录司机端开始服务</dd>
+                </dl>
+            </section>
+            <a class="bbx-btn-blue">
+                下载司机端，抢单快人一步
+            </a>
+            <section class="order-details">
+                <ul>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">用车类型</label>
+                        <span class="info">
+                                <span class="type">合乘</span>
+                                /
+                                <em class="color-blue">1人</em>
+                            </span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">出发时间</label>
+                        <span class="info">2-9 14:00</span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">出发地</label>
+                        <span class="info">泉州市水仙花大桥</span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">目的地</label>
+                        <span class="info">厦门软件园南门</span>
+                    </li>
+                </ul>
+                <dl class="order-price">
+                    <dt>车费约<span class="color-orange price-number">150</span>元</dt>
+                </dl>
+                <section class="order-price-explain">
+                    系统将扣取<span class="color-orange">15</span>元调度费<br>
+                    扣取的调度费将累计在司机端欠费账户里
+                </section>
+            </section>
+        </article>
+    </section>
+</div>
+</body>
+<script src="../../assets/js/lib/sea.js"></script>
+<script src="../../assets/js/common/sea-config.js"></script>
+<script>
+    seajs.use(['assets/js/modules/graborder/order-grab'], function(){
+        $.init();
+    });
+</script>
+</html>

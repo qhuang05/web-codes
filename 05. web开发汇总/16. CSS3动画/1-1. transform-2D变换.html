@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>transform-2D变换</title>
+<link rel="stylesheet" href="../css/reset.css"/>
+<style>
+	.box_base{ width:200px; height: 100px; background: greenyellow; border:3px solid gold;}
+	.box_translate{
+        width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+        transform: translate(100px,50px); }
+    .box_scale{
+        width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+        transform: scale(0.8,0.8); /*transform-origin: bottom right;*/ }
+    .box_rotate{
+        width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+        transform: rotate(10deg); }
+    .box_skew{
+        width:200px; height: 100px; background: greenyellow; border:3px solid gold; position: absolute; left:200px; top:500px;
+        transform: skew(30deg,10deg); }
+    .box_matrix{
+        width:200px; height: 100px; background: greenyellow; border:3px solid gold;position: absolute; left:0; top:600px;
+        transform: matrix(1,0,0,1,30,30); }
+</style>
+</head>
+
+<body>
+	<div class="box_base">原图</div>
+	<div class="box_translate">translate(100px,50px), 水平垂直平移</div>
+	<div class="box_scale">scale(0.8,0.8), 缩放(改变宽高)</div>
+	<div class="box_rotate">rotate(10deg)，旋转(顺时针)</div>
+	<div class="box_skew">skew(30deg,10deg)，沿x,y轴倾斜</div>
+	<div class="box_matrix">matrix(1,0,0,1,30,30),矩阵,6个参数,以上所有transform的2D变体都可以由matrix()来得到，是所有transform(2D)相关函数的总函数</div>
+</body>
+</html>

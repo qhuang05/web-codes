@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态组件</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="switchTab(1)">组件1</button>
+		<button @click="switchTab(2)">组件2</button>
+		<button @click="switchTab(3)">组件3</button>
+		<keep-alive>
+			<component :is="current"></component>
+		</keep-alive>
+	</div>
+	<script type="text/javascript">
+		var custom1 = Vue.component('custom1', {
+			template:
+			`<p @click="changeBG">我是第1个组件</p>`,
+			methods:{
+				changeBG(ev){
+					ev.target.style.background = 'red';
+				}
+			}
+		});
+		var custom2 = Vue.component('custom2', {
+			template:
+			`<p>我是第2个组件</p>`
+		});
+		var custom3 = Vue.component('custom3', {
+			template:
+			`<p>我是第3个组件</p>`
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				current: custom1
+			},
+			methods:{
+				switchTab(index){
+					switch(index){
+						case 1:
+							this.current = custom1;
+							break;
+						case 2:
+							this.current = custom2;
+							break;
+						case 3:
+							this.current = custom3;
+							break;
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>

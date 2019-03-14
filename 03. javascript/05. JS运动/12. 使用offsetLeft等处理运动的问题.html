@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>使用offset*的问题</title>
+	<style>
+		div { width: 200px; height: 200px; background: red; border:70px solid black;}
+	</style>
+	<script>
+	//当div设置了border值,offsetWidth=width+border=170px,speed本来是个负值，但是现在变成了正值，所有这个函数本来是把width=100变为30,要变窄,但是反而是变宽了.
+	//解决方法是：不要使用offset*来判断,改成parseInt(oDiv.style.width)代替
+	var timer=null;
+	function startChange(iTarget){
+		var oDiv=document.getElementById("div1");
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=(iTarget-oDiv.offsetWidth)/8;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(oDiv.offsetWidth==iTarget) {
+				clearInterval(timer);
+			}
+			else {
+				oDiv.style.width=oDiv.offsetWidth+speed+'px';
+			}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementById("div1");
+		var oBtn=document.getElementById("btn");
+		oBtn.onclick=function(){
+			startChange(30);
+		};
+	};
+	</script>	
+</head>
+
+<body>
+	<button type="button" id="btn">变窄</button>
+	<div id="div1"></div>
+</body>
+</html>

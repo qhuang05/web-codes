@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>获取或设置属性attr()</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			$("#demo").text($("a").attr("href"));
+		});
+
+		$("#btn2").click(function(){
+			//$("a").attr("href","http://www.w3school.com.cn/");			//设置或改变一个属性
+			$("a").attr({"href":"http://www.w3school.com.cn","title":"w3school"});		//设置或改变多个属性
+			$("a").text("W3school教程");
+		});
+	});	
+	//attr()也提供回调函数，详细参考：http://www.w3school.com.cn/jquery/jquery_dom_set.asp
+	</script>
+
+</head>
+
+<body>
+	<a href="https://www.baidu.com/">百度一下，你就知道</a><br />
+	<a href="https://www.baidu.com/">百度一下，你就知道</a><br />
+	<button type="button" id="btn1">显示链接的href属性</button>
+	<button type="button" id="btn2">改变链接的属性</button>
+	<p id="demo">adfdfdfd</p>
+
+</body>
+</html>

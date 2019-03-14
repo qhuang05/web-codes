@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>语言切换,jquery cookie插件</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <script src="plugins/jquery.cookie.js"></script>
+</head>
+<body>
+<select id="curLang">
+    <option value="chinese" selected>中文</option>
+    <option value="english">英文</option>
+</select>
+<div id="content">
+    <p>这是内容</p>
+    <p>这是一个测试</p>
+    <a href="http://www.baidu.com/">点击链接到其它页面</a>
+</div>
+<script>
+    $(document).ready(function () {
+        if ($.cookie('language') == null || $.cookie('language') == 'chinese') {
+            lang_select('chinese');
+            $("#curLang").val('chinese');
+        } else if ($.cookie('language') == 'english') {
+            lang_select('english');
+            $("#curLang").val('english');
+        }
+        $('#curLang').change(function() {
+            var language = $("#curLang option:selected").val();
+            if(language == 'chinese') {
+                $.cookie('language', 'chinese', {expires: 7});
+                lang_select('chinese');
+            } else {
+                $.cookie('language', 'english', {expires: 7});
+                lang_select('english');
+            }
+        });
+    });
+
+    function lang_ch(){
+        var lang =[];
+        lang[000] = "中文";
+        lang[001] = "英文";
+        lang[002] = "这是内容";
+        lang[003] = "这是一个测试";
+        lang[004] = "点击此处链接到其它页面";
+        return lang;
+    }
+
+    function lang_en(){
+        var lang =[];
+        lang[000] = "Chinese";
+        lang[001] = "English";
+        lang[002] = "This is the contents";
+        lang[003] = "This is a test";
+        lang[004] = "Click here to link to another page";
+        return lang;
+    }
+
+    function lang_set(lang){
+        var langArr = [];
+        if(lang == 'chinese'){
+            langArr = lang_ch();
+        } else if(lang == 'english'){
+            langArr = lang_en();
+        }
+        $('#curLang option:nth-child(1)').text(langArr[000]);
+        $('#curLang option:nth-child(2)').text(langArr[001]);
+        $('#content p:eq(0)').text(langArr[002]);
+        $('#content p:eq(1)').text(langArr[003]);
+        $('#content a').text(langArr[004]);
+    }
+
+    function lang_select(lang) {
+        if (lang == 'chinese') {
+            lang_set('chinese');
+        } else if (lang == 'english') {
+            lang_set('english');
+        }
+    }
+</script>
+</body>
+</html>

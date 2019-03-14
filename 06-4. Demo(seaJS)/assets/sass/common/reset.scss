@@ -1,0 +1,25 @@
+@charset "UTF-8";
+body,html{background: #f4f4f4;}
+body,div,dl,dt,dd,ul,ol,li,hgroup,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,textarea,table,thead,tbody,tfoot,tr,th,td,pre,code,blockquote,header,footer,nav,section,article,aside,title,figure,figcaption,datalist,details,summary,dialog,address{margin:0;padding:0;color:#1a1a1a}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+legend{color:#000}
+ol,ul{list-style:none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+th,address,cite,code,dfn,var,em,strong{font-style:normal;font-weight:normal}
+input,button,textarea,select{font-family:inherit;font-size:inherit;*font-size:100%;font-weight:inherit;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-modify:read-write-plaintext-only}
+input,input:focus{border: none;outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-modify:read-write-plaintext-only;}
+a{text-decoration: none}
+a:link{}
+a:hover{}
+a:visited{text-align: center;}
+a:focus{outline:none;}
+.clearfix:after{ content: "\200B"; display: block; height: 0; clear: both; }
+.clearfix { *zoom: 1; }
+
+body.white-body, .white-body .page {
+	background: #fff;
+}
+
+
+

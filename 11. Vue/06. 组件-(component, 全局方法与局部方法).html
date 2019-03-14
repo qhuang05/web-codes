@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>    
+    <title>vue组件component-全局/局部</title>
+</head>
+<body>
+<div id="app1">
+    <ul>
+        <list-item v-for="item in items" v-bind:todo="item"></list-item>
+    </ul>
+</div>
+
+<div id="app2">
+    <ul>
+        <list-item></list-item>
+        <li is="list-item"></li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //全局方法
+    Vue.component('list-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>',
+    });
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            items: [
+                {id: 1, text: 'a'},
+                {id: 2, text: 'b'},
+                {id: 3, text: 'c'}
+            ]
+        }
+    });
+
+    //局部方法
+    var app2 = new Vue({
+        el: '#app2',
+        components: {
+            'list-item': {
+                template: '<li>this is a test.(局部component)</li>'
+            }
+        }
+    });
+</script>
+</body>
+</html>

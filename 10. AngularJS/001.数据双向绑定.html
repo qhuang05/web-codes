@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据双向绑定</title>
+	<script src="https://cdn.bootcss.com/angular.js/2.0.0-beta.17/angular2.min.js"></script>
+</head>
+<body ng-app>
+	<div ng-controller="Test">
+		{{name}}
+	</div>
+	<script>
+	function Test($scope){
+		$scope.name = "Hello";
+	}
+	</script>
+</body>
+</html>

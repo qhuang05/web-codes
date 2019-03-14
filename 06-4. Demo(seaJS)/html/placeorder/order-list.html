@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>帮邦行-订单记录</title>
+    <link rel="stylesheet" href="../../assets/css/pages/placeorder/order-create.css">
+    <link rel="stylesheet" href="../../assets/css/pages/placeorder/order-list.css">
+</head>
+<body>
+    <div class="page-group">
+        <div class="page" id="orderListPage">
+            <header class="bar bar-nav bbx-header">
+                <span class="icon icon-left pull-left open-panel" id="back"></span>
+                <h1 class="title">我的订单</h1>
+            </header>
+            <div class="content">
+                <div class="buttons-tab fixed-tab bbx-tab" data-offset="44">
+                    <a href="#otherOrders" class="tab-link button active">他人服务</a>
+                    <a href="#myOrders" class="tab-link button">自己服务</a>
+                </div>
+                <div class="order-list-content pull-to-refresh-content" data-ptr-distance="55">
+                    <div class="tabs">
+                        <div id="otherOrders" class="tab infinite-scroll active" data-distance="50">
+                            <div class="order-list-wrap">
+                                <!-- 默认的下拉刷新层 -->
+                                <div class="pull-to-refresh-layer">
+                                    <div class="preloader"></div>
+                                    <div class="pull-to-refresh-arrow"></div>
+                                </div>
+                                <ul id="otherOrderList">
+                                    <!--<li class="order-card clearfix">
+                                        <div class="head">
+                                            <span class="price gray">200元</span>
+                                            <span class="state green">等待抢单 ></span>
+                                        </div>
+                                        <div class="body">
+                                            <p class="order-time">
+                                                <i class="iconfont icon-bbx">&#xe63e;</i>
+                                                <span class="time">2017-03-15 19:25</span>
+                                                <span class="type">
+                                                    <em>合乘</em>/<span>2人</span>
+                                                </span>
+                                            </p>
+                                            <p class="address start-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>厦门市前埔南区文心东路50号</span>
+                                            </p>
+                                            <p class="address end-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>漳州九龙公园华祥苑</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="order-card">
+                                        <div class="head">
+                                            <span class="price gray">200元</span>
+                                            <span class="state red">退回订单 ></span>
+                                        </div>
+                                        <div class="body">
+                                            <p class="order-time">
+                                                <i class="iconfont icon-bbx">&#xe63e;</i>
+                                                <span class="time">2017-03-15 19:25</span>
+                                                <span class="type">
+                                                    <em>合乘</em>/<span>2人</span>
+                                                </span>
+                                            </p>
+                                            <p class="address start-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>厦门市前埔南区文心东路50号</span>
+                                            </p>
+                                            <p class="address end-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>漳州九龙公园华祥苑</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="order-card">
+                                        <div class="head">
+                                            <span class="price gray">200元</span>
+                                            <span class="state blue">服务中 ></span>
+                                        </div>
+                                        <div class="body">
+                                            <p class="order-time">
+                                                <i class="iconfont icon-bbx">&#xe63e;</i>
+                                                <span class="time">2017-03-15 19:25</span>
+                                                <span class="type">
+                                                    <em>合乘</em>/<span>4人</span>
+                                                </span>
+                                            </p>
+                                            <p class="address start-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>厦门市前埔南区文心东路50号</span>
+                                            </p>
+                                            <p class="address end-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>漳州九龙公园华祥苑</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="order-card">
+                                        <div class="head">
+                                            <span class="price gray">200元</span>
+                                            <span class="state gray">已完成 ></span>
+                                        </div>
+                                        <div class="body">
+                                            <p class="order-time">
+                                                <i class="iconfont icon-bbx">&#xe63e;</i>
+                                                <span class="time">2017-03-15 19:25</span>
+                                                <span class="type">
+                                                    <em>合乘</em>/<span>4人</span>
+                                                </span>
+                                            </p>
+                                            <p class="address start-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>厦门市前埔南区文心东路50号</span>
+                                            </p>
+                                            <p class="address end-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>漳州九龙公园华祥苑</span>
+                                            </p>
+                                        </div>
+                                    </li>-->
+                                </ul>
+                                <!-- 加载提示符 -->
+                                <div class="infinite-scroll-preloader">
+                                    <div class="preloader"></div><br/>
+                                    上拉加载更多
+                                </div>
+                                <p class="end-message" style="display:none">我是有底线的~</p>
+                            </div>
+                        </div>
+                        <div id="myOrders" class="tab infinite-scroll" data-distance="50">
+                            <div class="order-list-wrap">
+                                <!-- 默认的下拉刷新层 -->
+                                <div class="pull-to-refresh-layer">
+                                    <div class="preloader"></div>
+                                    <div class="pull-to-refresh-arrow"></div>
+                                </div>
+                                <ul id="myOrderList">
+                                    <!--<li class="order-card clearfix">
+                                        <div class="head">
+                                            <span class="price gray">200元</span>
+                                            <span class="state green">等待抢单 ></span>
+                                        </div>
+                                        <div class="body">
+                                            <p class="order-time">
+                                                <i class="iconfont icon-bbx">&#xe63e;</i>
+                                                <span class="time">2017-03-15 19:25</span>
+                                                <span class="type">
+                                                    <em>包车</em><span></span>
+                                                </span>
+                                            </p>
+                                            <p class="address start-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>厦门市前埔南区文心东路50号</span>
+                                            </p>
+                                            <p class="address end-address">
+                                                <i class="iconfont icon-bbx">&#xe634;</i>
+                                                <span>漳州九龙公园华祥苑</span>
+                                            </p>
+                                        </div>
+                                    </li>-->
+                                </ul>
+                                <!-- 加载提示符 -->
+                                <div class="infinite-scroll-preloader">
+                                    <div class="preloader"></div><br/>
+                                    上拉加载更多
+                                </div>
+                                <p class="end-message" style="display:none">我是有底线的~</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../assets/js/lib/sea.js"></script>
+    <script src="../../assets/js/common/sea-config.js"></script>
+<script>
+    seajs.use(['assets/js/modules/placeorder/order-create', 'assets/js/modules/placeorder/order-list', 'assets/js/modules/placeorder/order-detail'], function(){
+        $.init();
+    });
+</script>
+</html>

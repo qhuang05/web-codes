@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>handlebars模板引擎使用</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/handlebars-v4.0.11.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/template" id='mytpl'>
+		<ul>
+			{{#each this}}
+			<li>
+				<h3>{{name}}</h3>
+				<p>{{age}}</p>
+				<p>{{stringAge age}}</p>
+			</li>
+			{{/each}}
+		</ul>
+	</script>
+	<script>
+		$(function(){
+			var data = [
+				{ name: '张三', age: '25'},
+				{ name: '李四', age: '27'},
+				{ name: '王五', age: '30'}
+			];
+
+			Handlebars.registerHelper('stringAge', function(value, options){
+				value = value + '岁';
+				return value;
+			});
+
+			var template = Handlebars.compile($('#mytpl').html());
+			$('#demo').html(template(data));
+		});
+	</script>
+</body>
+</html>

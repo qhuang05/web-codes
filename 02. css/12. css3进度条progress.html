@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<title>css3加载进度条</title>
+	<style>
+        progress{
+            width:400px;
+            height: 30px;
+            border: 1px solid blue;
+            background-color: green;
+            color: green;   //IE10
+        }
+        progress::-moz-progress-bar{ background: red}
+        progress::-webkit-progress-bar{ background: green}
+        progress::-webkit-progress-value { background: red}
+	</style>
+</head>
+
+<body>
+    <progress max="100" value="60%">
+		<!--<span>70%</span>-->
+	</progress>
+</body>
+</html>

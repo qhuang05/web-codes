@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的扩展</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	let arr = [1,2,3,4,5,6,7];
+	// 1、map() 返回一个数组。数组元素的值为映射过后的值
+	let arr1 = arr.map((item, i)=>{
+		return item*10;
+	}); //[10, 20, 30, 40, 50, 60, 70]
+
+	// 2、filter() 返回一个数组。true: 当前遍历到的元素就会保留下来； false: 当前遍历到的元素就会移除
+	let arr2 = arr.filter((item, i)=>{
+		return item<5;
+	}); // [1, 2, 3, 4]
+
+	// 3、some() 返回一个bool值。回调函数只要有一个返回true,则整个方法返回true
+	let res1 = arr.some((item, i)=>{
+		return item>5
+	}); //true
+
+	// 4、every() 返回一个bool值。回调函数每一次都要返回true,整个方法才会返回true
+	let res2 = arr.every((item, i)=>{
+		return item>0
+	}); //true
+
+	// 5、reduce() 函数的返回值为回调函数最后一次的返回值。accu表示每一次执行后的返回值, item表示accu的初始值。
+	console.log('reduce:');
+	let res3 = arr.reduce((accu, item, i)=>{
+		console.log(accu, item);
+		return accu + item;
+	}, 0);
+	console.log(res3);
+
+	// 6、find()、 findIndex()
+
+	// 7、copyWithin()
+	let arr3 = [...arr];
+	arr3.copyWithin(1,3,6); //[1, 4, 5, 6, 5, 6, 7]
+
+	// 8、Array.from()、 Array.of()
+
+	// 扩展运算符(...)，实现浅复制
+	console.log('扩展运算符...实现浅复制：');
+	var x1 = [{
+		a:1,
+		b:[1,2,3],
+		c:{
+			name: '张三',
+			age: 25,
+		}
+	},{
+		a:2,
+		b:[4,5,6],
+		c:{
+			name: '李四',
+			age: 28,
+		}
+	}];
+	var x2 = [...x1];
+	x2[0].c.name="小明";
+	console.log(x1);
+	console.log(x2);
+
+	var y1 = [1, 2, {x:11, y:22}, [10, 20]];
+    var y2 = [...y1];
+    y2[2] = 15;
+    console.log(y1); // [1, 2, {x:11, y:22}, [10, 20]];
+    console.log(y2);  // [1, 2, 15, [10, 20]];
+</script>
+</body>
+</html>

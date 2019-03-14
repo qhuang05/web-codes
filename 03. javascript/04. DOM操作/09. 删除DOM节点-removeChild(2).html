@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>删除DOM节点-removeChild</title>
+</head>
+
+<body>
+<div id="mydiv">
+    <p id="p1">This is a paraphrase.</p>
+    <p id="p2">This is another paraphrase.</p>
+</div>
+
+<script>
+    var parent = document.getElementById("mydiv");
+    var child = document.getElementById("p1");
+    parent.removeChild(child);		//注意:removeChild(child)没有引号，写在removeChild("child")是错误的。
+    //插件使用说明：也可以只查找要删除的节点而不查找它的父节点，然后使用chlid.parentNode.removeChild(child)来实现。
+</script>
+</body>
+</html>
+	

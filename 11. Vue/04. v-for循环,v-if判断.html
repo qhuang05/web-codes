@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue循环与判断</title>
+    <style>
+        section:not(:last-child){
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <section>
+        <button @click="toggle()">click me!</button>
+        <p title="hello" v-if="isShow">Hello World!</p>
+        <p :title="noData" v-else>空空如也~~</p>
+    </section>
+    <section>
+        <ul>
+            <li v-for="item in items">{{ item.id }} - {{ item.text }}</li>
+        </ul>
+    </section>
+    <section>
+        <!-- 使用key属性重新渲染可复用元素 -->
+        <template v-if="type=='username'">
+            Username: <input type="text" placeholder="请输入用户名" key="username">
+        </template>
+        <template v-else>
+            Email: <input type="text" placeholder="请输入邮箱" key="email">
+        </template>
+        <button @click="swtichLoginType()">切换登录方式</button>
+    </section>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isShow: false,
+            noData: '无法显示！',
+            items: [
+                {id: 1, text: 'AAA'},
+                {id: 2, text: 'BBB'}
+            ],
+            type: 'username'
+        },
+        methods: {
+            toggle(){
+                this.isShow = !this.isShow;
+            },
+            swtichLoginType(){
+                this.type == 'username' ? this.type = 'email' : this.type = 'username';
+            }
+        }
+    });
+</script>
+</body>
+</html>

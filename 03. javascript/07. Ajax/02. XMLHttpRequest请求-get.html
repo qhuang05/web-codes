@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>XMLHttpRequest请求-get</title>
+    <script type="text/javascript">
+        function loadXMLDoc() {
+//          步骤1： 创建XMLHttpRequest 对象(XMLHttpRequest是浏览器的一个对象(除IE5,6外),即window.XMLHttpRequest; IE5,6使用ActiveX对象)
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+//          步骤2：连接服务器, open(方法,文件名,异步传输)
+            xmlhttp.open("GET", "http://www.w3school.com.cn/ajax/demo_get.asp", true);
+            //xmlhttp.open("GET","http://www.w3school.com.cn/ajax/demo_get.asp?t="+Math.random(),true);
+
+//          步骤3：发送请求
+            xmlhttp.send();
+
+//          步骤4：接收返回,onreadystatechange事件
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+                }
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <button type="button" onClick="loadXMLDoc()">ajax请求数据--get</button>
+    <div id="myDiv"></div>
+</body>
+</html>

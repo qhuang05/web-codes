@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 009</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-controller="formCtl as ctl">
+    <form ng-submit="ctl.submit()">
+        喜欢的运动：
+        <div ng-repeat="sport in ctl.sports">
+            <label>
+                <input type="checkbox"
+                       ng-model="sport.selected"
+                       ng-true-value="'yes'"
+                       ng-false-value="'no'" />
+                {{ sport.label }}
+                {{ sport.selected }}
+            </label>
+        </div>
+        喜欢的运动2：
+        <div ng-repeat="sport in ctl.sports">
+            <label>
+                <input type="checkbox" ng-checked="sport.selected==='yes'" />
+                {{ sport.label }}
+                {{ sport.selected }}
+            </label>
+        </div>
+        <input type="submit" value="提交" />
+    </form>
+    <script>
+        angular.module('notesApp', []).controller('formCtl', [function(){
+            var self = this;
+            self.sports = [
+                {label: 'Basketball', selected: 'yes'},
+                {label: 'Football', selected: 'yes'},
+                {label: 'Swimming', selected: 'no'},
+                {label: 'Running', selected: 'no'}
+            ];
+            self.submit = function(){
+                alert('clicked submit!');
+            };
+        }]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>表单元素垂直居中</title>
+    <style>
+    /*备注：网上普遍使用的display:table-cell;vertical-algin:middle无法居中。*/
+    /*方法1: 对radio,checkbox使用vertical-align:-2px;*/
+    /*方法2：使用inline-flex*/
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    ul,li{list-style: none}
+    li{
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid red;
+    }
+    input[type="radio"], input[type="checkbox"]{
+        vertical-align: -2px;
+    }
+</style>
+</head>
+<body>
+    <ul>
+        <li><input type="radio"/>测试</li>
+        <li><input type="checkbox"/>测试</li>
+        <li><input type="text"/>测试</li>
+        <li><select><option>请选择</option></select>测试</li>
+    </ul>
+</body>
+</html>

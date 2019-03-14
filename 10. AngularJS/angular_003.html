@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 003</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="notesApp">
+    <h1 ng-controller="notesCtl as ctl">Hello {{ ctl.message }}</h1>
+    <script>
+        angular.module('notesApp', []).controller('notesCtl', [function(){
+            this.message = 'World';
+        }]);
+    </script>
+</body>
+</html>

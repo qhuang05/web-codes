@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>jquery事件-事件自定义事件</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var $oDiv;
+    $(document).ready(function(){
+        $oDiv = $('#div1');
+        $oDiv.click(function(){
+            var e = jQuery.Event('myEvent');    //自定义myEvent事件
+            $('#div1').trigger(e);
+        });
+        $oDiv.on('myEvent', function(event){
+            alert('div be clicked');
+            console.log(event);
+        });
+    });
+</script>
+</head>
+<body>
+    <div id='div1' style="width: 200px; height: 200px; background: red">
+        Div1
+    </div>
+</body>
+</html>

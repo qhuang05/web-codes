@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS错误处理信息-try...catch</title>
+    <script>
+        function message() {
+            var txt = "";
+            try {
+                addalert("Welcome guest!");			//alert单词拼写出错
+            }
+            catch (err) {
+                //txt="此页面存在一个错误。\n"
+                //txt+="错误描述："+err.description+"\n";
+                //txt+="点击ok继续。";
+                txt = err.description + "\n";
+                if (!confirm(txt))
+                    document.location.href = "http://www.baidu.com/";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="View Message" onclick="message()"/>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>call和apply</title>
+    <script>
+        // 每个函数都包含两个非继承而来的方法：call()方法和apply()方法。
+        // 相同点：这两个方法的作用是一样的。改变this的指向。使用方法一样。
+        // 不同点：接收参数的方式不同。
+        // 当你的参数是明确知道数量时用 call ；而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。
+        function f1(a, b){
+            console.log(this);
+            console.log(a + ',' + b);
+        }
+        f1.call(document, 10, 20);
+
+        function f2(a, b){
+            console.log(this);
+            console.log(a + ',' + b);
+        }
+        f2.apply(document, [10, 20]);
+
+
+        // ==================================================
+        function add(a, b){
+            console.log(a+b);
+            console.log(this); //sub
+        }
+        function sub(a, b){
+            console.log(a-b);
+        }
+        add.call(sub, 3, 1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>鼠标事件一串跟随鼠标的div</title>
+    <style>
+        div {
+            width: 5px;
+            height: 5px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function getPos(ev) {
+            var oEvent = ev || event;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+            return {x: oEvent.clientX + scrollLeft, y: oEvent.clientY + scrollTop};
+        }
+        document.onmousemove = function (ev) {
+            var oDiv = document.getElementsByTagName("div");
+            var oEvent = ev || event;
+            var oPos = getPos(oEvent);
+            for (var i = oDiv.length - 1; i > 0; i--) {
+                oDiv[i].style.left = oDiv[i - 1].offsetLeft + 'px';
+                oDiv[i].style.top = oDiv[i - 1].offsetTop + 'px';
+                ;
+            }
+            oDiv[0].style.left = oPos.x + 'px';
+            oDiv[0].style.top = oPos.y + 'px';
+        };
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

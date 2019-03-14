@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>flexible适配方案</title>
+    <script src="../assets/js/lib/flexible/flexible_css.js"></script>
+    <script src="../assets/js/lib/flexible/flexible.js"></script>
+    <link type="text/css" rel="stylesheet" href="../assets/css.min/pages/index2.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page index-page">
+        <header>移动端常用布局</header>
+        <footer>
+            <nav>
+                <ul>
+                    <li class="active">首页</li>
+                    <li>热点</li>
+                    <li>VIP会员</li>
+                    <li>个人中心</li>
+                </ul>
+            </nav>
+        </footer>
+        <section class="content">
+            <div class="pics-wrap"></div>
+
+            <div class="pics-wrap2">
+                <ul>
+                    <li>
+                        <img src="../assets/images/2.jpg">
+                        <h4>2017春夏新款女韩版</h4>
+                        <p>￥158.0 <i>1327人已付款</i></p>
+                    </li>
+                    <li>
+                        <img src="../assets/images/2.jpg">
+                        <h4>2017春夏新款女韩版</h4>
+                        <p>￥158.0 <i>1327人已付款</i></p>
+                    </li>
+                    <!--<li><img src="../assets/images/2.jpg"></li>-->
+                    <!--<li><img src="../assets/images/2.jpg"></li>-->
+                </ul>
+            </div>
+
+            <div class="pics-wrap3">
+                <ul>
+                    <li><img src="../assets/images/3.jpg"></li>
+                    <li><img src="../assets/images/3.jpg"></li>
+                    <li><img src="../assets/images/3.jpg"></li>
+                </ul>
+            </div>
+
+            <div class="pics-wrap4">
+                <ul>
+                    <li><img src="../assets/images/4.jpg"></li>
+                    <li><img src="../assets/images/4.jpg"></li>
+                    <li><img src="../assets/images/4.jpg"></li>
+                    <li><img src="../assets/images/4.jpg"></li>
+                </ul>
+            </div>
+
+            <div class="pics-wrap5">
+                <div class="left">
+                    <img src="../assets/images/2.jpg"/>
+                </div>
+                <div class="right">
+                    <img src="../assets/images/2.jpg"/>
+                    <img src="../assets/images/2.jpg"/>
+                </div>
+            </div>
+            <div class="person-info">
+                <img src=""/>
+                    <span class="text">
+                        唯品会会员<br/>
+                        <i class="iconfont">&#xe66c;</i> 金牌会员
+                    </span>
+                <span class="tips">会员俱乐部 ></span>
+            </div>
+
+            <div class="menu-wrap">
+                <div class="tit">
+                    <h4><i class="iconfont">&#xe60a;</i> 我的特卖</h4>
+                    <span>更多 <i class="iconfont">&#xe677;</i></span>
+                </div>
+                <ul>
+                    <li><i class="iconfont">&#xe615;</i><br/>我的专属</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>品牌收藏</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>商品收藏</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>我的足迹</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>我的专属</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>品牌收藏</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>商品收藏</li>
+                    <li><i class="iconfont">&#xe615;</i><br/>我的足迹</li>
+                </ul>
+            </div>
+
+            <div class="list-wrap">
+                <ul>
+                    <li>
+                        唯品金融
+                        <span>购物赚钱两不误 <i class="iconfont">&#xe677;</i></span>
+                    </li>
+                    <li>
+                        <h4>会员俱乐部</h4>
+                        <span>签到领券 <i class="iconfont">&#xe677;</i></span>
+                    </li>
+                    <li>
+                        我的公益
+                        <em>我的公益移动这里啦~</em>
+                        <span><i class="iconfont">&#xe677;</i></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="grid-wrap">
+                <div class="left">left</div>
+                <div class="right">right</div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="../assets/js/lib/zepto-1.1.6.min.js"></script>
+<script>
+    $('nav li').on('click', function () {
+        $('nav li').removeClass('active');
+        $(this).addClass('active');
+    });
+</script>
+</body>
+</html>

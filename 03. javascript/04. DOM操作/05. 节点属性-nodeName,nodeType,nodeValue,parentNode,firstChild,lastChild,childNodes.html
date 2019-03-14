@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>节点属性-nodeName,nodeType,nodeValue,parentNode,firstChild,lastChild,childNodes</title>
+</head>
+
+<body>
+<p id="demo">Hello World!</p>
+<script>
+    var mynode = document.getElementById("demo");
+    document.write(mynode.nodeName + "<br />");					//p元素的nodeName=p
+    document.write(mynode.nodeType + "<br />");					//p元素的nodeType=1
+    document.write(mynode.nodeValue + "<br />");				//p元素的nodeValue=null
+
+    document.write(mynode.parentNode.nodeName + "<br />");		//body的nodeName=body
+    document.write(mynode.parentNode.nodeType + "<br />");		//body的nodeType=1
+    document.write(mynode.parentNode.nodeValue + "<br />");		//body的nodeValue=null
+
+    document.write(mynode.firstChild.nodeName + "<br />");		//文本节点的nodeName=#text
+    document.write(mynode.firstChild.nodeType + "<br />");		//文本节点的nodeType=3
+    document.write(mynode.firstChild.nodeValue);				//文本节点的nodeValue=文本内容
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unicode转中文字符</title>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        input{ width: 300px; height: 35px; line-height: 35px; margin-right: 20px }
+    </style>
+</head>
+<body>
+    <input type="text" id="uCode" value="\u8fd9\u662f\u4e00\u4e2a\u6d4b\u8bd5" readonly /><button id="change">unicode转中文</button>
+    <p id="result"></p>
+<script>
+   $(document).ready(function(){
+       $('#change').click(function(){
+           var str = $('#uCode').val(),
+               _str = unescape(str.replace(/\\u/g, '%u'));
+           $('#result').text(_str);
+       });
+   });
+</script>
+</body>

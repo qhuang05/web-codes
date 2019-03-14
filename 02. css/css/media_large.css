@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+.wrap{
+    color: blue; 
+    -webkit-column-count:4;
+}

@@ -1,0 +1,91 @@
+@charset "UTF-8";
+@import "variables";
+@import "function";
+@mixin background-size($size){
+  background-size: $size;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+}
+
+@mixin border-radius($radius:10px){
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+@mixin mid-wrapper($width, $height){
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -($width) / 2;
+  margin-top: -($height) / 2;
+}
+@mixin flex-layout($direction, $justify, $align, $wrap: nowrap){
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-flex-direction:$direction;
+  -ms-flex-direction:$direction;
+  flex-direction:$direction;
+  -webkit-justify-content:$justify;
+  -ms-flex-pack:$justify;
+  justify-content:$justify;
+  -webkit-align-items: $align;
+  -ms-flex-align: $align;
+  align-items: $align;
+  -webkit-flex-wrap:$wrap;
+  -ms-flex-wrap:$wrap;
+  flex-wrap:$wrap
+}
+@mixin box-sizing($style){
+  box-sizing: $style;
+  -webkit-box-sizing: $style;
+  -moz-box-sizing: $style;
+}
+
+%slide-hide{
+  transform: translate(100%,0);
+  -webkit-transform: translate(100%,0);
+  -moz-transform: translate(100%,0);
+  -o-transform: translate(100%,0);
+  -ms-transform: translate(100%,0);
+  transition: all .3s;
+}
+%slide-show{
+  transform: translate(50%,0);
+  -webkit-transform: translate(50%,0);
+  -moz-transform: translate(50%,0);
+  -o-transform: translate(50%,0);
+  -ms-transform: translate(50%,0);
+  transition: all .3s;
+}
+
+@mixin button($bgColor: #FFF, $color: #333, $bdColor: #333, $bgColor2: false, $color2:false, $bdColor2: false) {  
+    @if not($bgColor2){
+        $bgColor2: $bgColor;
+    }
+    @if not($color2){
+        $color2: $color;
+    }
+    @if not($bdColor2){
+        $bdColor2: $bdColor;
+    }
+    background-color: $bgColor;
+    border-color: $bdColor;
+    color: $color;
+    &:active{        
+        background-color: $bgColor2;
+        border-color: $bdColor2;
+        color: $color2;
+    }
+}
+
+@mixin singleline-ellipsis($width) {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: $width;
+}

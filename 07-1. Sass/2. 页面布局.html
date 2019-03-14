@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>页面布局</title>
+    <style>
+        *{padding:0;margin:0}
+        html, body{font:normal 16px/1.5 'Microsoft YaHei',Arial,'Helvetica Neue','SimSun';}
+        body{ width:100%; height: 100%; background:#fff; overflow: hidden}
+        .page-group, .page{width:100%; height: 100%; position: absolute; top:0; right:0; bottom:0; left:0; overflow: hidden}
+        header, footer{width:100%; height: 3rem; line-height: 3rem; text-align: center; background: #000; color:#fff;
+            position: absolute;left:0; z-index:999}
+        header{top:0}
+        footer{bottom:0}
+        header ~ .content{ padding-top:3rem}
+        footer ~ .content{ padding-bottom:3rem}
+        .content{width:100%; height: 100%; box-sizing: border-box; position: relative; overflow: auto;}
+
+        .page.address-page{ background:#fff; z-index: 2000; transform: translate(100%,0); transition: all 0.3s;}
+        .page.address-page.active{transform: translate(0,0); transition: all 0.3s;}
+        button{-webkit-appearance:none; padding:10px;}
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page index-page">
+        <header>
+            This is header.
+        </header>
+        <footer>
+            This is footer.
+        </footer>
+        <section class="content" id="c1">
+            <article>
+                <h2>标题001</h2>
+                <p>内容001......</p>
+            </article>
+            <article>
+                <h2>标题002</h2>
+                <p>内容002......</p>
+                <ul>
+                    <li>列表1</li>
+                    <li>列表2</li>
+                    <li>列表3</li>
+                </ul>
+            </article>
+            <button id="toPage2">Click Me!</button>
+            <p style="padding-top:1000px;">已经到底部了~</p>
+        </section>
+    </div>
+    <div class="page address-page">
+        <section class="content" id="c2">
+            <p style="margin-bottom:300px;">内容...</p>
+            <button id="toPage1">返回</button>
+            <p style="margin-top:900px">已经到底部了~</p>
+        </section>
+    </div>
+</div>
+<script src="js/zepto-1.1.6.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#toPage2').on('click', function(){
+            $('.page.address-page').addClass('active');
+            $('#c2').scrollTop(0);
+        });
+        $('#toPage1').on('click', function(){
+            $('.page.address-page').removeClass('active');
+        });
+    });
+</script>
+</body>
+</html>

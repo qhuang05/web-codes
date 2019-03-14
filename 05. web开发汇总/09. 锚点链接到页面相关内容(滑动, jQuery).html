@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>锚点链接到页面相关内容</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        header{ margin: 20px auto;}
+        header a{margin-right: 20px}
+        .content.content1{ height: 300px; background: indianred}
+        .content.content2{ height: 800px; background: lightseagreen}
+        .content.content3{ height: 400px; background: dodgerblue}
+    </style>
+</head>
+<body>
+<header>
+    <a href="javascript:;" data-link="section1">链接1</a>
+    <a href="javascript:;" data-link="section2">链接2</a>
+    <a href="javascript:;" data-link="section3">链接3</a>
+</header>
+<section class="content content1" data-content="section1">内容1, 内容1, 内容1......</section>
+<section class="content content2" data-content="section2">内容2, 内容2, 内容2......</section>
+<section class="content content3" data-content="section3">内容3, 内容3, 内容3......</section>
+<script>
+//备注：zepto.js使用animate()会提示'not a function'错误, 由于zepto.js的动画是使用css3动画模拟的。
+$(document).ready(function(){
+    $('header a').on('click', function(){
+        var curLink = $(this).data('link');
+        var scrollDis = $('.content[data-content='+ curLink +']').offset().top;
+        $('html,body').animate({'scrollTop': scrollDis-10});
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>帮邦行-抢单</title>
+    <link rel="stylesheet" href="../../assets/css/pages/graborder/order-grab.css">
+</head>
+<body class="white-body">
+<div class="page-group">
+    <section class="page page-current" id="orderGrabPage">
+        <header class="bar bar-nav bbx-header">
+            <a class="iconfont pull-left open-panel">&#xe604;</a>
+            <h1 class="title">来自闽D4519的分享</h1>
+        </header>
+        <article class="content">
+            <section class="order-details">
+                <ul>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">用车类型</label>
+                        <span class="info">
+                                <span class="type">合乘</span>
+                                /
+                                <em class="color-blue">1人</em>
+                            </span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">出发时间</label>
+                        <span class="info">2-9 14:00</span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">出发地</label>
+                        <span class="info">泉州市水仙花大桥</span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">目的地</label>
+                        <span class="info">厦门软件园南门</span>
+                    </li>
+                    <li class="details-item clearfix">
+                        <label class="label" for="">备注</label>
+                        <span class="info">乘客抱个婴儿</span>
+                    </li>
+                </ul>
+                <dl class="order-price">
+                    <dt>车费约<span class="color-orange price-number">150</span>元</dt>
+                </dl>
+                <section class="order-price-explain">
+                    系统将扣取<span class="color-orange">15</span>元调度费
+                </section>
+            </section>
+            <section class="grab-button" id="grabBtn">
+                 <img src="../../assets/images/grab-btn.png" alt="" title="">
+            </section>
+        </article>
+    </section>
+
+    <!-- 注册 -->
+    <article class="popup popup-register">
+        <section class="register-wrap">
+            <section class="register-content">
+                <h2>只需注册一次<br/>抢单快人一步</h2>
+                <i class="iconfont close-popup custom-close">&#xe610;</i>
+                <section class="form-input">
+                    <label class="label" for="telephone">手机号码</label>
+                    <input type="tel" placeholder="输入手机号" maxlength="11" id="telephone">
+                    <span class='getcode invalid' id="getCodeBtn">获取验证码</span>
+                </section>
+                <section class="form-input">
+                    <label class="label" for="code">验证码</label>
+                    <input type="tel" placeholder="请输入验证码" maxlength="4" id="code">
+                </section>
+                <section class="form-input">
+                    <label class="label" for="password">密码</label>
+                    <input type="text" placeholder="设置6位数登录密码更安全哦" maxlength="4" id="password">
+                </section>
+                <section class="form-input">
+                    <label class="label" for="username">姓名</label>
+                    <input type="text" placeholder="输入您的大名" maxlength="4" id="username">
+                </section>
+                <section class="form-input">
+                    <label class="label" for="carNO">车牌</label>
+                    <input type="text" placeholder="输入车牌让乘客更快找到您哦" maxlength="4" id="carNO">
+                </section>
+                <section class="bbx-btn-blue invalid" id="registerBtn">确 认</section>
+            </section>
+        </section>
+    </article>
+    <!-- 欠费充值 -->
+    <article class="popup popup-recharge no-popup-bg com-hide">
+        <section class="custom-popup padding-lr">
+            <h2 class="color-blue">调度费已欠款至最大额度<br>前往欠费账户充值</h2>
+            <i class="iconfont close-popup custom-close">&#xe610;</i>
+            <dl class="progess">
+                <dt>充值流程：</dt>
+                <dd>登录司机端 —— 点击左上角［我］—— 欠费账户 —— 充值</dd>
+            </dl>
+            <a class="bbx-btn-blue" href="" title="" id="toDriverApp">打开司机端</a>
+        </section>
+    </article>
+</div>
+</body>
+<script src="../../assets/js/lib/sea.js"></script>
+<script src="../../assets/js/common/sea-config.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    seajs.use(['assets/js/modules/graborder/order-grab','assets/js/modules/graborder/wx-share'], function(){
+        $.init();
+    });
+</script>
+</html>

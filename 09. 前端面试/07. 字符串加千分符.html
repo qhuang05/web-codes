@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如何给字符串加千分符</title>
+</head>
+<body>
+<script>
+	var str = '1343039321';
+
+	// 方法1
+	function addSplit(str){
+		var arr = [];
+		var length = str.length % 3;
+		if(length != 0){
+			arr.push(str.substr(0,length));
+		}
+		var remained = str.substr(length);
+		var tmp = '', iNow = 0;
+		for(var i=0; i<remained.length; i++){
+			iNow++;
+			tmp += remained[i];
+			if(iNow == 3){
+				arr.push(tmp);
+				tmp = '';
+				iNow = 0;
+			}
+		}
+		return arr.join(',');
+	}
+	var result = addSplit(str);
+	alert(result);
+</script>
+</body>
+</html>

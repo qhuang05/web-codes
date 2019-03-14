@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>删除元素remove,empty</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("#btn1").click(function(){
+			$("div").remove();			//remove:删除被选元素及其子元素
+		});
+
+		$("#btn2").click(function(){
+			$("div").empty();			//empty:删除被选元素的子元素
+		});
+
+		$("#btn3").click(function(){
+			$("p").remove(".test1");		//remove()可以有参数，但是empty()没有
+		});
+
+	});	
+	</script>
+</head>
+
+<body>
+	<div style="width:400px; height: 200px; background:#0ff">
+		<p class="test1">This is a paraphrase.</p>
+		<p class="test2">This is another paraphrase.</p>
+	</div>
+	<button type="button" id="btn1">remove()</button>
+	<button type="button" id="btn2">empty()</button>
+	<button type="button" id="btn3">清空class="test1"的元素</button>	
+</body>
+</html>

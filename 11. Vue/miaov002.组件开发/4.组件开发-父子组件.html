@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件开发</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<h2>自定义下拉框</h2>
+			<custom-select btn-text="搜索" :btn-txt="text1" :list="list1"></custom-select>
+		</div>
+		<div>
+			<h2>自定义下拉框2</h2>
+			<custom-select btn-text="查询" :btn-txt="text2" :list="list2"></custom-select>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom-select', {	//custom-select可以使用驼峰法customSelect，也可以使用烤串法custom-select
+			props: ['btnText', 'btnTxt', 'list'],	//必须使用驼峰法btnText
+			data:function(){
+				return {
+					resultShow: false,
+					searchValue:''
+				}
+			},
+			template: `<section class="select-wrap">
+						<div class="search-wrap">
+							<input type="text" class="search-input" :value="searchValue" />
+							<button class="search-btn" @click="resultShow=!resultShow">{{btnText}}{{btnTxt}}</button>
+						</div>
+						<custom-list v-show="resultShow" :list="list" @receive="changeInputValue"></custom-list>
+					</section>`,
+			methods:{
+				changeInputValue(value){
+					this.searchValue = value.text;
+					this.resultShow = false;
+				}
+			}
+		});
+
+		Vue.component('custom-list', {
+			props:['list'],
+			template: 
+			`<ul>
+				<li v-for="item in list" @click="itemSelected(item)">{{item.text}}</li>
+			</ul>`,
+			methods:{
+				itemSelected(item){
+					//点击li元素后,将item的值传递给父组件, 需要触发一个自定义事件
+					this.$emit('receive', item);
+				}
+			}
+		});
+
+		let app = new Vue({
+			el: '#app',
+			data: {
+				text1: '——搜索',
+				text2: '——查询',
+				//list1: ['北京','上海','深圳','杭州'],
+				//list2: ['Vue','React','AngularJS','NodeJs']
+				list1:[
+					{id:1, text:'北京'},{id:2, text:'上海'},{id:3, text:'深圳'}
+				],
+				list2:[
+					{id:'l1', text:'Vue'},{id:'l2', text:'React'},{id:'l3', text:'AngularJS'},{id:'l4',text:'NodeJs'}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>创建节点createElement,createTextNode,appendChild,insertBefore</title>
+</head>
+
+<body>
+<div id="mydiv">
+    <p id="p1">This is a paraphrase.</p>
+    <p id="p2">This is another paraphrase.</p>
+</div>
+<script>
+    var para = document.createElement("p");
+    var node = document.createTextNode("This is the 3rd paraphrase create via JS HTML DOM");
+    para.appendChild(node);
+
+    //使用appendChild,这种方法是把新创建的节点添加到它父元素的末尾
+    var parent = document.getElementById("mydiv");
+    parent.appendChild(para);
+
+    //如果要把创建的新节点添加到指定的某个位置而不是它默认的父元素的末尾，要用insertBefor(新节点，新节点的下一个节点)
+    var parent = document.getElementById("mydiv");
+    var para2 = document.getElementById("p2");
+    parent.insertBefore(para, para2);
+</script>
+</body>
+</html>

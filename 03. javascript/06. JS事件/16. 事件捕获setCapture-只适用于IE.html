@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>事件捕获setCapture-只适用于IE</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" type="button">按钮</button>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById("btn");
+            oBtn.onclick = function () {
+                alert('a');
+            };
+            oBtn.setCapture();		//事件捕获，在页面上点其它位置，也会弹框
+        };
+    </script>
+</body>
+</html>

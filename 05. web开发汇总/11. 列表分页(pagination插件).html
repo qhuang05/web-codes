@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表分页</title>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="plugins/pagination/pagination.css" />
+    <script src="plugins/pagination/jquery.pagination.js"></script>
+    <style>
+        #content-show { background: #fff; width: 50%; margin: 10px 0;}
+        #content-show .item {
+            background: darkseagreen;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            border-bottom: 2px solid darkgreen;
+        }
+    </style>
+</head>
+<body>
+<p style="color:#ff6600">备注：内容一次性加载, 如果数据量较大不建议用此方法，因为加载会比较慢。</p>
+<div id="content-hidden" style="display:none">
+    <div class="item">内容——001</div>
+    <div class="item">内容——002</div>
+    <div class="item">内容——003</div>
+    <div class="item">内容——004</div>
+    <div class="item">内容——005</div>
+    <div class="item">内容——006</div>
+    <div class="item">内容——007</div>
+    <div class="item">内容——008</div>
+    <div class="item">内容——009</div>
+    <div class="item">内容——010</div>
+    <div class="item">内容——011</div>
+    <div class="item">内容——012</div>
+    <div class="item">内容——013</div>
+    <div class="item">内容——014</div>
+    <div class="item">内容——015</div>
+    <div class="item">内容——016</div>
+    <div class="item">内容——017</div>
+    <div class="item">内容——018</div>
+    <div class="item">内容——019</div>
+    <div class="item">内容——020</div>
+    <div class="item">内容——021</div>
+    <div class="item">内容——022</div>
+    <div class="item">内容——023</div>
+    <div class="item">内容——024</div>
+    <div class="item">内容——025</div>
+    <div class="item">内容——026</div>
+    <div class="item">内容——027</div>
+    <div class="item">内容——028</div>
+    <div class="item">内容——029</div>
+    <div class="item">内容——030</div>
+</div>
+<div id="content-show"></div>
+<div id="Pagination" class="pagination"></div>
+<script>
+    $(function(){
+        var itemPerPage = 4;
+        var totalItem = $('#content-hidden .item').length;
+        $('#Pagination').pagination(totalItem, {
+            current_page: 0,                // 当前选中的页面, 默认0
+            items_per_page: itemPerPage,              // 每页显示的条目数
+            prev_show_always: true,         // 是否显示'上一页'分页按钮, 默认true
+            next_show_always: true,         // 是否显示'下一页'分页按钮, 默认true
+            prev_text: '上一页',
+            next_text: '下一页',
+            num_display_entries: 4,         // 连续分页主体部分显示的分页条目数
+            num_edge_entries: 2,            // 两侧显示的首尾分页的条目数
+            callback: pageSelectCallback    //每次点击页码后的回调函数
+        });
+
+        function pageSelectCallback(index,data) {
+            $('#content-show').empty();
+            for(var i = itemPerPage*index; i < itemPerPage*(index+1); i++) {
+                $('#content-show').append($('#content-hidden .item:eq(' + i + ')').clone());
+            }
+            return false;
+        }
+    });
+</script>
+</body>
+</html>

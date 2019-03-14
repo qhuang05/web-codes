@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>运动框架的局限问题</title>
+<script type="text/javascript" src="move2.js"></script>
+<style>
+	#div1 { width: 200px; height: 200px; background: red; }
+</style>
+<script src="move2.js"></script>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oBtn=document.getElementById("btn");
+	oBtn.onclick=function(){
+		startMove(oDiv,'width',400);
+		startMove(oDiv,'height',400);
+		//当多个值同时变化时，第2次startMove的执行要先清掉第1次的定时器，在第1次还没来得及执行时它的定时器就被清掉了，所以只能执行第2次的startMove(链式运动是在第1次执行完之后再执行第2次的，是先后顺序的关系，而不是同时进行的关系。)
+	};
+};
+</script>
+</head>
+
+<body>
+	<button type="button" id="btn">运动</button>
+	<div id="div1"></div>
+</body>
+</html>

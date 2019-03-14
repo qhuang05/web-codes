@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise.all()和Promise.race()</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="logs"></div>
+	<script type="text/javascript">
+		$(function(){
+			var ajax1 = promiseAjax({
+				url: 'https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getMovieList',
+			});
+			var ajax2 = promiseAjax({
+				type: 'post',
+				url: 'https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getMovieInfo',
+				data: {id: 1001}
+			});
+
+			Promise.all([ajax1, ajax2]).then(function(res){
+				console.log('all complete');
+				console.log(res);
+			});
+			Promise.race([ajax1, ajax2]).then(function(res){
+				console.log('race, 返回最先返回的值');
+				console.log(res);
+			});
+		});
+		
+		var promiseAjax = function(opt){
+			opt ? opt : {};
+			return new Promise(function(resolve, reject){
+				$.ajax({
+					type: opt.type ? opt.type : 'get',
+					url: opt.url,
+					data: opt.data ? opt.data : null,
+					success: function(res){
+						resolve(res);
+					},
+					error: function(error){
+						console.log('error => ' + error);
+						reject(error);
+					}
+				});
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件开发</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<h2>自定义下拉框</h2>
+			<custom-select btn-text="搜索" :btn-txt="text1"></custom-select>
+		</div>
+		<div>
+			<h2>自定义下拉框2</h2>
+			<custom-select btn-text="查询" :btn-txt="text2"></custom-select>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom-select', {	//custom-select可以使用驼峰法customSelect，也可以使用烤串法custom-select
+			props: ['btnText', 'btnTxt'],				//必须使用驼峰法btnText
+			data:function(){
+				return {
+					resultShow: false
+				}
+			},
+			template: `<section class="select-wrap">
+						<div class="search-wrap">
+							<input type="text" class="search-input" />
+							<button class="search-btn" @click="resultShow=!resultShow">{{btnText}}{{btnTxt}}</button>
+						</div>
+						<ul v-show="resultShow">
+							<li>1、html,css</li>
+							<li>2、javascript,jquery</li>
+							<li>3、less,sass</li>
+							<li>4、vue,react,angularJS</li>
+						</ul>
+					</section>`
+		});
+		let app = new Vue({
+			el: '#app',
+			data: {
+				text1: '——搜索',
+				text2: '——查询'
+			}
+		});
+	</script>
+</body>
+</html>

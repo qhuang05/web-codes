@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>敏感词过滤</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oTxt2 = document.getElementById('txt2');
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                var re = /北京|淘宝|京东/g;
+                oTxt2.value = oTxt1.value.replace(re, '***');
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <textarea id='txt1' rows='10' cols='40'></textarea>
+    <button type='button' id='btn'>过滤</button>
+    <textarea id='txt2' rows='10' cols='40'></textarea>
+</body>
+</html>

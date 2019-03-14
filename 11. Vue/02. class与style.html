@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue之class与style</title>
+</head>
+<style>
+    section:not(:last-child){ border-bottom:1px solid #ccc; }
+    .active{ background: green}
+    .error{ color: red}
+</style>
+<body>
+<div id="app">
+    <section>
+        <p v-bind:class="{active: isActive, error: isError}">class-001</p>  <!-- 对象 -->
+        <p :class="['active', {error: isError}]">class-002</p>                <!-- 数组 -->
+        <p :class="changeA">class-003</p>
+    </section>
+    <section>
+        <p v-bind:style="{'font-size': fontSize, 'color': 'red'}">style-001</p> <!-- 对象 -->
+        <p :style="[styA, styB]">style-002</p>  <!-- 数组 -->
+        <p :style="styC">style-003</p>
+    </section>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isActive: false,
+            isError: true,
+            fontSize: '20px',
+            styA: {'font-size': '22px'},
+            styB: {'color': 'blue'},
+            styC: {
+                'font-size': '24px',
+                'color': '#ccc'
+            }
+        },
+        computed: {
+            changeA(){
+                return {
+                    'active': this.isActive &&!this.isError,
+                    'error': this.isError
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组排序</title>
+</head>
+<body>
+<script>
+	var data = [1,34,4,2,7,5,8,10];
+	// 方法1： 使用sort
+	// var result = data.sort(function(n1,n2){ 
+	// 	return n1-n2;
+	// });
+	// alert(result);
+
+	// 方法2： 选择排序
+	// function arraySort(data){
+	// 	if(data.length == 1){
+	// 		return data;
+	// 	}
+	// 	var min = data[0], minIndex = 0;
+	// 	for(var i=0; i<data.length; i++){
+	// 		if(data[i] < min){
+	// 			min = data[i];
+	// 			minIndex = i;
+	// 		}
+	// 	}
+	// 	var prev = data.splice(minIndex, 1);
+	// 	return prev.concat(arraySort(data));
+	// }
+	// var result = arraySort(data);
+	// alert(result);
+
+	// 方法3： 冒泡排序
+	function arraySort(data){
+		for(var i=0; i<data.length; i++){
+			for(j=0; j<data.length-i; j++){
+				var tmp = '';
+				if(data[j] > data[j+1]){
+					tmp = data[j];
+					data[j] = data[j+1];
+					data[j+1] = tmp;
+				}
+			}
+		}
+		return data;
+	}
+	var result = arraySort(data);
+	alert(result);
+</script>
+</body>
+</html>

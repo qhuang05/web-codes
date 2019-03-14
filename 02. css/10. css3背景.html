@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>css3背景</title>
+	<style type="text/css">
+        /* 多背景*/
+        .wrap1{width:400px; height: 300px; border: 1px solid deepskyblue; display: inline-block;
+            background: url("images/menu_bg_left.png") no-repeat 0 0,url("images/menu_bg_right.png") no-repeat 50% 0; }
+        /* 背景渐变 */
+        .wrap2{width:400px; height: 300px; border: 1px solid deepskyblue; display: inline-block;
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(#ff0000), to(rgba(0, 0, 255, 0.5))); }
+        .wrap2-2{width:400px; height: 300px; border: 1px solid deepskyblue; display: inline-block;
+            background:-webkit-gradient(linear, left top, left bottom, from(#ff0000), to(rgba(0, 0, 255, 0.5))); }
+        .wrap2-3{width:400px; height: 300px; border: 1px solid deepskyblue; display: inline-block;
+            background:-webkit-gradient(linear, 0 70%, 0 100%, from(rgba(8,247,138,0)), to(rgba(8,247,138,0.4)))}
+        /* 背景尺寸 */
+        .wrap3{width:400px; height: 300px; border: 1px solid deepskyblue; display: inline-block;
+            background: url("images/bg001.jpg") no-repeat; background-size: 100% 100%;}
+        /* 背景绘制范围, http://www.cnblogs.com/2050/archive/2012/11/13/2768289.html */
+        .wrap4{width:400px; height: 300px; border: 50px solid deepskyblue; padding:100px; margin: 100px;
+            background: url("images/bg001.jpg") no-repeat; background-size:100% 100%;
+            background-origin: border-box; background-clip: content-box}
+	</style>
+</head>
+
+<body>
+    <div class="wrap1"></div>
+    <div class="wrap2"></div>
+    <div class="wrap2-2"></div>
+    <div class="wrap2-3"></div>
+    <div class="wrap3"></div>
+    <div class="wrap4"></div>
+</body>
+</html>

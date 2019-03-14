@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>jquery事件-绑定,解除绑定</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    //    绑定: bind()或on()   解决绑定: unbind()或off()
+    $(document).ready(function(){
+        $('#btn1').on('click', click001);
+        $('#btn1').on('click', click002);
+        $('#btn1').off('click',click001);
+
+    });
+    function click001(){
+        alert('001');
+        $('#btn1').off('click');
+    }
+    function click002(){
+        alert('002');
+    }
+</script>
+</head>
+
+<body>
+    <button id="btn1">Button001</button><br />
+</body>
+</html>

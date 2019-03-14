@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>css3字体与文本效果</title>
+	<style type="text/css">
+		@font-face {
+			font-family: myFont;
+			src: url(fonts/Swiss721BT.TTF),
+				 url(fonts/楷体_GB2312.ttf);
+		}
+		body{
+			font: bolder 20px/1.5em myFont;
+		}
+
+		.div1{ width:100px; height: 50px; background: lightyellow; border:1px solid #0000FF;
+			overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: break-word}
+		.div2{
+			margin:50px 0;
+			font-size: 50px;
+			font-weight: bolder;
+			text-shadow: 3px 3px 2px red;
+		}
+		.div3{
+			font-size: 50px;
+			font-weight: bolder;
+			-webkit-text-fill-color: black;
+			-webkit-text-stroke-color: red;
+			-webkit-text-stroke-width: 0.5px;
+		}
+    </style>
+</head>
+
+<body>
+	<p>本文所显示的字体使用了css3自定义字体</p>
+	<p>Hello World!!!</p>
+
+	<div class="div1">文本太多已超出盒子范围文本太多已超出盒子范围文本太多已超出盒子范围文本太多已超出盒子范围</div>
+	<div class="div1">this is a test this is a test this is a test</div>
+
+	<div class="div2">文本阴影 | HELLO WORLD</div>
+	<div class="div3">填充颜色 | HELLO WORLD</div>
+</body>
+</html>

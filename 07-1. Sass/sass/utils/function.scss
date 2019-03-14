@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@import "variables";
+/* 设计图width=750px, 1rem=40px */
+$baseFontSize: 40px !default;
+@function toRem($px){
+    @if(unitless($px)){
+        @return px2rem($px+0px);
+    }
+    @else if(unit($px) == rem){
+        @return $px;
+    }
+    @return $px/$baseFontSize*1rem;
+}

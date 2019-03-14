@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6模块化语法-export,import</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// a.当用export default people导出时，就用 import people 导入（不带大括号, import命名不一定要用people，可以任意命名）
+	// b.一个文件里，有且只能有一个export default。但可以有多个export。
+	// c.当用export name 时，就用import { name }导入（记得带上大括号，import命名只能用name）
+	// d.当一个文件里，既有一个export default people, 又有多个export name 或者 export age时，导入就用 import people, { name, age } 
+	// e.当一个文件里出现n多个 export 导出很多模块，导入时除了一个一个导入，也可以用import * as example
+	// g.CommonJS模块输出的是一个值的拷贝，而ES6模块输出的是值的引用。
+
+	// 区分：CommonJS模块化语法(与NodeJS模块化语法相同) && ES6模块化语法
+	// CommonJS/NodeJS模块化语法：
+	// 	module.exports = A;
+	// 	const A = require('./js/a.js');
+	// ES6模块化语法：
+	// 	export default A
+	// 	export AA
+	// 	import A,{AA} from './js/a.js';
+	//  module A from './js/a.js';
+</script>
+</body>
+</html>

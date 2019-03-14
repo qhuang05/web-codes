@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>引用</title>
+    <script>
+        var arr1 = [1, 2, 3];
+        var arr2 = arr1;
+        arr2.push(4);
+        alert(arr1);	//结果：1,004.css3鼠标悬浮特效,3,4
+        alert(arr2);    //结果：1,004.css3鼠标悬浮特效,3,4
+        //原因：arr2=arr1并不是把arr1复制一份组arr2,而是让arr2指向和arr1相同的数组空间,所以在arr2中push一个数,也会影响arr1(引用类型的复制)
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

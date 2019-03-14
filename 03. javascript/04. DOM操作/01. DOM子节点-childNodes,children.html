@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM子节点-childNodes,children</title>
+	<script>
+		window.onload=function(){
+			var oUL=document.getElementById("demo");
+			//alert(oUL.childNodes.length);	//childNodes只计算节点的第一级子节点，在IE6~8中不包含文本节点
+			for(var i=0; i<oUL.childNodes.length; i++) {
+				if(oUL.childNodes[i].nodeType==1){			//使用if判断nodeType兼容所有浏览器
+					oUL.childNodes[i].style.background="red";
+				}
+				//oUL.children[i].style.background="red";		//第2种方法：使用children，不需要处理兼容		
+			}		
+		};
+	</script>
+</head>
+
+<body>
+	<ul id="demo">
+		<li><span>111</span></li>
+		<li><span>222</span></li>
+	</ul>
+
+</body>
+</html>

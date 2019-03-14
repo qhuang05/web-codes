@@ -1,0 +1,13 @@
+@charset "UTF-8";
+$baseFontFamily: 'PingFang SC Medium','Microsoft YaHei',Arial,'Helvetica Neue','SimSun';
+$baseFontColor: #666;
+$btnColor: #fff;
+$btnBgcolor: #07f !default;
+$btnBgcolorHover: darken($btnBgcolor, 5%) !default;
+$btnBorderColor: darken($btnBgcolor, 10%) !default;
+$btnBgcolorSuccess: #7f0;
+$btnBgcolorHoverSuccess: darken($btnBgcolorSuccess, 5%);
+$btnBorderColorSuccess: darken($btnBgcolorSuccess, 10%);
+$btnBgcolorError: #f70;
+$btnBgcolorHoverError: darken($btnBgcolorError, 5%);
+$btnBorderColorError: darken($btnBgcolorError, 10%);

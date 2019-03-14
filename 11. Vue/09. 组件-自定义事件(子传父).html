@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>    
+    <title>vue组件-props传递数据</title>
+</head>
+<body>
+<div id="app1">
+    {{ total }}
+    <child v-on:add="totalAdd"></child>
+    <child v-on:add="totalAdd"></child>
+    {{ value }}
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('child', {
+        template: '<button v-on:click="add">{{ counter }}</button>',
+        data: function() {
+            return {
+                counter: 0,
+                tt: 'this is a test'
+            }
+        },
+        methods: {
+            add: function(){
+                this.counter += 1;
+                this.$emit('add', this.tt);
+            }
+        }
+    });
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            total: 0,
+            value: ''
+        },
+        methods: {
+            totalAdd: function(args){
+                this.total +=1;
+                this.value = args + this.total;
+            }
+        }
+    });
+</script>
+</body>
+</html>

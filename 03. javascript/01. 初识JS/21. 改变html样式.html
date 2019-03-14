@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>改变html样式</title>
+</head>
+
+<body>
+<h1 id="title">This is the title, Color is black</h1>
+<button onClick="styleChange()">点击使标题变成红色</button>
+<div id="dotTest"></div>
+
+<script>
+    function styleChange() {
+        var x = document.getElementById("title");
+        x.style.color = "red";
+    }
+    document.write('<br/>');
+    function dotWrite() {
+        var dotDiv = document.getElementById('dotTest');
+        var length = 5;
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < length; j++) {
+                if (length > 0) {
+//				document.write('。');
+                    var node = document.createTextNode('。');
+                    dotDiv.appendChild(node);
+                }
+            }
+            length -= 2;
+//		document.write('<br/>');
+            var node2 = document.createElement('br');
+            dotDiv.appendChild(node2);
+        }
+        dotDiv.style.textAlign = 'center';
+    }
+    dotWrite();
+</script>
+</body>
+</html>

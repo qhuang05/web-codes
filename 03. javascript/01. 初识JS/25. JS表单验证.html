@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JavaScript表单验证</title>
+    <style type="text/css">
+        form {  width: 400px; height: 160px; line-height: 30px; border: 1px double black; }
+        form label {  display: inline-block;  width: 80px; }
+        form div {  text-align: center; }
+    </style>
+    <script>
+//       with用法用于简化代码操作
+//       with(field){ if(value=="")} 等价于 if(field.value=="")
+//       当你有一个对象的多个属性或者方法需要操作时，就可以使用with
+
+        //检查填写内容是否为空
+        function validated_required(field, alerttxt) {
+            with (field) {
+                if (value == "" || value == null) {
+                    alert(alerttxt);
+                    return false;
+                }
+                else
+                    return true;
+            }
+        }
+
+        //邮箱合法性检查，判断条件是需要有@和.并用@不能出现在第一个位置，.必须位于@之后且@和.之间必须要有字符
+        function validated_email(field, alerttxt) {
+            with (field) {
+                aStr = value.indexOf("@");
+                dotStr = value.indexOf(".");
+                if (aStr < 1 || (dotStr - apStr) < 2) {
+                    alert(alerttxt);
+                    return false;
+                }
+                else
+                    return true;
+            }
+        }
+
+        //表单必填选项检查
+        function validated_form(thisform) {
+            with (thisform) {
+                if (validated_required(username, "用户名不能为空") == false) {
+                    username.focus();
+                    return false;
+                }
+                if (validated_required(pwd, "密码不能为空") == false) {
+                    pwd.focus();
+                    return false;
+                }
+                if (validated_required(email, "邮箱不能为空") == false) {
+                    email.focus();
+                    return false;
+                }
+                if (validated_email(email, "邮箱格式不正确") == false) {
+                    email.focus();
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>表单必填项与邮箱的合法性验证：</h3>
+    <form action="#" method="post" onSubmit="return validated_form(this)">
+        <label>用户名：</label><input type="text" id="username"/><br/>
+        <label>密码：</label><input type="password" id="pwd"/><br/>
+        <label>注册邮箱：</label><input type="text" id="email" size="30"/><br/>
+        <div>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </div>
+    </form>
+</body>
+</html>

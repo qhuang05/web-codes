@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>面向对象实例-选项卡</title>
+    <style>
+        #demo button.active {
+            background: red;
+        }
+
+        #demo div {
+            width: 200px;
+            height: 400px;
+            background: #ccc;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            new TabSwitch('demo');
+        };
+
+        function TabSwitch(id) {
+            var _this = this;
+            var oDiv = document.getElementById(id);
+            this.aBtn = oDiv.getElementsByTagName('button');
+            this.aDiv = oDiv.getElementsByTagName('div');
+            for (var i = 0; i < this.aBtn.length; i++) {
+                this.aBtn[i].index = i;
+                this.aBtn[i].onclick = function () {
+                    _this.fnClick(this);
+                };
+            }
+        }
+        ;
+
+        TabSwitch.prototype.fnClick = function (oBtn) {
+            //alert(this);
+            for (var i = 0; i < this.aBtn.length; i++) {
+                this.aBtn[i].className = '';
+                this.aDiv[i].style.display = 'none';
+            }
+            oBtn.className = 'active';
+            this.aDiv[oBtn.index].style.display = 'block';
+        };
+
+    </script>
+</head>
+
+<body>
+<div id='demo'>
+    <button type='button' class='active'>aaa</button>
+    <button type='button'>bbb</button>
+    <button type='button'>ccc</button>
+    <div style="display: block">aaaaaaaaaaaa</div>
+    <div>bbbbbbbbbbbb</div>
+    <div>cccccccccccc</div>
+</div>
+</body>
+</html>
+<!--
+原程序：
+window.onload=function(){
+	var oDiv=document.getElementById('demo');
+	var aBtn=oDiv.getElementsByTagName('button');
+	var aDiv=oDiv.getElementsByTagName('div');
+	for(var i=0; i<aBtn.length; i++) {
+		aBtn[i].index=i;
+		aBtn[i].onclick=function() {
+			for(var i=0; i<aBtn.length; i++) {
+				aBtn[i].className='';
+				aDiv[i].style.display='none';
+			}
+			this.className='active';
+			aDiv[this.index].style.display='block';
+		};
+	}
+};
+-->

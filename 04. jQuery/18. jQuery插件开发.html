@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>jQuery插件开发</title>
+    <style>
+        div{margin:10px;}
+        #div1{ width:100px; height: 50px; background: red}
+        #div2{ width:100px; height: 50px; background: green}
+        #div3{ width:100px; height: 50px; background: blue}
+        #div4{ width:100px; height: 50px; background: gold}
+    </style>
+</head>
+
+<body>
+    <div id="div1">Click Me!</div>
+    <div id="div2">Click Me!!</div>
+    <div id="div3">Click Me!!!</div>
+    <div id="div4">Click Me!!!!</div>
+</body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/我的插件.js"></script>      <!--引入自已开发的jquery插件-->
+<script>
+    $(document).ready(function(){
+        $('#div1').click(function(){
+            Qhuang.myPlugin1();
+        });
+
+        $('#div2').click(function(){
+            Qhuang.myPlugin2();
+        });
+
+        $('#div3').click(function(){
+            $(this).myPlugin3();
+        });
+
+        $('#div4').click(function(){
+            $(this).myPlugin4();
+        });
+    });
+</script>
+</html>

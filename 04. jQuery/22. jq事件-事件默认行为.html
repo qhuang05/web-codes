@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>jquery事件-事件默认行为</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var $myCheckBox;
+    var $myBtn;
+    $(document).ready(function(){
+        $myCheckBox = $('#myCheckBox');
+        $myBtn = $('#myBtn');
+        $myBtn.click(function(){
+            var e1 = $.Event('myChecking');
+            $myCheckBox.trigger(e1);
+            if(!e1.isDefaultPrevented()){
+                $myCheckBox.attr('checked',true);
+                var e2 = $.Event('myChecked');
+                $myCheckBox.trigger(e2);
+            }
+        });
+        $myCheckBox.bind('myChecking', myChecking);
+        $myCheckBox.bind('myChecked', myChecked);
+        function myChecking(event){
+            alert('checking...');
+//            event.preventDefault();
+        }
+        function myChecked(){
+            alert('checked...');
+        }
+    });
+</script>
+</head>
+
+<body>
+    <input type="checkbox" id="myCheckBox" /><label for="myCheckBox">我的复选框</label><br />
+    <button id="myBtn">选中我的复选框</button>
+</body>
+</html>

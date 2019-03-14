@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>calc计算等分宽度-6等分</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,li{list-style: none}
+        .col-6{
+            background: #eee; color: #333; height: 100px; text-align: center;  font-size: 18px; line-height: 100px;
+            float: left;
+            /*width: 20%; 不兼容calc时*/
+           /* width: calc(100%/6 - 5px); 
+            width: -webkit-calc(100%/6 -5px);
+            width: -moz-calc(100%/6 -5px);
+            margin-right: calc(5px*6 /5);
+            margin-right: -webkit-calc(5px*6 /5);
+            margin-right: -moz-calc(5px*6 /5);
+            margin-bottom: calc(5px*6 /5);
+            margin-bottom: -webkit-calc(5px*6 /5);
+            margin-bottom: -moz-calc(5px*6 /5);*/
+            width: calc((100% - 25px)/6);
+            margin-bottom: 5px;   
+            margin-right: 5px;       
+        }
+        .col-6:nth-child(6n){margin-right: 0;}
+    </style>
+</head>
+<body>
+    <div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+        <div class="col-6">1233</div>
+   </div>
+</body>
+</html>

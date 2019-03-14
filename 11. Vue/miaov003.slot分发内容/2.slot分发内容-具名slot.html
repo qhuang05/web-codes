@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot分发内容, 具名slot</title>
+	 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom>
+			<section slot="s1">这是替换内容1</section>
+			<section slot="s2">
+				<h2>这是替换内容2</span>
+				<p>Welcome to Xiamen Library.</p>
+			</section>
+			<template slot="s3">
+				<h2>这是替换内容3</h2>
+				<p>使用template, 不包含外层标签</p>
+			</template>
+		</custom>
+	</div>	
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom', {
+			template: `
+				<div>
+					<slot name="s1"><p>我是段落1</p></slot>
+					<slot name="s2"><p>我是段落2</p></slot>
+					<slot name="s3"><p>我是段落3</p></slot>
+				</div>
+				`
+		});
+		let app = new Vue({
+			el: '#app'
+		});
+	</script>
+</body>
+</html>

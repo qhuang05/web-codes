@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS错误处理-throw与try...catch结合</title>
+    <script>
+//        throw与try...catch结合 可以生成自定义错误信息
+        function isError() {
+            try {
+                var content = document.getElementById("content").value;
+                if (content == "") {
+                    throw "输入不能为空";
+                }
+                if (content<5 || content>10) {
+                    throw "输入的数字范围是5-10";
+                }
+                if (isNaN(content)) {
+                    throw "输入的内容必须是数字";
+                }
+            }
+            catch (err) {
+                //alert(err);
+                var msg = document.getElementById("msg");
+                msg.innerHTML = "错误：" + err;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>请输入一个5到10之间的数字：</p>
+    <input type="text" id="content"/>
+    <button type="submit" onclick="isError()">提交</button>
+    <p id="msg"></p>
+</body>
+</html>

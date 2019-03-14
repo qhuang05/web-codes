@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js跳出多重循环</title>
+</head>
+<body>
+<script>
+	// break -- 跳出所有循环
+	// continue -- 跳出当前循环
+	//jQuery中的each循环: return false<==>break; return true<==>continue
+	outer:
+	for(var i=0; i<10; i++){
+		inner:
+		for(var j=0; j<5; j++){
+			if(j == 2){
+				break outer;
+			}
+		}
+	}
+	alert(i + ', ' + j);	
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 006</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-controller="notesCtl as ctl">
+    <input type="text"
+           placeholder="Please Enter your name"
+           ng-model="ctl.name" />
+    <h1>Hello <em ng-bind="ctl.name"></em></h1>
+    <script>
+        angular.module('notesApp', []).controller('notesCtl', [function(){
+            var self = this;
+            self.name = 'AngularJS';
+        }]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>拖拽-防止拖拽窗口被拖出指定窗口</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        #div2 {
+            width: 400px;
+            height: 400px;
+            background: #ccc;
+            position: relative;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("div1");
+            var oDiv2 = document.getElementById('div2');
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+                var disY = oEvent.clientY - oDiv.offsetTop;
+                document.onmousemove = function (ev) {
+                    //oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+                    var oEvent = ev || event;
+                    var x = oEvent.clientX - disX;
+                    var y = oEvent.clientY - disY;
+                    if (x < 0) {
+                        x = 0;
+                    }
+                    else if (x > oDiv2.offsetWidth - oDiv.offsetWidth) {
+                        x = oDiv2.offsetWidth - oDiv.offsetWidth;
+                    }
+                    if (y < 0) {
+                        y = 0;
+                    }
+                    else if (y > oDiv2.offsetHeight - oDiv.offsetHeight) {
+                        y = oDiv2.offsetHeight - oDiv.offsetHeight;
+                    }
+                    oDiv.style.left = x + 'px';
+                    ;
+                    oDiv.style.top = y + 'px';
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+                return false;   //阻止默认事件,修复FF低版本下拖拽的bug,高版本的FF已被修复可以不加这行
+            };
+        };
+    </script>
+</head>
+
+<body>
+<div id="div2">
+    <div id="div1"></div>
+</div>
+</body>
+</html>

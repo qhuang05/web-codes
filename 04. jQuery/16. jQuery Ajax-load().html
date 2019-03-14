@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery Ajax-load()方法</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).load(function(){
+			$("button").click(function(){
+				$("#demo").load("data/content.txt");
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="demo">使用jQuery Ajax-load()改变文本内容</div>
+	<button type="button">点击改变文本内容</button>
+</body>
+</html>

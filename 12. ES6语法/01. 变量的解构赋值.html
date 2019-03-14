@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量的解构赋值</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 模式匹配
+	let [a, b, c, d] = ['test', [1,2,3], {name: 'test', password: '123456'}];
+	
+	// 对象的解构赋值
+	let person = {
+		name: 'test',
+		password: '123456',
+		info: {
+			role: '管理员',
+			colors: ['#f00', '0f0']
+		}
+	}
+	// let {name, password, info} = person;
+	let {name:name2, password, info} = person;
+
+	// 交换变量的值
+	let [x, y] = [1, 2];
+	[x, y] = [y, x];
+</script>
+</body>
+</html>

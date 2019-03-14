@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点图轮播-jQuery实现</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        .div1{width: 100%; height: 100%; position:relative}
+        .wrapper { width: 100%; height: 100%; overflow:hidden; position: relative;}
+        .wrapper li {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("images/p1.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+        .wrapper li:nth-child(1){z-index: 1}
+        .wrapper li:nth-child(2){background: url("../images/p2.jpg") no-repeat; background-size: 100% 100%;}
+        .wrapper li:nth-child(3){background: url("../images/p3.jpg") no-repeat; background-size: 100% 100%;}
+        .wrapper li:nth-child(4){background: url("../images/p4.jpg") no-repeat; background-size: 100% 100%;}
+        .switchIcons {
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            bottom: 4%;
+            margin-left: -50%;
+            z-index: 999;
+            text-align:center;
+        }
+        .switchIcons li {
+            display:inline-block;
+            width: 14px;
+            height: 14px;
+            margin:0 6px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            cursor: pointer;
+            background: white;
+            text-indent: -9999px;
+        }
+        .switchIcons li.active{ background: #f00}
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <ul class="wrapper">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul class="switchIcons">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var i = 0,
+            zIndex = 1,
+            $content = $('.wrapper li'),
+            $btn = $('.switchIcons li');
+
+        function run(){
+            zIndex++;
+            $btn.removeClass('active').eq(i).addClass('active');
+            //使用z-index解决"播放过程中闪现背景色"问题。
+//            $content.eq(i).css({'z-index':zIndex,'left':'100%'}).animate({left:'0'},200);       //左滑
+//            $content.eq(i).css({'z-index':zIndex,'left':'-100%'}).animate({left:'0'},200);       //右滑
+//            $content.eq(i).css({'z-index':zIndex,'top':'100%'}).animate({top:'0'},200);         //上滑
+//            $content.eq(i).css({'z-index':zIndex,'opacity':'0'}).animate({opacity:'1'},200);    //淡入淡出
+            $content.eq(i).css({'z-index':zIndex,'opacity':'0','left':'50%','top':'50%'}).animate({opacity:'1','left':'0','top':'0'},200);    //右下角滑入
+        }
+
+        function autoPlay(){
+            i++;
+            if(i == $btn.length){
+                i = 0;
+            }
+            run();
+        }
+
+        $btn.each(function(index){
+            $(this).on('click', function(){
+                i = index;
+                run();
+            });
+        });
+        var timer = setInterval(autoPlay,2000);
+    </script>
+</body>
+</html>

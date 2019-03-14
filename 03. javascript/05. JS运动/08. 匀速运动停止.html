@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>匀速运动停止</title>
+	<style>
+		#div1 { width: 100px; height: 100px; background: red; position: absolute; left: 600px; top: 50px;}
+		#div2 { width:1px; height: 300px; background: black; position: absolute; left: 300px; top:0; }
+	</style>
+	<script>
+		//匀速运动停止需要判断停止条件，缓冲运动不需要判断
+		var timer=null;
+		function startMove(iTarget){
+			clearInterval(timer);
+			var oDiv=document.getElementById("div1");
+			timer=setInterval(function(){
+				var speed=0;
+				if(oDiv.offsetLeft<iTarget) {
+					speed=7;
+				}
+				else {
+					speed=-7;
+				}
+				if(Math.abs(iTarget-oDiv.offsetLeft)<7){
+					clearInterval(timer);
+					oDiv.style.left=iTarget+'px';
+				}
+				else {
+					oDiv.style.left=oDiv.offsetLeft+speed+'px';
+				}
+
+			}, 30);
+		}
+
+		window.onload=function(){
+			var oDiv=document.getElementById("div1");
+			var oBtn=document.getElementById("btn");
+			oBtn.onclick=function(){
+				startMove(300);
+			};
+		};
+
+	</script>	
+</head>
+
+<body>
+	<div id="div1"></div>
+	<button type="button" id="btn">开始运动</button>
+	<div id="div2"></div>
+</body>
+</html>

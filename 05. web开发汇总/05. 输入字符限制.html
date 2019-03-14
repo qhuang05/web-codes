@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入字符限制</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <textarea type="text" rows="5" cols="60" id="content1" oninput="setNum($(this), 30, $('#useMark1'), $('#remainMark1'), $('#mark1'), 1)" onkeyup="setNum($(this), 30, $('#useMark1'), $('#remainMark1'), $('#mark1'), 1)" onpaste="pasteNum($(this), 30, $('#useMark1'), $('#remainMark1'), $('#mark1'), 1)"></textarea>
+    <div class="input-mark" id="mark1">
+        最多 <span style="color:red">30</span> 个字符，现已输入 <span id="useMark1">0</span> 个字符，还剩 <span id="remainMark1">30</span> 个字符
+    </div>
+
+    <textarea type="text" rows="5" cols="60" id="content2" oninput="setNum($(this), 30, $('#useMark2'), $('#remainMark2'), $('#mark2'), 0)" onkeyup="setNum($(this), 30, $('#useMark2'), $('#remainMark2'), $('#mark2'), 0)" onpaste="pasteNum($(this), 30, $('#useMark2'), $('#remainMark2'), $('#mark2'), 0)"></textarea>
+    <div class="input-mark" id="mark2">
+        最多 <span style="color:red">30</span> 个字，现已输入 <span id="useMark2">0</span> 个字，还剩 <span id="remainMark2">30</span> 个字
+    </div>
+<script>
+    //设置已输入字数与剩余可输入字数
+    function setNum(selfElem, num, inputElem, surplusElem, markElem, isDouble) {
+        var innum = 0, len = 0;
+        if(isDouble){   //按字符计算,1个汉字=2个字符
+            for(var i=0; i<selfElem.val().length; i++)
+            {
+                var zh = selfElem.val()[i];
+                zh = zh.replace(/[\u4e00-\u9fa5]/g, "");//匹配中文字符
+                if (zh) {
+                    innum++;
+                } else {
+                    innum += 2;
+                }
+            }
+            len = i;
+        }
+        else{   //中文或英文都当作1个字计算(不区分中英文)
+            innum = selfElem.val().length;
+            len = innum;
+        }
+        inputElem.text(innum);
+
+        var surnum = num - innum;
+        if(surnum > 0){
+            surplusElem.text(surnum);
+            markElem.removeClass('mandatory');
+            inputElem.css({'color': '#00b5b1'});
+            surplusElem.css({'color': '#00b5b1'});
+        }
+        else if(surnum == 0){
+            surplusElem.text(0);
+            inputElem.css({'color': '#00b5b1'});
+            surplusElem.css({'color': 'red'});
+        }
+        else{
+            surplusElem.text(0);
+            inputElem.css({'color': 'red'});
+            surplusElem.css({'color': 'red'});
+        }
+        //字数达到上限限制输入
+        if(surnum<0){
+            selfElem.val(selfElem.val().substr(0,len-1));
+        }
+    }
+
+    function pasteNum(selfElem, num, inputElem, surplusElem, markElem, isDouble){
+        if(delay==undefined){
+            var delay = 10;
+        }
+        setTimeout(function(){
+            var innum = 0, _innum = 0, len = 0;
+            if(isDouble){   //按字符计算,1个汉字=2个字符
+                for(var i=0; i<selfElem.val().length; i++)
+                {
+                    var zh = selfElem.val()[i];
+                    zh = zh.replace(/[\u4e00-\u9fa5]/g, "");    //匹配中文字符
+                    _innum = innum;
+                    if(zh){
+                        innum++;
+                    }
+                    else{
+                        innum += 2;
+                    }
+                    if(innum > num){
+                        len = i;
+                        selfElem.val(selfElem.val().substr(0,len));
+                        break;
+                    }
+                }
+            }
+            else{   //中文或英文都当作1个字计算(不区分中英文)
+                _innum = selfElem.val().length;
+                if(_innum > num){
+                    selfElem.val(selfElem.val().substr(0,num));
+                }
+            }
+            inputElem.text(_innum);
+
+            var surnum = num - _innum;
+            if(surnum > 0){
+                surplusElem.text(surnum);
+                markElem.removeClass('mandatory');
+                inputElem.css({'color': '#00b5b1'});
+                surplusElem.css({'color': '#00b5b1'});
+            }
+            else if(surnum == 0){
+                surplusElem.text(0);
+                inputElem.css({'color': '#00b5b1'});
+                surplusElem.css({'color': 'red'});
+            }
+            else{
+                surplusElem.text(0);
+                inputElem.css({'color': 'red'});
+                surplusElem.css({'color': 'red'});
+            }
+        },delay);
+    }
+</script>
+</body>

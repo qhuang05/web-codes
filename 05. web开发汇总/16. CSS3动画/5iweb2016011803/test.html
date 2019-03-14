@@ -1,0 +1,127 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css3图片遮罩缩放</title>
+<link rel="stylesheet" href="../../../04.%20jQuery%20API/css/reset.css"/>
+<style>
+	body {  background: #1b1e24;  }
+	li {  margin-bottom: 30px;  }
+	.shape {
+		width: 300px;
+		height: 300px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.shape .overlay {
+		display:block;
+		width: 310px;
+		height: 310px;
+		position: absolute;
+		top:-5px;
+		left:-5px;
+		-webkit-transform: scale(1,1);
+		-webkit-transition-timing-function: ease-out;
+		-webkit-transition-duration: 0.6s;
+		-moz-transform: scale(1,1);
+		-moz-transition-timing-function: ease-out;
+		-moz-transition-duration: 0.6s;
+		transform: scale(1,1);
+		transition-timing-function: ease-out;
+		transition-duration: 0.6s;
+		z-index:500;
+		/* allow user to actually perform actions underneath this layer */
+		pointer-events:none;
+		background-repeat: no-repeat;
+		outline:0;
+	}
+
+	.shape .overlay.round {
+		background: url(images/round.png);
+	}
+
+	.shape .overlay.hexagon {
+		background: url(images/hexagon.png);
+	}
+
+	.shape:hover .overlay {
+		-webkit-transform: scale(1.07,1.07);
+		-webkit-transition-timing-function: ease-out;
+		-webkit-transition-duration: 0.3s;
+		-moz-transform: scale(1.07,1.07);
+		-moz-transition-timing-function: ease-out;
+		-moz-transition-duration: 0.3s;
+	}
+
+	.shape .bg, .shape .details {
+		position: absolute;
+		width: 300px;
+		height:300px;
+		display:table-cell;
+		line-height: 300px;
+		vertical-align:middle;
+		text-align:center;
+		top:0;
+		left:0;
+		opacity:0;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+
+	.shape .bg {
+		background: #4b5a78;
+	}
+
+	.shape:hover .bg {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+		filter: alpha(opacity=80);
+		-moz-opacity: 0.8;
+		-khtml-opacity: 0.8;
+		opacity: 0.8;
+		display:block;
+	}
+
+	.shape:hover .details {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+		z-index:450;
+		display:block;
+	}
+</style>
+</head>
+
+<body>
+<ul>
+	<li>
+		<div class="shape">
+			<a href="#" class="overlay round"></a>
+			<div class="details">
+				<a href="#">文本内容</a>
+			</div>
+			<div class="bg"></div>
+			<div class="base">
+				<img src="images/1.jpg" alt="" />
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="shape">
+			<a href="#" class="overlay hexagon"></a>
+			<div class="details">
+				<a href="#">文本内容</a>
+			</div>
+			<div class="bg"></div>
+			<div class="base">
+				<img src="images/2.jpg" alt="" />
+			</div>
+		</div>
+	</li>
+</ul>
+</body>
+</html>

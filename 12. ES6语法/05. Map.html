@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Map</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// set, get, delete
+		let m1 = new Map();
+		let key1 = {'name': 'sandy'};
+		m1.set(key1, 'hello world');
+		console.log(m1.get(key1));
+		// m1.delete(key1);
+
+		// 遍历方法forEach, for...of
+		let m2 = new Map([
+			[1, 'one'], [2, 'two'], [3, 'three']
+		]);
+		[...m2].forEach(function(value, key, map){
+			// console.log(value);
+			// console.log(key);
+			// console.log(map);
+		});
+		for(let [key,value] of [...m2]){
+			// console.log(key);
+			// console.log(value);
+		}
+
+		// 扩展运算符...的使用，数组的filter,map间接使用
+	</script>
+</body>
+</html>

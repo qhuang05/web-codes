@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>中间悬浮框</title>
+	<style>
+		#div1 { width: 100px; height: 200px; background: red; position: absolute; right: 0; bottom:0; }
+	</style>
+	<script>
+	var timer=null;
+	function startMove(iTarget){
+		var oDiv=document.getElementById("div1")
+		clearInterval(timer);
+		timer=setInterval(function(){
+			var speed=(iTarget-oDiv.offsetTop)/10;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(oDiv.offsetTop==iTarget){
+				clearInterval(timer);
+			}
+			else {
+				oDiv.style.top=oDiv.offsetTop+speed+'px';
+			}
+		},30);
+	}
+
+
+	window.onscroll=function(){
+		//alert(document.body.clientWidth||document.documentElement.clientWidth);
+		var oDiv=document.getElementById("div1");
+		var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+		//startMove((document.documentElement.clientHeight-oDiv.offsetHeight)/004.css3鼠标悬浮特效+scrollTop);		//会出现抖动，由于iTarget中有/004.css3鼠标悬浮特效,可能出现非整数的问题，使用parseInt()解决
+		startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop));
+
+	};
+	</script>	 	
+</head>
+
+<body>
+	<div style="height:2000px"></div>
+	<div id="div1"></div>
+</body>
+</html>

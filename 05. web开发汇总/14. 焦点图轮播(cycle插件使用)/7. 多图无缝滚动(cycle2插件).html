@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多图无缝滚动</title>
+    <link rel="stylesheet" href="../css/reset.css"/>
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <script src="../plugins/cycle2/jquery.cycle2.js"></script>
+    <script src="../plugins/cycle2/jquery.cycle2.carousel.js"></script>
+    <style>
+        .div1{ width: 600px; height: 200px; margin:0 auto; position: relative}
+        .cycle-slideshow{ width: 600px; height: 200px; position: absolute; z-index:0}
+        .switchIcons{width: 100%; height: 20px; position: absolute; bottom: 20px; text-align: center; z-index:99}
+        .switchIcons a{ width: 20px; height: 20px; display: inline-block; background: #fff; border-radius: 50%; cursor:pointer; margin:0 5px; text-decoration: none; color: deepskyblue}
+        .prevBtn{ position: absolute; left:0; top:80px; z-index: 99}
+        .nextBtn{ position: absolute; right:0; top:80px; z-index: 99}
+    </style>
+</head>
+
+<body>
+<div class="div1">
+    <!--加入carousel插件-->
+    <div id="wrapper" class="cycle-slideshow"
+         data-cycle-fx=carousel
+         data-cycle-timeout="1"
+         data-cycle-easing="linear"
+         data-cycle-speed=3000
+         data-cycle-carousel-visible=2
+         data-cycle-carousel-offset=100
+         data-cycle-throttle-speed=3000
+         data-allow-wrap=true
+         data-cycle-pause-on-hover="true"
+         data-cycle-prev="#prev"
+         data-cycle-next="#next"
+         data-cycle-pager="#pager"
+         data-cycle-pager-template="">
+        <img src="http://malsup.github.io/images/p1.jpg" width="300" height="200">
+        <img src="http://malsup.github.io/images/p2.jpg" width="300" height="200">
+        <img src="http://malsup.github.io/images/p3.jpg" width="300" height="200" >
+        <img src="http://malsup.github.io/images/p4.jpg" width="300" height="200">
+        <img src="../images/red.png" width="300" height="200">
+        <img src="../images/green.png" width="300" height="200">
+        <img src="../images/blue.png" width="300" height="200">
+        <img src="../images/black.png" width="300" height="200">
+    </div>
+
+    <button id="prev" class="prevBtn">上一张</button>
+    <button id="next" class="nextBtn">下一张</button>
+
+    <!--通过定义data-cycle-pager="#myPager" data-cycle-pager-template=""可以自定义页面索引导航，也可以插入图片的缩略图做导航-->
+    <div id="pager" class="switchIcons">
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#wrapper').on('cycle-before',function(event, opts, curr, next, fwdFlag){
+        console.log(opts);
+        console.log(curr);
+        console.log(event);
+        console.log(fwdFlag);
+//        $(curr).attr('height','300');
+//        $(next).attr('height','600');
+    });
+
+    $('#wrapper').on('cycle-after',function(event, opts, curr, next, fwdFlag){
+        console.log(opts);
+        console.log(curr);
+        console.log(event);
+        console.log(fwdFlag);
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery尺寸width,height,innerwidth,outerwidth</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#btn1").click(function(){
+				//$("#demo").html("Width:"+$("#demo").width());
+				//$("#demo").html("height:"+$("#demo").height());
+				//$("#demo").html("innerWidth:"+$("#demo").innerWidth());
+				//$("#demo").html("innerHeight:"+$("#demo").innerHeight());
+				//$("#demo").html("outerWidth:"+$("#demo").outerWidth());
+				//$("#demo").html("outerHeight:"+$("#demo").outerHeight());
+				//$("#demo").html("outerWidth:"+$("#demo").outerWidth(true));
+				//$("#demo").html("outerrHeight:"+$("#demo").outerHeight(true));	
+				//$("#demo").html("document.width="+$(document).width());
+				//$("#demo").html("window.width="+$(window).width());
+				//$("#demo").html("document.height="+$(document).height());
+				$("#demo").html("window.height="+$(window).height());								
+			});
+		});
+	</script>
+</head>
+
+<body style="margin:0; padding:0">
+	<div id="demo" style="background:#678; width:500px; height:500px; margin:5px; padding:10px; border:3px solid blue"></div>
+	<button type="button" id="btn1">jQuery尺寸</button>
+</body>
+</html>

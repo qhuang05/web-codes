@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件代理/事件委托</title>
+<script>
+//过多的事件处理器(例如:某个网页中有一个10列、100行的HTML表格，每个单元格都定义了一个点击事件)有可能导致内存泄露或者是性能下降。
+//如何解决?事件代理。JavaScript事件代理则是一种简单的技巧，把事件处理器添加到一个父级元素上，这样就避免了把事件处理器添加到多个子级元素上。
+//原理?使用js的两个特性--事件冒泡以及目标元素。
+//在父级上添加事件，通过event.target.*提取当前操作的子级元素。
+window.onload=function(){
+	var oDiv = document.getElementById('div1');
+	oDiv.onclick = function(ev){
+		var oEvent = ev||event;
+		console.log(ev.target.id);
+		console.log(this);
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="div1" style="width: 300px; height: 400px; background: #CCC">
+	<p id="p1">ppp111111</p>
+	<p id="p2">ppp222222</p>
+</div>
+</body>
+</html>

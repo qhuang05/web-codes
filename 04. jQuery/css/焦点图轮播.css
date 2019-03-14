@@ -1,0 +1,14 @@
+* { margin: 0; padding: 0; list-style: none; text-decoration: none; color: black}
+
+#demo { width: 520px; height:280px; position: relative; border:1px solid #ccc;}
+
+	#demo .ul1 { width: 520px; height: 280px; overflow: hidden; }
+	#demo .ul1 li{ position: absolute; left: 0; right: 0; display: none; }
+	#demo .ul1 li.show { display: block}
+	#demo .ul2 { width: 220px; height: 20px; position: absolute; left: 150px; bottom: 30px; z-index: 9999}
+	#demo .ul2 li { float: left; margin-left: 15px; margin-top:1px; text-align:center; background: url(../images/numberbg.png) no-repeat -17px 0px; width: 19px; height: 22px; }
+	#demo .ul2 li.selected { background-position: 0px 0px; }
+
+	#demo .lbtn { width: 60px; height: 40px; position: absolute; left: 10px; top: 110px; z-index: 9999; }
+	#demo .rbtn { width: 60px; height: 40px; position: absolute; right:10px; top:110px; z-index: 9999; }
+	#demo .lbtn img,#demo .rbtn img { padding-left:5px; padding-top: 4px; }

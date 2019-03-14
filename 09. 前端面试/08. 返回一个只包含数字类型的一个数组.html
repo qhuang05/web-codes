@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>返回一个只包含数字类型的一个数组</title>
+	<!-- 返回一个只包含数字类型的一个数组？例如：js123ldka78sdassdfd653 ->[123,78,653] -->
+</head>
+<body>
+<script>
+	var str = 'js123ldka78sdassdfd653';
+
+	function getNumber(str){
+		var arr = [];
+		var reg = /(\d+)/g;
+		str.replace(reg, function($0, $1){
+			arr.push($1);
+		});
+		return arr;
+	}
+	var result = getNumber(str);
+	alert(result);
+</script>
+</body>
+</html>

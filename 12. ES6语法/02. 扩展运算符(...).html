@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扩展运算符...</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 展开数组，展开对象
+	let a = [1,2,3], b = [4,5,6];
+	console.log([...a])		//[1,2,3]
+	console.log([...a, ...b]) //[1,2,3,4,5,6]
+
+	// 展开对象
+	let k = {a:1, b: 2}, v = {c:3, d:4}
+	console.log({...k});	//{a:1, b: 2}
+	console.log({...k, ...v, m:100, a: 200});	//{a: 200, b: 2, c: 3, d: 4, m: 100}
+
+
+	// 剩余
+	function test(type, ...rest){
+		console.log(type); //1
+		console.log(rest); //[2,3,4]
+	}
+	test(1,2,3,4);
+
+	// 将字符串转化为数组
+	[..."hello"]; 	//["h", "e", "l", "l", "o"]
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// 数组去重
+		let s1 = new Set([1,2,3,3,4]);
+		let a1 = Array.from(s1);
+		console.log(a1);
+
+		// 遍历方法forEach, for...of
+		s1.forEach(function(value){
+			// console.log(value);
+		});
+		for(let i of s1){
+			// console.log(i);
+		}
+
+		// 扩展运算符...的使用，数组的filter,map间接使用
+		let a2 = [...s1];
+		let a3 = a2.filter(function(value){
+			return value < 2;
+		});
+		let a4 = a2.map(function(value){
+			return value*2;
+		});
+		console.log(a2);
+		console.log(a3);
+		console.log(a4);
+	</script>
+</body>
+</html>

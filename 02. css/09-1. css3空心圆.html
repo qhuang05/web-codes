@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<title>css3空心圆</title>
+	<style>
+        .circleProgress_wrapper{
+            width: 180px;
+            height: 180px;
+            margin:0 auto;
+            position: relative;
+            background: gold;
+        }
+        .wrapper{
+            width: 90px;
+            height: 180px;
+            position: absolute;
+            top:0;
+            overflow: hidden;
+        }
+        .right{
+            right:0;
+        }
+        .left{
+            left:0;
+        }
+        .circleProgress {
+            width: 140px;
+            height: 140px;
+            border: 20px solid red;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            /*-webkit-transform: rotate(45deg);*/
+        }
+        .rightcircle {
+            border-top: 20px solid green;
+            border-right: 20px solid green;
+            border-bottom: 20px solid red;
+            border-left: 20px solid red;
+            right: 0;
+            -webkit-transform: rotate(300deg);
+            /*-webkit-animation: circleProgressLoad_right 5s linear infinite;*/
+        }
+        .leftcircle {
+            border-bottom: 20px solid red;
+            border-left: 20px solid red;
+            border-top: 20px solid green;
+            border-right: 20px solid green;
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            /*-webkit-animation: circleProgressLoad_left 5s linear infinite;*/
+        }
+        @-webkit-keyframes circleProgressLoad_right {
+            0% {
+                -webkit-transform: rotate(225deg);
+            }
+            50% {
+                -webkit-transform: rotate(405deg);
+            }
+            100% {
+                -webkit-transform: rotate(405deg);
+            }
+        }
+        @-webkit-keyframes circleProgressLoad_left{
+            0%{
+                -webkit-transform: rotate(45deg);
+            }
+            50%{
+                -webkit-transform: rotate(45deg);
+            }
+            100%{
+                -webkit-transform: rotate(225deg);
+            }
+        }
+	</style>
+</head>
+
+<body>
+    <div class="circleProgress_wrapper">
+        <div class="wrapper right">
+            <div class="circleProgress rightcircle"></div>
+        </div>
+        <div class="wrapper left">
+            <div class="circleProgress leftcircle"></div>
+        </div>
+    </div>
+</body>
+</html>

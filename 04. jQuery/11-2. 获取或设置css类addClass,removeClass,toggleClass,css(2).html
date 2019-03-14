@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8' />
+	<title>获取或设置css类addClass,removeClass,toggleClass,css_02</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<style>
+		p{ font-size: 20px; }
+		.toBig { font-size: 30px; }
+		.toSmall { font-size: 12px; }
+	</style>
+</head>
+<body>
+	<button type='button' id='toBig'>变大</button>
+	<button type='button' id='toSmall'>变小</button>
+	<button type='button' id='toNormal'>正常</button>
+	<p>这是一个关于jQuery的测试</p>
+	<script>
+		$(document).ready(function(){
+			$('#toBig').click(function(){
+				$('p').removeClass('toSmall');
+				$('p').addClass('toBig');
+			});
+			$('#toSmall').click(function(){
+				$('p').removeClass('toBig');
+				$('p').addClass('toSmall');
+			});
+			$('#toNormal').click(function(){
+				$('p').removeClass('toSmall');
+				$('p').removeClass('toBig');
+			});
+		});
+	</script>
+</body>
+</html>

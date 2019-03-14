@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>变量类型typeof</title>
+    <script>
+        var a = 12;
+        alert(typeof a);	//number
+
+        var a = 'abddfdfd';
+        alert(typeof a);	//string
+
+        var a = true;
+        alert(typeof a);	//boolean
+
+        var a = function () {
+            alert('abcdefg');
+        };
+        alert(typeof a);	//function
+
+        var a = document;
+        alert(typeof a);	//object
+
+        var b;
+        alert(typeof b);	//undefined
+    </script>
+</head>
+
+<body>
+</body>
+</html>

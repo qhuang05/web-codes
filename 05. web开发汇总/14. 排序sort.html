@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>sort排序</title>
+	<script src="plugins/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li data-id="1">11111<button class="up">向上</button><button class="down">向下</button></li>
+		<li data-id="2">22222<button class="up">向上</button><button class="down">向下</button></li>
+		<li data-id="3">33333<button class="up">向上</button><button class="down">向下</button></li>
+		<li data-id="4">44444<button class="up">向上</button><button class="down">向下</button></li>
+		<li data-id="5">55555<button class="up">向上</button><button class="down">向下</button></li>
+	</ul>
+	<button id="rank">排序</button>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.up').click(function(){
+				var selfObj = $(this).parent('li')
+				var lastObj = selfObj.prev();
+				lastObj.before(selfObj.clone(true));
+				selfObj.remove();
+			});
+			$('.down').click(function(){
+				var selfObj = $(this).parent('li');
+				var nextObj = selfObj.next();
+				nextObj.after(selfObj.clone(true));
+				selfObj.remove();
+			});
+
+			$("#rank").click(function(){
+				var elems = $("li");
+				elems.sort(function(l1, l2){
+					var id1 = Number($(l1).attr('data-id')),
+						id2 = Number($(l2).attr('data-id'));
+					return id1 - id2;
+				});
+				elems.detach().appendTo('ul');
+				//$('ul').empty().append(elems);
+			});
+		});
+	</script>
+</body>
+</html>

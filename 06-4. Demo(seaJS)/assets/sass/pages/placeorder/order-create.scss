@@ -1,0 +1,384 @@
+@charset "UTF-8";
+@import "../../common/sm.min";
+@import "../../common/common";
+@import "../../components/spinningwheel";
+@import "../../components/ordertemplate";
+@import "../../components/popup";
+
+#orderCreatePage {
+    .content-footer {
+        padding: toRem(90) 0 toRem(180);
+    }
+}
+.page.create-order-page, .page.address-page{
+    background: #fff;
+}
+.create-order-list{
+    margin-top: toRem(20);
+    border-top: 1px solid $colorBorder;
+    > li{
+        line-height: toRem(88);
+        border-bottom: 1px solid $colorBorder;
+        padding: 0 toRem(20);
+        &.time {
+            .item-input input{
+                color: $colorOrange;
+            }
+        }
+    }
+    .item-inner {
+        .item-title{
+            width:30%;
+            border-right: 1px solid $colorBorder;
+            font-size: .75rem;
+            float:left;
+        }
+        .item-input{
+            position: relative;
+            float:right;
+            width:70%;
+            height: toRem(88);
+            line-height: toRem(88);
+            padding: toRem(20) toRem(30);
+            font-size: .75rem;
+            >input {
+                display: block;
+                width: 100%;
+                height: toRem(48);
+                line-height: toRem(48);
+            }
+        }
+        .item-location {
+            @extend .item-input;
+            padding: 0 toRem(30);
+            @include singleline-ellipsis(70%);
+        }
+    }
+}
+.opt-button-group {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50%;
+    height: toRem(60);
+    border: 1px solid $colorGrayd1;
+    @include border-radius(3px);
+    input {
+        position: relative;
+        padding: toRem(10) 0;
+        height: toRem(60);
+        float: left;
+        width: 50%;
+        text-align: center;
+        background: #fff;
+
+    }
+    .opt-btn {
+        position: relative;
+        float: left;
+        width: 25%;
+        height: 100%;
+        background: #fafafa;
+        text-align: center;
+        .iconfont {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 1rem;
+            height: 1rem;
+            text-align: center;
+            line-height: 100%;
+        }
+
+    }
+    &:before, &:after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 100%;
+        background: $colorGrayd1;
+        z-index: 3;
+    }
+    &:before {
+        left: 25%;
+    }
+    &:after {
+        right: 25%;
+    }
+}
+.order-form-desc{
+    display:block;
+    margin-top: toRem(100);
+    text-align:center;
+    .reword{ color: $colorOrange}
+    .total{color:$colorBlue}
+    .notes{ color: $colorGray89; font-size:0.7rem}
+}
+.order-form-desc.for-orderpin{
+    @extend .order-form-desc;
+    margin-bottom:toRem(320);
+}
+.order-form-desc.for-orderbao{
+    @extend .order-form-desc;
+    margin-bottom:toRem(180);
+}
+.cars-type{
+    margin-top: toRem(42);
+    width:100%;
+    overflow: hidden;
+    font-size: 0.7rem;
+    .wrap{
+        padding: 0 toRem(46);
+        overflow:scroll;
+        .scroll-wrap {
+            overflow: scroll;
+            ul{
+                width: 100%;
+                overflow: auto;
+                text-align: center;
+                @include flex-layout(row, space-between, center);
+                li.active {
+                    color: $colorBlue
+                }
+                img{
+                    width: toRem(120);
+                    height: toRem(60);
+                    margin-bottom:-0.4rem
+                }
+            }
+        }
+    }
+}
+
+.trip-type{
+    margin-top: toRem(60);
+    .wrap ul{
+        width: toRem(460);
+        height: toRem(67);
+        margin:0 auto;
+        background: $colorBorder;
+        text-align: center;
+        vertical-align: middle;
+        @include border-radius(2.2rem);
+        @include flex-layout(row, space-around, center);
+        li{
+            padding: toRem(2) toRem(30);
+        }
+        li.active{
+            background: #fff;
+            color: $colorBlue;
+            @include border-radius(2.2rem);
+        }
+    }
+}
+
+/*图标*/
+.icon-bbx {
+    display: inline-block;
+    vertical-align:middle;
+}
+.order-time .icon-bbx, .create-order-list .telephone .icon-bbx{
+    color: $colorGrayd1;
+}
+.start-address .icon-bbx {
+    color: $colorBlue;
+}
+.end-address .icon-bbx {
+    color: $colorOrange;
+}
+.invalid {
+    span {
+        color: $colorGray99;
+    }
+}
+
+/*地址选择*/
+.city-select {
+    position: absolute;
+    top: 0;
+    left: toRem(15);
+    height: 2.2rem;
+    line-height: 2.2rem;
+    .city-select-hook {
+        display: none;
+        .city-name {
+            display: block;
+            @include singleline-ellipsis(90%);
+        }
+        .iconfont {
+            position: absolute;
+            right: -2px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            vertical-align: middle;
+        }
+    }
+    .city-input {
+        display: block;
+        width: 5rem;
+        height: 2.2rem;
+    }
+    .city-select-hook {
+        width: 3.5rem;
+    }
+}
+.address-select {
+    position: absolute;
+    left: 6rem;
+    top: 0;
+    bottom: 0;
+    right: 2.5rem;
+    padding: .5rem;
+    transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    &:before {
+        position: absolute;
+        content: "";
+        top: .5rem;
+        bottom: .5rem;
+        left: 0;
+        height: toRem(20);
+        width: 1px;
+        background: $colorBorder;
+        margin: auto;
+    }
+    .address-input {
+        display: block;
+        width: 100%;
+        line-height: 1.2rem;
+    }
+}
+.already-selected {
+    .city-select {
+        .city-select-hook {
+            display: block;
+        }
+        .city-input {
+            display: none;
+        }
+    }
+    .address-select {
+        left: 4.5rem;
+    }
+}
+.city-item {
+    display: block;
+    padding: 0 toRem(20);
+    height: 2rem;
+    line-height: 2rem;
+    border-bottom: 1px solid $colorBorder;
+}
+.city-item:active {
+    background: $colorBorder;
+}
+.current-hook {
+    @extend .city-item;
+}
+.open-city {
+    dt {
+        background: $colorBorder;
+        font-size: .6rem;
+        line-height: 1.2rem;
+        padding: 0 toRem(20);
+    }
+    dd {
+        ul {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: .7rem;
+            flex-wrap: wrap;
+            background: $colorBorder;
+            &:after {
+                content: '';
+                display: block;
+                width: 31%;
+            }
+            &:before {
+                position: absolute;
+                content: "";
+                top: -.45rem;
+                left: 1rem;
+                width: 0.81rem;
+                height: 0.42rem;
+                background: url('../../../images/city_tips.png') no-repeat;
+                background-size: contain;
+            }
+            li {
+                margin: .3rem 0;
+                width: 31%;
+                text-align: center;
+                line-height: 1.6rem;
+                font-size: .7rem;
+                background:#ffffff;
+                border: 1px solid #bbbbbb;
+                border-radius: .2rem;
+                &.on {
+                    color: #ff4343;
+                    border: 1px solid $colorRed;
+                }
+            }
+        }
+    }
+}
+#history_list {
+    dd ul {
+        background: #fff;
+        &:before {
+            display: none;
+        }
+    }
+}
+.pos-wrapper-hook {
+    ul {
+        padding: toRem(0 0 0 10);
+        li {
+            dl {
+                padding: toRem(8 5 8 0);
+                border-bottom: 1px solid $colorBorder;
+                dt {
+                    float: left;
+                    margin-top: -.3rem;
+                    color: #bbb;
+                    overflow: hidden;
+                }
+                dd {
+                    padding-left: 1.3rem;
+                    p {
+                        font-size: .6rem;
+                        color: #505050;
+                    }
+                    h3 {
+                        font-size: .7rem;
+                        position: relative;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.order-status {
+    padding: toRem(88) 0; background: $colorBlue;
+    text-align: center;
+    dt {
+        font-size: 1.4rem; color: #fff;
+        .iconfont {
+            margin-right: .3rem;
+            font-size: 1.2rem;
+        }
+    }
+    dd {
+        font-size:  .7rem;
+        color: $colorGray89;
+    }
+}

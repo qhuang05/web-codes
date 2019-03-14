@@ -1,0 +1,16 @@
+@charset "UTF-8";
+@import "../../common/sm.min";
+@import "../../components/ordertemplate";
+@import "../../components/popup";
+
+.driver-info{
+    @include flex-layout(row, center, center);
+    padding: toRem(68) 0;
+    img{ width: toRem(116); height: toRem(116); margin-right: 0.5rem}
+}
+.order-status{
+    color: $colorBlue;
+    font-size: 1.4em;
+    text-align: center;
+    padding: 1rem 0;
+}

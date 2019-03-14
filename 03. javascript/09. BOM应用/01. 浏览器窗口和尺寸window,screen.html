@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>浏览器窗口和尺寸window,screen</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            //浏览器的视口，不包括工具栏和滚动条,兼容所有浏览器
+            var w = window.innerWidth || window.body.clientWidth || window.documentElement.clientWidth;
+            var h = window.innerHeight || window.body.clientWidth || window.documentElement.clientWidth;
+            var oWin = document.getElementById("winSize");
+            oWin.innerHTML = "浏览器的内部窗口宽度：" + w + ",高度：" + h;
+
+            //屏幕的可见宽度=屏幕分辨率的宽度, 可见高度=屏幕分辨率的高度-任务栏高度, 所以它的值不会因为浏览器窗口的缩放而改变
+            //window.screen.* 可以直接写scren.*, window下的属性都可以这样省略
+            var oScreen = document.getElementById("screenSize");
+            oScreen.innerHTML = "屏幕可见宽度：" + window.screen.availWidth + ",屏幕可见高度：" + screen.availHeight;
+        };
+    </script>
+</head>
+
+<body>
+    <div id="winSize"></div>
+    <div id="screenSize"></div>
+</body>
+</html>

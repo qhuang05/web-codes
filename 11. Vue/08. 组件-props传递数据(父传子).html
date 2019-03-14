@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue组件-props传递数据</title>
+</head>
+<body>
+<div id="app1">
+    <child-1></child-1>
+    <child-2></child-2>
+</div>
+
+<div id="app2">
+    <child t-msg="text1"></child>           <!-- 绑定静态数据 -->
+    <child v-bind:t-msg="text1"></child>    <!-- 结合v-bind绑定动态数据 -->
+    <child v-bind:t-msg="1+2"></child>      <!-- 父组件没有对应的值时,1+2是看成是js表达式 -->
+</div>
+
+<div id="app3">
+    <input type="text" v-model="text1" />
+    <child v-bind:text2="text1"></child>
+    <!--<child :text2.sync="text1"></child>-->
+</div>
+<script src="js/vue.js"></script>
+<script>
+    //组件之间的作用域是孤立的
+    var app1 = new Vue({
+        el: '#app1',
+        components: {
+            'child-1': {
+                template: '<button>{{ btn }}</button>',
+                data: function(){
+                    return {btn: '123'};
+                }
+            },
+            'child-2': {
+                template: '<button>{{ btn }}</button>',
+                data: function(){
+                    return {btn: '456'};
+                }
+            }
+        }
+    });
+
+    //props绑定数据
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            text1: 'hello app2'
+        },
+        components: {
+            'child':{
+                props: ['tMsg'],
+                template: '<button>{{ tMsg }}</button>'
+            }
+        }
+    });
+
+    //props数据绑定-单向传递
+    var app3 = new Vue({
+        el: '#app3',
+        data: {
+            text1: 'hello app3'
+        },
+        components:{
+            'child': {
+                props: ['text2'],
+                template: '<input type="text" v-model="text2" />'
+            }
+        }
+    });
+</script>
+</body>
+</html>

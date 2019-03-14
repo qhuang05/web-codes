@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>transform-3D变换</title>
+	<link rel="stylesheet" href="../css/reset.css"/>
+	<style>
+		.box_base{ width:200px; height: 100px; background: greenyellow; border:3px solid gold;}
+		.box_translate3d{
+			width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+			transform: translate3d(30px,30px,200px); }
+		.box_scale3d{
+			width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+			transform: scale3d(0.8,0.8,0.8);}
+		.box_rotate3d{
+			width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+			transform: rotate3d(10deg,20deg,30deg); }
+		.box_perspective{
+			width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+			transform: perspective(30deg,10deg,10deg); }
+		.box_matrix3d{
+			width:200px; height: 100px; background: greenyellow; border:3px solid gold;
+			transform: matrix3d(1,0,0,1,30,30); }
+	</style>
+</head>
+
+<body>
+	参考网址： <a href="http://www.w3cplus.com/css3/css3-3d-transform.html">http://www.w3cplus.com/css3/css3-3d-transform.html</a>
+	<div class="box_base">原图</div>
+	<div class="box_translate3d">translate3d(30px,30px,200px), 平移</div>
+	<div class="box_scale3d">scale3d(0.8,0.8,0.8), 3d缩放</div>
+	<div class="box_rotate3d">rotate3d(10deg)，3d旋转</div>
+	<div class="box_perspective">perspective(30deg,10deg)，3D透视视图</div>
+	<div class="box_matrix3d">matrix3d(1,0,0,1,30,30),矩阵,16个参数,以上所有transform的3D变体都可以由matrix3d()来得到，是所有transform(3D)相关函数的总函数</div>
+</body>
+</html>

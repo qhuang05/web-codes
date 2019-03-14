@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+html,body{font-family:'Microsoft YaHei',Arial,'Helvetica Neue','SimSun'; font-size: 18px; *cursor: default; overflow: hidden;}
+header{width:100%; height: 50px; background: #000; position:fixed; top:0; left:0; z-index:100;}
+header .wrap{width:1200px; margin:0 auto; position:relative;}
+header img{width:100px; height: 50px; background:red; }
+header .menu{position:absolute; top:0; right:0;}
+header .menu li{display: inline-block; height:50px; line-height:50px; float:left; padding:0 20px; margin-left:20px;}
+header .menu li.active a{ color:red;}
+header .menu a{color:#fff;}
+
+#navBar{
+    position:absolute; top:50%; right:30px; margin-top:-100px; z-index:100;
+    display:flex; display:-webkit-flex; flex-direction: column; align-items: center;
+}
+#navBar li{background:#ccc; color:#000; width:40px; height: 40px; line-height: 40px; border-radius: 50%; text-align: center; margin:10px 0;}
+#navBar li.active{ background: red; color:#fff;}
+
+#pageContain { width:100%; height:100%; overflow: hidden;}
+.page { width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0; display: none;}
+.page.current{ display:block; z-index:1}
+.slide { display: block; z-index: 2;}
+.swipe { display: block; z-index: 3; transition-duration: 0ms !important; -webkit-transition-duration: 0ms !important;}
+.contain { width: 100%; height: 100%; position: relative; display: none; box-sizing:border-box;}
+.current .contain, .slide .contain { display: block;}
+.page1 { background:indianred;}
+.page2 { background:lightgreen}
+.page3 { background:dodgerblue}
+
+/* 第1屏 */
+.slideBox{ width:100%; height:100%; overflow:hidden; position:relative; border:1px solid #ddd;  }
+.slideBox .hd{ width:100%; height:6px; position:absolute;bottom:100px; z-index:10}
+.slideBox .hd ul{display:flex; display:-webkit-flex;flex-direction: row; justify-content: center; align-items: center;}
+.slideBox .hd ul li{ display:inline-block; width:130px; height: 6px; background:#fff; margin:0 10px; cursor:pointer;}
+.slideBox .hd ul li.on{ background: red;}
+.slideBox .bd{ position:relative; width:100%; height: 100%; padding-top:50px; box-sizing:border-box}
+.slideBox .bd ul{width:100%; height:100%}
+.slideBox .bd li{width:100%; height:100%; color: #fff; font-size:30px; position:relative;}
+.slideBox .bd li img{width:100%; height:100%;}
+.slideBox .bd li.play-1 section{
+    position:absolute; top:25%; left:45%; height: 300px;
+    display: flex; display: -webkit-flex; flex-direction: column; justify-content: space-around; align-items: stretch;
+}
+.slideBox .bd li.play-2 section{
+    position:absolute; top:33%; left:40%;
+    display: flex; display: -webkit-flex; flex-direction: row; justify-content: space-around; align-items: center;
+}
+.slideBox .bd li.play-2 p{margin:0 50px;}
+.slideBox .bd li.play-3 section{
+    position: absolute; top:33%; left:40%; font-size: 30px; color:#fff;
+}
+.slideBox .prev,
+.slideBox .next{
+    position:absolute; left:10%; top:50%; margin-top:-25px; display:block; width:32px; height:40px;
+    background:url(../images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;
+}
+.slideBox .next{ left:auto; right:10%; background-position:8px 5px;}
+.slideBox .prev:hover,
+.slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+.slideBox .prevStop{ display:none;}
+.slideBox .nextStop{ display:none;}
+
+/* 第2屏 */
+.page2 h3,.page3 h3{ padding-top:50px; font-size: 36px; text-align: center}
+.page2 p{ margin:20px 0; font-size: 30px;}

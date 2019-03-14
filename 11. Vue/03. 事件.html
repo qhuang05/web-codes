@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue事件</title>
+    <style>
+        p{
+            background: #ccc;
+            padding:20px;
+        }
+        p.active{
+            background: red
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p :class="{active: isActive}" v-on:click.self="show1()">
+        <button @click.stop="show2()">click me!</button>
+        <input type="text" @keyup.a="show3('a')" @keyup.b="show3('b')" />
+    </p>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+    Vue.config.keyCodes = {
+        a: 65,
+        b: 66
+    };
+    let app1 = new Vue({
+        el: '#app',
+        data: {
+            isActive: true
+        },
+        methods: {
+            show1(){
+                alert('parent is clicked!');
+                this.isActive = !this.isActive;
+            },
+            show2(){
+                alert('button is clicked!');
+            },
+            show3(text){
+                alert(text + ' is input');
+            }
+        }
+    });
+</script>
+</body>
+</html>

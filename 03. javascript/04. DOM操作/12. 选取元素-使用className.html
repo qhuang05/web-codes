@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>选取元素-使用className</title>
+
+	<script>
+		function getByClass(oParent,sClass){
+			var oResult=[];
+			var oEle=oParent.getElementsByTagName("*");
+			for(var i=0; i<oEle.length; i++) {
+				if(oEle[i].className==sClass) {
+					oResult.push(oEle[i]);
+				}
+			}
+			return oResult;
+		}
+		window.onload=function(){
+			//var oUL=document.getElementById("demo");
+			//var oLi=oUL.getElementsByTagName("li");
+			//for(var i=0; i<oLi.length; i++) {
+			//	if(oLi[i].className=="box") {
+			//		oLi[i].style.background="red";
+			//	}
+			//}
+
+			var oUL=document.getElementById("demo");
+			var oBox=getByClass(oUL,"box");
+			for(var i=0; i<oBox.length; i++) {
+				oBox[i].style.background="blue";
+			}
+		};
+	</script>
+</head>
+
+<body>
+	<ul id="demo">
+		<li class="box">111</li>
+		<li>222</li>
+		<li>333</li>
+		<li class="box box2">444</li>
+		<li>555</li>
+		<li>666</li>
+	</ul>
+</body>
+</html>

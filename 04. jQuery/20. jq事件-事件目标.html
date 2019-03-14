@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>jquery事件-事件目标</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#div1').click(function(event){
+        console.log(event);
+        console.log(event.bubbles);
+        console.log(event.target);
+        console.log(this);      //始终指向div1
+    });
+});
+</script>
+</head>
+
+<body>
+    <div id='div1' style="width: 200px; height: 200px; background: red">
+        Div1
+        <p>1234567890-</p>
+        <p>1234567890------</p>
+    </div>
+</body>
+</html>

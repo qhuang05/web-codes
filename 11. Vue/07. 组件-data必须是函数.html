@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>    
+    <title>vue组件-data</title>
+</head>
+<body>
+<div id="app1">
+    <ul>
+        <li is="t1-component"></li>
+        <li is="t1-component"></li>
+        <li is="t1-component"></li>
+    </ul>
+</div>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('t1-component',{
+        template: '<button v-on:click="++i">{{ i }}</button>',
+        data:function(){
+            return {i: 1}
+        }
+    });
+    var app1 = new Vue({
+        el: '#app1'
+    });
+</script>
+</body>
+</html>

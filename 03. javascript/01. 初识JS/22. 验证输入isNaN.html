@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>isNaN验证输入</title>
+</head>
+
+<body>
+<p>请输入一个数字并提交:</p>
+<form action="#" method="get" target="_blank">
+    <input id="num" type="text"/>
+    <button type="submit" onClick="verify()">提交</button>
+    <button type="reset">取消</button>
+</form>
+
+<script>
+    function verify() {
+        var x = document.getElementById("num").value;
+        if (x == "" || isNaN(x)) {
+            alert("Not a number");
+        }
+    }
+</script>
+<!--form表单中的reset可以实现清除表单内输入的内容，如果reset不放在form表单中，是无法清除input中的内容的。想要只清除非表单中的内容，需要用javascript实现，参考方法：http://blog.csdn.net/cuixiping/article/details/37526871
+-->
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Json方式的面向对象(命令空间)</title>
+    <script>
+        var json = {
+            name: 'blue',
+            qq: '723384761',
+            showName: function () {
+                alert('我的名字是：' + this.name);
+            },
+            showQQ: function () {
+                alert('我的QQ号是：' + this.qq);
+            }
+        }
+        alert(json.name);
+        json.showName();
+
+        //这种方式写法简单明了，适用于整个程序中只有单个对象的情况(单体)
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

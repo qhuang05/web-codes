@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>拖拽的问题-在IE8以下文字会被选中</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("div1");
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+                var disY = oEvent.clientY - oDiv.offsetTop;
+                //oDiv.onmousemove=function(ev){		//加在div上移动太快鼠标会脱离div,解决方法是加在document上
+                document.onmousemove = function (ev) {
+                    //oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+                    var oEvent = ev || event;
+                    oDiv.style.left = oEvent.clientX - disX + 'px';
+                    ;
+                    oDiv.style.top = oEvent.clientY - disY + 'px';
+                };
+                //oDiv.onmouseup=function(){
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+                return false;   //阻止默认事件,修复FF,chrome拖拽问题，IE8以下文字会被选中
+            };
+        };
+    </script>
+</head>
+
+<body>李大霄是非得失嚅柘城要顺风使舵大跃进柘城左右夺多佛尔惹我热哦受制于人
+<div id="div1">fdsfjwierufusodfsfdsf</div>
+dfdfsdfddddddddddddddddddddd
+</body>
+</html>

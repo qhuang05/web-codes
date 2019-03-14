@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>event对象-获取鼠标位置</title>
+    <script>
+        window.onload = function () {
+            document.onclick = function (ev) {
+                //alert(document.childNodes[0].tagName);		//IE下的结果是!
+
+                //For IE:
+                //alert(event.clientX+","+event.clientY);
+                //For FF：function下加一个参数ev:
+                //alert(ev.clientX+","+ev.clientY);
+
+                //兼容方法：
+                var oEvent = ev || event;
+                alert(oEvent.clientX + "," + oEvent.clientY);
+            };
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

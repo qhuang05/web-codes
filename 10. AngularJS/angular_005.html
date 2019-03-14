@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 003</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="notesApp">
+    <div ng-controller="notesCtl as ctl">
+        <h1>{{ ctl.message}} AngularJS</h1>
+        <button ng-click="ctl.changeMsg()">Change</button>
+        <ul>
+           <li ng-repeat="item in ctl.langList">
+               <span>{{ item.id }}</span>
+               <span>{{ item.text }}</span>
+           </li>
+        </ul>
+        <ul>
+            <li ng-repeat="(key,value) in ctl.personList">
+                <span>{{ key }}</span>
+                <span>{{ value.age }}</span>
+            </li>
+        </ul>
+    </div>
+    <script>
+        angular.module('notesApp', []).controller('notesCtl', [function(){
+            var self = this;
+            self.message = 'Hello';
+            self.changeMsg = function(){
+                self.message = 'Goodbye';
+            };
+            self.langList = [
+                {id: 1, text: 'PhP'},
+                {id: 2, text: 'Java'},
+                {id: 3, text: 'Python'},
+                {id: 3, text: 'C语言'}
+            ];
+            self.personList = {
+                '张三': {
+                    id: 1,
+                    age: 21
+                },
+                '李四': {
+                    id: 2,
+                    age: 22
+                },
+                '王五': {
+                    id: 3,
+                    age: 23
+                }
+            }
+        }]);
+    </script>
+</body>
+</html>

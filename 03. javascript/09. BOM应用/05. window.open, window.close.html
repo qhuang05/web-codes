@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>open与close</title>
+    <script>
+//      window.close()只能关闭由js打开(window.open())的窗口, about:blank
+        window.onload = function () {
+            var oTxt = document.getElementById('txt');
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                //window.open('https://wwww.baidu.com/');
+                var oNewWin = window.open("about:blank", "_blank");
+                oNewWin.document.write(oTxt.value);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <textarea id='txt' rows='20' cols='40'>
+		<input type="button" value="关闭窗口" onclick="window.close()"/>
+	</textarea><br/>
+<input type="button" value="运行代码" id='btn'/>
+</body>
+</html>

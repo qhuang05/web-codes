@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF在线预览</title>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <script src="plugins/PDFObject/pdfobject.js"></script>
+    <style>
+        #pdfContainer{
+            width: 90%;
+            height: 90%;
+            position: fixed;
+            top:50%;
+            left:50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        #pdfContainer button{
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <button id="prevBtn">预览</button>
+    <div id="pdfContainer"></div>
+    <p>当您看到这行文字说明您并没有安装Adobe Reader或者PDF浏览器支持插件 <a href="plugins/PDFObject/sample.pdf">请将PDF文件下载到本地阅读</a></p>  
+    <script type="text/javascript">
+        $(function(){
+            $('#prevBtn').on('click', function(){
+                $('#pdfContainer').show();
+                var myPDF = new PDFObject({ url: "plugins/PDFObject/sample.pdf" }).embed('pdfContainer');
+            });
+        });
+    </script>
+</body>
+</html>

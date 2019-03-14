@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userAgent判断终端与浏览器类型</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        #box{ color:red;}
+    </style>
+</head>
+
+<body>
+<div>
+    <a href="http://www.cnblogs.com/leejersey/p/4704837.html">判断浏览器 》参考网址</a><br/>
+    您所用的终端浏览器信息: <span id="box"></span>
+</div>
+<script>
+    var browser = {
+        versions: function () {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return {
+                //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1,                              //IE内核
+                presto: u.indexOf('Presto') > -1,                                //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1,                           //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,      //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/),                      //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),                 //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,   //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1,                                //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1,                                    //是否iPad
+                webApp: u.indexOf('Safari') == -1,                               //是否web应该程序，没有头部与底部
+                weixin: !!u.match(/MicroMessenger/i),                            //在微信中打开
+                weibo: !!u.match(/WeiBo/i),                                      //在新浪微博客户端打开
+                qq: !!u.match(/QQ/i)                                             //在QQ空间打开
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+
+    $(document).ready(function(){
+        if(browser.versions.mobile) {  //判断是否是移动设备打开
+            if(browser.versions.weixin) {
+                //在微信中打开
+            }
+            if(browser.versions.weibo) {
+                //在新浪微博客户端打开
+            }
+            if(browser.versions.qq) {
+                //在QQ空间打开
+            }
+            if(browser.versions.ios) {
+                //是否在IOS浏览器打开
+            }
+            if(browser.versions.android){
+                //是否在安卓浏览器打开
+            }
+        }
+        else {
+            //否则就是PC浏览器打开
+        }
+    });
+
+    //App下载判断
+//    (function(){
+//        if(browser.versions.weixin){
+//            alert('在微信端打开');
+//            return false;
+//        }
+//        else{
+//            if(browser.versions.android){
+//                alert('在android打开');
+//                return false;
+//            }
+//            else if(browser.versions.ios){
+//                alert('在ios打开');
+//                return false;
+//            }
+//        }
+//    })(jQuery);
+</script>
+</body>
+</html>

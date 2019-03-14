@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>文档碎片createDocumentFragment</title>
+	<script>
+		window.onload=function(){
+			var oUL=document.getElementById("demo");
+			var oFrag=document.createDocumentFragment();
+			for(var i=0; i<1000; i++) {
+				var oLi=document.createElement("li");
+				oFrag.appendChild(oLi);
+			}
+			oUL.appendChild(oFrag);
+		};
+	</script>
+</head>
+
+<body>
+	<ul id="demo">
+	</ul>
+</body>
+</html>

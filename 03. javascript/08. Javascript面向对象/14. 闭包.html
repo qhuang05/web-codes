@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>闭包</title>
+</head>
+<body></body>
+<script>
+	// 闭包的2种应用：函数作为返回值，函数作为参数传递。
+	function fn(){
+		var max = 10;
+		return function bar(x){
+			if(x>max){
+				console.log(x);
+			}
+		}
+	}
+	var f1 = fn();
+	f1(15); //15
+</script>
+</html>

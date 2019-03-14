@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>浮动兼容问题</title>  
+    <style>
+        .box1{clear:both;}
+        .box1 .left{background: red; float: left;}
+        .box1 .right{background: blue; float: right;}
+        
+        .box2{clear:both;width:500px;}
+        .box2 .left{background:red; float: left;width:200px;}
+        .box2 .right{background: blue; margin-left: 200px; }
+
+        .box3{clear:both; width:500px;background: red}
+        .box3 .left{float:left; width:100px;}
+        .box3 .right{overflow:hidden;}
+    </style>  
+</head>
+<body>
+    <!-- 1、元素浮动之后，能设置宽度的话就给元素加宽度，如果宽度是内容撑开的，就给它里边的块元素加上浮动。 -->
+    <div class="box1">
+       <div class="left">
+           <div>left-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-leftleft-left</div>
+       </div>
+       <div class="right">
+           <div>right-right</div>
+       </div>
+    </div>
+
+    <!-- 2、第一块元素浮动，第二块元素不浮动加margin值等于第一块元素，在IE6下会有间隙问题。(解决方法，同一层级的块元素都使用浮动) -->
+    <div class="box2">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+
+    <div class="box3">
+      <div class="left">leftleftleft</div>
+      <div class="right">rightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightright</div>
+    </div>
+</body>
+</html>

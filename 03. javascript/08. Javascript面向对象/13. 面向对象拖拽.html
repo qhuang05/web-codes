@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>面向对象拖拽</title>
+    <style>
+        #demo {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+        }
+
+        #demo2 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            new Drag('demo');
+            new LimitDrag('demo2');
+        };
+
+        function Drag(id) {
+            var _this = this;
+            this.disX = 0;
+            this.disY = 0;
+            this.oDiv = document.getElementById(id);
+            this.oDiv.onmousedown = function (ev) {
+                _this.fnDown(ev);
+                return false;
+            };
+        }
+        ;
+
+        Drag.prototype.fnDown = function (ev) {
+            var _this = this;
+            var oEvent = ev || event;
+            this.disX = oEvent.clientX - this.oDiv.offsetLeft;
+            this.disY = oEvent.clientY - this.oDiv.offsetTop;
+            document.onmousemove = function (ev) {
+                _this.fnMove(ev);
+            };
+            document.onmouseup = function () {
+                _this.fnUp();
+            };
+        }
+
+        Drag.prototype.fnMove = function (ev) {
+            var oEvent = ev || event;
+            this.oDiv.style.left = oEvent.clientX - this.disX + 'px';
+            this.oDiv.style.top = oEvent.clientY - this.disY + 'px';
+        }
+
+        Drag.prototype.fnUp = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+
+        //限制范围拖拽，LimitDrag
+        function LimitDrag(id) {
+            Drag.call(this, id);	//继承Drag的属性
+        }
+        for (var i in Drag.prototype) {
+            LimitDrag.prototype[i] = Drag.prototype[i];
+        }
+        LimitDrag.prototype.fnMove = function (ev) {
+            var oEvent = ev || event;
+            var x = oEvent.clientX - this.disX;
+            var y = oEvent.clientY - this.disY;
+            if (x < 0) {
+                x = 0;
+            }
+            else if (x > document.documentElement.clientWidth - this.oDiv.offsetWidth) {
+                x = document.documentElement.clientWidth - this.oDiv.offsetWidth;
+            }
+            if (y < 0) {
+                y = 0;
+            }
+            else if (y > document.documentElement.clientHeight - this.oDiv.offsetHeight) {
+                y = document.documentElement.clientHeight - this.oDiv.offsetHeight;
+            }
+            this.oDiv.style.left = x + 'px';
+            this.oDiv.style.top = y + 'px';
+        };
+    </script>
+</head>
+
+<body>
+<div id='demo'>父类</div>
+<div id='demo2'>子类</div>
+</body>
+</html>
+
+<!--
+//原来的方法：
+window.onload=function(){
+	var oDiv=document.getElementById('demo');
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev||event;
+		disX=oEvent.clientX-oDiv.offsetLeft;
+		disY=oEvent.clientY-oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var oEvent=ev||event;
+			oDiv.style.left=oEvent.clientX-disX+'px';
+			oDiv.style.top=oEvent.clientY-disY+'px';
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		};
+	}
+};
+-->

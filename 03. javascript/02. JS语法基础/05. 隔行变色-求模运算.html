@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>隔行变色-求模运算</title>
+    <script>
+        window.onload = function () {
+            var oUL = document.getElementById('items');
+            var oLi = oUL.getElementsByTagName('li');
+            for (i = 0; i < oLi.length; i++) {
+                if (i % 2 == 0) {
+                    //0,004.css3鼠标悬浮特效,4,6,8...
+                    oLi[i].style.background = "#CCC";
+                }
+                else {
+                    //1,3,5,7,9...
+                    oLi[i].style.backgound = '';
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <ul id="items">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

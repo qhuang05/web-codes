@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步函数async, await</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function doPromise(time){
+			return new Promise((resolve, reject)=>{
+				setTimeout(()=>{
+					time<=5000 ? resolve(time) : reject(time);					
+				}, time);
+			});
+		}
+
+		// 1、使用then
+		function showResult(){
+			var res1 = doPromise(3000).then((res)=>{
+				console.log(res);
+			}, (res)=>{
+				console.log(res);
+			});
+			var res2 = doPromise(1000).then((res)=>{
+				console.log(res);
+			});
+		}
+		// showResult();
+
+		// 2、使用异步函数
+		async function showResult2(){
+			var res1 = await doPromise(3000);
+			console.log(res1);
+			var res2 = await doPromise(1000);
+			console.log(res2);
+		}
+		showResult2();
+	</script>
+</body>
+</html>

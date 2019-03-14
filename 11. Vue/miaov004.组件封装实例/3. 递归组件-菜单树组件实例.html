@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单树组件实例-递归组件</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="menu.css">
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<!-- 	<ul>
+			<li>
+				<h3>1楼</h3>
+				<ul>
+					<li>
+						<h3>1楼--01</h3>
+						<ul>
+							<li>1楼--01--01</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<h3>2楼</h3>
+			</li>
+		</ul> -->
+		<menu-tree :list="menuList"></menu-tree>
+	</div>
+	<script type="text/javascript">
+		Vue.component('menu-tree', {
+			props:{
+				list:{
+					type: Array,
+					default:[]
+				},
+				incrementCount:{
+					type: Number,
+					default:0
+				}
+			},
+			computed: {
+				count(){
+					var res = this.incrementCount;
+					return ++res;
+				},
+				stylePadding(){
+					return { 
+						'padding-left': this.count * 16 + 'px'
+					}
+				}
+			},
+			template:
+				`<ul>
+					<li v-for="item in list" :style="stylePadding">
+						<h3>{{item.title}}</h3>
+						<ul v-if="item.children">
+							<menu-tree :list="item.children" :increment-count="count"></menu-tree>
+						</ul>
+					</li>
+				</ul>`
+		});
+		var menuList = [
+			{
+				title: '1楼',
+				children:[
+					{
+						title: '1楼--01',
+						children:[
+							{title: '1楼--01--01'}
+						]
+					},{
+						title: '1楼--02'
+					}
+				]
+			},
+			{
+				title: '2楼'
+			}
+		];
+		let app = new Vue({
+			el: '#app',
+			data:{
+				menuList: menuList
+			}
+		});
+	</script>
+</body>
+</html>

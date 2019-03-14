@@ -1,0 +1,245 @@
+@charset "UTF-8";
+body, div, dl, dt, dd, ul, ol, li, hgroup, h1, h2, h3, h4, h5, h6, p, form, fieldset, legend, input, textarea, table, thead, tbody, tfoot, tr, th, td, pre, code, blockquote, header, footer, nav, section, article, aside, title, figure, figcaption, datalist, details, summary, dialog, address {
+  margin: 0;
+  padding: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset, img {
+  border: 0; }
+
+legend {
+  color: #000; }
+
+ol, ul {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal; }
+
+th, address, cite, code, dfn, var, em, strong {
+  font-style: normal;
+  font-weight: normal; }
+
+input[type="text"], input[type="button"], input[type="submit"], input[type="reset"], button, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  *font-size: 100%;
+  font-weight: inherit;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-modify: read-write-plaintext-only; }
+
+input, input:focus {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-modify: read-write-plaintext-only; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+::-webkit-scrollbar {
+  display: none; }
+
+a {
+  text-decoration: none; }
+
+a:focus {
+  outline: none; }
+
+.clearfix:after {
+  content: "\200B";
+  display: block;
+  height: 0;
+  clear: both; }
+
+.clearfix {
+  *zoom: 1; }
+
+/* 设计图width=750px, 1rem=40px */
+/* 设计图width=750px, 1rem=40px */
+/* PC端适配方案 */
+/*@media only screen and (min-width: 1024px) {
+  html{font-size: 12px}
+}
+@media only screen and (min-width: 1440px) {
+  html{font-size: 14px}
+}
+@media only screen and (min-width: 1680px) {
+  html{font-size: 14px}
+}
+@media only screen and (min-width: 1920px) {
+  html{font-size: 16px}
+}
+
+html,body{font-family: $baseFontFamily}
+body{font-size:1rem}*/
+/* 移动端适配方案 */
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 17.0666px; } }
+
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 20px; } }
+
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 22.08px; } }
+
+@media only screen and (min-width: 475px) {
+  html {
+    font-size: 25.3333px; } }
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 40.96px; } }
+
+@media only screen and (min-width: 960px) {
+  html {
+    font-size: 51.2px; } }
+
+html, body {
+  font-family: "Microsoft YaHei", "PingFang SC Medium", Arial, "Helvetica Neue", "SimSun";
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  font-size: 0.8rem; }
+
+/* 移动端1px解决方案：transform缩放+after伪类 */
+.border-1px:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: #666; }
+
+@media (min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5) {
+  .border-1px:after {
+    -webkit-transform: scaleY(0.7);
+    -ms-transform: scaleY(0.7);
+    transform: scaleY(0.7); } }
+
+@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+  .border-1px:after {
+    -webkit-transform: scaleY(0.5);
+    -ms-transform: scaleY(0.5);
+    transform: scaleY(0.5); } }
+
+/* 按钮样式 */
+.btn, .btn.btn-block {
+  display: inline-block;
+  height: 1.5rem;
+  padding: 0 1rem;
+  background: transparent;
+  border: 1px solid #00aaff;
+  -webkit-border-radius: 2rem;
+          border-radius: 2rem; }
+
+.btn-block.btn {
+  display: block;
+  width: 100%; }
+
+.page-group, .page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+header, footer {
+  width: 100%;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  z-index: 2000; }
+
+header {
+  top: 0; }
+
+footer {
+  bottom: 0; }
+
+header ~ .content {
+  padding-top: 2.25rem; }
+
+footer ~ .content {
+  padding-bottom: 2.25rem; }
+
+.content {
+  width: 100%;
+  height: 100%;
+  overflow: auto; }
+
+.menu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  height: 2.25rem;
+  text-align: center;
+  border-bottom: 1px solid #000; }
+  .menu li {
+    width: 100%;
+    min-width: 5rem;
+    line-height: 2.25rem; }
+
+.content p {
+  width: 100%;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  background: green;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.grid-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-flex-wrap: wrap; }
+  .grid-wrap .left {
+    width: 8.75rem;
+    background: red; }
+  .grid-wrap .right {
+    width: 10rem;
+    background: blue; }

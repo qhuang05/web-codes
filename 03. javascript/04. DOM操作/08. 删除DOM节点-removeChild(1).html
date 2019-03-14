@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>删除DOM节点-removeChild</title>
+	<script>
+		window.onload=function(){
+			var oUL=document.getElementById("demo");
+			var aA=document.getElementsByTagName("a");
+			for(var i=0; i<aA.length; i++) {
+				aA[i].onclick=function(){
+					oUL.removeChild(this.parentNode);
+				};
+			}
+		};
+	</script>
+</head>
+
+<body>
+	<ul id="demo">
+		<li>11111<a href="javascript:;">删除</a></li>
+		<li>22222<a href="javascript:;">删除</a></li>
+		<li>33333<a href="javascript:;">删除</a></li>
+		<li>44444<a href="javascript:;">删除</a></li>
+		<li>55555<a href="javascript:;">删除</a></li>
+		<li>66666<a href="javascript:;">删除</a></li>
+		<li>77777<a href="javascript:;">删除</a></li>
+		<li>88888<a href="javascript:;">删除</a></li>
+	</ul>
+</body>
+</html>

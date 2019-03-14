@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM应用-表格搜索</title>
+	<script>
+		window.onload=function(){
+			var oTab=document.getElementById("tab1");
+			var oBtn=document.getElementById("search");
+			var sName=document.getElementById("name");
+			oBtn.onclick=function(){
+				for(i=0; i<oTab.tBodies[0].rows.length; i++) {
+					if(oTab.tBodies[0].rows[i].cells[1].innerHTML==sName.value) {
+						oTab.tBodies[0].rows[i].style.background="green";
+					}
+					else{
+						oTab.tBodies[0].rows[i].style.background="";	
+					}	
+				}
+			};
+		};
+	</script>
+</head>
+
+<body>	
+	姓名：<input type="text" id="name" />
+	<button type="button" id="search">搜索</button>
+
+	<table width="500px" border="1" id="tab1">
+		<thead>
+			<th>ID</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>张三</td>
+				<td>20</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Blue</td>
+				<td>23</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>王五</td>
+				<td>33</td>
+				<td></td>
+			</tr>		
+			<tr>
+				<td>4</td>
+				<td>许艺</td>
+				<td>26</td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td>5</td>
+				<td>左文</td>
+				<td>30</td>
+				<td></td>
+			</tr>													
+		</tbody>
+	</table>
+</body>
+</html>

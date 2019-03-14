@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象的扩展</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 1、键值相同可省略 {name,age} === {name:name, age:age}
+	// 2、 key值可以是变量：
+	var k1='age', fn='showName';
+	var person = {
+		'name': 'Sandy',
+		['nick' + 'name']: '二货',
+		[k1]: 18,
+		[fn](){ alert(person.name);}
+	};
+
+	// 3、 Object.is()	相当于===, Object.is(1, '1'); 
+
+	// 4、 Object.assign()浅复制
+	var baseObj = {
+        name : "lisi",
+        age : 20,
+        friends : ['张三', '李四']
+    };
+
+    function lightCopy(data){
+    	var res = Object.assign({}, data);
+    	// res.friends = ['张三', '李四', '王五'];
+    	res.friends.push('王五');
+    	return res;
+    }
+    var p1 = lightCopy(baseObj);
+    console.log(baseObj);	// {name: "lisi", age: 20, friends: ['张三', '李四', '王五']}
+    console.log(p1); 		// {name: "lisi", age: 20, friends: ['张三', '李四', '王五']}
+    
+
+	// 5、 Object.keys(), Object.values(), Object.entries()
+
+	// 6、 可枚举性enumerable
+	var obj1 = { a: 1, b: 2, c: 3}
+	Object.defineProperty(obj1, 'c', {
+		enumerable: false
+	});
+	for(let i in obj1){
+		console.log(i);
+	} // a, b
+
+	// 7、__proto__属性， Object.setPrototypeOf()，Object.getPrototypeOf()
+	Object.setPrototypeOf(obj1, {x:10,y:20});
+	Object.getPrototypeOf(obj1);  //{x:10,y:20}
+	console.log(obj1.__proto__);  //{x:10,y:20}
+
+	// 8、 Object.defineProperty()
+	Object.defineProperty(obj1, 'd' , {value: 4})
+	// console.log(obj1); 		//{a: 1, b: 2, c: 3, d: 4}
+</script>
+</body>
+</html>

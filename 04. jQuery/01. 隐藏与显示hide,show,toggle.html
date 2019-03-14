@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery隐藏与显示hide,show,toggle</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#hide").click(function(){
+				$("p").hide("slow");
+			});
+
+			$("#show").click(function(){
+				$("p").show(500);
+			});
+
+			$("button#toggle").click(function(){
+				$("h2").toggle();
+				$("#menu").toggle();
+			});
+		});
+	//hide(speed,callback)
+	//show(speed,callback)
+	//speed,callback为hide(),show()的两个可选参数, speed表示速度,值=slow/fast/<*毫秒>; callback表示隐藏或显示完成后所执行的函数名称。
+	</script>
+
+</head>
+
+<body>
+	<h2>This is a heading.</h2>
+	<p>This is the lst paragraph.</p>
+	<p>This is the 2nd paragraph.</p>
+	<button type="button" id="hide">隐藏</button>
+	<button type="button" id="show">显示</button>
+
+	<button type="button" id="toggle">显示/隐藏</button>
+	<div style="background:#ccc; width: 200px; height: 50px" id="menu"></div>
+</body>
+</html>

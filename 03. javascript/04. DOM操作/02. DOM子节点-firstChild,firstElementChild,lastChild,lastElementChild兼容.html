@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DOM子节点-firstChild,firstElementChild,lastChild,lastElementChild兼容</title>
+
+	<script>
+		window.onload=function(){
+			var oUL=document.getElementById("demo");
+			//alert(oUL.firstChild);
+			//alert(oUL.firstElementChild);
+			if(oUL.firstElementChild) {
+				oUL.firstElementChild.style.background="red";
+			}
+			else {
+				oUL.firstChild.style.background="red";
+			}
+		};
+	</script>
+</head>
+
+<body>
+	<ul id="demo">
+		<li>111</li>
+		<li>222</li>
+	</ul>
+</body>
+</html>

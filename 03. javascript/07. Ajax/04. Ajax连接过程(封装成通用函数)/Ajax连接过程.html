@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Ajax封装成函数</title>
+    <script src='ajax.js'></script>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                ajax('ajaxDoc.txt?t=' + new Date().getTime(), function (str) {
+                    alert(str);
+                });
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button type="button" id="btn">按钮</button>
+</body>
+</html>

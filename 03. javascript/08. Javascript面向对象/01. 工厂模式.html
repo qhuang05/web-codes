@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>工厂模式</title>
+    <script>
+        function createPerson(name, qq) {
+            //原料
+            var obj = new Object();
+
+            //加工
+            obj.name = name;
+            obj.qq = qq;
+            obj.showName = function () {
+                alert('我的名字是：' + this.name);
+            };
+            obj.showQQ = function () {
+                alert('我的QQ号是：' + this.qq);
+            };
+
+            //出厂
+            return obj;
+        }
+        var obj1 = createPerson('张三', '268384959');
+        var obj2 = createPerson('李四', '234574542');
+        obj1.showName();
+        obj2.showName();
+        alert(obj1.showName == obj2.showName);		//返回false
+
+        //工厂模式优点: 把创建多个相似对象封装到一个函数。
+        //工厂模式缺点: 没有解决对象识别问题，比如当执行“obj1 instanceof createperson”会返回false。而对于js中的对象Array,当实例化arr1=new Array(),是可以通过arr1 instanceof Array返回的true识别arr1属于Array对象类型的。-->引入构造函数来解决
+    </script>
+</head>
+
+<body>
+</body>
+</html>

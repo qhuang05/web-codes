@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+<script>
+	var data = [1,4,5,2,7,7,1,4,5];
+
+	// 方法1：(推荐)
+	function arrayOnly(data){
+		var json = {}, result = [];
+		for(var i=0; i<data.length; i++){
+			if(!json[data[i]]){
+				result.push(data[i]);
+			}
+			json[data[i]] = true;
+		}
+		return result;
+	}
+	var result = arrayOnly(data);
+	alert(result);
+
+	// 方法2
+	// function arrayOnly(data){
+	// 	var result = [];
+	// 	for(var i=0; i<data.length; i++){
+	// 		var tmp = data[i], isExist = false;
+	// 		for(var j=0;j<result.length;j++){
+	// 			if(result[j] == tmp){
+	// 				isExist = true;
+	// 				break;
+	// 			}
+	// 		}
+	// 		if(!isExist){
+	// 			result.push(tmp);
+	// 		}
+	// 	}
+	// 	return result;
+	// }
+	// var result = arrayOnly(data);
+	// alert(result);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>阻止默认行为-只能输入数字的文本框</title>
+    <script>
+        window.onload = function () {
+            var oTxt = document.getElementById("txt1");
+            oTxt.onkeydown = function (ev) {
+                //return false;		//阻止默认事件
+                var oEvent = ev || event;
+                //alert(oEvent.keyCode), 数字0的keyCode=48，9的keyCode=57,退格键的keyCode=8,左右键的keyCode=37,39
+                //if(oEvent.keyCode<48 || oEvent.keyCode>57)
+                if ((oEvent.keyCode < 48 || oEvent.keyCode > 57) && oEvent.keyCode != 8 && oEvent.keyCode != 37 && oEvent.keyCode != 39) {
+                    return false;
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type="text" id="txt1"/>
+</body>
+</html>

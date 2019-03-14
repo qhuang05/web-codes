@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.1,user-scalable=0"/>
+<title>animate测试</title>
+<style>
+    * { margin: 0; padding: 0;}
+    html,body{font-size:16px; width:100%; height: 100%; overflow: hidden}
+    #popup{width:100%; height: 100%; position:absolute;top:0;left:0; display:none}
+    #popup .mask{width:100%; height: 100%; position: absolute; background:rgba(0,0,0,0.2);}
+    #popup .wrap{
+        width:100%; height: 300px; position:absolute;bottom:0;left:0;z-index:2000; background:dodgerblue;
+    }
+    @keyframes slideUp {
+        0%{
+            transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+            -ms-transform: translateY(100%);
+        }
+        100%{
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+        }
+    }
+    @-webkit-keyframes slideUp {
+        0%{
+            transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+        }
+        100%{
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+        }
+    }
+    .slideUp{
+        animation:slideUp 0.5s both;
+    }
+    @keyframes slideDown {
+        0%{
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+            -ms-transform: translateY(100%);
+        }
+    }
+    @-webkit-keyframes slideDown {
+        0%{
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+        }
+        100% {
+            transform: translateY(100%);
+            -webkit-transform: translateY(100%);
+        }
+    }
+    .slideDown{
+        animation:slideDown 0.5s both;
+    }
+
+    #popup2{width:100%; height: 100%; position:absolute;top:0; right:0; display:none}
+    #popup2 .mask{width:100%; height: 100%; position: absolute; background:rgba(0,0,0,0.2);}
+    #popup2 .wrap{
+        width:60%; height: 100%; position:absolute;top:0;right:0;z-index:2000; background:dodgerblue;
+    }
+    @keyframes slideLeft {
+        0%{
+            transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+        }
+        100%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -ms-transform: translateX(0);
+        }
+    }
+    @-webkit-keyframes slideLeft {
+        0%{
+            transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+        }
+        100%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+        }
+    }
+    .slideLeft{
+        animation:slideLeft 0.5s both;
+    }
+    @keyframes slideRight {
+        0%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -ms-transform: translateX(0);
+        }
+        100%{
+            transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+        }
+    }
+    @-webkit-keyframes slideRight {
+        0%{
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+        }
+        100% {
+            transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+        }
+    }
+    .slideRight{
+        animation:slideRight 0.5s both;
+    }
+
+    #popup3{width:100%; height: 100%; position:absolute; top:0; left:0; display:none}
+    #popup3 .mask{width:100%; height: 100%; position: absolute;background:rgba(0,0,0,0.2);}
+    #popup3 .wrap{
+        width:200px; max-height:300px;position:absolute;top:20px;right:10px;z-index:2000; background:dodgerblue;
+    }
+    @keyframes tt3 {
+        0%{
+            height: 0;
+            opacity: 0;
+        }
+        100%{
+            height: 50px;
+            opacity:1;
+        }
+    }
+    @-webkit-keyframes tt3 {
+        0%{
+            height: 0;
+            opacity:0;
+        }
+        100% {
+            height: 50px;
+            opacity:1;
+        }
+    }
+    .tt3{
+        animation:tt3 0.5s both;
+    }
+    @keyframes tt4 {
+        0%{
+            height: 50px;
+            opacity:1;
+        }
+        100%{
+            height: 0;
+            opacity: 0;
+        }
+    }
+    @-webkit-keyframes tt4 {
+        0%{
+            height:50px;
+            opacity:1;
+        }
+        100% {
+            height: 0;
+            opacity:0;
+        }
+    }
+    .tt4{
+        animation:tt4 0.5s both;
+    }
+</style>
+</head>
+<body>
+<button id="btn1">向上弹窗</button>
+<button id="btn2">向左弹窗</button>
+<button id="btn3">向下</button>
+<div id="popup">
+    <div class="mask"></div>
+    <div class="wrap">
+        <ul>
+            <li>列表111</li>
+            <li>列表222</li>
+            <li>列表333</li>
+        </ul>
+    </div>
+</div>
+<div id="popup2">
+    <div class="mask"></div>
+    <div class="wrap">
+        此处是内容。。。
+    </div>
+</div>
+<div id="popup3">
+    <div class="mask"></div>
+    <div class="wrap">
+        此处是内容。。。
+    </div>
+</div>
+<script src="jquery-1.8.3.min.js"></script>
+<script>
+    $(function(){
+        $('#btn1').on('click', function(){
+            $('#popup').show();
+            $('#popup .wrap').removeClass('slideDown').addClass('slideUp');
+        });
+        $('#popup .mask').on('click', function(){
+            $('#popup .wrap').removeClass('slideUp').addClass('slideDown');
+            setTimeout(function(){
+                $('#popup').hide();
+            },500);
+        });
+
+        $('#btn2').on('click', function(){
+            $('#popup2').show();
+            $('#popup2 .wrap').removeClass('slideRight').addClass('slideLeft');
+        });
+        $('#popup2 .mask').on('click', function(){
+            $('#popup2 .wrap').removeClass('slideLeft').addClass('slideRight');
+            setTimeout(function(){
+                $('#popup2').hide();
+            }, 500);
+
+        });
+
+        $('#btn3').on('click', function(){
+            $('#popup3').show();
+            $('#popup3 .wrap').removeClass('tt4').addClass('tt3');
+        });
+        $('#popup3 .mask').on('click', function(){
+            $('#popup3 .wrap').removeClass('tt3').addClass('tt4');
+            setTimeout(function(){
+                $('#popup3').hide();
+            }, 500);
+
+        });
+    });
+</script>
+</body>
+</html>

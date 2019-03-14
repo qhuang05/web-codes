@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>居中弹窗-淡入淡出</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        .mask { width: 100%; height: 100%; background: black; opacity: 0.3; position: absolute; top: 0; left:0; z-index: 10; display: none }
+        .popup { width: 400px; height: 400px; background: #ccc; text-align: center; position: absolute; }
+        .popup .header { width: 100%; height: 30px; line-height: 30px; background: indianred }
+        .popup .body { width: 100%; height: 350px; line-height: 350px; background: darkseagreen }
+        .popup .footer { width: 100%; height: 30px; line-height: 30px; background: cadetblue; cursor: pointer }
+        .fadeOut {
+            z-index: 0;
+            opacity: 0;
+            transform: scale(0.5,0.5);
+            transition: all .3s;
+        }
+        .fadeIn {
+            z-index: 999;
+            opacity: 1;
+            transform: scale(1,1);
+            transition: all .3s;
+        }
+        .rotateOut {
+            z-index: 0;
+            opacity: 0;
+            transform: rotate(-90deg);
+            transition: all .3s;
+        }
+        .rotateIn {
+            z-index: 999;
+            opacity: 1;
+            transform: rotate(0deg);
+            transition: all .3s;
+        }
+    </style>
+</head>
+
+<body>
+<div style="height: 500px">内容......</div>
+<button id="btn1" data-detail="pop1">点击弹窗(淡入淡出)</button>
+<button id="btn2" data-detail="pop2">点击弹窗(旋转)</button>
+<div style="height: 500px">内容......</div>
+
+<!-- 使用data-*, 自定义的*名称不能包含大写字母, 否则设置不生效。
+     比如可以使用data-in_1或data-in-1或data-in等, 但是不能使用data-In -->
+<div class="mask"></div>
+<div class="popup fadeOut" id="pop1" data-in="fadeIn" data-out="fadeOut">
+    <div class="header">标题</div>
+    <div class="body">内容</div>
+    <div class="footer close" id='close1'>关闭</div>
+</div>
+<div class="popup rotateOut" id="pop2" data-in="rotateIn" data-out="rotateOut">
+    <div class="header">标题</div>
+    <div class="body">内容</div>
+    <div class="footer close" id='close2'>关闭</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('button').on('click',function(){
+        var targetPop = $(this).data('detail');
+        popup('#'+targetPop, '.mask');
+    });
+
+    $('.close').on('click', function(){
+        var targetPop = $(this).parents('.popup').attr('id');
+        pophide('#'+targetPop, '.mask');
+    });
+});
+
+//居中弹窗 公共函数
+function popup(popName, mask){
+    var _windowWidth = $(window).width(),
+        _windowHeight = $(window).height(),
+        _scrollHeight = $(document).scrollTop(),
+        _popupWidth = $(popName).width(),
+        _popupHeigth = $(popName).height(),
+        _top = (_windowHeight - _popupHeigth)/2 + _scrollHeight,
+        _left = (_windowWidth - _popupWidth)/2;
+    $('body').css({'overflow':'hidden'});
+    $(mask).css({'top':_scrollHeight+'px'}).show();
+    $(popName).css({'left':_left+'px', 'top':_top+'px'}).removeClass($(popName).data('out')).addClass($(popName).data('in'));
+}
+
+function pophide(popName, mask){
+    $('body').css({'overflow':'auto'});
+    $(mask).hide();
+    $(popName).removeClass($(popName).data('in')).addClass($(popName).data('out'));
+}
+
+</script>
+</body>
+</html>

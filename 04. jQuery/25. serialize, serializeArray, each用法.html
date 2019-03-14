@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>serialize, serializeArray, each用法</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<form>
+    <div>
+         <select name="selOne">
+            <option value="1">S1</option>
+            <option value="2">S2</option>
+        </select>
+    </div>
+    <div>
+        <select name="selMul" multiple="multiple">
+            <option selected="selected">M1</option>
+            <option selected="selected">M2</option>
+            <option>M3</option>
+        </select>
+    </div>
+    <div>
+        <label><input type="checkbox" name="ck" value="1" checked>ck1</label>
+        <label><input type="checkbox" name="ck" value="2">ck2</label>
+    </div>
+    <div>
+        <label for=""><input type="radio" name="ra" value="1" checked>ra1</label>
+        <label for=""><input type="radio" name="ra" value="2">ra2</label>
+    </div>    
+</form>
+<div>
+    <h6>Results:</h6>
+    <p id="res1"></p>
+    <p id="res2"></p>
+    <p id="res3"></p>
+</div>
+<script>
+    //.serialize():
+    var res1 = $('form').serialize();
+    console.log(res1);
+    $('#res1').text(res1);
+    
+
+    //.serializeArray():
+    var res2 = $('form').serializeArray();  
+    console.log(res2);         
+    $.each(res2, function(index, item){
+        $('#res2').append(item.name+':'+ item.value+',');
+    });
+    
+    
+    // form表单参数系列化(JSON格式)
+    $.fn.serializeJson=function(){
+        var resData={};
+        var dataArr=this.serializeArray();
+        $.each(dataArr, function(index, item){
+            if(resData[item.name]){
+                if($.isArray(resData[item.name])){
+                    resData[item.name].push(item.value);
+                }else{
+                    resData[item.name] = [resData[item.name], item.value];
+                }
+            }else{
+                resData[item.name] = item.value;
+            }
+        });
+        return resData;
+    };
+    $('form').serializeJson();
+</script>
+</body>
+</html>

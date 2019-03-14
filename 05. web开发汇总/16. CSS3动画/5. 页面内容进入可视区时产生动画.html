@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面内容进入可视区范围时产生动画</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <script src="../plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        nav { width:100%; height:50px; background: #000; color: white; text-align:center; position: fixed; top: 0; left:0; z-index: 999}
+        nav .wrapper{ width:1000px; height: 50px; line-height:50px; margin:0 auto;}
+        nav .wrapper li{ display: inline-block; margin:0 20px;}
+        nav .wrapper a{ color:#fff; text-decoration: none; font-size: 16px;}
+        section{ position: relative; width: 100%; height: 900px }
+        .session1 { background: url("images/bg1.jpg") no-repeat; background-size: 100% 100% }
+        .session2 { background: url("images/bg2.jpg") no-repeat fixed; background-size: 100% 100% }
+        .session3 { background: url("images/bg3.jpg") no-repeat; background-size: 100% 100% }
+        .session4 { background: url("images/bg4.jpg") no-repeat fixed; background-size: 100% 100% }
+        section .left{ width: 10%; height:200px; background: green; position: absolute; top: 200px; left:200px;
+            opacity: 0.4; transition: all 1s}
+        section .left.active{
+            opacity: 1;
+            transform: rotate(-30deg);
+            transition: all 1s;
+        }
+        section .right{ width: 10%; height:200px; background: blue; position: absolute; top: 200px; right:200px;
+            opacity:0.4; transition: all 1s}
+        section .right.active{
+            opacity: 1;
+            transform: rotate(-30deg);
+            transition: all 1s .2s;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="wrapper">
+            <li><a href="#session1">目录1</a></li>
+            <li><a href="#session2">目录2</a></li>
+            <li><a href="#session3">目录3</a></li>
+            <li><a href="#session4">目录4</a></li>
+        </ul>
+    </nav>
+    <section class="session1" id="session1">
+        <div class="left">session1-1</div>
+        <div class="right">session1-2</div>
+    </section>
+    <section class="session2" id="session2">
+        <div class="left">session2-1</div>
+        <div class="right">session2-2</div>
+    </section>
+    <section class="session3" id="session3">
+        <div class="left">session3-1</div>
+        <div class="right">session3-2</div>
+    </section>
+    <section class="session4" id="session4">
+        <div class="left">session4-1</div>
+        <div class="right">session4-2</div>
+    </section>
+</body>
+<script>
+    $(document).ready(function(){
+        playing();
+        $(document).scroll(function(){
+           playing();
+        });
+    });
+    //添加css3动画效果
+    function playing(){
+        var w = $(window).width();
+            h = $(window).height(),
+            scrollTop = $(document).scrollTop();
+        $('section').each(function(index){
+            // 内容处于窗口可见区内
+            var contentHeight = $(this).height(),       //元素高度
+                contentTop = $(this).offset().top,      //元素距离文档顶部的高度
+                top1 = contentTop,        //元素顶部位于浏览器窗口上边框
+                top2 = contentTop+contentHeight,          //元素底部位于浏览器窗口上边框
+                top3 = Math.abs(contentTop-h),    //元素顶部位于浏览器窗口下边框
+                top4 = Math.abs(contentTop-h+contentHeight);     //元素底部位于浏览器窗口下边框
+            if(scrollTop >= top1 || scrollTop >= top4) {
+                $(this).find(".left").addClass("active");
+                $(this).find(".right").addClass("active");
+            }
+            else if(scrollTop >= top2 || scrollTop <= top3){
+                $(this).find(".left").removeClass("active");
+                $(this).find(".right").removeClass("active");
+            }
+        });
+    }
+</script>
+</html>

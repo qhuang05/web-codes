@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>getElementsByTagName的使用</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 10px;
+            float: left
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName('div');
+        	//alert(oDiv.length);
+        	//oDiv[0].style.background='red';
+
+            //方法1：使用for循环
+            for (var i = 0; i<oDiv.length; i++) {
+                oDiv[i].style.background = 'red';
+            }
+
+            //方法2：使用while循环(替代for循环)：
+//            var i=0;
+//            while(i<oDiv.length){
+//                oDiv[i].style.background='red';
+//                i++;
+//            }
+        };
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

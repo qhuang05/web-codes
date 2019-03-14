@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 003</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="notesApp">
+    <div ng-controller="notesCtl as ctl">
+        <h1>{{ ctl.message}} AngularJS</h1>
+        <button ng-click="ctl.changeMsg()">Change</button>
+    </div>
+    <script>
+        angular.module('notesApp', []).controller('notesCtl', [function(){
+            var self = this;
+            self.message = 'Hello';
+            self.changeMsg = function(){
+                self.message = 'Goodbye';
+            };
+        }]);
+    </script>
+</body>
+</html>

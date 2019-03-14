@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>is属性扩展html原生元素</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<tr>
+				<custom-demo></custom-demo>
+			</tr>
+		</table>
+		<table>
+			<tr is="custom-demo"></tr>
+		</table>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('custom-demo', {
+			template:`<div>this is a demo for is property.</div>`,
+		});
+		let app = new Vue({
+			el: '#app'
+		});
+		
+	</script>
+</body>
+</html>

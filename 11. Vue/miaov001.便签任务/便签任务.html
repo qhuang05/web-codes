@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>便签任务</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <section>
+            <h3>添加任务：</h3>
+            <input type="text" class="task-input" placeholder="提示：按回车可添加新任务" 
+            v-model="newTask" 
+            @keyup.enter="addTodo($event)"
+            />
+            <div class="switch-wrap">
+                {{ todoNumber }}个任务未完成
+                <div class="switch-tabs">
+                    <a href="#all" :class="{active:tabLink=='all'||tabLink==''}">所有任务</a>
+                    <a href="#finished" :class="{active:tabLink=='finished'}">已完成任务</a>
+                    <a href="#unfinished" :class="{active:tabLink=='unfinished'}">未完成任务</a>
+                </div>
+            </div>
+        </section>
+        <section class="main">
+            <h3>任务列表：</h3>
+            <div class="no-task" v-show="!todoList.length">暂无数据！</div>
+            <div class="task-list">
+                <ul>
+                    <li v-for="item in filterList" :class="{complete: item.isChecked, editing: editingTask===item }">
+                        <div>                       
+                         <label @dblclick="editingTodo(item, $event)">
+                             <input type="checkbox" v-model="item.isChecked">
+                             {{ item.title }}
+                         </label>
+                         <div class="operate">
+                             <button @click="deleteTodo(item)">删除</button>
+                         </div>
+                     </div>
+                     <input type="text" class="edit-input" 
+                     v-model="item.title"
+                     v-focus="editingTask===item"  
+                     @blur="editTodo(item)" 
+                     @keyup.enter="editTodo(item)" 
+                     @keyup.esc="cancelTodo(item)"
+                     />
+                 </li>
+             </ul>
+         </div>
+     </section>   
+ </div>
+ <script src="app.js"></script>
+ <script type="text/javascript">  
+    let listData = store.fetch('todoList');
+    // let listData = [
+    //     {title: '吃饭睡觉打豆豆', isChecked: true}
+    // ];
+    let app = new Vue({
+        el: '#app',
+        data: {
+            todoList: listData,
+            newTask: '',
+            editingTask: '',    //记录正在编辑的任务,
+            beforeTitle: '',
+            tabLink:'all'
+        },
+        computed:{
+            todoNumber: function(){
+                return this.todoList.filter(function(value){
+                    return !value.isChecked
+                }).length
+            },
+            filterList: function(){
+                return filter[this.tabLink] ? filter[this.tabLink](this.todoList) : this.todoList;
+            }
+        },
+        methods: {
+            // 添加任务
+            addTodo(event){ 
+                if(this.newTask != ''){
+                    this.todoList.push({ title: this.newTask, isChecked: false });
+                    this.newTask = '';
+                }
+            },
+            // 删除任务
+            deleteTodo(todo){
+                var index = this.todoList.indexOf(todo);
+                this.todoList.splice(index, 1);
+            },
+            // 编辑任务
+            editingTodo(todo, event){
+                this.editingTask = todo;
+                this.beforeTitle = todo.title;
+                // $(event.target).closest('li').find('.edit-input').focus();
+            },
+            editTodo(todo){
+                this.editingTask = '';
+            },
+            // 取消任务
+            cancelTodo(todo){
+                this.editingTask = '';
+                todo.title = this.beforeTitle;
+            }
+        },
+        // 自定义指令
+        directives: {
+            'focus':{
+                update(el, binding, vnode, oldVnode){
+                    if(binding.value){
+                        el.focus();
+                    }
+                }
+            }
+        },
+        watch:{
+            // 浅监控，对象内部的值发生变化无法监测到
+            // todoList: function(){
+            //     store.save('todoList', this.todoList);
+            // }
+            // 深度监控，对象内容的值发生变化时可能监测到
+            todoList:{
+                handler: function(){
+                    store.save('todoList', this.todoList);
+                },
+                deep: true
+            }
+        }
+    });
+    // 利用hash过滤数据, 标签切换
+    watchHashChange();
+    window.addEventListener('hashchange', watchHashChange);
+</script>
+</body>
+</html>

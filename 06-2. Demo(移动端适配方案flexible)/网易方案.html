@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动端适配方案-网易</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="wy_flexible.js"></script>
+	<style>
+		*{
+			margin:0; padding:0;
+		}
+		body{
+			font-size: 0.426667rem;
+		}
+		.header{
+			width: 100%;
+			height: 1.2rem;
+			line-height: 1.2rem;
+			text-align: center;		
+		}
+		img{
+			width: 100%;
+			height: 4.0rem;
+			margin-top:0.133333rem;
+		}
+		/*1像素边框解决方法：*/
+		.border-1px:after{
+			width:100%;
+			height: 1px;
+			display: block;
+			content: '';
+			background: #000;	
+		}
+		@media (min-device-pixel-ratio: 1.5),(-webkit-min-device-pixel-ratio: 1.5) {
+		  .border-1px:after{
+		      -webkit-transform: scaleY(0.7);
+		      -moz-transform: scaleY(0.7);
+		      -ms-transform: scaleY(0.7);
+		      -o-transform: scaleY(0.7);
+		      transform: scaleY(0.7);
+		  }
+		}
+		@media (min-device-pixel-ratio: 2),(-webkit-min-device-pixel-ratio: 2){
+		  .border-1px:after{
+		      -webkit-transform: scaleY(0.5);
+		      -moz-transform: scaleY(0.5);
+		      -ms-transform: scaleY(0.5);
+		      -o-transform: scaleY(0.5);
+		      transform: scaleY(0.5);
+		  }
+		}
+	</style>
+</head>
+<body>
+	<section class="header border-1px">
+		<h3>手机标题</h3>
+	</section>
+	<img src="@3x_imgdemo.jpg">	
+</body>
+</html>

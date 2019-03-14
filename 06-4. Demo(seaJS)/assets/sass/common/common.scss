@@ -1,0 +1,126 @@
+@charset "UTF-8";
+@import "reset";
+@import "iconfont";
+@import "../utils/variables";
+@import "../utils/function";
+@import "../utils/mixin";
+/* ---------------------------- Common Buttons Style ---------------------------- */
+.bbx-btn-round-sm{
+    display: block;
+    margin: auto;
+    width: 90%;
+    height: toRem(90);
+    line-height: toRem(90);
+    text-align: center;
+    border-style: solid;
+    border-width:1px;
+    @include border-radius(2.2rem);
+}
+.bbx-btn-round{
+    @include border-radius(50%);
+}
+.bbx-btn{
+    @include button($bgColor: #fff, $color: $colorBlue, $bdColor: $colorBlue, $bgColor2: false, $color2: false, $bdColor2: false);
+    @extend .bbx-btn-round-sm;
+}
+.bbx-btn-blue{
+    @include button($bgColor: $colorBlue, $color: #fff, $bdColor: $colorBlue, $bgColor2: $colorBluehover, $color2: false, $bdColor2: false);
+    @extend .bbx-btn-round-sm;
+}
+
+.bbx-btn-black{
+    @include button($bgColor: #fff, $color: #1a1a1a, $bdColor: #1a1a1a, $bgColor2: false, $color2: false, $bdColor2: false);
+    @extend .bbx-btn-round-sm;
+}
+.bbx-btn-blue.invalid{
+    @include button($bgColor: $colorGrayd1, $color: #fff, $bdColor: $colorGrayd1, $bgColor2: $colorGrayd1, $color2: false, $bdColor2: false);
+    @extend .bbx-btn-round-sm;
+}
+
+/* ---------------------------- Common header Style ---------------------------- */
+.bbx-header.bar{
+  position: fixed;
+  height: toRem(90);
+  line-height: toRem(90);
+  background: $colorWhite;
+}
+.bbx-header .title{
+  color: $baseColor;
+  font-size: .9rem;
+}
+.bbx-header .pull-left {
+  color: $colorGray89; 
+}
+.bbx-header .pull-right{
+  position:absolute;
+  top:0;
+  right: 0.5rem;
+  font-size: .75rem;
+  z-index:999;
+}
+
+/* ---------------------------- Common body Style ---------------------------- */
+body {
+  margin: auto;
+  max-width: 640px;
+}
+.content-footer {
+  padding-bottom: toRem(180);
+}
+.com-hide {
+  display: none;
+}
+.color-orange {
+  color: $colorOrange;
+}
+.color-blue {
+  color: $colorBlue;
+}
+.color-gray {
+  color: $colorGray99;
+}
+
+/* ---------------------------- Common footer Style ---------------------------- */
+.bar-footer {
+  position: fixed;
+  height: toRem(160);
+  .row {
+    margin-top: toRem(35);
+  }
+}
+
+/* ---------------------------- Common Tabs Style ---------------------------- */
+
+.buttons-tab.bbx-tab{
+    position:absolute; width:100%; z-index:100;
+    .button{
+    height: toRem(90);
+    line-height: toRem(90);
+    font-size: .75rem;
+    color: $baseColor;
+  }
+  .button.active{
+    color: $colorBlue;
+    border-color: $colorBlue;
+  }
+}
+.bar-nav~.content{
+  top:toRem(90);
+}
+.buttons-tab:after{
+  background: $colorGrayd1;
+}
+.buttons-tab {
+  margin: auto;
+  max-width: 640px;
+}
+
+/* ---------------------------- Common cover Style ---------------------------- */
+.bar {
+  max-width: 640px;
+  margin: auto;
+  background:#fff;
+}
+.bar:after {
+  background: $colorGrayd1;
+}

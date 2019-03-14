@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>图片放大</title>
+    <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    .mask{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
+    .popup-img{
+        background: yellow;
+        position: fixed;
+        z-index:100;
+        top:50%;
+        left:50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .img-wrap{
+        text-align: center;
+        max-width: calc(100vw);
+        max-width: -webkit-calc(100vw);
+        max-width: -moz-calc(100vw);
+        height: calc(100vh - 200px);
+        height: -webkit-calc(100vh - 200px);
+        height: -moz-calc(100vh - 200px);
+    }
+    .img-wrap img{
+        max-height:100%;
+    }
+</style>
+</head>
+<body>
+    <div class="mask"></div>
+    <div class="popup popup-img">
+        <div class="popup-content">
+            <div class="img-wrap">
+                <!-- <img src="images/640-960.jpg"> -->
+                <img src="images/1920-1200.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+$baseFontSize: 42 !default;
+@function toRem($px){
+ 	$result: ();
+    @for $i from 1 through length($px) {
+        $result: join($result, nth($px, $i)/$baseFontSize, space) +rem;
+    }
+    @return $result;	
+}

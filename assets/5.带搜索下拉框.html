@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>带搜索下拉框</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <style>
+        .select-box{
+            position: relative
+        }
+        .select-input{
+            width:100%;
+            height: 30px;
+            line-height: 30px;
+            border:1px solid #ccc;
+        }
+        .dropdown-box{
+            border:1px solid #ccc;
+            border-top:0;
+            position: relative;
+            display: none;
+        }
+        .dropdown-box .keywords-input{
+            width:100%;
+            height: 30px;
+            line-height: 30px;
+            border:0;
+            border-bottom:1px solid #ccc;
+            padding-left: 10px;
+            padding-right: 50px;
+        }
+        .dropdown-box .keywords-input+i{
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            cursor:pointer;
+        }
+        .dropdown-box ul{
+            width:100%;
+            background: #fff;
+            overflow-y: auto;
+            max-height: 100px;
+            padding: 0 10px;
+        }
+         .dropdown-box li{
+            width:100%;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            padding-right: 40px;
+            cursor: pointer;
+         }
+         .dropdown-box li.active{
+            color: #23b38f;
+         }
+         .dropdown-box li i{
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+         }
+         .dropdown-box li.active i{
+            display: inline-block;
+         }
+    </style>
+</head>
+<body>
+<div class="page-container" style="width:300px;">
+    <div class="select-box" id="select1">
+        <!-- <input type="text" class="select-input" readonly/>
+        <div class="dropdown-box">
+            <input type="text" class="keywords-input" /><i>搜索</i>
+            <ul>
+                <li class="active"><span>1</span><i>√</i></li>
+                <li><span>2</span><i>√</i></li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="js/customSelect.js"></script>
+<script>
+$(document).ready(function(){
+    $('#select1').customSelect({
+        data: [{id:1, name:"中国移动"}, {id:2, name:"中国联通"}, {id:3, name:"中国电信"}],
+        // multiple: true
+    });
+});
+</script>
+</body>
+</html>

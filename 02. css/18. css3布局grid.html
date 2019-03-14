@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<title>css3布局grid</title>
+	<style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    .container{
+        width:100%;
+        height: 700px;
+        border:1px solid #000;
+    }
+    .grid-row{
+        display: grid;
+        grid-template-rows: 100px 150px 200px auto;
+        grid-gap: 20px;
+        /*align-items: center;*/
+        align-content: center;
+    }
+    .item-row:not(:first-child){
+        background: #f00;
+    }
+    .grid-col{
+        display: grid;
+        grid-template-columns: 300px 1fr 1fr 1fr;
+        grid-gap: 10px;
+        justify-items: stretch;
+        /*justify-content: center;*/
+    }
+    .item-col{
+        background: #0f0;
+    }
+</style>
+</head>
+<body>
+    <div class="container grid-row">
+        <div class="item-row grid-col">
+            <div class="item-col">1-1</div>
+            <div class="item-col">1-2</div>
+            <div class="item-col">1-3</div>
+            <div class="item-col">1-4</div>
+        </div>
+        <div class="item-row">2</div>
+        <div class="item-row">3</div>
+        <div class="item-row">4</div>
+    </div>
+</body>
+</html>

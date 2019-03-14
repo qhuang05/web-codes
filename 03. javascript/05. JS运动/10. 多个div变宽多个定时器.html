@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>多物体运动多个定时器</title>
+	<style>
+		div { width: 100px; height: 40px; background: red; margin:10px;}
+	</style>
+	<script>
+	function startMove(obj,iTarget){
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			var speed=(iTarget-obj.offsetWidth)/10;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(obj.offsetWidth==iTarget) {
+				clearInterval(obj.timer);
+			}
+			else {
+				obj.style.width=obj.offsetWidth+speed+'px';
+			}
+		},30);
+	}
+
+	window.onload=function(){
+		var oDiv=document.getElementsByTagName("div");
+		for(var i=0; i<oDiv.length; i++){
+			oDiv[i].timer=null;
+			//定义多个定时器,与单个div的定时器不同,timer是作为div的属性来使用,而不是变量,所有放在onload函数中.
+			oDiv[i].onmouseover=function(){
+				startMove(this,400);
+			};
+			oDiv[i].onmouseout=function(){
+				startMove(this,100);
+			};			
+		}
+	};
+
+	</script>	 	
+</head>
+
+<body>
+	<div></div>
+	<div></div>
+	<div></div>	
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>jQuery淡入淡出fadeIn,fadeOut,fadeToggle,fadeTo</title>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			//fadeIn函数
+			$("#btn1").click(function(){
+				$("#div1").fadeIn("fast");
+				$("#div2").fadeIn("slow");
+				$("#div3").fadeIn(4000);
+			});
+
+			//fadeOut函数
+			$("#btn2").click(function(){
+				$("#div1").fadeOut(4000);
+				$("#div2").fadeOut("slow");
+				$("#div3").fadeOut("fast");
+			});
+
+			//fadeToggle函数
+			$("#btn3").click(function(){
+				$("#div1").fadeToggle(1000);
+				$("#div2").fadeToggle(1000);
+				$("#div3").fadeToggle(1000);
+			});
+
+			//fadeTo函数,可以利用fadeTo()来设置透明度
+			//$("#btn4").click(function(){
+				$("#div1").fadeTo("fast",0.3).css("display","none");
+				$("#div2").fadeTo("fast",0.6).css("display","none");
+				$("#div3").fadeTo("fast",0.9).css("display","none");
+			//});
+
+			//$("#div1").mouseover(function(){
+			//	$("#div1").fadeTo("slow",0.3);
+			//});
+			//$("#div1").mouseout(function(){
+			//	$("#div1").fadeTo("slow",1);
+			//});			
+		});
+	</script>
+
+</head>
+
+<body>
+	<button type="button" id="btn1">fadeIn()淡入</button>
+	<button type="button" id="btn2">fadeOut()淡出</button>
+	<button type="button" id="btn3">fadeToggle()淡入淡出</button>
+	<button type="button" id="btn4">fadeTo()透明度</button>
+	<div id="div1" style="width:200px; height:100px; background:#f00"></div>
+	<div id="div2" style="width:200px; height:100px; background:#0f0"></div>
+	<div id="div3" style="width:200px; height:100px; background:#00f"></div>
+</body>
+</html>

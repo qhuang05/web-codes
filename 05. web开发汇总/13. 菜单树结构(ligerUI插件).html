@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>菜单树结构</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="plugins/ligerUI/skins/Aqua/css/ligerui-tree.css" />
+    <script src="plugins/ligerUI/js/ligerui.min.js"></script>
+    <style>
+        .l-checkbox-disabled{
+            position:relative;
+        }
+        .l-checkbox-disabled i{
+            /*content: "";  !*:before和:after必带技能，重要性为满5颗星*!*/
+            display: block;
+            position: absolute;  /*日常绝对定位*/
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            background: rgba(255,255,255,0.6);
+        }
+    </style>
+</head>
+<body>
+<div id="menuTree" class="menuTree"></div>
+<button id="get">获取选中</button><button id="set">设置选中</button><button id="disable">灰显不可用</button>
+
+<script>
+    var menu = [
+        {"org_id":"m1", "org_name":"管理中心","parent_org_id":""},
+            {"org_id":"m1-1","org_name":"监控中心","parent_org_id":"m1"},
+            {"org_id":"m1-2","org_name":"调度中心","parent_org_id":"m1"},
+            {"org_id":"m1-3","org_name":"订单中心","parent_org_id":"m1"},
+            {"org_id":"m1-4","org_name":"后台下单","parent_org_id":"m1"},
+        {"org_id":"m2","org_name":"车管中心","parent_org_id":""},
+            {"org_id":"m2-1","org_name":"车型车座","parent_org_id":"m2"},
+            {"org_id":"m2-2","org_name":"价格管理","parent_org_id":"m2"},
+            {"org_id":"m2-3","org_name":"车辆管理","parent_org_id":"m2"},
+            {"org_id":"m2-4","org_name":"司机管理","parent_org_id":"m2"},
+            {"org_id":"m2-5","org_name":"服务对象","parent_org_id":"m2"},
+        {"org_id":"m3","org_name":"运企管理","parent_org_id":""},
+            {"org_id":"m3-1","org_name":"运企用户","parent_org_id":"m3"},
+        {"org_id":"m4","org_name":"系统管理","parent_org_id":""},
+            {"org_id":"m4-1","org_name":"个人中心","parent_org_id":"m4"}
+    ];
+    var menuTree = $("#menuTree").ligerTree({
+        data: menu,
+        nodeWidth: 300,
+        idFieldName: 'org_id',
+        parentIDFieldName: 'parent_org_id',
+        textFieldName: 'org_name',
+        slide: false,
+        checkbox: true,
+        onSelect: function (node, target) {
+            console.log(node);
+           if(node.data.org_id == 'm4'){
+               if(!$(node.target).find('.l-checkbox').hasClass('l-checkbox-disabled')){
+                   $(node.target).find('.l-checkbox').addClass('l-checkbox-disabled').append('<i></i>');
+               }
+           }
+        },
+        onCheck: function(node, checked){
+            if(node.data.org_id == 'm4'){
+                $(node.target).find('.l-checkbox').addClass('l-checkbox-disabled').append('<i></i>');
+            }
+        }
+    });
+    var tocheck = 'm2,m2-1,m2-2,m4-1';
+    var menuData = menuTree.getData();
+    tocheck = ',' + tocheck + ',';
+    var param = function(menuData){
+        if (tocheck.indexOf("," + menuData.org_id + ",") != -1) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    menuTree.selectNode(param);
+
+    //获取选中的项目
+    $('#get').click(function(){
+        var res = menuTree.getChecked();
+        $.each(res, function(){
+            console.log(this);
+            //console.log(this.data.org_id);
+
+        });
+    });
+
+    //设置选中项目, m2,m2-1,m2-2
+    $('#set').click(function(){
+        var tocheck = 'm2,m2-1,m2-2';
+        var menuData = menuTree.getData();
+        tocheck = ',' + tocheck + ',';
+        var param = function(menuData){
+            if (tocheck.indexOf("," + menuData.org_id + ",") != -1) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        menuTree.selectNode(param);
+    });
+
+    //设置灰显
+    $('#disable').click(function(){
+
+    });
+</script>
+</body>
+</html>

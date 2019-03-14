@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS 008</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-controller="formCtl as ctl">
+    <form ng-submit="ctl.submit()">
+        用户名：<input type="text" placeholder="Please enter your name" ng-model="ctl.user.username"/><br/>
+        密 码： <input type="password" placeholder="Please enter password" ng-model="ctl.user.password"/><br/>
+        <input type="submit" value="提交" />
+        <input type="button" value="重置" ng-click="ctl.reset()" />
+    </form>
+    <script>
+        angular.module('notesApp', []).controller('formCtl', [function(){
+            var self = this;
+            self.submit = function(){
+                alert('your clicked submit!!!');
+                window.location.href = 'http://www.baidu.com/';
+            };
+            self.reset = function(){
+                self.user.username = '';
+                self.user.password = '';
+            };
+        }]);
+    </script>
+</body>
+</html>

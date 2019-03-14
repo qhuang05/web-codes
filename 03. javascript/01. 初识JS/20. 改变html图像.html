@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>改变html图像</title>
+</head>
+
+<body>
+    <img src="../JavaScript-w3c/images/bulb_off.gif" alt="bulb" onClick="imgChange()" id="bulb"/>
+    <p>点击图像可以点亮或关闭灯盏</p>
+
+<script>
+    function imgChange() {
+        var x = document.getElementById("bulb");
+        if (x.src.match("on")) {
+            x.src = "images/bulb_off.gif";
+        }
+        else {
+            x.src = "images/bulb_on.gif";
+        }
+    }
+</script>
+</body>
+</html>

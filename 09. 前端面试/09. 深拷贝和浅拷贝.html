@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>深拷贝和浅拷贝</title>
+</head>
+<body>
+<script>
+	//区别：浅拷贝可能会导致指向同一内存空间，使得对象的值改变同时影响原组。
+
+	// 方法1：使用jquery提供的$.extend()
+	// $.extend(true, arr ,{})
+	// $.extend(false, arr ,{})	
+
+
+	// 方法2：
+	// 浅拷贝：
+	function lightCopy(obj){
+		var result = obj instanceof Array ? [] : {};
+		if(typeof obj != 'object'){
+			return;
+		} else{
+			for(var in in obj){
+				result[i] = obj[i];
+			}
+		}
+		return result;
+	}
+
+	// 深拷贝：
+	function deepCopy(obj){
+		var result = obj instanceof Array ? [] : {};
+		if(typeof obj != 'object'){
+			return;
+		} else{
+			if(window.JSON){
+				var str = JSON.stringify(obj);
+				result = JSON.parse(str);
+			} else{
+				for(var i in obj){
+					typeof obj[i] === 'object' ? result[i] = deepCopy(obj[i]) : result[i] = obj[i];
+				}
+			}
+		}
+		return result;
+	}
+</script>
+</body>
+</html>

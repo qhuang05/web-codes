@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>自定义滚动条-控制物体的大小</title>
+    <style>
+        #parent {
+            width: 600px;
+            height: 20px;
+            background: #ccc;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #div1 {
+            width: 20px;
+            height: 20px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #div2 {
+            width: 0;
+            height: 0;
+            background: green;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById('div1');
+            var oParent = document.getElementById('parent');
+            var oDiv2 = document.getElementById('div2');
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                var disX = oEvent.clientX - oDiv.offsetLeft;
+
+                //把onmousemove,onmouseup相同部分取出来封闭成mouseMove,mouseUp函数
+                function mouseMove(ev) {
+                    //oEvent在这里还需要再定义一次,它指的是onmousemove事件,而不是上而的onmousedown
+                    var oEvent = ev || event;
+                    var x = oEvent.clientX - disX;
+                    if (x < 0) {
+                        x = 0;
+                    }
+                    else if (x > oParent.offsetWidth - oDiv.offsetWidth) {
+                        x = oParent.offsetWidth - oDiv.offsetWidth;
+                    }
+                    oDiv.style.left = x + 'px';
+
+                    var scale = x / (oParent.offsetWidth - oDiv.offsetWidth);
+                    oDiv2.style.width = 400 * scale + 'px';
+                    oDiv2.style.height = 400 * scale + 'px';
+                }
+
+                function mouseUp() {
+                    this.onmousemove = null;
+                    this.onmouseup = null;
+                    if (oDiv.releaseCapture) {
+                        oDiv.releaseCapture();
+                    }
+                }
+
+                //for IE:
+                if (oDiv.setCapture) {
+                    oDiv.onmousemove = mouseMove;
+                    oDiv.onmouseup = mouseUp;
+                    oDiv.setCapture();
+                }
+                //for FF,chrome:
+                else {
+                    document.onmousemove = mouseMove;
+                    document.onmouseup = mouseUp;
+                    return false;
+                }
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <div id='parent'>
+        <div id="div1"></div>
+    </div>
+    <div id="div2"></div>
+</body>
+</html>

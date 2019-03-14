@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>延时提示框</title>
+    <style>
+        #div1 {
+            width: 50px;
+            height: 50px;
+            background: #f00;
+            float: left;
+        }
+
+        #div2 {
+            width: 100px;
+            height: 150px;
+            background: #ccc;
+            float: left;
+            margin-left: 10px;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            oDiv1 = document.getElementById("div1");
+            oDiv2 = document.getElementById("div2");
+            var timer = null;
+            oDiv1.onmouseover = oDiv2.onmouseover = function () {
+                clearTimeout(timer);
+                oDiv2.style.display = "block";
+            };
+
+            oDiv1.onmouseout = oDiv2.onmouseout = function () {
+                timer = setTimeout(function () {
+                    oDiv2.style.display = 'none';
+                }, 2000);
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+</body>
+</html>

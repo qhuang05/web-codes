@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>queue()的使用-运动并发与排队</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css"/>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+        #div1{ width:200px; height: 200px; background: dodgerblue; position: absolute; top:30px;}
+    </style>
+</head>
+
+<body>
+<button id="btn1">Click Me!</button>
+<div id="div1">
+    <p>This is the content</p>
+</div>
+
+<script>
+//    如果要把非效果方法添加到运动队列中,可以使用queue()方法。
+    $(document).ready(function() {
+        $('#btn1').click(function(){
+            $('#div1').animate({'left':'200px','top':'200px'}).queue(function(next){
+                $('#div1').css({'font-size':'30px','color':'#fff','background-color':'green'});
+                next();
+            }).animate({'left':'0','top':'30px'});
+        });
+    });
+</script>
+</body>
+</html>

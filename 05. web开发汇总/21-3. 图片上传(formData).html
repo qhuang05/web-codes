@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传(formData)</title>
+    <script src="plugins/jquery-1.11.3.min.js"></script> 
+    <style>
+        .button{border:1px solid #ccc;padding:3px 5px;cursor:pointer}
+        .file-image img{width: 200px; height: 200px;}
+    </style>
+</head>
+<body>
+<form>
+    <input type="file" onchange="addImage()" id="file">
+    <a class="button" id="upload">开始上传</a>
+    <div class="file-image">
+        <img src="" alt="" id='image'>
+    </div> 
+</form>
+<script >
+    var file;
+    $(function(){
+        $('#upload').on('click', function(){
+            var imgData = new FormData();
+            imgData.append('file', file);
+            imgData.append('a', 1);
+            imgData.append('b', 2);
+            $.ajax({
+                type: 'post',
+                url: 'http://webuploader.duapp.com/server/fileupload.php',
+                data: imgData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    alert('上传成功！');
+                },
+                error: function (xhr,status,error) {
+                    alert('上传失败！');
+                }
+            });
+        });
+    });
+    function addImage(){
+        file = $('#file')[0].files[0];
+        $('#image').attr('src',getObjectURL(file));
+    }
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
+</body>
+</html>

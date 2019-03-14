@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>写一个字符串转成驼峰的方法</title>
+	<!-- 写一个字符串转成驼峰的方法,	例如border-bottom-color->borderBottomColor -->
+</head>
+<body>
+<script>
+	var str = 'border-bottom-color';
+
+	// 方法1
+	// function change(str){
+	// 	var arr = str.split('-'), result = arr[0];
+	// 	for(var i=1; i<arr.length; i++){
+	// 		var _str = arr[i].charAt(0).toUpperCase() + arr[i].substr(1);
+	// 		result += _str;
+	// 	}
+	// 	return result;
+	// }
+	// var result = change(str);
+	// alert(result);
+
+	// 方法2(正则表达式)
+	function change(str){
+		var reg = /-(\w)/g;		//正则中括号代表子项
+		return str.replace(reg, function($0, $1){  //$0表示整个正则，$1表示正则的子项
+			return $1.toUpperCase();
+		});
+	}
+	var result = change(str);
+	alert(result);
+</script>
+</body>
+</html>

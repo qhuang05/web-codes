@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise异步嵌套</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="logs"></div>
+	<script type="text/javascript">
+		$(function(){
+			promiseAjax({
+				url: 'https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getMovieList',
+			}).then(function(res){
+				console.log('1');
+				res.id = 1001;
+				promiseAjax({
+					type: 'post',
+					url: 'https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getMovieInfo',
+					data: {id: res.id}
+				}).then(function(res){
+					console.log(2);
+					$('#logs').append(JSON.stringify(res.data));
+				}).catch(function(error){
+					console.log('2' + error);
+				});
+			}).then(function(){
+				console.log('1-2');
+			}).catch((error)=>{
+				console.log('1' + error);
+			});
+		});
+		
+		var promiseAjax = function(opt){
+			opt ? opt : {};
+			return new Promise(function(resolve, reject){
+				$.ajax({
+					type: opt.type ? opt.type : 'get',
+					url: opt.url,
+					data: opt.data ? opt.data : null,
+					success: function(res){
+						resolve(res);
+					},
+					error: function(xhr,status,error){
+						// console.log('error => ' + error);
+						reject(error);
+					}
+				});
+			});
+		}
+	</script>
+</body>
+</html>

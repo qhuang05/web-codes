@@ -1,0 +1,98 @@
+@charset "UTF-8";
+body, html { background: #f4f4f4; }
+
+body, div, dl, dt, dd, ul, ol, li, hgroup, h1, h2, h3, h4, h5, h6, p, form, fieldset, legend, input, textarea, table, thead, tbody, tfoot, tr, th, td, pre, code, blockquote, header, footer, nav, section, article, aside, title, figure, figcaption, datalist, details, summary, dialog, address { margin: 0; padding: 0; color: #1a1a1a; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+fieldset, img { border: 0; }
+
+legend { color: #000; }
+
+ol, ul { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+
+th, address, cite, code, dfn, var, em, strong { font-style: normal; font-weight: normal; }
+
+input, button, textarea, select { font-family: inherit; font-size: inherit; *font-size: 100%; font-weight: inherit; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; -webkit-user-modify: read-write-plaintext-only; }
+
+input, input:focus { border: none; outline: none; -webkit-tap-highlight-color: transparent; -webkit-user-modify: read-write-plaintext-only; }
+
+a { text-decoration: none; }
+
+a:visited { text-align: center; }
+
+a:focus { outline: none; }
+
+.clearfix:after { content: "\200B"; display: block; height: 0; clear: both; }
+
+.clearfix { *zoom: 1; }
+
+body.white-body, .white-body .page { background: #fff; }
+
+@font-face { font-family: 'iconfont'; src: url("../../fonts/iconfont.eot");
+  /* IE9*/
+src: url("../../fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/iconfont.woff") format("woff"), url("../../fonts/iconfont.ttf") format("truetype"), url("../../fonts/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+.iconfont { font-family: "iconfont" !important; font-size: 1rem; font-style: normal; -webkit-font-smoothing: antialiased; -webkit-text-stroke-width: 0.1px; -moz-osx-font-smoothing: grayscale; }
+
+/*hover颜色*/
+/* ---------------------------- Common Buttons Style ---------------------------- */
+.bbx-btn-round-sm, .bbx-btn, .bbx-btn-blue, .bbx-btn-black, .bbx-btn-blue.invalid { display: block; margin: auto; width: 90%; height: 2.14286rem; line-height: 2.14286rem; text-align: center; border-style: solid; border-width: 1px; border-radius: 2.2rem; -webkit-border-radius: 2.2rem; -moz-border-radius: 2.2rem; }
+
+.bbx-btn-round { border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; }
+
+.bbx-btn { background-color: #fff; border-color: #00aaff; color: #00aaff; }
+.bbx-btn:active { background-color: #fff; border-color: #00aaff; color: #00aaff; }
+
+.bbx-btn-blue { background-color: #00aaff; border-color: #00aaff; color: #fff; }
+.bbx-btn-blue:active { background-color: #1aa8ef; border-color: #00aaff; color: #fff; }
+
+.bbx-btn-black { background-color: #fff; border-color: #1a1a1a; color: #1a1a1a; }
+.bbx-btn-black:active { background-color: #fff; border-color: #1a1a1a; color: #1a1a1a; }
+
+.bbx-btn-blue.invalid { background-color: #d1d1d1; border-color: #d1d1d1; color: #fff; }
+.bbx-btn-blue.invalid:active { background-color: #d1d1d1; border-color: #d1d1d1; color: #fff; }
+
+/* ---------------------------- Common header Style ---------------------------- */
+.bbx-header.bar { position: fixed; height: 2.14286rem; line-height: 2.14286rem; background: #fff; }
+
+.bbx-header .title { color: #1a1a1a; font-size: .9rem; }
+
+.bbx-header .pull-left { color: #898989; }
+
+.bbx-header .pull-right { position: absolute; top: 0; right: 0.5rem; font-size: .75rem; z-index: 999; }
+
+/* ---------------------------- Common body Style ---------------------------- */
+body { margin: auto; max-width: 640px; }
+
+.content-footer { padding-bottom: 4.28571rem; }
+
+.com-hide { display: none; }
+
+.color-orange { color: #fe5000; }
+
+.color-blue { color: #00aaff; }
+
+.color-gray { color: #999999; }
+
+/* ---------------------------- Common footer Style ---------------------------- */
+.bar-footer { position: fixed; height: 3.80952rem; }
+.bar-footer .row { margin-top: 0.83333rem; }
+
+/* ---------------------------- Common Tabs Style ---------------------------- */
+.buttons-tab.bbx-tab { position: absolute; width: 100%; z-index: 100; }
+.buttons-tab.bbx-tab .button { height: 2.14286rem; line-height: 2.14286rem; font-size: .75rem; color: #1a1a1a; }
+.buttons-tab.bbx-tab .button.active { color: #00aaff; border-color: #00aaff; }
+
+.bar-nav ~ .content { top: 2.14286rem; }
+
+.buttons-tab:after { background: #d1d1d1; }
+
+.buttons-tab { margin: auto; max-width: 640px; }
+
+/* ---------------------------- Common cover Style ---------------------------- */
+.bar { max-width: 640px; margin: auto; background: #fff; }
+
+.bar:after { background: #d1d1d1; }

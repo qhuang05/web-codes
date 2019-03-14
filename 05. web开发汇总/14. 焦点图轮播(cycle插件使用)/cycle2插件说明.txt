@@ -1,0 +1,17 @@
+cycle2插件:
+http://jquery.malsup.com/cycle2/
+与cycle插件相比，cycle2支持响应式
+使用cycle2，不需要引入css，但使用中需要写上class=***(固定的class),所以通常布局也不能随心所欲设置，最好是根据官方文档中的直接copy过来,否则容易出错.
+但也可以手动指定,如下使用data-cycle-sliders='li'就可以指定内容为li而不需要使用官方文档的布局
+<ul class="cycle-slideshow" data-cycle-slides="li">
+    <li><img src="path/to/some/image1.jpg"></li>
+    <li><img src="path/to/some/image2.jpg"></li>
+    <li><img src="path/to/some/image3.jpg"></li>
+</ul>
+
+cycle2插件是通过data-*来设置参数的。
+当然也可以跟cycle插件使用一样，使用cycle({......})这样的方式。(自己试验过没有成功????)
+
+同样支持自定义导航菜单和向前向后按钮样式，另外可以通过下载其它的插件来扩展动画效果(如carousel,flip,shuffle,tilet等，如果不加插件支持的动画很少)。
+加入carousel插件可扩展可视区的图片数量，使可见图片的数量不仅只有一个：
+可自定义图片的宽高和可视区域的数量，外部容器的会自适应，可以实现多图无缝滚动效果

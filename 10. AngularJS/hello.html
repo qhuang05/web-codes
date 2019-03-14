@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<!--<body>-->
+    <!--<div ng-app="myApp" ng-controller="myCtl">-->
+        <!--姓：<input type="text" ng-model="first" /><br/>-->
+        <!--名：<input type="text" ng-model="last" /><br/>-->
+
+        <!--姓名： {{first + ' ' + last}}-->
+    <!--</div>-->
+<!--<script>-->
+    <!--var app = angular.module('myApp', []);-->
+    <!--app.controller('myCtl', function($scope){-->
+        <!--$scope.first = 'Huang';-->
+        <!--$scope.last = 'QiuHuang';-->
+    <!--});-->
+<!--</script>-->
+<!--</body>-->
+
+<!--<body>-->
+    <!--<div ng-app=""-->
+         <!--ng-init="names=[{name: '张三', age: '20'},-->
+                         <!--{name: '李四', age: '22'},-->
+                         <!--{name: '王五', age: '24'}]">-->
+        <!--<ul>-->
+            <!--<li ng-repeat="x in names">-->
+                <!--{{x.name + ', ' + x.age}}-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</body>-->
+
+<!--<body ng-app="myApp">-->
+    <!--<test-directive></test-directive>-->
+    <!--<script>-->
+        <!--var app = angular.module('myApp', []);-->
+        <!--app.directive('testDirective', function(){-->
+            <!--return {-->
+                <!--restrict: 'E',-->
+                <!--template: '<h1>Hello World!</h1>'-->
+            <!--}-->
+        <!--});-->
+    <!--</script>-->
+<!--</body>-->
+<body>
+    <tabs>
+        <tab title="Home">Some content here</tab>
+        <tab title="Profile">
+            <input type="text"
+                   datepicker
+                   ng-model="startDate" />
+        </tab>
+    </tabs>
+</body>
+
+</html>

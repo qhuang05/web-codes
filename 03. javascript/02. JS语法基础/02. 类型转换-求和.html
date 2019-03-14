@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>类型转换</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('text1');
+            var oTxt2 = document.getElementById('text2');
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                //alert(oTxt1.value+oTxt2.value);
+                //alert(parseInt(oTxt1.value)+parseInt(oTxt2.value));		//parseInt()函数
+                if (isNaN(parseInt(oTxt1.value))) {
+                    alert('您输入的第一个数字有误');
+                }
+                else if (isNaN(parseInt(oTxt2.value))) {
+                    alert('您输入的第二个数字有误');
+                }
+                else {
+                    alert(parseInt(oTxt1.value) + parseInt(oTxt2.value));
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type="text" id="text1"/>
+    <input type="text" id="text2"/>
+    <input type="button" id="btn" value="求和"/>
+</body>
+</html>

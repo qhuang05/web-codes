@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>重置textarea内容</title>
+</head>
+
+<body>
+<textarea rows="20" cols="60" id="text">This is a test</textarea><br />
+<button type="reset" onclick="resetText()">重置</button>
+
+<script>
+	function resetText(){
+		var x=document.getElementById("text");
+		x.value="";
+//		要重置textarea里的内容，应该设置value为空，设置innerHTML为空是不生效的。
+	}
+</script>
+</body>
+</html>

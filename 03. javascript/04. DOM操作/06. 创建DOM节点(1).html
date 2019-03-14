@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>创建DOM元素createElement,appendChild,insertBefore</title>
+	<script>
+		window.onload=function(){
+			var oUL=document.getElementById("demo");
+			var oTxt=document.getElementById("txt");
+			var oBtn=document.getElementById("btn");
+			var oBtn2=document.getElementById("btn2");
+			oBtn.onclick=function() {
+				var oLi=document.createElement("li");
+				oLi.innerHTML=oTxt.value;
+				oUL.appendChild(oLi);
+			};
+			oBtn2.onclick=function() {
+				var oLi=document.createElement("li");
+				oLi.innerHTML=oTxt.value;
+				var aLi=oUL.getElementsByTagName("li");
+				//oUL.insertBefore(oLi, aLi[0]);		
+				//在IE下，insertBefore插入第1个元素时会出错，因为初始数组为空，没有aLi[0]
+				if(aLi.length>0)
+					oUL.insertBefore(oLi, aLi[0]);					
+				else 
+					oUL.appendChild(oLi);
+			};		
+		};
+	</script>
+</head>
+
+<body>
+	<input type="text" id="txt" />
+	<button type="button" id="btn">创建li元素</button>
+	<button type="button" id="btn2">倒序插入li元素</button>	
+
+	<ul id="demo">
+	</ul>
+</body>
+</html>

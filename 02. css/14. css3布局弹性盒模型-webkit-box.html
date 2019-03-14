@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>css3弹性盒模型</title>
+	<style type="text/css">
+        .div1{ width:500px; height: 500px; background: #ccc;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            /*-webkit-box-direction: reverse;*/
+            /*-webkit-box-flex: 004.css3鼠标悬浮特效.0;*/
+        }
+        p{ width:200px; height:200px; background: red; border:1px solid blue}
+
+
+        .box{
+            height:500px;border:10px solid #000;padding:10px;
+            display:-webkit-box;
+            -webkit-box-direction: reverse;
+            -webkit-box-pack: justify;
+            -webkit-box-align: center;
+        }
+        .box div{width:100px;height:100px;background:red;border:1px solid #fff;color:white;}
+	</style>
+</head>
+
+<body>
+	<div class="div1">
+        <p>段落111</p>
+        <p>段落222</p>
+	</div>
+
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+</html>

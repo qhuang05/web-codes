@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>构造函数-解决工厂模式中的对象识别问题</title>
+    <script>
+        function createPerson(name, qq) {	//构造函数
+            //原料
+            //注释掉这行，系统会偷偷地创建一个空白对象this
+            //var obj=new Object();
+
+            //加工
+            this.name = name;
+            this.qq = qq;
+            this.showName = function () {
+                alert('我的名字是：' + this.name);
+            };
+            this.showQQ = function () {
+                alert('我的QQ号是：' + this.qq);
+            };
+
+            //出厂
+            //系统也会偷偷地返回这个对象
+            //return obj;
+        }
+        var obj1 = new createPerson('张三', '268384959');
+        var obj2 = new createPerson('张三', '234574542');
+        obj1.showName();
+        obj2.showName();
+
+        //构造函数优点: 解决工厂模式中的对象识别问题。	obj1 instanceof createPerson返回true
+        //构造函数缺点: 会导致不同的作用域链和标识符解析-->创建的实例同名函数是不相等的:"obj1.showName==obj2.showName"会返回false。创建两个完成同样任务的function是没有必要的，所以可以把方法函数转移到外部来解决，但是这种做法使得方法就成了全局函数，而这种全局函数实际上只能被创建的对象调用，一方面扭曲的全局函数的概念，另一方面当定义的方法过多就会产生大量的全局函数，失去了对象的封装性。-->所以引入了原型模式来解决。
+
+    </script>
+</head>
+
+<body>
+</body>
+</html>
+
+<!--
+window和this的关系：
+function show() {
+	alert(this);
+}
+show();    //返回window
+new show();   //返回object
+-->

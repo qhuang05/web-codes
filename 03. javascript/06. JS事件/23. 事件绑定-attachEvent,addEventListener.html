@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件绑定attachEvent,addEventListener</title>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementById('btn');
+
+	//问题：以上这种写法，两个onclick事件最后只会执行第2个
+	/*oBtn.onclick=function(){
+		alert('a');
+	};
+	oBtn.onclick=function(){
+		alert('b');
+	};*/
+
+
+	//解决：attachEvent(事件名,函数),只适用于IE; addEventListener(事件名,函数,*),适用于FF,Chrome
+	if(oBtn.attachEvent) {
+		oBtn.attachEvent('onclick',function(){
+			alert('a');
+		});
+		oBtn.attachEvent('onclick',function(){
+			alert('b');
+		});		
+	}
+	else {
+		oBtn.addEventListener('click',function(){
+			alert('a');
+		},false);
+		oBtn.addEventListener('click',function(){
+			alert('b');
+		},false);
+	}
+};
+</script>
+</head>
+
+<body>
+	<button id="btn" type="button">按钮</button>
+</body>
+</html>

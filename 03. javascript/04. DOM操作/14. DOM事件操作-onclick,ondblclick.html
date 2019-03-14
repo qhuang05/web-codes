@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DOM事件操作-onclick,ondblclick</title>
+</head>
+
+<body>
+<h1 onclick="this.innerHTML='Hello World!'">请点击这段文本</h1>
+
+<button type="button" onclick="displayDate()">获取系统时间</button>
+<p id="demo"></p>
+
+<div style="cursor:pointer" ondblclick="document.body.bgColor='yellow'">双击文本改变背景颜色</div>
+
+<script>
+    function displayDate() {
+        document.getElementById("demo").innerHTML = Date();
+    }
+</script>
+</body>
+</html>

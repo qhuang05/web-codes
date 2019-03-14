@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generator函数</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// 1、基本使用
+	function* baseGen(x){
+		var y = (yield x*2);
+		var z = yield y/3;
+		return x+y+z;
+	};
+	var G1 = baseGen(5);
+	// G1.next();		//{value: 10, done: false}
+	// G1.next(15); 	//{value: 5, done: false}
+	// G1.next(30);		//{value: 50, done: true}
+	//for...of...可以自动遍历Generator函数，则不再需要逐个调用next()
+	for(let i of G1){
+		console.log(i);
+	} 	//10, NaN
+
+
+
+	// 2、原生Object不能使用for...of遍历，将Generator函数加到对象的Symbol.iterator属性为Object加上遍历器接口
+	function* objectGen(){
+		var objKeys = Object.keys(this);
+		for(let i of objKeys){
+			yield [i, this[i]];
+		}
+	}
+	// var obj1 = {x: 1, y: 2};
+	// obj1[Symbol.iterator] = objectGen;
+	// for(let [key,value] of obj1){
+	// 	console.log(key + ',' + value);
+	// }
+	// 或：
+	// var obj1 = {x: 1, y: 2};
+	// var g1 = objectGen.bind(obj1)();
+	// for(let [key,value] of g1){
+	// 	console.log(key + ',' + value);
+	// }
+	// 或：
+	// var obj1 = {x: 1, y: 2};
+	// var g1 = objectGen.call(obj1);
+	// for(let [key,value] of g1){
+	// 	console.log(key + ',' + value);
+	// }
+	// 或：
+	// var obj1 = {x: 1, y: 2};
+	// var g1 = objectGen.apply(obj1);
+	// for(let [key,value] of g1){
+	// 	console.log(key + ',' + value);
+	// }
+
+	// 3、yield 与 yield*
+	//yield*相当于在Generator函数内部部署一个for...of循环。
+	function* yGen(){
+		yield* [1,2,3];
+		yield* [4,5];
+	}
+	let y1 = yGen();
+	for(let i of y1){
+		console.log(i);
+	} //1,2,3,4,5
+
+
+
+	// 4、Generator函数的应用：将异步操作ajax改为同步表达
+	function* asyncGen(){
+		var result = yield request('https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getMovieList');
+		console.log(result);
+	}
+	function request(url){
+		$.get(url, function(res){
+			iter.next(res);
+		});
+	}
+	var iter = asyncGen();
+	iter.next();
+
+	// 4、Generator函数的应用：部署Iterator接口
+	function* objectGen2(obj){
+		let keys = Object.keys(obj);
+		for(let i=0; i<keys.length; i++){
+			let key = keys[i];
+			yield [key, obj[key]];
+		}
+	}
+	let obj2 = {x: 1, y: 2};
+	for(let [key, value] of objectGen2(obj2)){
+		console.log(key, value);
+	}
+</script>
+</body>
+</html>

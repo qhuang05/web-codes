@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Proxy, Reflect</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// var obj1 = {name: '张三', age: 18};
+	// var proxy = new Proxy(obj1, {
+	// 	get: function(target, property){
+	// 		if(property in target){
+	// 			return target[property];
+	// 		} else{
+	// 			throw new ReferenceError("Property \"" + property + "\" does not exist.");
+	// 		}
+	// 	}
+	// });
+
+
+	// var obj1 = {name: '张三', age: 18};
+	// var proxy = new Proxy(obj1, {	
+	// 	set(target, key, receiver){
+	// 		throw new Error('set错误');
+	// 	},	
+	// 	defineProperty(taregt, key, desc){
+	// 		throw new Error('defineProperty错误');
+	// 	},
+	// });
+
+
+	var handler = {
+		get(target, prop, receiver){
+			return 'hello';
+		},
+		set(target, propKey, value, receiver){
+			target[proKey] = 'world'
+		}
+	}
+	var proxy = new Proxy({}, handler);
+	var obj1 = Object.create(proxy);
+</script>
+</body>
+</html>

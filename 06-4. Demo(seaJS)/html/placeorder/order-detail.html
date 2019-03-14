@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>帮邦行-订单详情</title>
+    <link rel="stylesheet" href="../../assets/css/pages/placeorder/order-detail.css">
+</head>
+<body class="white-body">
+    <div class="page-group">
+        <section class="page page-current" id="orderDetailPage">
+            <header class="bar bar-nav bbx-header">
+                <a class="iconfont pull-left open-panel">&#xe604;</a>
+                <a class="iconfont pull-right open-panel" id="cancel">取消订单</a>
+                <h1 class="title">订单详情</h1>
+            </header>
+            <article class="content">
+                <section class="driver-info">
+                    <img src="../../assets/images/driver-photo.jpg" />
+                    <span>黄来福<br/>闽D1256Y</span>
+                </section>
+                <section class="order-details">
+                    <ul>
+                        <li class="details-item clearfix">
+                            <label class="label" for="">用车类型</label>
+                            <span class="info">
+                                    <span class="type">合乘</span>
+                                    /
+                                    <em class="color-blue">1人</em>
+                                </span>
+                        </li>
+                        <li class="details-item clearfix">
+                            <label class="label" for="">出发时间</label>
+                            <span class="info">2-9 14:00</span>
+                        </li>
+                        <li class="details-item clearfix">
+                            <label class="label" for="">出发地</label>
+                            <span class="info">泉州市水仙花大桥</span>
+                        </li>
+                        <li class="details-item clearfix">
+                            <label class="label" for="">目的地</label>
+                            <span class="info">厦门软件园南门</span>
+                        </li>
+                        <li class="details-item clearfix">
+                            <label class="label" for="">备注</label>
+                            <span class="info">乘客抱个婴儿</span>
+                        </li>
+                    </ul>
+                    <dl class="order-price">
+                        <dt>约<span class="color-orange price-number">50</span>元</dt>
+                    </dl>
+                    <section class="order-price-explain">
+                        订单服务结束后，您将获得<span class="color-orange">5元</span>奖励
+                    </section>
+                    <section class="order-status">等待服务</section>
+                    <section><a href="javascript:;" class="bbx-btn-blue">联系司机</a></section>
+                </section>
+            </article>
+        </section>
+    </div>
+    <script src="../../assets/js/lib/sea.js"></script>
+    <script src="../../assets/js/common/sea-config.js"></script>
+    <script>
+        seajs.use(['assets/js/modules/placeorder/order-create', 'assets/js/modules/placeorder/order-list', 'assets/js/modules/placeorder/order-detail'], function(){
+            $.init();
+        });
+    </script>
+</body>
+</html>

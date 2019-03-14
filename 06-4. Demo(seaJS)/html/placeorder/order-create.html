@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>帮邦行-帮乘客下单</title>
+    <link rel="stylesheet" href="../../assets/css/pages/placeorder/order-create.css">
+    <link rel="stylesheet" href="../../assets/css/pages/placeorder/order-list.css">
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=48470ddea633679dd13e8cd9b2733d3f"></script>
+</head>
+<body class="white-body">
+<section class="page-group">
+    <section class="page create-order-page page-current" id="orderCreatePage">
+        <header class="bar bar-nav bbx-header">
+            <span class="icon icon-left pull-left" id="back"></span>
+            <a class="pull-right" id="toOrderList">记录</a>
+            <h1 class="title">帮乘客下单</h1>
+        </header>
+        <section class="content">
+            <section class="buttons-tab bbx-tab buttons-fixed">
+                <a href="#intercityPartPanel" class="tab-link button active">合乘</a>
+                <a href="#intercityAllPanel" class="tab-link button">包车</a>
+            </section>
+            <section class="order-create-content content-footer">
+                <input type="hidden" id="hiddenLotCity" value="">
+                <section class="tabs">
+                    <!-- 合乘 -->
+                    <section id="intercityPartPanel" class="tab active" data-order-type="0">
+                        <section class="order-create-form">
+                            <ul class="create-order-list">
+                                <li class="time">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx color-gray ">&#xe63e;</i> 出发时间</section>
+                                        <section class="item-input">
+                                            <input type="text" name="time" placeholder="请选择出发时间" value="" flag="0" id="dateSelect0" readonly />
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="telephone">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe603;</i> 客户手机</section>
+                                        <section class="item-input">
+                                            <input type="tel" maxlength="11" placeholder="请输入手机号码">
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="start-address">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe634;</i> 出发地</section>
+                                        <section class="item-location">
+                                            <span name="start_address" class="address-link" data-belong="intercity_part_start" data-lng="" data-lat="" data-city="" data-state="false">
+                                                <span class="address"></span>
+                                                <span class="positioning">定位中<i>· · ·</i></span>
+                                            </span>
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="end-address">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe634;</i> 目的地</section>
+                                        <section class="item-location invalid">
+                                            <span name="end_address" class="address-link" data-belong="intercity_part_end" data-lng="" data-lat="" data-city="" data-lotcode="" class="invalid">
+                                                <span class="address">去哪儿？</span>
+                                            </span>
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="numbers">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx color-gray ">&#xe61a;</i> 拼车人数</section>
+                                        <section class="item-input">
+                                            <section class="opt-button-group">
+                                                <a href="javascript:;" class="opt-btn reduce-btn color-gray">
+                                                    <i class="iconfont">&#xe62a;</i>
+                                                </a>
+                                                <input type="number" value="1" readonly id="pinNumber"/>
+                                                <a href="javascript:;" class="opt-btn add-btn color-gray">
+                                                    <i class="iconfont">&#xe6cc;</i>
+                                                </a>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </li>
+                            </ul>
+                            <dl class="order-price">
+                                <dt>约<span class="color-orange price-number">150</span>元</dt>
+                                <dd>订单服务结束后，您将获得<span class="color-orange">5元</span>奖励</dd>
+                            </dl>
+                            <section class="order-price-explain">
+                                起步价15元（含2公里＋2分钟）<br>
+                                超出部分，按照1.5元/分钟＋2元/公里计算
+                            </section>
+                        </section>
+                    </section>
+                    <!-- 包车 -->
+                    <section id="intercityAllPanel" class="tab" data-order-type="1">
+                        <section class="order-create-form">
+                            <ul class="create-order-list">
+                                <li class="time">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx color-gray ">&#xe63e;</i> 出发时间</section>
+                                        <section class="item-input">
+                                            <input type="text" name="time" placeholder="请选择出发时间" value="" flag="1" id="dateSelect1" readonly />
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="telephone">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe603;</i> 客户手机</section>
+                                        <section class="item-input">
+                                            <input type="tel" maxlength="11" placeholder="请输入手机号码">
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="start-address">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe634;</i> 出发地</section>
+                                        <section class="item-location">
+                                            <span name="start_address" class="address-link" data-belong="intercity_part_start" data-lng="" data-lat="" data-city="">
+                                                <span class="address"></span>
+                                                <span class="positioning">定位中<i>· · ·</i></span>
+                                            </span>
+                                        </section>
+                                    </section>
+                                </li>
+                                <li class="end-address">
+                                    <section class="item-inner clearfix">
+                                        <section class="item-title label"><i class="iconfont icon-bbx">&#xe634;</i> 目的地</section>
+                                        <section class="item-location invalid">
+                                            <span name="end_address" class="address-link" data-belong="intercity_part_end" data-lng="" data-lat="" data-city="" data-state="" class="invalid">
+                                                <span class="address">去哪儿？</span>
+                                            </span>
+                                        </section>
+                                    </section>
+                                </li>
+                            </ul>
+                            <section class="cars-type">
+                                <section class="wrap">
+                                    <section class="scroll-wrap">
+                                        <ul id="carsType">
+                                            <li class="active"><img src="../../assets/images/taxi.png" /><br/>网约车</li>
+                                            <li><img src="../../assets/images/car.png"/><br/>网约车(舒适)</li>
+                                            <li><img src="../../assets/images/car.png"/><br/>商务七座(舒适)</li>
+                                        </ul>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="trip-type">
+                                <section class="wrap">
+                                    <ul id="tripType">
+                                        <li class="active">单趟</li>
+                                        <li>半日租</li>
+                                        <li>日租</li>
+                                    </ul>
+                                </section>
+                            </section>
+                           <dl class="order-price">
+                                <dt>约<span class="color-orange price-number">150</span>元</dt>
+                                <dd>订单服务结束后，您将获得<span class="color-orange">5元</span>奖励</dd>
+                            </dl>
+                            <section class="order-price-explain">
+                                起步价15元（含2公里＋2分钟）<br>
+                                超出部分，按照1.5元/分钟＋2元/公里计算
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section class="bar bar-footer">
+            <section class="row">
+                <section class="col-50"><a href="javascript:;" class="bbx-btn" id="forSelfBtn">自已服务</a></section>
+                <section class="col-50"><a href="javascript:;" class="bbx-btn-blue" id="forOthersBtn">他人代我服务</a></section>
+            </section>
+        </section>
+    </section>
+
+    <!--城市列表-->
+    <section class="page" id="cityRouter" data-address-type="" data-address-belong="" data-target="">
+        <!-- <div id="l-map" style="display:none"></div> -->
+        <header class="bar bar-nav bbx-header already-selected">
+            <section class="city-select">
+                <section class="city-select-hook" data-from="">
+                    <span class="city-name" id="location_city"></span><i class="iconfont">&#xe60f;</i>
+                </section>
+                <input class="city-input" type="text" id="location_city_name" placeholder="输入城市名称"/>
+            </section>
+            <section class="address-select">
+                <input type="text" id="order_address" class="address-input" placeholder="从哪儿出发"/>
+            </section>
+            <span><a href="" id="back" class="pull-right mark-color">取消</a></span>
+        </header>
+    
+        <!--中间内容-->
+        <article class="content">
+            <div id="l-map" class="com-hide"></div>
+            <section class="city-wrapper-hook" id="city_list">
+                <!-- <section class="city-detail current-hook padding-lr">
+                    当前定位城市：<span id="current_location_city"></span>
+                </section> -->
+                <!-- <section class="city-item padding-lr" data-name="泉州市">福建省泉州市</section> -->
+                <dl class="open-city" id="location_list">
+                    <!-- <dt>开通城市</dt>
+                    <dd>
+                        <span class="city-item" data-name="泉州市">泉州市</span>
+                        <ul class="display-none">
+                            <li class="on">南靖</li>
+                            <li>云霄</li>
+                        </ul>
+                    </dd>
+                    <dd>
+                        <span class="city-item" data-name="泉州市">泉州市</span>
+                    </dd> -->
+                </dl>
+            </section>
+            <section class="pos-wrapper-hook com-hide" id="address_list">
+                <ul class="pos-list">
+                    <!-- <li>
+                        <dl>
+                            <dt class="iconfont">&#xe613;</dt>
+                            <dd>
+                                <h3>软件园<span class="bus-type">推荐</span></h3>
+                                <p>思明区吕岭路前埔东路</p>
+                            </dd>
+                        </dl>
+                    </li> -->
+                </ul>
+            </section>
+        </article>
+    </section>
+</section>
+<script src="../../assets/js/lib/sea.js"></script>
+<script src="../../assets/js/common/sea-config.js"></script>
+<script src="../../assets/js/lib/city.json"></script>
+<script>
+     seajs.use(['assets/js/modules/placeorder/order-create','assets/js/modules/placeorder/order-list','assets/js/modules/placeorder/order-detail'], function(){
+         $.init();
+     });
+</script>
+</body>
+</html>

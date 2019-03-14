@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>表格分页</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="plugins/simplePagination/simplePagination.css">
+    <style>
+        #pagebar{display: flex}
+    </style>
+</head>
+<body>
+<button id="searchBtn">搜索</button>
+<div id="pagebar">
+    <select>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+    </select>
+    <div class="pager"></div>
+</div>
+<table border="1" width="100%">
+    <thead>
+        <tr><td>序号</td><td>产品</td><td>快递</td><td>单价</td><td>数量</td><td>总价</td></tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="plugins/simplePagination/jquery.simplePagination.js"></script>
+<script>
+$(document).ready(function(){
+    $('#searchBtn').on('click', function(){
+        initSearch({
+            initPager: true
+        });
+    });
+    $('#pagebar>select').on('change', function(){
+        initSearch({
+            initPager: true
+        });
+    });
+});
+function initSearch(opt){
+    var data = {total: 100,data: []};
+    if(opt.initPager){  //是否重构分页器
+        createPager({
+            total: data.total
+        });
+    }
+    refreshTable(data.data);
+}
+function createPager(opt){
+    $('#pagebar>.pager').pagination({
+        items: opt.total,
+        itemsOnPage: opt.perPage ? opt.perPage : $('#pagebar>select').val(),
+        currentPage: opt.curPage ? opt.curPage : 1,
+        displayedPages: 5,
+        prevText: '上一页',
+        nextText: '下一页',
+        onPageClick(pageNumber, event){ //当页面被点击时调用的函数
+            initSearch({
+                curPage: pageNumber
+            });
+        }
+    });
+}
+function refreshTable(data){
+    console.log('refresh...');
+    $('table>tbody').empty();
+    var bodyhtml = '';
+    var total = Number($('#pagebar>select').val());
+    for(let i=0; i<total; i++){
+        bodyhtml += `<tr><td>${i+1}</td><td>女士T恤</td><td>顺丰快递</td><td>20.8</td><td>6</td><td>124.8</td></tr>`;
+    }
+    $('table>tbody').html(bodyhtml);
+}  
+</script>
+</body>
+</html>

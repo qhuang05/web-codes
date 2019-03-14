@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        #scrollbar { width: 520px;}
+        #scrollbar .viewport { width:500px; height: 200px; overflow: hidden; position: relative; background: dodgerblue}
+        #scrollbar .overview { width:100%; margin:0; padding:0; position: absolute; top:0; left:0; }
+        #scrollbar .scrollbar{ width: 15px; float:right; position:relative; }
+        #scrollbar .track{ width:15px; background: dodgerblue; border-radius:6px; position: relative;}
+        #scrollbar .thumb{ width:13px; height: 13px; background:#fff; border-radius:6px; position: absolute; top:0; left:1px; cursor:pointer;}
+    </style>
+</head>
+<body>
+<div id="scrollbar">
+    <div class="scrollbar">
+        <div class="track">
+            <div class="thumb">
+                <!--<div class="end"></div>-->
+            </div>
+        </div>
+    </div>
+    <div class="viewport">
+        <div class="overview">
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>1. The usage of tinyscrollbar plugin.</p>
+            <p>100. The usage of tinyscrollbar plugin.</p>
+        </div>
+    </div>
+</div>
+<script src="plugins/jquery-1.11.3.min.js"></script>
+<script src="plugins/tinyscrollbar/jquery.tinyscrollbar.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#scrollbar').tinyscrollbar();
+    });
+</script>
+</body>
+</html>

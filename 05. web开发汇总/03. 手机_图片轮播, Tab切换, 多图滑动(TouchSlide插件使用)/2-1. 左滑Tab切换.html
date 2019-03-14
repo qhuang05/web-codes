@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport"  content="width=device-width,user-scalable=no">
+	<meta name="copyright" content="Copyright (c) TouchSlide 大话主席 2013">
+	<meta name="Keywords" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<meta name="description" content="TouchSlide, javascript触屏滑动特效插件, 移动终端滑动特效,触屏图片滑动, 触屏Tab切换,触屏多图切换等">
+	<title>TouchSlide1.1 左滑动Tab切换 触屏滑动特效插件</title>
+	<link type="text/css" rel="stylesheet" href="../css/reset.css" />
+    <script src="../plugins/TouchSlide1.1/TouchSlide.1.1.js"></script>
+    <style type="text/css">
+        .tabBox .hd{ height:40px; line-height:40px; padding:0 10px; font-size:20px; background:#f4f4f4; border-bottom:1px solid #F5AB38; position:relative; }
+        .tabBox .hd ul{ position:absolute; height:41px; top:0; overflow:hidden; }
+        .tabBox .hd ul li{ float:left; padding:0 10px; color:#666; }
+        .tabBox .hd ul .on{ border:2px solid #F5AB38; border-bottom-color:#fff; background:#fff; color:#CF7F21; }
+        .tabBox .hd ul .on a{ display:block; }  /* 修复Android 4.0.x 默认浏览器当前样色无效果bug */
+        .tabBox .bd .bd-panel{ border-bottom: 1px solid #F5AB38; }
+        .tabBox .bd ul{ padding:10px 0 10px 10px;}
+        .tabBox .bd li{ height:33px; line-height:33px; }
+        .tabBox .bd li a{ -webkit-tap-highlight-color:rgba(0,0,0,0); }  /* 去掉链接触摸高亮 */
+    </style>
+</head>
+
+<body>
+<!-- 内容高度一致，自适应最大高度的那个Tab -->
+<div id="leftTabBox" class="tabBox">
+    <div class="hd">
+        <ul>
+            <li><a>国内</a></li>
+            <li><a>国际</a></li>
+            <li><a>时事</a></li>
+        </ul>
+    </div>
+    <div class="bd">
+        <div class="bd-panel">
+            <div class="panel-content">
+                <ul>
+                    <li><a href="javascript:;">国内--新闻1</a></li>
+                    <li><a href="javascript:;">国内--新闻2</a></li>
+                    <li><a href="javascript:;">国内--新闻3</a></li>
+                    <li><a href="javascript:;">国内--新闻4</a></li>
+                    <li><a href="javascript:;">国内--新闻5</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bd-panel">
+            <div class="panel-content"
+                国际--新闻1<br/>
+                国际--新闻2<br/>
+            </div>
+        </div>
+        <div class="bd-panel">
+            <div class="panel-content">
+                时事-详情
+            </div>
+        </div>
+    </div>
+</div>
+<p style="font-size: 14px;">说明:<br/>1. Tab内容<em style="color:#f00">高度一致</em>，以最大高度那个为准，手动设置高度无效。 <br/>2. 左滑右滑切换，<em style="color:#f00">无循环</em>。</p>
+<script type="text/javascript">
+    TouchSlide({
+        slideCell:"#leftTabBox"
+    });
+</script>
+</body>
+</html>

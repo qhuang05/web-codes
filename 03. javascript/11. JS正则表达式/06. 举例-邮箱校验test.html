@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>邮箱校验</title>
+    <script>
+        window.onload = function () {
+            var oTxt1 = document.getElementById('txt1');
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function () {
+                var re = /^\w+@[a-z0-9]+\.[a-z]+$/g;
+                if (re.test(oTxt1.value)) {
+                    alert('合法的邮箱！');
+                }
+                else {
+                    alert('不合法的邮箱！');
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <input type='text' id='txt1'/>
+    <button type='button' id='btn'>校验</button>
+</body>
+</html>

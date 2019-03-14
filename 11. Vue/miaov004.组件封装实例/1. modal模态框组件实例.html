@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>modal模态框组件实例</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="modal.css?v=1">
+	<script src="../js/vue.js"></script>
+	<script src="../js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="isActive=true">点击弹框</button>
+		<mv-modal modal-title="mv模态框1"></mv-modal>
+		<mv-modal id="modal2" modal-title="mv模态框2" :class="{active:isActive}" 
+			@confirm="confirmHandle" @cancel="cancelHandle">
+			<ul slot="modal-body">
+				<li v-for="item in dataList">{{ item }}</li>
+			</ul>
+		</mv-modal>
+	</div>
+	<script type="text/javascript">
+		Vue.component('mv-modal', {
+			props:{
+				modalTitle:{
+					type: String,
+					default:'自定义标题'
+				}
+			},
+			template: 
+			`<div class="modal">
+				<section class='modal-header'>{{modalTitle}}</section>
+				<section class='modal-body'>
+					<slot name="modal-body"></slot>
+				</section>
+				<section class='modal-footer'>
+					<button class="confirm" @click="modalConfirm">确定</button>
+					<button class="cancel" @click="modalCancel">取消</button>
+				</section>
+			</div>`,
+			methods:{
+				modalConfirm(){
+					this.$emit('confirm');
+				},
+				modalCancel(){
+					this.$emit('cancel');
+				}
+			}
+		});
+		let app = new Vue({
+			el: '#app',
+			data:{
+				dataList:[...'妙味课堂'],
+				isActive: false
+			},
+			methods:{
+				confirmHandle(){
+					this.isActive = false;
+				},
+				cancelHandle(){
+					this.isActive = false;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
