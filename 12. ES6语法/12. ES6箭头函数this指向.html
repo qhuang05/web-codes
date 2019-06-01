@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES6箭头函数this指向</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// ES5
+	// let obj = {
+	// 	a: '100',
+	// 	b: function(){
+	// 		console.log(this); //obj
+	// 		let b1 = function(){
+	// 			console.log(this);
+	// 		}
+	// 		b1(); //window
+	// 	}
+	// }
+	// obj.b();
+
+
+	// ES6
+	let obj = {
+		a: '100',
+		b: ()=>{
+			console.log(this); //window
+			let b1 = ()=>{
+				console.log(this); //window
+			}
+			b1();
+		}
+	}
+	obj.b();
+</script>
+</body>
+</html>
