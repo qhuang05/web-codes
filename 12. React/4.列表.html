@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件化</title>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+	<script src="js/data.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	class Panel extends React.Component{
+		render(){
+			let data = Object.values(this.props.data);
+			return (
+				<div className="panel">
+					{
+						data.map((item, index)=>{
+							return (
+								<div className="group" key={index}>
+									<h3>{item.name}</h3>
+									<List data={item.list} />
+								</div>
+							)
+						})
+					}
+				</div>
+			)
+		}
+	}
+	class List extends React.Component{
+		render(){
+			let data = this.props.data;
+			return (
+				<ul>
+					{ 
+						data.map((item, index)=>{
+							return (
+								<li key={index}>
+									<p>{item.username}</p>
+									<p>{item.message}</p>
+								</li>
+							)
+						})
+					}
+				</ul>
+			)
+		}
+	}
+	ReactDOM.render(
+		<Panel data={dataList} />,
+		document.getElementById('root')
+	);
+</script>
+</body>
+</html>	

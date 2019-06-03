@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件化</title>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	class List extends React.Component{
+		render(){
+			let data = this.props.data;
+			return (
+				<ul>{
+					data.map((item, index)=>{
+						return <li key={index}>{item}</li>
+					})}
+				</ul>
+			)
+		}
+	}	
+	let users1 = ['张三', '李四', '王五'],
+		users2 = ['篮球', '足球', '羽毛球'];
+	ReactDOM.render(
+		<div>
+			<List data={users1} flag="group1" />
+			<List data={users2} flag="group2" />
+		</div>,
+		document.getElementById('root')
+	);
+</script>
+</body>
+</html>	

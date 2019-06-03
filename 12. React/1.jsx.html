@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React JSX</title>
+	<script src="js/react.development.js"></script>
+	<script src="js/react-dom.development.js"></script>
+	<script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	let datas = ['张三', '李四', '王五'];
+	ReactDOM.render(
+		<ul>
+			{datas.map((data, i)=>{
+				return <li key={i}>{data}</li>
+			})}
+		</ul>,
+		document.getElementById('root')
+	);
+</script>
+</body>
+</html>	
