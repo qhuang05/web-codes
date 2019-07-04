@@ -112,17 +112,10 @@ $(function(){
     })
     canvas.add(group);
 
-    // 序列化
+    // 序列化、反序列化、canvas转svg：
     // console.log(JSON.stringify(canvas.toJSON()));
     // canvas.loadFromJSON(data);
     // console.log(canvas.toSVG());
-
-    // ======================================================================================
-    // 事件交互
-    canvas.setActiveObject(circle);
-    canvas.getActiveObject().set({
-        left: 200
-    })
 })
 </script>
 </body>
