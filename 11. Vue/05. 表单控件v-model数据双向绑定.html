@@ -8,23 +8,26 @@
 <body>
     <form id="app">
         <label>用户名：<input type="text" v-model.lazy="username" /></label>
-        <p>您的用户名为： {{ username }}</p>
+        <p>您的用户名为： {{ username }}</p><hr/>
 
         <label><input type="checkbox" value="A" v-model="checkboxItems">A</label>
         <label><input type="checkbox" value="B" v-model="checkboxItems">B</label>
         <label><input type="checkbox" value="C" v-model="checkboxItems">C</label>
-        <p>您已选择：{{ checkboxItems }}</p>
+        <p>您已选择：{{ checkboxItems }}</p><hr/>
+
+        <input type="checkbox" v-model="checkboxItem">
+        <p>您已选择：{{ checkboxItem }}</p><hr/>
 
         <label><input type="radio" value="0" v-model="radioItem"/>R1</label>
         <label><input type="radio" value="1" v-model="radioItem"/>R2</label>
-        <p>您已选择：{{ radioItem }}</p>
+        <p>您已选择：{{ radioItem }}</p><hr/>
 
         <select v-model="selectItem">
             <option value="1">S1</option>
             <option value="2">S2</option>
             <option value="3">S3</option>
         </select>
-        <p>您已选择：{{ selectItem }}</p>
+        <p>您已选择：{{ selectItem }}</p><hr/>
 
         <select v-model="selectItems" size="2" multiple>
             <option value="1">S1</option>
@@ -41,6 +44,7 @@
         data: {
             username: '',
             checkboxItems: [],
+            checkboxItem: true,
             radioItem: '0',
             selectItem: '1',
             selectItems: ['1','2']
