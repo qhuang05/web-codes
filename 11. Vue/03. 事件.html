@@ -20,6 +20,14 @@
         <button @click.stop="show2()">click me!</button>
         <input type="text" @keyup.a="show3('a')" @keyup.b="show3('b')" />
     </p>
+    <!-- 事件捕获从上往下，事件冒泡从下往上，先捕获后冒泡 -->
+    <div @click.capture="demo1">
+        demo1
+        <div @click="demo2">
+            demo2
+            <div @click.stop="demo3">demo3</div>
+        </div>
+    </div>
 </div>
 <script src="js/vue.js"></script>
 <script type="text/javascript">
@@ -42,6 +50,15 @@
             },
             show3(text){
                 alert(text + ' is input');
+            },
+            demo1(){
+                console.log('demo1');
+            },
+            demo2(){
+                console.log('demo2');
+            },
+            demo3(){
+                console.log('demo3');
             }
         }
     });
