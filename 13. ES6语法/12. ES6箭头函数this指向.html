@@ -21,7 +21,7 @@
 	// }
 	// obj.b();
 
-
+	
 	// ES6
 	let obj = {
 		a: '100',
@@ -34,6 +34,35 @@
 		}
 	}
 	obj.b();
+
+
+	// document.onclick = function(){
+	// 	console.log(this); //document
+	// 	setTimeout(function(){
+	// 		console.log(this); //window
+	// 	}, 1000);
+	// }
+
+	// document.onclick = function(){
+	// 	console.log(this); //document
+	// 	setTimeout(()=>{
+	// 		console.log(this); //document
+	// 	}, 1000);
+	// }
+
+	// document.onclick = ()=>{
+	// 	console.log(this); //window
+	// 	setTimeout(function(){
+	// 		console.log(this); //window
+	// 	}, 1000);
+	// }
+
+	// document.onclick = ()=>{
+	// 	console.log(this); //window
+	// 	setTimeout(()=>{
+	// 		console.log(this); //window
+	// 	}, 1000);
+	// }
 </script>
 </body>
 </html>

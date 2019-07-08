@@ -5,15 +5,20 @@
 	<title>modal模态框组件实例</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
 	<link rel="stylesheet" type="text/css" href="modal.css?v=1">
-	<script src="../js/vue.js"></script>
+	<!-- <script src="../js/vue.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 	<script src="../js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
 	<div id="app">
 		<button @click="isActive=true">点击弹框</button>
 		<mv-modal modal-title="mv模态框1"></mv-modal>
-		<mv-modal id="modal2" modal-title="mv模态框2" :class="{active:isActive}" 
-			@confirm="confirmHandle" @cancel="cancelHandle">
+		<mv-modal id="modal2"
+			:class="{active:isActive}" 
+			modal-title="mv模态框2" 
+			@confirm="confirmHandle" 
+			@cancel="cancelHandle"
+			:modal-show.sync="isActive">
 			<ul slot="modal-body">
 				<li v-for="item in dataList">{{ item }}</li>
 			</ul>
@@ -25,6 +30,10 @@
 				modalTitle:{
 					type: String,
 					default:'自定义标题'
+				},
+				modalShow: {
+					type: Boolean,
+					default: false
 				}
 			},
 			template: 
@@ -43,7 +52,8 @@
 					this.$emit('confirm');
 				},
 				modalCancel(){
-					this.$emit('cancel');
+					// this.$emit('cancel');
+					this.$emit('update:modalShow', false);
 				}
 			}
 		});
