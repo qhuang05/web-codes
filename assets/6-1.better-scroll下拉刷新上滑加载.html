@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>better-scroll下拉刷新上滑加载</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <style>
+        .wrap{
+            width: 100%;
+            height: 200px;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        .tips{
+            display: none
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="content">
+        <div class="tips refresh-tips">正在刷新</div>
+        <ul class="list"></ul>
+        <div class="tips load-tips">正在加载</div>
+    </div>
+</div>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="plugins/bscroll.js"></script>
+<script>
+$(document).ready(function(){
+    let $wrap = document.querySelector('.wrap'),
+        $list = document.querySelector('.list'),
+        $refreshTips = document.querySelector('.refresh-tips'),
+        $loadTips = document.querySelector('.load-tips');
+    let html = '';
+    for(var i=0; i<20; i++){
+        html+=`<li>我是第${i}个列表项</li>`;    
+    }
+    $list.innerHTML = html;
+
+    let bscroll = new BScroll($wrap,{
+        scrollY: true,
+        pullUpLoad: {
+            threshold: 50
+        },
+        pullDownRefresh: {
+            threshold: -50,
+            stop: 50
+        }
+    });
+    // 上拉加载
+    bscroll.on('pullingUp', ()=>{
+        $loadTips.style.display = 'block';
+        searchData(()=>{
+            $loadTips.style.display = 'none';
+            bscroll.finishPullUp();
+            bscroll.refresh();
+        });
+    });
+    // 下拉刷新
+    bscroll.on('pullingDown', ()=>{
+        $refreshTips.style.display = 'block';
+        $list.innerHTML = '';
+        searchData(()=>{
+            $refreshTips.style.display = 'none';
+            bscroll.finishPullDown();
+            bscroll.refresh();
+        })
+    });
+});
+function searchData(callback){
+    setTimeout(()=>{
+        let $list = document.querySelector('.list');
+        let html = '';
+        for(var i=0; i<20; i++){
+            html+=`<li>我是第${i}个列表项</li>`;    
+        }
+        $list.innerHTML += html;
+        callback();
+    }, 1000);
+}
+</script>
+</body>
+</html>
