@@ -9,7 +9,10 @@
 <body>
 	<div id="app">
 		<custom>
-			<section slot="s1">这是替换内容1</section>
+			<!-- slot在2.5已废弃，改成v-slot -->
+			<template slot="s1">
+				<section>这是替换内容1</section>
+			</template>
 			<section slot="s2">
 				<h2>这是替换内容2</span>
 				<p>Welcome to Xiamen Library.</p>
@@ -23,13 +26,14 @@
 	<script type="text/javascript">
 		//全局注册组件
 		Vue.component('custom', {
-			template: `
-				<div>
+			template: `<div>
 					<slot name="s1"><p>我是段落1</p></slot>
-					<slot name="s2"><p>我是段落2</p></slot>
-					<slot name="s3"><p>我是段落3</p></slot>
-				</div>
-				`
+					<slot name="s2"></slot>
+					<slot name="s3"></slot>
+				</div>`,
+			created(){
+
+			}
 		});
 		let app = new Vue({
 			el: '#app'
