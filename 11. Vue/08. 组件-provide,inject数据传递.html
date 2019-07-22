@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仿elementUI表单组件</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="./js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<el-form :data="data">
+		<el-item>
+			<el-input></el-input>
+		</el-item>
+	</el-form>
+</div>
+<script type="text/javascript">
+Vue.component('el-form', {
+	template: `<form><slot></slot></form>`,
+	provide(){
+		return {
+			msg: 100,
+			form:this
+		}
+	},
+	props:{
+		data:{}
+	}
+})
+Vue.component('el-item', {
+	template: `<div>
+		<label>用户名</label>
+		<slot></slot>
+	</div>`,
+	inject: ['msg'],
+	// data(){
+	// 	return{
+	// 		form: this.form
+	// 	}
+	// },
+	methods:{
+
+	},
+	created(){
+		// console.log(this.msg)
+	}
+})
+Vue.component('el-item', {
+	template: `<div>
+		<input />
+	</div>`,
+	inject: ['msg', 'form'],
+	// data(){
+	// 	return{
+	// 		form: this.form
+	// 	}
+	// },
+	methods:{
+
+	},
+	created(){
+		console.log(this.form.data);
+	}
+})
+let app = new Vue({
+	el: '#app',
+	data: {
+		data: [1,2,3,4,5]
+	},
+	methods:{
+
+	}
+});
+</script>
+</body>
+</html>
