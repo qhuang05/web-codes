@@ -1,0 +1,53 @@
+@charset "UTF-8";
+html,body{
+	width:100%;
+	height: 100%;
+	overflow: hidden;
+	font-family:'Helvetica','Microsoft YaHei',Arial,'Helvetica Neue','SimSun';
+}
+body,h1,h2,h3,h4,h5,h6,hgroup,dl,dt,dd,ul,ol,li,form,fieldset,legend,input,textarea,select,optgroup,option,button,img,table,caption,thead,tbody,tfoot,tr,th,td,div,p,span,i,em,strong,b,pre,code,blockquote,
+header,footer,nav,menu,section,article,aside,title,figure,figcaption,datalist,details,summary,dialog,address,time{
+	margin:0;
+	padding:0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	/*清除点击阴影*/
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	/*选中文字设置*/
+	-webkit-user-select: none;
+	/*禁止文字缩放*/
+    -webkit-text-size-adjust: 100%;
+	/*解决ios滑动不流畅*/
+	-webkit-overflow-scrolling:touch;
+	/*解决flexible字体大小失效问题*/
+	/*max-height: 100%;*/
+}
+/*隐藏滚动条*/
+/*::-webkit-scrollbar{display:none}*/
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0;word-break:break-all;word-wrap:break-word;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+fieldset,img{border:0}
+th,td,address,code,em,strong{font-style:normal;font-weight:normal}
+input,input:focus,button,textarea,select{
+	font-family:inherit;font-size:inherit;*font-size:100%;font-weight:inherit;
+	-webkit-user-modify:read-write-plaintext-only;
+	outline:0;
+	/*清除按钮圆角*/
+	-webkit-appearance: none;
+    border-radius: 0;
+}
+a{text-decoration: none}
+a:link{}
+a:hover{}
+a:visited{}
+a:focus{outline:none;}
+.clearfix:after{ content: "\200B"; display: block; height: 0; clear: both; }
+.clearfix { *zoom: 1; }
+
+.page-container{
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
