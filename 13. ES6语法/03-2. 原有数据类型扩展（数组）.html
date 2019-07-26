@@ -31,11 +31,20 @@
 
 	// 5、reduce() 函数的返回值为回调函数最后一次的返回值。accu表示每一次执行后的返回值, item表示accu的初始值。
 	console.log('reduce:');
-	let res3 = arr.reduce((accu, item, i)=>{
-		console.log(accu, item);
+	// reduce求数组总和
+	let res3 = arr.reduce((prev, cur, i, array)=>{
+		console.log(prev, cur);
 		return accu + item;
 	}, 0);
 	console.log(res3);
+	// reduce数组去重
+	let res4 = arr.reduce((prev, cur, i, array)=>{
+		if(prev.indexOf(cur)=-1){
+			prev.push(cur);
+		}
+		return prev;
+	}, []);
+	console.log(res4);
 
 	// 6、find() 返回符合条件的第一个 
 	// findIndex() 返回符合条件的第一个的索引
