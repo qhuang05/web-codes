@@ -9,10 +9,10 @@
 <div id="app">
    <input type="checkbox" class="check-all" v-model="checkAll" @change="checkAllToggle" />
    <div>
-       <label><input type="checkbox" v-model="checkItems" value="1" @change="checkSignalItem">001</label>
-       <label><input type="checkbox" v-model="checkItems" value="2" @change="checkSignalItem">002</label>
-       <label><input type="checkbox" v-model="checkItems" value="3" @change="checkSignalItem">003</label>
-       <label><input type="checkbox" v-model="checkItems" value="4" @change="checkSignalItem">004</label>
+       <label data-id="1"><input type="checkbox" v-model="checkItems" value="1">001</label>
+       <label data-id="2"><input type="checkbox" v-model="checkItems" value="2">002</label>
+       <label data-id="3"><input type="checkbox" v-model="checkItems" value="3">003</label>
+       <label data-id="4"><input type="checkbox" v-model="checkItems" value="4">004</label>
    </div>
 </div>
 <script src="js/vue.js"></script>
@@ -24,13 +24,6 @@ const app = new Vue({
         checkItems: [],
     },
     methods:{
-        checkSignalItem(){
-            if(this.checkItems.length==4){
-                this.checkAll = true;
-            } else{
-                this.checkAll = false;
-            }
-        },
         checkAllToggle(){
             if(this.checkAll){
                 this.checkItems = ['1','2','3','4'];
@@ -38,6 +31,15 @@ const app = new Vue({
                 this.checkItems = [];
             }
         }
+    },
+    watch:{
+      'checkItems':function(){
+        if(this.checkItems.length==4){
+          this.checkAll = true;
+        } else{
+          this.checkAll = false;
+        }
+      }
     }
 })
 </script>
