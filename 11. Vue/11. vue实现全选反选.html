@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue属性和方法</title>
+</head>
+<body>
+<div id="app">
+   <input type="checkbox" class="check-all" v-model="checkAll" @change="checkAllToggle" />
+   <div>
+       <label><input type="checkbox" v-model="checkItems" value="1" @change="checkSignalItem">001</label>
+       <label><input type="checkbox" v-model="checkItems" value="2" @change="checkSignalItem">002</label>
+       <label><input type="checkbox" v-model="checkItems" value="3" @change="checkSignalItem">003</label>
+       <label><input type="checkbox" v-model="checkItems" value="4" @change="checkSignalItem">004</label>
+   </div>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+const app = new Vue({
+    el: '#app',
+    data:{
+        checkAll: false,
+        checkItems: [],
+    },
+    methods:{
+        checkSignalItem(){
+            if(this.checkItems.length==4){
+                this.checkAll = true;
+            } else{
+                this.checkAll = false;
+            }
+        },
+        checkAllToggle(){
+            if(this.checkAll){
+                this.checkItems = ['1','2','3','4'];
+            } else{
+                this.checkItems = [];
+            }
+        }
+    }
+})
+</script>
+</body>
+</html>
