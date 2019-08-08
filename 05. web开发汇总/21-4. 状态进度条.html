@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<style type="text/css">
+.scroll-bar{
+    width: 400px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 2em;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    cursor: pointer;
+    position: relative;
+    /*margin:50px auto;*/
+    margin-top:50px;
+    margin-left:50px;
+}
+.scroll-track{
+    width: 0;
+    height: 10px;
+    background: #ff4400;
+    border-radius: 2em;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+}
+.scroll-point{
+    width: 25px;
+    height: 25px;
+    background: #efefef;
+    border-radius: 50%;
+    border:1px solid #ccc;
+    -webkit-box-shadow: 0px 0px 5px #ccc;
+    -moz-box-shadow: 0px 0px 5px #ccc;
+    box-shadow: 0px 0px 5px #ccc;
+    position: absolute;
+    left:0;
+    top: -9px;
+    cursor: pointer
+}
+.scroll-point:hover{
+    background: #ff4400;
+    border:1px solid #fff;
+}
+input{
+    margin-top:30px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="scroll-bar">
+    <div class="scroll-track"></div>
+    <div class="scroll-point"></div>
+</div>
+<input type="text" value="0">
+
+<script type="text/javascript">
+$(function(){
+    $('.scroll-bar').processBar();
+
+})
+$.fn.processBar = function(opt){
+    let $scroller = $(this),
+        $scrollTrack = $(this).find('.scroll-track'),
+        $scrollPoint = $(this).find('.scroll-point'),
+        $input = $('input');
+    opt = Object.assign({}, {
+        max: 100,
+        value: 20,
+        step: 1
+    }, opt);
+    // 初始化
+    let currentX = 0;
+    let main = {
+        init: function(){
+            currentX = $scroller.width()*(opt.value/opt.max);
+            $scrollTrack.css('width', currentX+5+'px');
+            $scrollPoint.css('margin-left', currentX+'px');
+            $input.val(opt.value);
+        },
+        move: function(){
+            let flag = false, 
+                scrollerWidth = $scroller.width(),
+                pointX;
+            $scrollPoint.mousedown(()=>{
+                flag = true;
+                $(document.body).mousemove((event)=>{
+                    if(!flag){
+                        return;
+                    }
+                    pointX = event.clientX - $scroller.offset().left;
+                    $scrollPoint.css('margin-left', pointX+'px');
+                    $scrollTrack.css('width', pointX+2+'px');
+                    if(pointX+25>=scrollerWidth){
+                        $scrollTrack.css('width', scrollerWidth+'px');
+                        $scrollPoint.css('margin-left', (scrollerWidth-25)+'px');
+                        opt.value = opt.max;
+                    } else if(pointX<=0){
+                        $scrollTrack.css('width', 0);
+                        $scrollPoint.css('margin-left', 0);
+                        opt.value = 0;
+                    } else{
+                        opt.value = Math.round(100*(pointX/scrollerWidth));
+                    }
+                    $input.val(opt.value);
+                })
+            })
+            $(document.body).mouseup(()=>{
+                flag = false;
+                opt.value = Math.round(100*(pointX/scrollerWidth));
+                if(opt.value>=opt.max){
+                    opt.value = opt.max;
+                } else if(opt.value<=0){
+                    opt.value = 0;
+                }
+                $input.val(opt.value);
+            })
+            $input.keydown((event)=>{
+                if(event.keyCode == 13){
+                    let ivalue = parseInt($input.val());
+                    if(ivalue<0 || ivalue>opt.max){
+                        return;
+                    }
+                    currentX = $scroller.width()*(ivalue/opt.max);
+                    $scrollTrack.css('width', currentX+2+'px');
+                    $scrollPoint.css('margin-left', currentX+'px');
+                }
+            })
+        }
+    };
+    main.init();
+    main.move();
+}
+</script>
+</body>
+</html>
