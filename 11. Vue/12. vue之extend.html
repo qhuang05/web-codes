@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue extend使用</title>
+    <style>
+        .box{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+   <button @click="save">click me</button>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+const app = new Vue({
+    el: '#app',
+    data:{
+        
+    },
+    methods:{
+        save(){
+            this.$alert({
+                content: '内容。。。。',
+                callback:()=>{
+                    console.log(2323);
+                }
+            })
+        }
+    }
+})
+
+
+Vue.prototype.$alert = (opt, callback)=>{
+     const dialog = Vue.extend({
+        template: 
+            `<div class="box">
+                {{content}}
+                <a @click="cancel">取消</a>
+                <a @click="confirm">确定</a>
+            </div>
+            `,
+        data(){
+            return {
+                content: opt.content
+            }
+        },
+        methods:{
+            close(){
+                document.body.removeChild(vm.$el);
+                vm.$destroy();
+            },
+            cancel(){
+               this.close();
+            },
+            confirm(){
+                this.close();
+                if(opt.callback){
+                    opt.callback();
+                }
+            }
+        }
+    })
+    const vm = new dialog().$mount();
+    document.body.appendChild(vm.$el);
+}
+</script>
+</body>
+</html>
