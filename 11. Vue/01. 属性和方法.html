@@ -9,6 +9,7 @@
 <div id="app">
     <p>{{ fullName }}</p>
     <p>{{ getFullName() }}</p>
+    <input type="button" value="save" :disabled="isButtonDisabled" />
 </div>
 <script src="js/vue.js"></script>
 <script type="text/javascript">
@@ -17,6 +18,7 @@
         data: {
             firstName: 'Bill',
             lastName: 'Gates',
+            isButtonDisabled: true
         },
         computed: {//计算属性
             fullName(){
