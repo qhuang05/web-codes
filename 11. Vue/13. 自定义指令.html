@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>自定义指令</title>
+    <style>
+        .content{
+            height: 2000px;
+        }
+        .fix-box{
+            background-color: chocolate;
+            border:1px solid rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="content">
+        我是内容
+        <input type="text" v-focus>
+    </div>
+    <div class="fix-box" v-fix:[direction]="distance">我是固定的</div>
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+const app = new Vue({
+    el: '#app',
+    directives: {
+        focus:{
+            inserted: function(el, binding, vnode, oldVnode){
+                el.focus();
+            }
+        },
+        fix:{
+            bind: function(el, binding, vnode, oldVnode){
+                console.log(binding);
+                el.style.position = 'fixed';
+                // el.style.top = binding.value+'px';
+                el.style[binding.arg] = binding.value+'px'
+            }
+        }
+    },
+    data:{
+        direction: 'top',
+        distance: 100
+    }
+})
+</script>
+</body>
+</html>
