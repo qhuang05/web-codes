@@ -8,30 +8,25 @@
 </head>
 <body>
 	<div id="app">
-		<custom>
-			<section slot="s1">
-				{{ message }}
-				<h2>这是标题</span>
-				<p>Welcome to Xiamen Library.</p>
-			</section>
+		<custom v-slot:s1>
+			<div>
+				我的作用域在父组件上：{{ message }}
+			</div>
 		</custom>
 	</div>	
 	<script type="text/javascript">
 		// 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译；
 		Vue.component('custom', {
+			template:
+				`<div>
+					{{ message }}
+					<slot name="s1"></slot>
+				</div>`,
 			data(){
 				return {
 					message: '我是子组件数据'
 				}
 			},
-			template: `
-				<div>
-					{{ message }}
-					<slot name="s1">
-						{{ message }}
-					</slot>
-				</div>
-				`
 		});
 		let app = new Vue({
 			el: '#app',
