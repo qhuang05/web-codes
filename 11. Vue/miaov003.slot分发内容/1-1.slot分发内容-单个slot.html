@@ -10,23 +10,31 @@
 	<div id="app">
 		<custom>
 			<!-- 当写在自定义标签之间的内容，要混合子组件中的模板slot标签 -->
-			<div>我是html结构</div>
+			<div>
+				我是html结构
+				{{user.name}}
+			</div>
 		</custom>
 	</div>
 	<script type="text/javascript">
 		//全局注册组件
 		Vue.component('custom', {
-			template: `
-				<div>
+			template:
+				`<div>
 					<slot></slot>
 					<p>这是段落1</p>
 					<p>这是段落2</p>
 					<p>这是段落3</p>
-				</div>
-				`
+				</div>`,
 		});
 		let app = new Vue({
-			el: '#app'
+			el: '#app',
+			data: {
+				user:{
+					name: '张三',
+					age: 20
+				}
+			}
 		});
 	</script>
 </body>
