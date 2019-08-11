@@ -23,6 +23,11 @@
 				<p>v-slot只能用在template或组件上</p>
 				{{slotProps.data}}
 			</template>
+			<!-- 解构插槽 Prop -->
+			<template #s3="{user}">
+				<div>我是s333333333</div>
+				{{user.name}},{{user.age}}
+			</template>
 		</custom>
 	</div>	
 	<script type="text/javascript">
@@ -35,8 +40,16 @@
 						<p>我是段落1</p>
 					</slot>
 					<slot name="s2" :data="2"></slot>
-					<slot name="s3" :data="3"></slot>
+					<slot name="s3" :user="user"></slot>
 				</div>`,
+			data(){
+				return{
+					user:{
+						name: '张三',
+						age: 20
+					}
+				}
+			}
 		});
 		let app = new Vue({
 			el: '#app'
