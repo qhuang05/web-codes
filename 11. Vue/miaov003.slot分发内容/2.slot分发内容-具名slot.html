@@ -9,15 +9,15 @@
 <body>
 	<div id="app">
 		<custom>
-			<!-- slot在2.5已废弃，改成v-slot -->
-			<template slot="s1">
+			<!-- v-slot,简写# -->
+			<template v-slot:s1>
 				<section>这是替换内容1</section>
 			</template>
-			<section slot="s2">
+			<section v-slot:s2>
 				<h2>这是替换内容2</span>
 				<p>Welcome to Xiamen Library.</p>
 			</section>
-			<template slot="s3">
+			<template #s3>
 				<h2>这是替换内容3</h2>
 				<p>使用template, 不包含外层标签</p>
 			</template>
