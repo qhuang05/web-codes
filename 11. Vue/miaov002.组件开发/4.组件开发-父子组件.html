@@ -32,7 +32,7 @@
 							<input type="text" class="search-input" :value="searchValue" />
 							<button class="search-btn" @click="resultShow=!resultShow">{{btnText}}{{btnTxt}}</button>
 						</div>
-						<custom-list v-show="resultShow" :list="list" @receive="changeInputValue"></custom-list>
+						<custom-list v-show="resultShow" :list="list" @receive-item="changeInputValue"></custom-list>
 					</section>`,
 			methods:{
 				changeInputValue(value){
@@ -51,7 +51,7 @@
 			methods:{
 				itemSelected(item){
 					//点击li元素后,将item的值传递给父组件, 需要触发一个自定义事件
-					this.$emit('receive', item);
+					this.$emit('receive-item', item);
 				}
 			}
 		});

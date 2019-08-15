@@ -9,31 +9,30 @@
 <body>
 	<div id="app">
 		<custom>
-			<!-- slot在2.5已废弃，改成v-slot -->
-			<template slot="s1">
-				<section>这是替换内容1</section>
+			<!-- v-slot简写# -->
+			<template>
+				<div>我是默认的...</div>
 			</template>
-			<section slot="s2">
-				<h2>这是替换内容2</span>
-				<p>Welcome to Xiamen Library.</p>
-			</section>
-			<template slot="s3">
-				<h2>这是替换内容3</h2>
-				<p>使用template, 不包含外层标签</p>
+			<template v-slot:s1>
+				<div>我是s11111111</div>
+			</template>
+			<template #s2>
+				<div>我是s222222222</div>
+				<p>v-slot只能用在template或组件上</p>
 			</template>
 		</custom>
 	</div>	
 	<script type="text/javascript">
 		//全局注册组件
 		Vue.component('custom', {
-			template: `<div>
-					<slot name="s1"><p>我是段落1</p></slot>
+			template: 
+				`<div>
+					<slot></slot>
+					<slot name="s1">
+						<p>我是段落1</p>
+					</slot>
 					<slot name="s2"></slot>
-					<slot name="s3"></slot>
 				</div>`,
-			created(){
-
-			}
 		});
 		let app = new Vue({
 			el: '#app'

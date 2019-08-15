@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot分发内容, 单个slot</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!--<custom v-slot="slotProps">-->
+		<!--<custom v-slot:default="slotProps">-->
+		<custom #default="slotProps">
+			<!-- 当写在自定义标签之间的内容，要混合子组件中的模板slot标签 -->
+			<div>
+				我是html结构
+				{{user.name}}
+				{{slotProps.user.name}}
+				{{slotProps.title}} 
+			</div>
+		</custom>
+	</div>
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom', {
+			template:
+				`<div>
+					<slot :user="user" :title="title"></slot>
+					<p>这是段落1</p>
+					<p>这是段落2</p>
+					<p>这是段落3</p>
+				</div>`,
+			data(){
+				return {
+					user:{
+						name: '李四',
+						age: 30
+					},
+					title:'aaa'
+				}
+			}
+		});
+		let app = new Vue({
+			el: '#app',
+			data: {
+				user:{
+					name: '张三',
+					age: 20
+				}
+			}
+		});
+	</script>
+</body>
+</html>

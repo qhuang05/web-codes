@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot分发内容, 具名slot</title>
+	 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<custom>
+			<!-- v-slot简写# -->
+			<template v-slot="slotProps">
+				<div>我是默认的...</div>
+				{{slotProps.data}}
+			</template>
+			<template v-slot:s1="slotProps">
+				<div>我是s11111111</div>
+				{{slotProps.data}}
+			</template>
+			<template #s2="slotProps">
+				<div>我是s222222222</div>
+				<p>v-slot只能用在template或组件上</p>
+				{{slotProps.data}}
+			</template>
+			<!-- 解构插槽 Prop -->
+			<template #s3="{user}">
+				<div>我是s333333333</div>
+				{{user.name}},{{user.age}}
+			</template>
+		</custom>
+	</div>	
+	<script type="text/javascript">
+		//全局注册组件
+		Vue.component('custom', {
+			template: 
+				`<div>
+					<slot :data="0"></slot>
+					<slot name="s1" :data="1">
+						<p>我是段落1</p>
+					</slot>
+					<slot name="s2" :data="2"></slot>
+					<slot name="s3" :user="user"></slot>
+				</div>`,
+			data(){
+				return{
+					user:{
+						name: '张三',
+						age: 20
+					}
+				}
+			}
+		});
+		let app = new Vue({
+			el: '#app'
+		});
+	</script>
+</body>
+</html>
