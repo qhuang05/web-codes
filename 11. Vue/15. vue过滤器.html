@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vue过滤器</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg" />
+    {{msg | capitalize}}
+    <br>
+    <input type="text" v-model="msg2" />
+    {{msg2 | mobile}}
+</div>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+const app = new Vue({
+    el: '#app',
+    data:{
+        msg: '1',
+        msg2: '2'
+    },
+    filters:{
+        capitalize: function(value){
+            return value.toUpperCase();
+        },
+        mobile: function(value){
+            let reg = /\D/g;
+            return value.replace(reg, '');
+        }
+    }
+})
+</script>
+</body>
+</html>
