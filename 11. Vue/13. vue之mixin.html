@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="app">
-    {{msg}}
+    {{user}}
     {{msg2}}
 </div>
 <script src="js/vue.js"></script>
@@ -18,7 +18,15 @@
 const mixin = {
     data(){
         return {
-            msg: 'mixins',
+            user: {
+                name: 'sandy2',
+                age: 20,
+                info: ['apple', 'banana'],    
+                pos: {
+                    x: 10,
+                    y: 20
+                }            
+            },
             msg2: '222'
         }
     },
@@ -30,7 +38,14 @@ const app = new Vue({
     mixins: [mixin],
     el: '#app',
     data:{
-        msg: 'hello'
+        user: {
+            name: 'sandy',
+            age: 18,
+            info: ['apple', 'orange'],
+            pos: {
+                x: 1
+           }
+        }
     },
     created(){
         console.log('app...');
