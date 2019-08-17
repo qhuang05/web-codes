@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>vue过渡动画</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 100px;
+            background: coral;
+        }
+        @keyframes slide-in{
+            from{
+                transform: translateX(-100%)
+            }
+            to{
+                transform: translateX(0)
+            }
+        }
+        @keyframes slide-out{
+            from{
+                transform: translateX(0)
+            }
+            to{
+                transform: translateX(-100%)
+            }
+        }
+        .slide-enter-active{
+            animation: slide-in 0.5s
+        }
+        .slide-leave-active{
+            /* animation: slide-out 0.5s */
+            animation: slide-in 0.5s reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="show = !show">
+            Toggle
+        </button>
+        <transition name="slide" mode="out-in" appear>
+            <div class="wrap" v-show="show">hello</div>
+        </transition>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

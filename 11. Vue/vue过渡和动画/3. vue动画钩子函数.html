@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>vue过渡动画</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 100px;
+            background: coral;
+        }        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="show = !show">
+            Toggle
+        </button>
+        <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+            v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled"
+            v-bind:css="false"
+        >
+            <div class="wrap" v-show="show">hello</div>
+        </transition>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods:{
+                beforeEnter(){
+                    // ...
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
