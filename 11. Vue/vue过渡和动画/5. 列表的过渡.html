@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>vue过渡动画</title>
+    <style>
+        ul, li{list-style: none}
+        .fade-enter-to, 
+        .fade-leave{
+            opacity: 1;
+        }
+        .fade-enter, 
+        .fade-leave-to{
+            opacity: 0;
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all .5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="add">add</button>
+        <button @click="remove">remove</button>
+        <transition-group name="fade" mode="out-in" tag="ul">
+            <li v-for="item,index in list" :key="item">
+                <p>{{item}}</p>
+            </li>
+        </transition-group>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: [1,2,3,4,5]
+            },
+            methods:{
+                add(){
+                    this.list.push(Math.random()*100);
+                },
+                remove(){
+                    this.list.shift();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
