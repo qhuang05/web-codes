@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>vuex表单数据更新</title>
+</head>
+<body>
+<div id="app">
+    {{info.data.title}}
+    <ul>
+        <li v-for="item,index in info.data.products">{{item.name}}, {{item.color}}</li>
+    </ul>
+    <template v-for="value,key in info.data.attrs">
+        <p>{{key}}: {{value}}</p>
+    </template>
+    <hr/>
+    <custom></custom>
+</div>
+<script src="js/vue.js"></script>
+<script src="js/vuex.js"></script>
+<script type="text/javascript">
+const store = new Vuex.Store({  
+    strict: true,
+    state:{
+        info: {
+            type: 'product',
+            data:{
+                title: '生活用品',
+                products:[{
+                    name: '抱枕',
+                    color: 'red'
+                },{
+                    name: 'T恤',
+                    color: 'blue'
+                }],
+                attrs: {
+                    t1: 10,
+                    t2: 20
+                }
+            }
+        }
+    },
+    mutations:{
+        updateData(state, payload){
+            state.info.data = Object.assign({}, state.info.data, payload);
+        }
+    }
+})
+Vue.component('custom', {
+    template:
+    `<div>
+        <input type="text" v-model.lazy="title" />
+        <ul class="list">
+            <li v-for="item,index in products">{{item.name}}, {{item.color}} <button class="remove" @click="removeProduct(item,index)">删除</button></li>
+        </ul>
+        <button @click="addProduct">添加产品</button>
+        <template v-for="value,key in info.data.attrs">
+            <p>{{key}}: {{value}}</p>
+        </template>
+        <button @click="updateAttr">更新attr</button>
+    </div>`,
+    computed:{
+        info(){ return this.$store.state.info },
+        title:{
+            get(){ return this.info.data.title },
+            set(value){
+                this.$store.commit('updateData', {
+                    title: value
+                });
+            }
+        },
+        // 数组或对象需要拷贝，否则操作的时候，vuex mutations会报错
+        products(){ 
+            return [...this.info.data.products]
+        },
+        attrs(){
+            return {...this.info.data.attrs}
+            // return Object.assign({}, this.info.data.attrs)
+        }
+    },
+    methods:{
+        removeProduct(item,index){
+            this.products.splice(index, 1);
+            let self = this;
+            this.$store.commit('updateData', {
+                products: self.products
+            })
+        },
+        addProduct(){
+            this.products.push({
+                name: '新产品',
+                color:'yellow'
+            });
+            let self = this;
+            this.$store.commit('updateData', {
+                products: self.products
+            })
+        },
+        updateAttr(){
+            this.attrs.t1 = 100;
+            let self = this;
+            this.$store.commit('updateData', {
+                attrs: self.attrs
+            })
+        }
+    }
+})
+new Vue({
+    el: '#app',
+    store,
+    data:{
+        msg: 'hello'
+    },
+    computed:{
+        info(){
+            return this.$store.state.info
+        }
+    }
+})
+</script>
+</body>
+</html>
