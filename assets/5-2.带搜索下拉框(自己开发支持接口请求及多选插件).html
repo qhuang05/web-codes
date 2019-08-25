@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>带搜索下拉框</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+    <style>
+.custom-select-box{
+	width:100%;
+	min-width: 45px;
+	text-align: left;
+}
+.custom-select-box .option-selected{
+	width: 100%;
+	min-width: 45px;
+	position: relative;
+}
+.custom-select-box .option-selected>input{
+	width:100%;
+	border:1px solid rgb(204, 204, 204);
+	height: 28px;
+	padding-right:20px;
+	cursor: pointer;
+}
+.custom-select-box .option-selected>i{
+	position: absolute;
+	right: 5px;
+	top:8px;
+}
+.custom-select-box .option-box{
+	position: absolute;
+	top:28px;
+	left:0;
+	z-index: 100;
+	width:100%;
+	background: #fff;
+	border-top:0;
+	border:1px solid #1F93D0;
+	display:none;
+}
+.custom-select-box .keyword{
+	width:100%;
+	border:0;
+	border-bottom:1px solid rgb(204, 204, 204);
+}
+.custom-select-box .option-list{
+	max-height: 398px;
+	overflow-y:auto;
+}
+.custom-select-box .option-list li{
+	padding: 2px 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.custom-select-box .option-list li.selected{
+	background: #F86D6E;
+	color:#fff;
+}
+.custom-select-box .option-list li:hover{
+	background: #1F93D0;
+	color:#fff;
+	cursor: pointer;
+}
+.custom-select-box .no-result{
+    width:100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<select id="select1">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+<script src="lib/jquery-1.11.3.min.js"></script>
+<script src="js/multiSelect.js"></script>
+<script>
+$(document).ready(function(){
+    $('#select1').multiSelect({
+        isSearch: true,
+        isAjax: true,
+        url: 'https://www.easy-mock.com/mock/5b1e102869592a5b2f4042fe/demoapi/getOptionList'
+    });
+
+    // $('#select1').multiSelect({
+    //     isSearch: false,
+    //     isAjax: false
+    // });
+});
+</script>
+</body>
+</html>
