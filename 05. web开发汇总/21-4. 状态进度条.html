@@ -4,8 +4,8 @@
     <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
     <style>
         .scroll-wrap{
-            width:400px;
-            height:10px;
+            width: 400px;
+            height: 10px;
             padding:20px 0;
             background: #000;
             display: inline-block;
@@ -60,84 +60,81 @@
     </div>
 <script type="text/javascript">
 $(function(){
-    $('.scroll-wrap').processBar();
+    $('.scroller').processBar();
 });
 $.fn.processBar = function(opt){
-    let $scroller = $(this),
+    let $self = $(this),
+        $scroller = $(this).find('.scroll-wrap'),
         $scrollTrack = $(this).find('.scroll-track'),
         $scrollPoint = $(this).find('.scroll-point'),
-        $input = $('input');
+        $input = $(this).find('input');
     opt = Object.assign({}, {
+        min: 0,
         max: 100,
-        value: 20,
-        step: 1
+        init: 20,
     }, opt);
     // 初始化
     let currentX = 0;
     let main = {
         init: function(){
-            currentX = $scroller.width()*(opt.value/opt.max);
-            $scrollTrack.css('width', currentX+5+'px');
-            $scrollPoint.css('margin-left', currentX+'px');
-            $input.val(opt.value);
+            main.setValue(opt.init);
         },
-        setValue(){
-
+        setValue(value){
+            let maxVal = $scroller.width() - $scrollPoint.width(); 
+            let posX = $scroller.width()*(value/opt.max);
+            posX = posX>maxVal ? maxVal : posX;
+            $scrollPoint.css('left', posX+'px');
+            $scrollTrack.css('width', posX+25+'px');
+            $input.val(value);
         },
-        move: function(){
-            let flag = false, 
-                scrollerWidth = $scroller.width(),
-                pointX;
-            $scrollPoint.mousedown(()=>{
-                flag = true;
-                $scroller.mousemove((e)=>{
-                    if(!flag){
-                        return;
-                    }
-                    console.log('move...');
-                    pointX = e.clientX - $scroller.offset().left;
-                    $scrollPoint.css('margin-left', pointX+'px');
-                    $scrollTrack.css('width', pointX+2+'px');
-                    if(pointX+25>=scrollerWidth){
-                        $scrollTrack.css('width', scrollerWidth+'px');
-                        $scrollPoint.css('margin-left', (scrollerWidth-25)+'px');
-                        opt.value = opt.max;
-                    } else if(pointX<=0){
-                        $scrollTrack.css('width', 0);
-                        $scrollPoint.css('margin-left', 0);
-                        opt.value = 0;
-                    } else{
-                        opt.value = Math.round(100*(pointX/scrollerWidth));
-                    }
-                    $input.val(opt.value);
-                });
+        setWidth(value){
+            let maxVal = $scroller.width() - $scrollPoint.width();            
+            value =  value<0 ? 0 : (value>maxVal ? maxVal : value);
+            $scrollPoint.css({
+                'left': value
             });
-            /* 不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。
-            只有在鼠标指针离开被选元素时，才会触发 mouseleave 事件。 */
-            $scroller.mouseleave((e)=>{
-                flag = false;
-                // $scroller.off('mousemove');
+            $scrollTrack.css({
+                'width': value+25
+            })
+        },
+        move(){
+            $scroller.on('mousedown', (e)=>{
+                let startX = e.clientX;
+                let offsetLeft = e.clientX - $scroller.offset().left;
+                main.setWidth(offsetLeft);
+                let ivalue = 0;
+                if(offsetLeft<opt.max){
+                    ivalue = offsetLeft/$scroller.width()*opt.max;
+                } else{
+                    ivalue = (offsetLeft+25)/$scroller.width()*opt.max;
+                }
+                $input.val(ivalue>100 ? 100 : Math.round(ivalue));
+                $scroller.on('mousemove', (e)=>{
+                    let endX = e.clientX;
+                    let _offsetLeft = offsetLeft + (endX -startX);
+                    main.setWidth(_offsetLeft);
+                    let ivalue = 0;
+                    if(_offsetLeft<opt.max){
+                        ivalue = _offsetLeft/$scroller.width()*opt.max;
+                    } else{
+                        ivalue = (_offsetLeft+25)/$scroller.width()*opt.max;
+                    }
+                    $input.val(ivalue>100 ? 100 : Math.round(ivalue));
+                });
+                // 防止触发拖拽事件
+                e.preventDefault();
             });
             $(document).on('mouseup', ()=>{
-                flag = false;
-                // $scroller.off('mousemove');
-                opt.value = Math.round(100*(pointX/scrollerWidth));
-                if(opt.value>=opt.max){
-                    opt.value = opt.max;
-                } else if(opt.value<=0){
-                    opt.value = 0;
-                }
-                $input.val(opt.value);
-            })
+                $scroller.off('mousemove');
+            });
+
             $input.keydown((event)=>{
                 if(event.keyCode == 13){
                     let ivalue = parseInt($input.val());
                     if(ivalue<0 || ivalue>opt.max){
                         return;
                     }
-                    currentX = $scroller.width()*(ivalue/opt.max);
-                    $scrollTrack.css('width', currentX+2+'px');
-                    $scrollPoint.css('margin-left', currentX+'px');
+                    main.setValue(ivalue);
                 }
             })
         }
