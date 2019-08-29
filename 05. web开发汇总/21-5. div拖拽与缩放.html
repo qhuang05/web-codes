@@ -29,8 +29,8 @@
         }
         .item .point{
             display: inline-block;
-            width:20px;
-            height: 20px;
+            width: 10px;
+            height: 10px;
             background:blue;
             position: absolute;
             bottom:0;
@@ -50,6 +50,7 @@
 <script type="text/javascript" src="./plugins/jquery-1.11.3.min.js"></script>
 <script>
 $(function () {
+    // mouseove要在document上监听，否则会有不流畅的情况出现
     $(document).on('mousedown', '.item', function(e){
         let $item = $(this);
         let boxWidth = $('#box').width(),
@@ -62,7 +63,7 @@ $(function () {
             maxY = boxHeight - iHeight,           
             startX = e.clientX,
             startY = e.clientY;
-        $item.on('mousemove', function(e){
+        $(document).on('mousemove', function(e){
             let changeX = e.clientX - startX,
                 changeY = e.clientY - startY;
             let _offsetX = offsetX+changeX,
@@ -88,7 +89,7 @@ $(function () {
             maxHeight = boxHeight - offsetY,
             startX = e.clientX,
             startY = e.clientY;
-        $(this).on('mousemove', function(e){
+        $(document).on('mousemove', function(e){
             let changeX = e.clientX - startX,
                 changeY = e.clientY - startY;
             let _offsetX = iWidth+changeX,
@@ -104,7 +105,7 @@ $(function () {
         e.stopPropagation();
     });
     $(document).on('mouseup', function(e){
-        $('.item, .point').off('mousemove');
+        $(document).off('mousemove');
     });
 })
 </script>
