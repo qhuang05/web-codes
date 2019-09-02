@@ -35,8 +35,15 @@
 			console.log(res1);
 			var res2 = await doPromise(1000);
 			console.log(res2);
+			return {
+				id: 100,
+				name: 'xxx'
+			}
 		}
-		showResult2();
+		// showResult2();
+		showResult2().then(data=>{
+			console.log(data);  //{id: 100, name: 'xxx'}
+		});
 
 
 		//async函数返回的是一个promise对象
