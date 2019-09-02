@@ -18,6 +18,26 @@
     input[type="radio"], input[type="checkbox"]{
         vertical-align: -2px;
     }
+
+    .box{ width: 400px; height: 200px; border:1px solid blue; display:inline-block }
+    .box img{ width:100px; }
+    
+    /* .box1{
+        display: table-cell; vertical-align: middle;
+    } */
+
+    .box1{ line-height: 200px;}
+    img{ vertical-align: middle;}
+
+    .box2{ line-height: 200px;}
+    img{ vertical-align: middle;}
+
+    .box3{
+        display: table-cell; vertical-align: middle;
+    }
+
+    .box4{ line-height: 200px;}
+    .box4 span{ vertical-align: middle;}
 </style>
 </head>
 <body>
@@ -27,5 +47,22 @@
         <li><input type="text"/>测试</li>
         <li><select><option>请选择</option></select>测试</li>
     </ul>
+    <hr/>
+    <!-- 内联元素居中 -->
+    <div class="box box1">
+        <img src="images/640-960.jpg">
+    </div>
+    <div class="box box2">
+        <img src="images/640-960.jpg">
+        <img src="images/1920-1200.jpg">
+    </div>
+    <div class="box box3">
+        aaa
+    </div>
+    <div class="box box4">
+        <span>aaa</span>
+        <span style="font-size:40px;">bbb</span>
+        <span style="font-size:20px">ccc</span>
+    </div>
 </body>
 </html>

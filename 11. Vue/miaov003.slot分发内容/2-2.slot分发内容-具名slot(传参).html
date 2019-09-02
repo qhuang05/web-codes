@@ -24,9 +24,15 @@
 				{{slotProps.data}}
 			</template>
 			<!-- 解构插槽 Prop -->
-			<template #s3="{user}">
+			<!-- <template v-slot:s3="slotProps">
+				<div>我是s333333333</div>
+				{{slotProps.user.name}},{{slotProps.user.age}}
+				{{slotProps.pro.x}},{{slotProps.pro.y}}
+			</template> -->
+			<template v-slot:s3="{user, pro}">
 				<div>我是s333333333</div>
 				{{user.name}},{{user.age}}
+				{{pro.x}},{{pro.y}}
 			</template>
 		</custom>
 	</div>	
@@ -40,13 +46,17 @@
 						<p>我是段落1</p>
 					</slot>
 					<slot name="s2" :data="2"></slot>
-					<slot name="s3" :user="user"></slot>
+					<slot name="s3" :user="user" :pro="pro"></slot>
 				</div>`,
 			data(){
 				return{
 					user:{
 						name: '张三',
 						age: 20
+					},
+					pro:{
+						x: 10,
+						y: 20
 					}
 				}
 			}

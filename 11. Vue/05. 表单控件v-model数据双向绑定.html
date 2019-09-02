@@ -37,6 +37,9 @@
             <option value="4">S4</option>
         </select>
         <p>您已选择：{{ selectItems }}</p>
+        
+
+        <input type="checkbox" :checked="isCheck"/>
     </form>
 <script src="js/vue.js"></script>
 <script>
@@ -48,7 +51,8 @@
             checkboxItem: true,
             radioItem: '0',
             selectItem: '1',
-            selectItems: ['1','2']
+            selectItems: ['1','2'],
+            isCheck: true
         }
     });
 </script>

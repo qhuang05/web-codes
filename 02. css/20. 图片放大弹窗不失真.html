@@ -13,7 +13,6 @@
         background: rgba(0,0,0,0.5);
     }
     .popup-img{
-        background: yellow;
         position: fixed;
         z-index:100;
         top:50%;
@@ -24,21 +23,21 @@
     }
     .img-wrap{
         text-align: center;
+    }
+    .img-wrap img{
+        /* 弹窗大小不设置，由img的宽高撑开 */
         max-width: calc(100vw);
         max-width: -webkit-calc(100vw);
         max-width: -moz-calc(100vw);
-        height: calc(100vh - 200px);
-        height: -webkit-calc(100vh - 200px);
-        height: -moz-calc(100vh - 200px);
-    }
-    .img-wrap img{
-        max-height:100%;
+        max-height: calc(100vh);
+        max-height: -webkit-calc(100vh);
+        max-height: -moz-calc(100vh);
     }
 </style>
 </head>
 <body>
     <div class="mask"></div>
-    <div class="popup popup-img">
+   <div class="popup popup-img">
         <div class="popup-content">
             <div class="img-wrap">
                 <!-- <img src="images/640-960.jpg"> -->

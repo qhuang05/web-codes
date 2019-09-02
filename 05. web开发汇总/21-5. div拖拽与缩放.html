@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标进行伸缩div</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #box{
+            margin:30px auto;
+            width:800px;
+            height:500px;
+            border:1px solid red;
+            position: relative;
+        }
+        .item{
+            position: absolute;
+            top:0;
+            left:0;
+            width:50px;
+            height: 50px;
+            border:1px solid #000;
+            cursor: move;
+        }
+        .item .point{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background:blue;
+            position: absolute;
+            bottom:0;
+            right:0;
+            cursor:nwse-resize
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="item">
+        <i class="point"></i>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="./plugins/jquery-1.11.3.min.js"></script>
+<script>
+$(function () {
+    // mouseove要在document上监听，否则会有不流畅的情况出现
+    $(document).on('mousedown', '.item', function(e){
+        let $item = $(this);
+        let boxWidth = $('#box').width(),
+            boxHeight = $('#box').height(),
+            iWidth = $item.width(),
+            iHeight = $item.height(),
+            offsetX = parseInt($item.css('left')),
+            offsetY = parseInt($item.css('top')),
+            maxX = boxWidth - iWidth,
+            maxY = boxHeight - iHeight,           
+            startX = e.clientX,
+            startY = e.clientY;
+        $(document).on('mousemove', function(e){
+            let changeX = e.clientX - startX,
+                changeY = e.clientY - startY;
+            let _offsetX = offsetX+changeX,
+                _offsetY = offsetY+changeY;
+            console.log(_offsetX, _offsetY);
+            _offsetX = _offsetX<0 ? 0 : (_offsetX>maxX ? maxX : _offsetX);
+            _offsetY = _offsetY<0 ? 0 : (_offsetY>maxY ? maxY : _offsetY);
+            $item.css({
+                'left': _offsetX,
+                'top': _offsetY
+            })
+        })
+    });
+    $(document).on('mousedown', '.point', function(e){
+        let $item = $(this).closest('.item');
+        let boxWidth = $('#box').width(),
+            boxHeight = $('#box').height(),
+            iWidth = $item.width(),
+            iHeight = $item.height(),
+            offsetX = parseInt($item.css('left')),
+            offsetY = parseInt($item.css('top')),
+            maxWidth = boxWidth - offsetX,
+            maxHeight = boxHeight - offsetY,
+            startX = e.clientX,
+            startY = e.clientY;
+        $(document).on('mousemove', function(e){
+            let changeX = e.clientX - startX,
+                changeY = e.clientY - startY;
+            let _offsetX = iWidth+changeX,
+                _offsetY = iHeight+changeY;
+            console.log(_offsetX, _offsetY);
+            _offsetX = _offsetX<10 ? 10 : (_offsetX>maxWidth ? maxWidth : _offsetX);
+            _offsetY = _offsetY<10 ? 10 : (_offsetY>maxHeight ? maxHeight : _offsetY);
+            $item.css({
+                'width': _offsetX,
+                'height': _offsetY
+            })
+        })
+        e.stopPropagation();
+    });
+    $(document).on('mouseup', function(e){
+        $(document).off('mousemove');
+    });
+})
+</script>
