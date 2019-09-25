@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>算法：根据节点查找树的路径</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	const tree = {
+		'a':{
+			'a1':{
+				'a11': [100,101,102]
+			},
+			'a2': [200,201],
+			'a3': [300]
+		},
+		'b': {
+			'b1': [400],
+			'b2': [500]
+		},
+		'c': {
+			'c1': {
+				'c11': [600]
+			}
+		}
+	};
+	let id = 100;
+	let path = [];
+	findPath(tree, []);
+	function findPath(data, _path){
+		Object.keys(data).forEach(node=>{
+			_path = [..._path, node];
+			let _node = data[node];
+			if(_node.constructor == Array){
+				let index = _node.findIndex(e=>e==id);
+				if(index>-1){
+					_path.push(_node[index]);
+					path.push(_path);
+				}
+			} else{
+				findPath(_node, _path);
+			}
+		});
+	}
+	console.log(`节点${id}路径：${path[0].join('>')}`);
+</script>
+</body>
+</html>
