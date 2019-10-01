@@ -34,12 +34,12 @@
 	// reduce求数组总和
 	let res3 = arr.reduce((prev, cur, i, array)=>{
 		console.log(prev, cur);
-		return accu + item;
+		return prev + cur;
 	}, 0);
 	console.log(res3);
 	// reduce数组去重
 	let res4 = arr.reduce((prev, cur, i, array)=>{
-		if(prev.indexOf(cur)=-1){
+		if(prev.indexOf(cur)==-1){
 			prev.push(cur);
 		}
 		return prev;
