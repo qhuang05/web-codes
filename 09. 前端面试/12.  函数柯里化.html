@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>函数柯里化</title>
+</head>
+
+<body>
+    <script>
+        const add = (x,y)=>{
+            return x+y;
+        }
+        const cAdd = (x)=>{
+            return y=>{
+                return x+y
+            }
+        }
+        let ret1 = add(1,2);
+        let ret2 = cAdd(1)(2);
+        console.log(ret1, ret2);
+
+
+        function foo(props){
+            console.log('foo args', props);
+        }
+        function zoo(fn){
+            return props=>{
+                console.log('zoo args', props);
+                fn(props);
+            }
+        }
+
+        zoo(foo)(200);
+    </script>
+</body>
+</html>
