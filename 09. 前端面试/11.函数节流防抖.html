@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数节流防抖</title>
+</head>
+<body>
+    <div style="height:3000px;background:sandybrown"></div>
+    <script>
+        function throten(func, time=500){
+            let endTime = new Date();
+            return function(...args){
+                let startTime = new Date();
+                if(startTime-endTime>time){
+                    endTime = startTime;
+                    func.call(this, ...args);
+                }
+            }
+        }
+        document.onscroll = throten(function(){
+            console.log('scrolling...');
+        })
+    </script>
+</body>
+</html>

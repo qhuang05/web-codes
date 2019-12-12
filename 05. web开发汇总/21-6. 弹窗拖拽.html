@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹窗拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #box{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5)
+        }
+        #box>div{
+            position: relative;
+            background: #fff;
+        }
+        .body-content{
+            width: 3000px;
+            height: 4000px;
+        }
+    </style>
+</head>
+<body>
+<div class="body-content">body content</div>
+<div id="box">
+    <div class="content" style="width:600px;height:400px">
+        <div class="header" style="height:40px;line-height:40px;background:red">标题</div>
+        <div class="content">内容</div>
+        <div class="footer">标题</div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="./plugins/jquery-1.11.3.min.js"></script>
+<script>
+$(function () {
+    $(document).on('mousedown', '#box', function(e){
+        let startX = e.clientX, startY = e.clientY;
+        let $popCont = $('#box>div');
+        let maxLeft = $(window).width() - $popCont.width();
+        let maxTop = $(window).height() - $popCont.height();
+        let marginLeft = parseInt($popCont.css('margin-left'));
+        let marginTop = parseInt($popCont.css('margin-top'));
+        $(document).on('mousemove', function(e){
+            let endX = e.clientX, endY = e.clientY;
+            let changeX = endX - startX + marginLeft, 
+                changeY = endY - startY + marginTop;
+            $('#box>div').css({
+                'margin-left': changeX<-maxLeft ? -maxLeft : (changeX>maxLeft ? maxLeft : changeX),
+                'margin-top': changeY<-maxTop ? -maxTop : (changeY>maxTop ? maxTop : changeY),
+            })
+        });
+    })
+    $(document).on('mouseup', function(){
+        $(document).off('mousemove');
+    })
+})
+</script>
