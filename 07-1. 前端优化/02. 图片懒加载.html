@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片懒加载</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 1000px">
+        content
+    </div>
+    <div id="box">
+        <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3958473360,317897763&fm=26&gp=0.jpg" data-src="http://file02.16sucai.com/d/file/2014/0829/372edfeb74c3119b666237bd4af92be5.jpg" />
+    </div>
+    <script>
+        const debounce = (func, wait=500)=>{
+            let timer = 0;
+            return (...args) =>{
+                if(timer){
+                    clearTimeout(timer);
+                }
+                timer = setTimeout(()=>{
+                    func.apply(this, args);
+                }, wait)
+            }
+        }
+        const imgLazyLoad = function(){
+            let imgs = document.querySelectorAll('img');
+            let viewHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            let num = 0;
+            for(let i=num; i<imgs.length; i++){
+                if(viewHeight-imgs[i].getBoundingClientRect().top>=0){
+                    let src = imgs[i].getAttribute('data-src');
+                    imgs[i].setAttribute('src', src);
+                    num++;
+                }
+            }
+        }
+        document.addEventListener('scroll', debounce(imgLazyLoad), false);
+    </script>
+</body>
+</html>
