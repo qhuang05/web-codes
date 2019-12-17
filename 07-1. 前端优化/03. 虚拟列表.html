@@ -10,152 +10,108 @@
     <script src="js/react-dom.development.js"></script>
     <script src="js/babel.min.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
         html,
         body {
             height: 100%;
         }
 
         .list-item {
+            height: .8rem;
             height: 60px;
             border-bottom: 1px solid goldenrod;
+            padding: 0 20px;
         }
     </style>
 </head>
+
 <body>
+    <!-- 
+    虚拟列表是一种根据滚动容器元素的可视区域来渲染长列表数据中某一个部分数据的技术。
+    虚拟列表是对长列表的一种优化方案。在前端开发中，会碰到一些不能使用分页方式来加载列表数据的业务形态，我们称这种列表叫做长列表。 
+    -->
     <div id="root"></div>
     <script type="text/babel">
-        const height = 60
-        const bufferSize = 10
         class Item extends React.Component {
+            constructor(props) {
+                super(props);
+            }
             componentDidMount() {
-                this.props.cachePosition(this.node, this.props.index)
+                this.props.savePosition(this.el, this.props.index)
             }
             render() {
-                const { index, item } = this.props
                 return (
-                    <div className='list-item' ref={node => { this.node = node }}>
-                        {index}
-                    </div>
+                    <div className="list-item" ref={el => this.el = el}>{this.props.index + 1}</div>
                 )
             }
         }
         class VirtualList extends React.Component {
             constructor(props) {
-                super(props)
+                super(props);
                 this.state = {
-                    startOffset: 0,
-                    endOffset: 0,
-                    visibleData: []
+                    offsetTop: 0,
+                    offsetBottom: 0,
+                    virtualData: []
                 }
+                this.startIndex = 0;
+                this.endIndex = 0;
+                this.cache = [];
+                this.itemHeight = 60;
+                this.virtualCount = 0;
 
-                this.data = new Array(1000).fill(true)
-
-                this.startIndex = 0
-                this.endIndex = 0
-                this.scrollTop = 0
-
-                this.doc = null
-
-                // 缓存已渲染元素的位置信息
-                this.cache = []
-                // 缓存锚点元素的位置信息
-                this.anchorItem = {
-                    index: 0, // 锚点元素的索引值
-                    top: 0, // 锚点元素的顶部距离第一个元素的顶部的偏移量(即 startOffset)
-                    bottom: 0 // 锚点元素的底部距离第一个元素的顶部的偏移量
-                }
-
-                this.handleScroll = this.handleScroll.bind(this)
-                this.cachePosition = this.cachePosition.bind(this)
+                this.data = new Array(1000).fill(true);
             }
-
-            cachePosition(node, index) {
-                const rect = node.getBoundingClientRect()
-                const top = rect.top + window.pageYOffset
-
+            savePosition = (elem, index) => {
+                let _top = elem.getBoundingClientRect().top + window.pageYOffset;
                 this.cache.push({
                     index,
-                    top,
-                    bottom: top + height
+                    top: _top,
+                    bottom: _top + elem.clientHeight
                 })
             }
-
-            // 滚动事件处理函数
-            handleScroll(e) {
-                if (!this.doc) {
-                    // 兼容 iOS Safari/Webview
-                    this.doc = window.document.body.scrollTop ? window.document.body : window.document.documentElement
+            scrollHandler = (e)=>{
+                let scrollTop = window.pageYOffset;
+                let startNode = this.cache.find(item=>item.bottom>scrollTop);
+                if(!startNode){
+                    return;
                 }
-
-                const scrollTop = this.doc.scrollTop
-                if (scrollTop > this.scrollTop) {
-                    if (scrollTop > this.anchorItem.bottom) {
-                        this.updateBoundaryIndex(scrollTop)
-                        this.updateVisibleData()
-                    }
-                } else if (scrollTop < this.scrollTop) {
-                    if (scrollTop < this.anchorItem.top) {
-                        this.updateBoundaryIndex(scrollTop)
-                        this.updateVisibleData()
-                    }
-                }
-
-                this.scrollTop = scrollTop
+                this.startIndex = startNode.index;
+                this.endIndex = this.startIndex+this.virtualCount;
+                this.updateVisibleData();
             }
-
-            // 计算 startIndex 和 endIndex
-            updateBoundaryIndex(scrollTop) {
-                scrollTop = scrollTop || 0
-                // 用户正常滚动下，根据 scrollTop 找到新的锚点元素位置
-                const anchorItem = this.cache.find(item => item.bottom >= scrollTop)
-
-                if (!anchorItem) {
-                    // 滚的太快，找不到锚点元素，这个暂不处理
-                    return
-                }
-
-                this.anchorItem = {
-                    ...anchorItem
-                }
-
-                this.startIndex = this.anchorItem.index
-                this.endIndex = this.startIndex + this.visibleCount
-            }
-
-            updateVisibleData() {
-                const visibleData = this.data.slice(this.startIndex, this.endIndex)
-
+            updateVisibleData(){
+                const _data = this.data.slice(this.startIndex, this.endIndex);
                 this.setState({
-                    startOffset: this.anchorItem.top,
-                    endOffset: (this.data.length - this.endIndex) * height,
-                    visibleData
+                    virtualData: _data,
+                    offsetTop: this.startIndex*this.itemHeight,
+                    offsetBottom: (this.data.length - this.endIndex)*this.itemHeight
                 })
             }
-
-            componentDidMount() {
-                // 计算可渲染的元素个数
-                this.visibleCount = Math.ceil(window.innerHeight / height) + bufferSize
-                this.endIndex = this.startIndex + this.visibleCount
-                this.updateVisibleData()
-
-                window.addEventListener('scroll', this.handleScroll, false)
+            componentDidMount(){
+                let winHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                this.virtualCount = Math.ceil(winHeight/this.itemHeight)*2;
+                this.endIndex = this.startIndex + this.virtualCount;
+                this.updateVisibleData();
+                window.addEventListener('scroll', this.scrollHandler, false);
             }
-
             render() {
-                const { startOffset, endOffset, visibleData } = this.state;
+                let { offsetTop, offsetBottom, virtualData } = this.state;
                 return (
-                    <div className='wrap' ref={node => { this.wrapper = node }}>
-                        <div style={{ paddingTop: `${startOffset}px`, paddingBottom: `${endOffset}px` }}>
+                    <div className="wrap">
+                        <div className="list" style={{'paddingTop':offsetTop+'px', 'paddingBottom': offsetBottom+'px'}}>
                             {
-                                visibleData.map((item, index) => {
-                                    return (
-                                        <Item
-                                            cachePosition={this.cachePosition}
-                                            key={this.startIndex + index}
-                                            index={this.startIndex + index}
-                                        />
-                                    )
-                                })
+                                virtualData.map((item, index) => (
+                                    <Item
+                                        key={this.startIndex + index}
+                                        index={this.startIndex + index}
+                                        savePosition={this.savePosition}
+                                    >
+                                    </Item>
+                                ))
                             }
                         </div>
                     </div>
