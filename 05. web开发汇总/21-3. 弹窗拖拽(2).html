@@ -45,26 +45,30 @@
 </html>
 <script type="text/javascript" src="./plugins/jquery-1.11.3.min.js"></script>
 <script>
-$(function () {
-    $(document).on('mousedown', '#box', function(e){
-        let startX = e.clientX, startY = e.clientY;
-        let $popCont = $('#box>div');
+// 备注：使用flex的弹窗, 拖动的时候会出现鼠标脱离位置的情况, 如何解决? (使用position方式不会出现这个问题)
+function popupDragging() {
+    $(document).on('mousedown', '#box .header', function(e){
+        let $popCont = $(e.target).closest('.content');
         let maxLeft = $(window).width() - $popCont.width();
         let maxTop = $(window).height() - $popCont.height();
         let marginLeft = parseInt($popCont.css('margin-left'));
         let marginTop = parseInt($popCont.css('margin-top'));
+        let startX = e.clientX, startY = e.clientY;
         $(document).on('mousemove', function(e){
-            let endX = e.clientX, endY = e.clientY;
-            let changeX = endX - startX + marginLeft, 
-                changeY = endY - startY + marginTop;
-            $('#box>div').css({
-                'margin-left': changeX<-maxLeft ? -maxLeft : (changeX>maxLeft ? maxLeft : changeX),
-                'margin-top': changeY<-maxTop ? -maxTop : (changeY>maxTop ? maxTop : changeY),
-            })
+            let changeX = e.clientX - startX + marginLeft, changeY = e.clientY - startY + marginTop;
+            let _left = Math.max(changeX, -maxLeft);
+                _left = Math.min(_left, maxLeft);
+            let _top = Math.max(changeY, -maxTop);
+                _top = Math.min(_top, maxTop);
+            $popCont.css({
+                'margin-left': _left + 'px',
+                'margin-top': _top + 'px',
+            });
         });
     })
     $(document).on('mouseup', function(){
         $(document).off('mousemove');
     })
-})
+}
+popupDragging();
 </script>

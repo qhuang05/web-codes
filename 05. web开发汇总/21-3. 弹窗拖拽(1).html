@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>弹窗拖拽</title>
+    <script src="plugins/jquery-1.11.3.min.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        .popup{ 
+            min-width: 300px;
+            border: 1px solid #ccc;
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .pop-header{ height: 30px; line-height: 30px; border-bottom:1px solid #ccc; padding: 0 20px;cursor:pointer; background:red; color:#fff;}
+        .pop-footer{ height: 30px; line-height: 30px; border-top: 1px solid #ccc; padding: 0 20px;}
+        .pop-body{ padding: 0 20px; }
+    </style>
+</head>
+<body>
+<div class="popup">
+    <div class="pop-header">标题</div>
+    <div class="pop-body">内容</div>
+    <div class="pop-footer">底部</div>
+</div>
+<script type="text/javascript">
+function popupDragging(){
+    $(document).on('mousedown', '.pop-header', function(e){
+        let $popup = $(this).closest('.popup');
+        let maxLeft = $(window).width() - $popup.width()/2;
+        let maxTop = $(window).height() - $popup.height()/2;
+        let left = parseInt($popup.css('left'));
+        let top = parseInt($popup.css('top'));
+        let startX = e.clientX, startY = e.clientY;
+        $(document).on('mousemove', function(e){
+            let changeX = e.clientX - startX + left, changeY = e.clientY - startY + top;
+            let _left = Math.max(changeX, $popup.width()/2);
+                _left = Math.min(_left, maxLeft);
+            let _top = Math.max(changeY, $popup.height()/2);
+                _top = Math.min(_top, maxTop);
+            $popup.css({
+                left: _left + 'px',
+                top: _top + 'px'
+            })
+        })
+    })
+    $(document).on('mouseup', function(e){
+        $(document).off('mousemove');
+    })
+}
+popupDragging();
+</script>
+</body>
+</html>
