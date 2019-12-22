@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查找</title>
+</head>
+
+<body>
+    <script>
+        // 二分查找
+        const binarySearch = (arr, target) => {
+            let low = 0, high = arr.length-1;
+            let mid;
+            while(low<=high){
+                mid = Math.floor((low+high)/2);
+                if(target==arr[mid]){
+                    return mid;
+                } else if(target>arr[mid]){
+                    low = mid+1;
+                } else{
+                    high = mid-1;
+                }
+            }
+            return -1;
+        }
+        
+        // 递归查找
+        const recursionSearch = (arr, target, low=0, high=arr.length-1) => {
+            if(low>high){
+                return -1;
+            }
+            let mid = Math.floor((low+high)/2);
+            if(target==arr[mid]){
+                return mid;
+            } else if(target>arr[mid]){
+                return recursionSearch(arr, target, mid+1, high);
+            } else{
+                return recursionSearch(arr, target, low, mid-1);
+            }
+        }
+
+        const data = [1,3,5,7,9,11,13,15,17,19,21];
+        const target = 13;
+        console.log(target+'在第'+binarySearch(data, target)+'个位置');
+        console.log(target+'在第'+recursionSearch(data, target)+'个位置');
+    </script>
+</body>
+
+</html>

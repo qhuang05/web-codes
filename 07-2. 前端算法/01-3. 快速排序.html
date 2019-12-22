@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速排序</title>
+</head>
+<body>
+<script>
+    // 时间复杂度O(n*logn), 不稳定
+    // 快速排序(缺点:因为定义了left和right数组每次递归都会占用额外的空间)
+    const quickSort = arr => {
+        if(arr.length<=1){
+            return arr;
+        }
+        let temp = arr.shift(), left = [], right = [];
+        for(let i=0; i<arr.length; i++){
+            if(arr[i]<temp){
+                left.push(arr[i]);
+            } else{
+                right.push(arr[i]);
+            }
+        }
+        return quickSort(left).concat(temp, quickSort(right));
+    }
+
+    // 快速排序优化: 原地快排, 不占用额外空间
+    const quickSort1 = (arr, low=0, high=arr.length-1) => {
+        if(low>=high){
+            return;
+        }
+        let left = low, right = high;
+        let temp = arr[left];
+        while(left<right){
+            if(arr[right]>temp){
+                right--;
+            }
+            arr[left] = arr[right];
+            if(arr[left]<=temp && left<right){
+                left++;
+            }
+            arr[right] = arr[left];
+            arr[left] = temp;
+        }
+        quickSort1(arr, low, left-1);
+        quickSort1(arr, left+1, high);
+        return arr; 
+    }
+
+    let data = [11, 4, 1, 33, 22, 5, 6, 10, 8];
+    console.log(quickSort1(data));
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归</title>
+</head>
+<body>
+    <script>
+        // 数组打平
+        const arrayFlat = arr => {
+            let ret = [];
+            [].forEach.call(arr, (item)=>{
+                if(Array.isArray(item)){
+                    ret = ret.concat(arrayFlat(item));
+                } else{
+                    ret.push(item);
+                }
+            });
+            return ret;
+        }
+        const data = [1,2,3,[4,5,[6,7,[8,9]]],[10,11]];
+        console.log(arrayFlat(data));
+
+        // 爬楼，有⼀楼梯共10级，刚开始时你在第一级，若每次只能跨上一级或二级，要走上第10级，共有多少种⾛法？(斐波那契数列)
+        const stairs = n => {
+            if(n<=0) return 0;
+            if(n==1) return 1;
+            return stairs(n-1) + stairs(n-2);
+        }
+        console.log(stairs(10));
+    </script>
+</body>
+</html>

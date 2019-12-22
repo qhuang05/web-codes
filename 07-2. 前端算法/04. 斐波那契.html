@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>斐波那契数列</title>
+</head>
+
+<body>
+    <script>
+        // 斐波那契数列规则，两两相加等于后一个数，例如1,1,2,3,5,8,13,21...
+        // 暴力递归, 复杂度O(2^n), 基本到30、40，指数级别，不可取
+        const fib = n => {
+            if (n == 1 || n == 2) {
+                return 1;
+            }
+            return fib(n - 1) + fib(n - 2);
+        }
+        console.log(new Date());
+        console.log(fib(40));
+        console.log(new Date());
+
+
+        // 中间存储fib, 复杂度O(n)
+        const fib1 = (n) => {
+            let store = [];
+            return helper(store, n);
+        }
+        function helper(store, n){
+            if(n==1 || n==2){
+                return 1;
+            }
+            if(store[n]) return store[n]
+            store[n] = helper(store, n-1) + helper(store, n-2);
+            return store[n];
+        }
+        console.log(new Date());
+        console.log(fib1(40));
+        console.log(new Date());
+
+
+        // 动态规划fib
+        const fib2 = (n) => {
+            let f = [];
+            f[1] = f[2] = 1;
+            for(let i=3; i<=n; i++){
+                f[i] = f[i-1] + f[i-2];
+            }
+            return f[n];
+        }
+        console.log(new Date());
+        console.log(fib2(40));
+        console.log(new Date());
+    </script>
+</body>
+
+</html>
