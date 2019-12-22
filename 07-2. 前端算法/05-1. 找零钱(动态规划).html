@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找零钱</title>
+</head>
+
+<body>
+    <script>
+        class Charge{
+            constructor(options){
+                this.moneyList = options;
+                this.cache = {}
+            }
+            makeCharge(amount){
+                if(!amount){
+                    return [];
+                }
+                if(this.cache[amount]){
+                    return this.cache[amount]
+                }
+                let min = [];
+                for(let i=0; i<this.moneyList.length; i++){
+                    const left = amount - this.moneyList[i];
+                    let newMin;
+                    if(left>=0){
+                        // 这一句是动态规划的体现
+                        newMin = this.makeCharge(left);
+                    }
+                    if(left>=0 && (!min.length || newMin.length<min.length-1)){
+                        // 如果存在更小的找零硬币数, 则执行后面语句
+                        min = [this.moneyList[i]].concat(newMin);
+                    }
+                }
+                return this.cache[amount] = min;
+            }
+        }
+
+        const change = new Charge([1,5,10,20,50,100]);
+        console.log(change.makeCharge(5));
+        console.log(change.makeCharge(36));
+        console.log(change.makeCharge(66));
+    </script>
+</body>
+
+</html>
