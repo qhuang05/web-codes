@@ -22,7 +22,7 @@
         console.log(new Date());
 
 
-        // 中间存储fib, 复杂度O(n)
+        // 中间存储fib, 自顶向下, 复杂度O(n)
         const fib1 = (n) => {
             let store = [];
             return helper(store, n);
@@ -40,7 +40,7 @@
         console.log(new Date());
 
 
-        // 动态规划fib
+        // 动态规划fib, 从底向上
         const fib2 = (n) => {
             let f = [];
             f[1] = f[2] = 1;

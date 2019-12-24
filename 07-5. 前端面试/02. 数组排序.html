@@ -14,39 +14,39 @@
 	// alert(result);
 
 	// 方法2： 选择排序
-	// function arraySort(data){
-	// 	if(data.length == 1){
-	// 		return data;
-	// 	}
-	// 	var min = data[0], minIndex = 0;
-	// 	for(var i=0; i<data.length; i++){
-	// 		if(data[i] < min){
-	// 			min = data[i];
-	// 			minIndex = i;
-	// 		}
-	// 	}
-	// 	var prev = data.splice(minIndex, 1);
-	// 	return prev.concat(arraySort(data));
-	// }
-	// var result = arraySort(data);
-	// alert(result);
-
-	// 方法3： 冒泡排序
 	function arraySort(data){
+		if(data.length == 1){
+			return data;
+		}
+		var min = data[0], minIndex = 0;
 		for(var i=0; i<data.length; i++){
-			for(j=0; j<data.length-i; j++){
-				var tmp = '';
-				if(data[j] > data[j+1]){
-					tmp = data[j];
-					data[j] = data[j+1];
-					data[j+1] = tmp;
-				}
+			if(data[i] < min){
+				min = data[i];
+				minIndex = i;
 			}
 		}
-		return data;
+		var prev = data.splice(minIndex, 1);
+		return prev.concat(arraySort(data));
 	}
 	var result = arraySort(data);
 	alert(result);
+
+	// 方法3： 冒泡排序
+	// function arraySort(data){
+	// 	for(var i=0; i<data.length; i++){
+	// 		for(j=0; j<data.length-i; j++){
+	// 			var tmp = '';
+	// 			if(data[j] > data[j+1]){
+	// 				tmp = data[j];
+	// 				data[j] = data[j+1];
+	// 				data[j+1] = tmp;
+	// 			}
+	// 		}
+	// 	}
+	// 	return data;
+	// }
+	// var result = arraySort(data);
+	// alert(result);
 </script>
 </body>
 </html>
