@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>vue过滤器</title>
+    <style>
+        ul {
+            min-height: 100px;
+            width: 200px;
+            margin: 20px auto;
+            background: #eee;
+        }
+
+        li {
+            min-height: 2em;
+            margin-top: 10px;
+            background: #abcded;
+        }
+
+        .drog-move {
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition-group name="drog" tag="ul">
+            <li draggable="true" v-for="(item, index) in lists" @dragstart="dragStart($event, index)"
+                @dragover="allowDrop" @drop="drop($event, index)" v-bind:key="item">{{item}}</li>
+        </transition-group>
+    </div>
+    <script src="js/vue.js"></script>
+    <script type="text/javascript">
+        const app = new Vue({
+            el: '#app',
+            data: {
+                lists: ['1: apple', '2: banana', '3: orange', '4: melon']
+            },
+            methods: {
+                //取消默认行为
+                allowDrop(e) {
+                    e.preventDefault();
+                },
+                //开始拖动
+                dragStart(e, index) {
+                    console.log('s', index);
+                    let tar = e.target;
+                    e.dataTransfer.setData('Text', index);
+                    if (tar.tagName.toLowerCase() == 'li') {
+                        // console.log('drag start')
+                        // console.log('drag Index: ' + index)
+                    }
+                },
+                //放置
+                drop(e, index) {
+                    console.log('e', index);
+                    this.allowDrop(e);
+                    // console.log('drop index: ' + index);
+                    //使用一个新数组重新排序后赋给原变量
+                    let arr = this.lists.concat([]),
+                        dragIndex = e.dataTransfer.getData('Text');
+                    temp = arr.splice(dragIndex, 1);
+                    arr.splice(index, 0, temp[0]);
+                    // console.log('sort');
+                    this.lists = arr;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
