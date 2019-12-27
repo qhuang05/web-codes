@@ -70,6 +70,18 @@
                 }
             }
         })
+
+        class Signaler{
+            
+        }
+        var s1 = new Signaler();
+        sl.next() //1
+        sl.next() //2
+        var s2 = new Signaler();
+        s2.next() //3
+        s2.next() //4
+
+        s1.next() //5
     </script>
 </body>
 
