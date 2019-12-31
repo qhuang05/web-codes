@@ -8,25 +8,32 @@
 </head>
 <body>
 <script type="text/javascript">
-	let common = 0;
-	class Demo{
-		constructor(props){
-			this.value = props;
+	const Sequence = (function () {
+		let instance = null;
+		let _num = 0;
+
+		class _Singleton {
+			constructor() {
+				if (!instance) {
+					instance = this;
+				}
+				return instance;
+			}
+			next() {
+				_num += 1;
+				return _num;
+			}
 		}
-		next(){
-			return ++common;
-		}
-	}
+		return _Singleton;
+	})();
 
-	let d1 = new Demo(common);
-	console.log(d1.next());
-	console.log(d1.next());
+	let s1 = new Sequence();
+	console.log(s1.next());
+	console.log(s1.next());
 
-	let d2 = new Demo(common);
-	console.log(d2.next());
-	console.log(d2.next());
-
-	console.log(d1.next());
+	let s2 = new Sequence();
+	console.log(s2.next());
+	console.log(s2.next());
 </script>
 </body>
 </html>
