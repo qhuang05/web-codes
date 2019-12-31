@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class的使用</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+	<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	let common = 0;
+	class Demo{
+		constructor(props){
+			this.value = props;
+		}
+		next(){
+			return ++common;
+		}
+	}
+
+	let d1 = new Demo(common);
+	console.log(d1.next());
+	console.log(d1.next());
+
+	let d2 = new Demo(common);
+	console.log(d2.next());
+	console.log(d2.next());
+
+	console.log(d1.next());
+</script>
+</body>
+</html>
