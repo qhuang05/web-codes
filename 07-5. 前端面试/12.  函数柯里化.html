@@ -10,14 +10,16 @@
         const add = (x,y)=>{
             return x+y;
         }
+        let ret1 = add(1,2);
+        console.log(ret1);
+        // 柯里化后：
         const cAdd = (x)=>{
             return y=>{
                 return x+y
             }
         }
-        let ret1 = add(1,2);
         let ret2 = cAdd(1)(2);
-        console.log(ret1, ret2);
+        console.log(ret2);
 
 
         function foo(props){
@@ -29,7 +31,6 @@
                 fn(props);
             }
         }
-
         zoo(foo)(200);
     </script>
 </body>
