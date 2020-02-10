@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>统计html标签数</title>
+</head>
+<body>
+    <!-- 打开淘宝首页，在console里写代码，统计页面总共出现了多少种html标签 -->
+    <!-- 出现次数前5的html标签分别是什么，各出现多少次 -->
+    <script>
+        let nodes = [...document.querySelectorAll('*')].map(item=>item.nodeName);
+        total = new Set(nodes).size;
+        console.log(`总共出现${total}种标签`);
+        // nodes = nodes.reduce((prev,cur)=>{
+        //     if(!prev.includes(cur)){
+        //         prev.push(cur);
+        //     }
+        //     return prev;
+        // }, []);
+        // console.log(`总共出现${nodes.length}种标签`);
+        
+        let ret = [...document.querySelectorAll('*')].map(item=>item.nodeName).reduce((prev,cur)=>{
+            prev[cur] = (prev[cur] || 0) + 1;
+            return prev;
+        }, {});
+        ret = Object.entries(ret).sort((n1,n2)=>(n2[1]-n1[1])).slice(0,5);
+        console.table(ret);
+    </script>
+</body>
+</html>
