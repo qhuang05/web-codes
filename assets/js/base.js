@@ -339,7 +339,17 @@
                     }
                 }, opt));
             });
-        }
+        },
+        // 精确到小数点后n位(四舍五入)
+        numberAccurate(data, n){
+            return (Math.round(data*Math.pow(10,n))/Math.pow(10,n)).toFixed(n);
+        },
+        // 精确到小数点后n位(直接丢弃)
+        numberAccurate2(data, n){
+            // return Math.floor(data * Math.pow(10,n)) / Math.pow(10,n);  //小数位为0会舍弃
+            data = String(data);
+	        return data.substring(0, data.indexOf(".")+(n+1)); //这种方法会返回字符串类型
+        },
     });
 })(jQuery, Base);
 
