@@ -39,6 +39,7 @@
 
 
 	// class的继承： extends, static, super-->调用一下父类的构造函数
+	// (static多用于静态方法和静态属性)
 	class Human{
 		constructor(){
 			this.hands = 2;
@@ -59,6 +60,10 @@
 		}
 		run(){
 			console.log('I can running.');
+		}
+		static eyes = 2;
+		static showEyes(){
+			console.log('static method', this.eyes, this.hands); //2 undefined
 		}
 	}
 	let h1 = new Human();
