@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合并寄送</title>
+</head>
+<!-- 
+    1pt == 4/3px
+    1mm == 3.78px
+    备注：display:flex无效; 样式需要都放在style里面, <table width="450"></table>这种写法无效
+-->
+<body>
+    <table style="width:450px;font:400 14px/1 MicrosoftYaHei;color:rgba(51,51,51,1);border-collapse:collapse;border:1px solid rgba(51,51,51,1);">
+        <!-- <tr>
+            <td style="padding:10px;">
+                <div>
+                    <img src="./images/code.png" width="85" style="vertical-align:top" />
+                    <div style="display:inline-block;padding-left:5px;line-height:1.2;"> 
+                        <span>群组：朱*艺（20060349588）</span><br/>
+                        <span>会员：朱*艺（20060349588）</span><br/>
+                        <span>平台：亚马逊</span><br/>
+                        <span>店铺：亚马逊A店</span><br/>
+                    </div>
+                </div>
+                <div style="padding-top:10px;">ZW3277020060322420（美国）</div>
+            </td>
+            <td style="padding:10px 10px 10px 0;font:normal 12px MicrosoftYaHei;color:rgba(1,1,1,1);text-align:center;">
+                <div>
+                    <span style="display:inline-block;padding:5px 15px;border:1px solid rgba(51,51,51,1);border-radius:30px;font-size:20px;">合单配送</span>
+                    <span>1/2</span>
+                </div>
+                <div style="border:1px solid #333;padding:10px;margin-top:10px;">
+                    导入：2020-06-07<br/>
+                    支付：2020-06-07<br/>
+                    审核：2020-06-07
+                </div>
+            </td>
+        </tr> -->
+        <tr>
+            <td style="padding:10px 10px 0 10px;text-align:center;" colspan="2">
+                <img src="./images/zwcode.png" height="70" />
+                <span style="float:right;">1/2</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px 0 10px 10px;">ZW3277020060322420（美国）</td>
+            <td style="padding:10px 10px 10px 0;text-align:right;">
+                <span style="display:inline-block;padding:5px 15px;border:1px solid rgba(51,51,51,1);border-radius:30px;font-size:20px;">合单配送</span>
+                <span style="padding-left:5px;">订单件数：3</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding:0 10px">
+                <table style="width:100%; font:400 14px/1 MicrosoftYaHei;color:rgba(51,51,51,1);border-collapse:collapse;border:1px solid rgba(51,51,51,1);text-align:center;">
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1)">
+                        <td style="border-right:1px solid rgba(51,51,51,1);width:30px;padding:10px;">序号</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">产品名称</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">产品编号</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);min-width:80px;">颜色尺码</td>
+                        <td style="min-width:30px;padding:6px;min-width:50px;">数量</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1)">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">1</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">
+                            <div style="display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">男士短袖T恤男士短袖T恤男士短袖T恤</div>
+                        </td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1)">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">2</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">
+                            <div style="display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">男士短袖T恤男士短袖T恤男士短袖T恤</div>
+                        </td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1)">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">3</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">
+                            <div style="display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">男士短袖T恤男士短袖T恤男士短袖T恤</div>
+                        </td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1)">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">4</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">
+                            <div style="display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">男士短袖T恤男士短袖T恤男士短袖T恤</div>
+                        </td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1);">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">5</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">
+                            <div style="display:inline-block;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">男士短袖T恤男士短袖T恤男士短袖T恤</div>
+                        </td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid rgba(51,51,51,1);">
+                        <td style="border-right:1px solid rgba(51,51,51,1);padding:10px;">6</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">男士短袖T恤</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">2000</td>
+                        <td style="border-right:1px solid rgba(51,51,51,1);">黑色，XS</td>
+                        <td>10</td>
+                    </tr>
+                    <!-- <tr style="border-bottom:1px solid rgba(51,51,51,1);visibility: hidden;">
+                        <td colspan="5" style="padding:10px;">&nbsp;</td>
+                    </tr> -->
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:10px;line-height:1.2;">
+                <div style="font-size:20px;font-weight:bold;">1001-仓库1-001</div>
+                <div>打单时间：2020-06-07 12:00:00</div>
+                <div>打单人员：朱*艺</div>
+            </td>
+            <td style="padding:10px;text-align:right;">
+                <img src="./images/zwcode.png" width="120" />
+                <div style="font-size:14px;font-weight:bold;">7G9MSK-HB</div>
+            </td>
+        </tr>
+        <!-- <tr>
+            <td style="padding:10px;line-height:1.2;">
+                <div>
+                    订单项数：2 <span style="padding-left:10px;">订单件数：3</span>
+                </div>
+                <div style="font-size:20px;font-weight:bold;">1001-仓库1-001</div>
+                <div>打单时间：2020-06-07 12:00:00</div>
+                <div>打单人员：朱*艺</div>
+            </td>
+            <td style="padding:10px;text-align:right;">
+                <div style="font-size:14px;font-weight:bold;">7G9MSK-HB</div>
+                <img src="./images/zwcode.png" width="120" />
+            </td>
+        </tr> -->
+    </table>
+</body>
+</html>
