@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>继承</title>
+    <script>
+        function A(name, age) {
+            this.name = name;
+            this.age = age;
+            this.ints = [10, 20];
+        }
+        A.prototype.say = function () {
+            console.log('A say: ', this.name);
+        }
+        var a1 = new A('Tom', 18);
+
+
+        // 方法1：构造函数继承
+        // 问题：只能实现部分继承，如果我们在父类Parent的原型链上添加属性或者方法的时候子类的实例无法继承到
+        // function S(){
+        //     A.call(this, ...arguments);
+        //     this.gender = '男';
+        // }       
+        // var s1 = new S('Jerry', 20);    //s1.say() is not a function
+        // var s2 = new S('Mary', 21);     //s2.say() is not a function
+
+
+        // 方法2：使用原型链
+        // 问题：借助原型链实现继承虽然解决了父类原型的方法能让子类实例对象继承的问题，但是如果我们通过子类的实例对象修改父类上的属性和方法，那么所有子类的所有实例对象上的属性和方法都会被改变。
+        // function S(){
+        //     this.gender = '男';
+        // }
+        // S.prototype = new A('Jerry', 20);
+        // var s1 = new S();
+        // var s2 = new S();
+        // s1.ints.push(100);      //s2.ints值也会跟着改变
+
+
+
+        // 方法3： 组合继承（构造函数+原型链）
+        // function S(){
+        //     A.call(this, ...arguments);
+        //     this.gender = '男';
+        // }
+        // S.prototype = new A();
+        // var s1 = new S('Jerry', 20);
+        // var s2 = new S('Mary', 21);
+
+        // 组合继承优化1：
+        // function S(){
+        //     A.call(this, ...arguments);
+        //     this.gender = '男';
+        // }
+        // S.prototype = A.prototype;
+        // var s1 = new S('Jerry', 20);
+        // var s2 = new S('Mary', 21);
+
+        // 组合继承优化2：
+        function S(){
+            A.call(this, ...arguments);
+            this.gender = '男';
+        }
+        S.prototype = Object.create(A.prototype);
+        S.prototype.constructor = S;
+        var s1 = new S('Jerry', 20);
+        var s2 = new S('Mary', 21);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

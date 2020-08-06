@@ -24,17 +24,18 @@
         }
 
         // B.prototype=A.prototype;	//如果通过这种方法,当在B上添加特定的方法时,也会同时在A上加上这些方法,因为使用了引用这个概念
+        // 拷贝继承
         for (var i in A.prototype) {
             B.prototype[i] = A.prototype[i];
         }
         B.prototype.fn = function () {
-            alert('fnn');
+            console.log('fnn');
         };
-        var objB = new B();
-        var objA = new A();
-        alert(objB.name);		//=blue
-        objB.fn();				//=fnn
-        objA.fn();				//会报错,objA上没有定义fn这个方法
+        var b1 = new B();
+        var a1 = new A();
+        console.log(b1.name);		//=blue
+        b1.fn();			//=fnn
+        a1.fn();			//会报错,a1上没有定义fn这个方法
     </script>
 </head>
 <body>

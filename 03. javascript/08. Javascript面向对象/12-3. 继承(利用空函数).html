@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>继承</title>
+    <script>
+        function A(name, age) {
+            this.name = name;
+            this.age = age;
+            this.ints = [10, 20];
+        }
+        A.prototype.say = function () {
+            console.log('A say: ', this.name);
+        }
+        var a1 = new A('Tom', 18);
+
+
+        function inherits(Parent, Child){
+            var F = function(){};
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+        }
+        function S() {
+            A.call(this, ...arguments);
+            this.gender = '男';
+        };
+        inherits(S, A);
+        var s1 = new S('Jerry', 20, '女');
+        var s2 = new S('Mary', 21);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
