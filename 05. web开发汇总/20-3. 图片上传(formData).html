@@ -45,6 +45,10 @@
     function addImage(){
         file = $('#file')[0].files[0];
         $('#image').attr('src',getObjectURL(file));
+        console.log(file);
+        console.log(file.name, file.size);
+        console.log($('#file').val());
+        $('#file').val('');
     }
     function getObjectURL(file) {
         var url = null;
