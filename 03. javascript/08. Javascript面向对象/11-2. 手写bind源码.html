@@ -6,21 +6,16 @@
     <script>
         // apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；
         // bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。
-        function f1(...args){
-            console.log(this);
-            console.log(args);
+        function test(a, b){
+            console.log('test', this, a, b);
         }
-        
-
-        Function.prototype.customBind = function(obj, ...args){
-            var self = this;
-            return function(args2){
-                self.apply(obj, [...args]);
+        Function.prototype.cbind = function(obj, ...args){
+            let self = this;
+            return function(){
+                self.apply(obj, args);
             }
         }
-
-        var f2 = f1.customBind({a: 1}, [1,2,3]);
-        f2();
+        test.bind({a:10}, 'hello', 'world')();
     </script>
 </head>
 <body>
