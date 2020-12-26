@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS事件</title>
+</head>
+<body>
+    <div class="box"></div>
+        <!-- <div>list 1</div>
+        <div>list 2</div>
+        <div>list 3</div> -->
+    </div>
+    <button class="btn1">button 1</button>
+    <button class="btn2">button 2</button>
+    <script>
+        let box = document.querySelector('.box');
+        let btn1 = document.querySelector('.btn1');
+        let btn2 = document.querySelector('.btn2');
+        
+        let fun1 = function(){
+            console.log('111')
+        }
+        let fun2 = function(){
+            console.log('222')
+        }
+        btn1.addEventListener('click', function(e){
+            box.removeEventListener('click', fun2, false);
+            box.addEventListener('click', fun1, false)
+        })
+
+        btn2.addEventListener('click', function(e){
+            box.removeEventListener('click', fun1, false);
+            box.addEventListener('click', fun2, false)
+        });
+        box.innerHTML = `<div>list 1</div>
+        <div>list 2</div>
+        <div>list 3</div>`;
+    </script>
+</body>
+</html>
