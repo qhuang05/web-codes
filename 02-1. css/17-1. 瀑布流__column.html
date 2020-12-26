@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<title>column实现瀑布流布局</title>
+	<style>
+    *{margin: 0; padding: 0;}
+    ul,li{list-style: none}
+    ul{
+        column-count: 2;
+        column-gap: 15px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 15px;
+        -moz-column-count: 2;
+        -moz-column-gap: 15px; 
+    }
+    li{
+        /* 在制作手机站瀑布流时候，会出现图片错乱，请使用这个属性：避免元素内部断行并产生新列； */
+        break-inside: avoid; 
+        margin-bottom: 15px;
+    }
+    li:nth-child(1){
+        background: red;
+        height: 200px;
+    }
+    li:nth-child(2){
+        background: green;
+        height: 100px;
+    }
+    li:nth-child(3){
+        background: blue;
+        height: 250px;
+    }
+    li:nth-child(4){
+        background: red;
+        height:80px;
+    }
+    li:nth-child(5){
+        background: green;
+        height: 160px;
+    }
+    li:nth-child(6){
+        background: blue;
+        height: 130px;
+    }
+    li:nth-child(7){
+        background: red;
+        height:110px;
+    }
+    li:nth-child(8){
+        background: green;
+        height: 60px;
+    }
+    li:nth-child(9){
+        background: blue;
+        height: 70px;
+    }
+</style>
+</head>
+<body>
+    <ul class="waterfall">
+        <li>
+            <div class="box">1</div>
+        </li>
+        <li>
+            <div class="box">2</div>
+        </li>
+        <li>
+            <div class="box">3</div>
+        </li>
+        <li>
+            <div class="box">4</div>
+        </li>
+        <li>
+            <div class="box">5</div>
+        </li>
+        <li>
+            <div class="box">6</div>
+        </li>
+        <li>
+            <div class="box">7</div>
+        </li>
+        <li>
+            <div class="box">8</div>
+        </li>
+        <li>
+            <div class="box">9</div>
+        </li>
+    </ul>
+</body>
+</html>

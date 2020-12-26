@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        ul,li{list-style: none}
+        .box{
+            display: flex;
+            justify-content: space-between;
+        }
+        .waterfall{
+            width: calc((100% - 20px)/2);
+            margin-right: 20px;
+            display: flex;  
+            flex-direction: column;
+        }
+        .waterfall:nth-child(2n){
+            margin-right: 0;
+        }
+        li{
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="waterfall">
+            <li style="height:100px;background:red">
+                <div class="box">1</div>
+            </li>
+            <li style="height:200px;background:green">
+                <div class="box">3</div>
+            </li>
+            <li style="height:80px;background:blue">
+                <div class="box">5</div>
+            </li>
+            <li style="height:120px;background:yellow">
+                <div class="box">7</div>
+            </li>
+            <li style="height:70px;background:purple">
+                <div class="box">9</div>
+            </li>
+        </ul>
+        <ul class="waterfall">
+            <li style="height:50px;background:red">
+                <div class="box">2</div>
+            </li>
+            <li style="height:240px;background:green">
+                <div class="box">4</div>
+            </li>
+            <li style="height:110px;background:blue">
+                <div class="box">6</div>
+            </li>
+            <li style="height:80px;background:yellow">
+                <div class="box">8</div>
+            </li>
+            <li style="height:70px;background:purple">
+                <div class="box">10</div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
