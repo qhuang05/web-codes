@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket 2</title>
+</head>
+
+<body>
+    <button onclick="closeWS()">关闭ws</button>
+    <script>
+        let ws = new WebSocket('ws://localhost:3001');
+        ws.onopen = function (e) {
+            console.log('ws open => ', e)
+        }
+        ws.onmessage = function (e) {
+            console.log('ws message => ', e)
+        }
+        ws.onclose = function (e) {
+            console.log("服务器关闭");
+        }
+        ws.onerror = function () {
+            console.log("连接出错");
+        }
+        function closeWS() {
+            ws.close();
+        }
+    </script>
+</body>
+
+</html>
