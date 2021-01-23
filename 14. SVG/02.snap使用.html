@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snap.svg使用</title>
+  <script src="./js/jquery-1.11.3.min.js"></script>
+  <script src="./js/snap.svg-min.js"></script>
+  <style>
+    #box {
+      width: 600px;
+      height: 600px;
+      border: 1px solid #ccc;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    $(function () {
+      // 创建一个svg
+      var svg = Snap(200, 200).attr({ id: 'svg' });
+
+      // 绘制圆并编组
+      var c1 = svg.paper.circle(50, 50, 40).attr({
+        fill: '#f00'
+      }).click(function () {
+        console.log('click circle 1');
+      });
+      var c2 = svg.paper.circle(100, 100, 60).attr({
+        fill: '#00f'
+      }).click(function () {
+        console.log('click circle 2');
+      });
+      var g = svg.paper.g(c1, c2);
+      // 或者
+      // var g = svg.paper.g();
+      // g.add(c1, c2);
+
+      // 绘制图片
+      var img1 = svg.paper.image('./images/main.png', 120, 120, 80, 80);
+
+      // 绘制文本
+      var txt1 = svg.paper.text(0, 120, '文字测试');
+
+      $('#box').append(svg.node);
+
+      // 获取svg元素, select/selectAll获取set集合
+      var s = Snap('#svg');
+      let c = s.selectAll('circle');
+    });
+  </script>
+</body>
+
+</html>
