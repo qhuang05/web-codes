@@ -22,7 +22,10 @@
   <script>
     $(function () {
       // 创建一个svg
-      var svg = Snap(200, 200).attr({ id: 'svg' });
+      var svg = Snap(300, 300).attr({
+        id: 'svg',
+        style: 'border:1px solid red'
+      });
 
       // 绘制圆并编组
       var c1 = svg.paper.circle(50, 50, 40).attr({
@@ -51,6 +54,9 @@
       // 获取svg元素, select/selectAll获取set集合
       var s = Snap('#svg');
       let c = s.selectAll('circle');
+
+
+      g.drag();
     });
   </script>
 </body>
