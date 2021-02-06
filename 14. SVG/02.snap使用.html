@@ -18,6 +18,8 @@
 </head>
 
 <body>
+  <button onclick="changeSvgSize()">改变svg大小</button>
+  <button onclick="cloneSvg()">复制svg</button>
   <div id="box"></div>
   <script>
     $(function () {
@@ -58,6 +60,14 @@
       var s = Snap('#svg');
       let c = s.selectAll('circle');
     });
+    function changeSvgSize() {
+      let s = Snap('#svg');
+      s.attr({ width: 200, height: 200 });
+    }
+    function cloneSvg() {
+      let s = Snap('#svg');
+      s.clone().attr({ width: 100, height: 100 }).appendTo(document.documentElement)
+    }
   </script>
 </body>
 
