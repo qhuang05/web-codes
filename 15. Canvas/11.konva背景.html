@@ -21,19 +21,19 @@
     <button id="btn3">恢复</button>
     <div id="container"></div>
     <script>
-        window.onload = function(){
+        window.onload = function () {
             var stageWidth = 600, stageHeight = 600;
             var stage = new Konva.Stage({
                 container: 'container',
                 width: stageWidth,
                 height: stageHeight,
             });
-    
+
             var layerBg = new Konva.Layer({
                 name: 'layerBg'
             });
             stage.add(layerBg);
-    
+
             var bgRect = new Konva.Rect({
                 x: 0,
                 y: 0,
@@ -42,43 +42,43 @@
             });
             var bgImage = new Image();
             bgImage.src = './images/Transparent_bg.png';
-            bgImage.onload = function(){
+            bgImage.onload = function () {
                 bgRect.fillPatternImage(bgImage);
                 bgRect.fillPatternRepeat('repeat');
                 layerBg.batchDraw();
             }
             layerBg.add(bgRect);
-    
-    
-            document.getElementById('btn1').onclick = function(){
+
+
+            document.getElementById('btn1').onclick = function () {
                 stage.width(900);
                 stage.height(900);
-                layerBg.scale({x: 1.5, y: 1.5});
-                layer.setAttrs({x: 150, y: 150, scaleX: 1.5, scaleY: 1.5});
+                layerBg.scale({ x: 1.5, y: 1.5 });
+                layer.setAttrs({ x: 150, y: 150, scaleX: 1.5, scaleY: 1.5 });
                 stage.batchDraw();
             }
-            document.getElementById('btn2').onclick = function(){
+            document.getElementById('btn2').onclick = function () {
                 stage.width(300);
                 stage.height(300);
-                layerBg.scale({x: 0.5, y: 0.5});
-                layer.setAttrs({x: 50, y: 50, scaleX: 0.5, scaleY: 0.5});
+                layerBg.scale({ x: 0.5, y: 0.5 });
+                layer.setAttrs({ x: 50, y: 50, scaleX: 0.5, scaleY: 0.5 });
                 stage.batchDraw();
             }
-            document.getElementById('btn3').onclick = function(){
+            document.getElementById('btn3').onclick = function () {
                 stage.width(600);
                 stage.height(600);
-                layerBg.scale({x: 1, y: 1});
-                layer.setAttrs({x: 100, y: 100, scaleX: 1, scaleY: 1});
+                layerBg.scale({ x: 1, y: 1 });
+                layer.setAttrs({ x: 100, y: 100, scaleX: 1, scaleY: 1 });
                 stage.batchDraw();
             }
-            
+
 
             var layer = new Konva.Layer({
                 x: 100,
                 y: 100,
             });
             stage.add(layer);
-    
+
             var image = new Image();
             image.src = './images/sm001.jpg';
             image.onload = function () {
@@ -94,6 +94,11 @@
                 })
                 layer.add(imageNode);
                 layer.batchDraw();
+
+                imageNode.on('mousedown', function () {
+                    let pos = stage.getPointerPosition();  //getPointerPosition方法只能用在stage
+                    console.log('pos => ', pos);
+                });
             }
         }
     </script>

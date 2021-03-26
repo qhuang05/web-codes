@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+  <meta charset="utf-8" />
+  <title>Konva Path Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    window.onload = function () {
+      var stageWidth = 600, stageHeight = 600;
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: stageWidth,
+        height: stageHeight,
+      });
+
+      var layerBg = new Konva.Layer({
+        name: 'layerBg'
+      });
+      stage.add(layerBg);
+
+      var bgRect = new Konva.Rect({
+        x: 0,
+        y: 0,
+        width: stageWidth,
+        height: stageHeight,
+      });
+      var bgImage = new Image();
+      bgImage.src = './images/Transparent_bg.png';
+      bgImage.onload = function () {
+        bgRect.fillPatternImage(bgImage);
+        bgRect.fillPatternRepeat('repeat');
+        layerBg.batchDraw();
+      }
+      layerBg.add(bgRect);
+
+      var layer = new Konva.Layer({
+        x: 100,
+        y: 100,
+      });
+      stage.add(layer);
+
+      var group = new Konva.Group({
+        // clip: {
+        //   x: 0,
+        //   y: 0,
+        //   width: 300,
+        //   height: 300
+        // },
+        clipFunc: function (ctx) {
+          ctx.rect(0, 0, 300, 300);
+          ctx.stroke();
+        },
+      });
+      var image = new Image();
+      image.src = './images/sm001.jpg';
+      image.onload = function () {
+        let imageNode = new Konva.Image({
+          image,
+          x: 100,
+          y: 100,
+          width: 200,
+          height: 200,
+          offsetX: 100,
+          offsetY: 100,
+          rotation: 0,
+          draggable: true
+        })
+        group.add(imageNode);
+        layer.add(group);
+        layer.batchDraw();
+      }
+    }
+
+  </script>
+</body>
+
+</html>
