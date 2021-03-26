@@ -46,23 +46,30 @@
       }
       layerBg.add(bgRect);
 
+      // clip/clipFunc可以加在layer上也可以加在group上
       var layer = new Konva.Layer({
         x: 100,
         y: 100,
-      });
-      stage.add(layer);
-
-      var group = new Konva.Group({
         // clip: {
         //   x: 0,
         //   y: 0,
         //   width: 300,
         //   height: 300
-        // },
-        clipFunc: function (ctx) {
-          ctx.rect(0, 0, 300, 300);
-          ctx.stroke();
+        // }
+      });
+      stage.add(layer);
+
+      var group = new Konva.Group({
+        clip: {
+          x: 0,
+          y: 0,
+          width: 300,
+          height: 300
         },
+        // clipFunc: function (ctx) {
+        //   ctx.rect(0, 0, 300, 300);
+        //   ctx.stroke();
+        // },
       });
       var image = new Image();
       image.src = './images/sm001.jpg';
