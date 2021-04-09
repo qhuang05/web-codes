@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+  <meta charset="utf-8" />
+  <title>修改transformer样式</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="detach()">detach</button>
+  <div id="container"></div>
+  <script>
+    window.onload = function () {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: width,
+        height: height
+      });
+
+      var layer = new Konva.Layer();
+      stage.add(layer);
+
+      var image = new Image();
+      image.src = './images/sm001.jpg'
+      var imageNode, tr;
+      image.onload = function () {
+        imageNode = new Konva.Image({
+          image,
+          x: 100 + 50,
+          y: 100 + 50,
+          width: 200,
+          height: 200,
+          offsetX: 100,
+          offsetY: 100,
+          rotation: 0,
+          draggable: true
+        });
+        layer.add(imageNode);
+
+        // 添加transformer
+        tr = new Konva.Transformer({
+          anchorStroke: '#ADB8BF',
+          anchorFill: '#fff',
+          anchorSize: 12,
+          anchorCornerRadius: 6,
+          borderStroke: '#6CD0FF',
+          borderStrokeWidth: 1,
+          rotateAnchorOffset: 20,
+          ignoreStroke: true,
+          node: imageNode
+        });
+        tr.attachTo(imageNode);
+        // tr.nodes([imageNode]);
+        layer.add(tr);
+        layer.batchDraw();
+      }
+
+      function detach() {
+        tr.detach();
+        layer.batchDraw();
+      }
+    }
+  </script>
+</body>
+
+</html>
