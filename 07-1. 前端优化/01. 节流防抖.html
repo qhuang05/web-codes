@@ -65,12 +65,14 @@
                 }
                 if (immediate) {
                     func.apply(this, args);
+                    immediate = false;
                     timer = setTimeout(() => {
                         timer = null;
-                    }, wait);
+                    }, wait)
                 } else {
                     timer = setTimeout(() => {
                         func.apply(this, args);
+                        immediate = true;
                     }, wait)
                 }
             }
