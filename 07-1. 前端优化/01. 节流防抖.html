@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>函数节流防抖</title>
 </head>
+
 <body>
     <div style="height:3000px;background:sandybrown"></div>
     <script>
-        // 节流
-        const throttle = (func, wait=500) => {
+        // https://zhuanlan.zhihu.com/p/157711895?from_voters_page=true
+
+        // 节流(第1种写法,这种写法有问题，可能会导致最后一次事件没有执行到)
+        const throttle = (func, wait = 500) => {
             let endTime = 0;
-            return (...args)=>{
+            return (...args) => {
                 let startTime = new Date();
-                if(startTime-endTime>wait){
+                if (startTime - endTime > wait) {
                     endTime = startTime;
                     // func.call(this, ...args);
                     func.apply(this, args);
                 }
             }
         }
-        document.onscroll = throttle(function(){
-            console.log('scrolling throttle...');
-        })
+        // 节流(第2种写法)
+        const throttle2 = (func, wait = 2000) => {
+            let timer = null;
+            return (...args) => {
+                if (timer) return;
+                timer = setTimeout(() => {
+                    func.apply(this, args);
+                    timer = null;
+                }, wait)
+            }
+        }
+        // document.onscroll = throttle(function(){
+        //     console.log('scrolling throttle...');
+        // })
+        // document.onscroll = throttle2(function () {
+        //     console.log('scrolling throttle2...');
+        // })
 
-  
+
         // 防抖，全程只执行一次
-        const debounce = (func, wait=500)=>{
-            let timer = 0;
-            return (...args) =>{
-                if(timer){
+        const debounce = (func, wait = 2000) => {
+            let timer = null;
+            return (...args) => {
+                if (timer) {
                     clearTimeout(timer);
                 }
-                timer = setTimeout(()=>{
+                timer = setTimeout(() => {
                     func.apply(this, args);
                 }, wait)
             }
         }
-        document.onscroll = debounce(function(){
-            console.log('scrolling debounce...');
+        // 防抖立即执行
+        const debounce2 = (func, wait = 2000, immediate = true) => {
+            let timer = null;
+            return (...args) => {
+                if (timer) {
+                    clearTimeout(timer);
+                }
+                if (immediate) {
+                    func.apply(this, args);
+                    immediate = false;
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, wait)
+                } else {
+                    timer = setTimeout(() => {
+                        func.apply(this, args);
+                        immediate = true;
+                    }, wait)
+                }
+            }
+        }
+        // document.onscroll = debounce(function () {
+        //     console.log('scrolling debounce...');
+        // })
+        document.onscroll = debounce2(function () {
+            console.log('scrolling debounce2...');
         })
     </script>
 </body>
+
 </html>
