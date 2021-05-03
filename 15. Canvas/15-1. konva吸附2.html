@@ -29,11 +29,14 @@
       width: 600,
       height: 600
     });
-    var layer = new Konva.Layer();
+    var layer = new Konva.Layer({
+      x: 10,
+      y: 10,
+    });
     stage.add(layer);
 
     // 画布上随机绘制3个矩形
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 2; i++) {
       layer.add(
         new Konva.Rect({
           x: Math.random() * stage.width(),
@@ -47,27 +50,6 @@
         })
       );
     }
-    // let rect = new Konva.Rect({
-    //   x: 100,
-    //   y: 100,
-    //   width: 60,
-    //   height: 40,
-    //   fill: '#000',
-    //   rotation: 30
-    // });
-    // layer.add(rect);
-    // console.log(rect.x(), rect.y(), rect.rotation())
-    // let rect2 = new Konva.Rect({
-    //   x: 300,
-    //   y: 300,
-    //   width: 60,
-    //   width: 60,
-    //   height: 40,
-    //   fill: '#000',
-    //   rotation: 210
-    // });
-    // layer.add(rect2);
-    // console.log(rect2.x(), rect2.y(), rect2.rotation())
 
     const GUIDELINE_OFFSET = 5;
 
@@ -75,7 +57,6 @@
     function getLineGuideStops(node) {
       var vertical = [0, stage.width() / 2, stage.width()];
       var horizontal = [0, stage.height() / 2, stage.height()];
-
       stage.find('.object').forEach(obj => {
         if (obj === node) {
           return;
@@ -188,10 +169,11 @@
     }
 
     function drawGuides(guides) {
+      let layerX = layer.x(), layerY = layer.y();
       guides.forEach(lg => {
         if (lg.orientation === 'H') {
           var line = new Konva.Line({
-            points: [-6000, lg.lineGuide, 6000, lg.lineGuide],
+            points: [-6000, lg.lineGuide - layerY, 6000, lg.lineGuide - layerY],
             stroke: 'rgb(0, 161, 255)',
             strokeWidth: 1,
             name: 'guide-line',
@@ -201,7 +183,7 @@
           layer.batchDraw();
         } else if (lg.orientation === 'V') {
           var line = new Konva.Line({
-            points: [lg.lineGuide, -6000, lg.lineGuide, 6000],
+            points: [lg.lineGuide - layerX, -6000, lg.lineGuide - layerX, 6000],
             stroke: 'rgb(0, 161, 255)',
             strokeWidth: 1,
             name: 'guide-line',
@@ -222,7 +204,7 @@
 
       // console.log('lineGuideStops => ', lineGuideStops);
       // console.log('itemBounds => ', itemBounds);
-      console.log('guides => ', guides);
+      // console.log('guides => ', guides);
       if (!guides.length) {
         return;
       }
