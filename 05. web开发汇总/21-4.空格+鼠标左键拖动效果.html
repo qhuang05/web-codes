@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .panel-move {
+            position: absolute;
+            background-color: blue;
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            cursor: auto
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel-move"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var Space = false;
+            $(document).keydown(function (evt) {
+                if (evt.keyCode == 32) {
+                    if (!Space) {
+                        $(".panel-move").css({
+                            'cursor': 'grab'
+                        }) // 光标替换
+                    }
+                    Space = true;
+
+                }
+            }).keyup(function () {
+                Space = false;
+                $(".panel-move").css({
+                    'cursor': 'initial'
+                }) // 光标替换
+            })
+
+            $('.panel-move').on("mousedown", function (e) {
+
+                if (Space && e.which == 1) {
+
+                    $(this).css("cssText", $(this)[0].attributes[1].nodeValue + "cursor:grabbing !important;") // 光标替换
+
+                    // 点击位置
+                    var downX = e.pageX;
+                    var downY = e.pageY;
+
+                    // 元素原来左上角位置
+                    var thisX = $(this).offset().left;
+                    var thisY = $(this).offset().top;
+
+                    $(this).on("mousemove", function (e) {
+                        // 当前位置 = 原位置+移动位置-点击位置
+                        var left = thisX + e.pageX - downX;
+                        var top = thisY + e.pageY - downY;
+
+                        $(this).css({
+                            'left': left,
+                            'top': top
+                        })
+                    });
+                }
+
+            }).on('mouseup mouseleave', function () {
+                $(this).off('mousemove')
+
+                if (Space) {
+
+                    $(this).css({
+                        'cursor': 'grab'
+                    }) // 光标替换
+                } else {
+                    $(this).css({
+                        'cursor': 'initial'
+                    }) // 光标替换
+                }
+            })
+
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+  <meta charset="utf-8" />
+  <title>Konva Snapping of shapes Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+
+    #container {
+      border: 1px solid red;
+      width: 600px;
+      height: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    var stage = new Konva.Stage({
+      container: 'container',
+      width: 600,
+      height: 600
+    });
+    var layer = new Konva.Layer({
+      x: 10,
+      y: 10,
+    });
+    stage.add(layer);
+
+    // 画布上随机绘制3个矩形
+    for (var i = 0; i < 2; i++) {
+      layer.add(
+        new Konva.Rect({
+          x: Math.random() * stage.width(),
+          y: Math.random() * stage.height(),
+          width: 50 + Math.random() * 50,
+          height: 50 + Math.random() * 50,
+          fill: Konva.Util.getRandomColor(),
+          rotation: Math.random() * 360,
+          draggable: true,
+          name: 'object'
+        })
+      );
+    }
+
+    const GUIDELINE_OFFSET = 5;
+
+    // 获取水平方向和垂直方向碰撞线的位置集合
+    function getLineGuideStops(node) {
+      var vertical = [0, stage.width() / 2, stage.width()];
+      var horizontal = [0, stage.height() / 2, stage.height()];
+      stage.find('.object').forEach(obj => {
+        if (obj === node) {
+          return;
+        }
+        var box = obj.getClientRect();
+        vertical.push([box.x, box.x + box.width, box.x + box.width / 2]);
+        horizontal.push([box.y, box.y + box.height, box.y + box.height / 2]);
+      });
+      return {
+        vertical: vertical.flat(),
+        horizontal: horizontal.flat()
+      };
+    }
+
+    // 获取移动节点水平和垂直的边缘点
+    function getObjectSnappingEdges(node) {
+      var box = node.getClientRect();
+      return {
+        vertical: [
+          {
+            guide: Math.round(box.x),
+            offset: Math.round(node.x() - box.x),
+            snap: 'start'
+          },
+          {
+            guide: Math.round(box.x + box.width / 2),
+            offset: Math.round(node.x() - box.x - box.width / 2),
+            snap: 'center'
+          },
+          {
+            guide: Math.round(box.x + box.width),
+            offset: Math.round(node.x() - box.x - box.width),
+            snap: 'end'
+          }
+        ],
+        horizontal: [
+          {
+            guide: Math.round(box.y),
+            offset: Math.round(node.y() - box.y),
+            snap: 'start'
+          },
+          {
+            guide: Math.round(box.y + box.height / 2),
+            offset: Math.round(node.y() - box.y - box.height / 2),
+            snap: 'center'
+          },
+          {
+            guide: Math.round(box.y + box.height),
+            offset: Math.round(node.y() - box.y - box.height),
+            snap: 'end'
+          }
+        ]
+      };
+    }
+
+    function getGuides(lineGuideStops, itemBounds) {
+      var resultV = [];
+      var resultH = [];
+
+      lineGuideStops.vertical.forEach(lineGuide => {
+        itemBounds.vertical.forEach(itemBound => {
+          var diff = Math.abs(lineGuide - itemBound.guide);
+          if (diff < GUIDELINE_OFFSET) {
+            resultV.push({
+              lineGuide: lineGuide,
+              diff: diff,
+              snap: itemBound.snap,
+              offset: itemBound.offset
+            });
+          }
+        });
+      });
+
+      lineGuideStops.horizontal.forEach(lineGuide => {
+        itemBounds.horizontal.forEach(itemBound => {
+          var diff = Math.abs(lineGuide - itemBound.guide);
+          if (diff < GUIDELINE_OFFSET) {
+            resultH.push({
+              lineGuide: lineGuide,
+              diff: diff,
+              snap: itemBound.snap,
+              offset: itemBound.offset
+            });
+          }
+        });
+      });
+
+      var guides = [];
+
+      // find closest snap
+      var minV = resultV.sort((a, b) => a.diff - b.diff)[0];
+      var minH = resultH.sort((a, b) => a.diff - b.diff)[0];
+      if (minV) {
+        guides.push({
+          lineGuide: minV.lineGuide,
+          offset: minV.offset,
+          orientation: 'V',
+          snap: minV.snap
+        });
+      }
+      if (minH) {
+        guides.push({
+          lineGuide: minH.lineGuide,
+          offset: minH.offset,
+          orientation: 'H',
+          snap: minH.snap
+        });
+      }
+      return guides;
+    }
+
+    function drawGuides(guides) {
+      let layerX = layer.x(), layerY = layer.y();
+      guides.forEach(lg => {
+        if (lg.orientation === 'H') {
+          var line = new Konva.Line({
+            points: [-6000, lg.lineGuide - layerY, 6000, lg.lineGuide - layerY],
+            stroke: 'rgb(0, 161, 255)',
+            strokeWidth: 1,
+            name: 'guide-line',
+            dash: [4, 6]
+          });
+          layer.add(line);
+          layer.batchDraw();
+        } else if (lg.orientation === 'V') {
+          var line = new Konva.Line({
+            points: [lg.lineGuide - layerX, -6000, lg.lineGuide - layerX, 6000],
+            stroke: 'rgb(0, 161, 255)',
+            strokeWidth: 1,
+            name: 'guide-line',
+            dash: [4, 6]
+          });
+          layer.add(line);
+          layer.batchDraw();
+        }
+      });
+    }
+
+    layer.on('dragmove', function (e) {
+      layer.find('.guide-line').destroy();
+
+      var lineGuideStops = getLineGuideStops(e.target);
+      var itemBounds = getObjectSnappingEdges(e.target);
+      var guides = getGuides(lineGuideStops, itemBounds);
+
+      // console.log('lineGuideStops => ', lineGuideStops);
+      // console.log('itemBounds => ', itemBounds);
+      // console.log('guides => ', guides);
+      if (!guides.length) {
+        return;
+      }
+
+      drawGuides(guides);
+      guides.forEach(lg => {
+        switch (lg.snap) {
+          case 'start': {
+            switch (lg.orientation) {
+              case 'V': {
+                e.target.x(lg.lineGuide + lg.offset);
+                break;
+              }
+              case 'H': {
+                e.target.y(lg.lineGuide + lg.offset);
+                break;
+              }
+            }
+            break;
+          }
+          case 'center': {
+            switch (lg.orientation) {
+              case 'V': {
+                e.target.x(lg.lineGuide + lg.offset);
+                break;
+              }
+              case 'H': {
+                e.target.y(lg.lineGuide + lg.offset);
+                break;
+              }
+            }
+            break;
+          }
+          case 'end': {
+            switch (lg.orientation) {
+              case 'V': {
+                e.target.x(lg.lineGuide + lg.offset);
+                break;
+              }
+              case 'H': {
+                e.target.y(lg.lineGuide + lg.offset);
+                break;
+              }
+            }
+            break;
+          }
+        }
+      });
+    });
+
+    layer.on('dragend', function (e) {
+      layer.find('.guide-line').destroy();
+      layer.batchDraw();
+    });
+
+    layer.draw();
+  </script>
+</body>
+
+</html>
