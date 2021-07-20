@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery-1.11.3.min.js"></script>
+  <script src="./js/snap.svg-min.js"></script>
+</head>
+
+<body>
+  <script> 
+    // 矩阵相乘
+    function matrixMuliply(a, b) {
+      var c = new Array(a.length);
+      for (var i = 0; i < a.length; i++) {
+        c[i] = new Array(b[0].length);
+        for (var j = 0; j < b[0].length; j++) {
+          c[i][j] = 0;
+          for (var k = 0; k < b.length; k++) {
+            c[i][j] += a[i][k] * b[k][j];
+          }
+        }
+      }
+      return c;
+    }
+
+    function calcMatrixFromNewDesigner(configuration) {
+      let mulTransform = configuration.gTransform;
+      let _mulArr = mulTransform.slice(7, mulTransform.length - 1).split(',').map(a => parseFloat(a));
+      let mulArr = [
+        [_mulArr[0], _mulArr[1], 0],
+        [_mulArr[2], _mulArr[3], 0],
+        [_mulArr[4], _mulArr[5], 1]
+      ];
+      let mulMatrix = new Snap.Matrix(_mulArr[0], _mulArr[1], _mulArr[2], _mulArr[3], _mulArr[4], _mulArr[5]);
+
+      let rotation = configuration.image.rotate;
+      rotation = (rotation * Math.PI) / 180;
+      let gMatrix = new Snap.Matrix(Math.cos(rotation), Math.sin(rotation), -Math.sin(rotation), Math.cos(rotation), 0, 0);
+      let gArr = [
+        [Math.cos(rotation), Math.sin(rotation), 0],
+        [-Math.sin(rotation), Math.cos(rotation), 0],
+        [0, 0, 1]
+      ];
+
+      console.log('mul => ', mulArr);
+      console.log('g => ', gArr);
+
+      // 方法一 start
+      let gInvertMatrix = gMatrix.invert();
+      let gInvertArr = [
+        [gInvertMatrix.a, gInvertMatrix.b, 0],
+        [gInvertMatrix.c, gInvertMatrix.d, 0],
+        [gInvertMatrix.e, gInvertMatrix.f, 1]
+      ];
+      let tArr = matrixMuliply(mulArr, gInvertArr);
+      return {
+        gTransform: `matrix(${gMatrix.a}, ${gMatrix.b}, ${gMatrix.c}, ${gMatrix.d}, 0, 0)`,
+        transform: `matrix(${tArr[0][0]}, ${tArr[0][1]}, ${tArr[1][0]}, ${tArr[1][1]}, ${tArr[2][0]}, ${tArr[2][1]})`,
+        gArr,
+        tArr
+      }
+      // 方法一 end
+
+
+      // 方法二 start
+      // let tMap = {};
+      // // 矩阵相乘推导：
+      // // mulMatrix.a = gMatrix.a * tMap.a + gMatrix.c * tMap.b;
+      // // mulMatrix.b = gMatrix.b * tMap.a + gMatrix.d * tMap.b;
+      // // mulMatrix.c = gMatrix.a * tMap.c + gMatrix.c * tMap.d;
+      // // mulMatrix.d = gMatrix.b * tMap.c + gMatrix.d * tMap.d;
+      // // mulMatrix.e = gMatrix.a * tMap.e + gMatrix.c * tMap.f;
+      // // mulMatrix.f = gMatrix.b * tMap.e + gMatrix.d * tMap.f;
+      // tMap.a = (gMatrix.d * mulMatrix.a - gMatrix.c * mulMatrix.b) / (gMatrix.d * gMatrix.a - gMatrix.c * gMatrix.b);
+      // tMap.b = (gMatrix.b * mulMatrix.a - gMatrix.a * mulMatrix.b) / (gMatrix.b * gMatrix.c - gMatrix.a * gMatrix.d);
+      // tMap.c = (gMatrix.d * mulMatrix.c - gMatrix.c * mulMatrix.d) / (gMatrix.d * gMatrix.a - gMatrix.c * gMatrix.b);
+      // tMap.d = (gMatrix.b * mulMatrix.c - gMatrix.a * mulMatrix.d) / (gMatrix.b * gMatrix.c - gMatrix.a * gMatrix.d);
+      // tMap.e = (gMatrix.d * mulMatrix.e - gMatrix.c * mulMatrix.f) / (gMatrix.d * gMatrix.a - gMatrix.c * gMatrix.b);
+      // tMap.f = (gMatrix.b * mulMatrix.e - gMatrix.a * mulMatrix.f) / (gMatrix.b * gMatrix.c - gMatrix.a * gMatrix.d);
+      // console.log('tMap => ', tMap);
+      // return {
+      //   gTransform: `matrix(${gMatrix.a}, ${gMatrix.b}, ${gMatrix.c}, ${gMatrix.d}, 0, 0)`,
+      //   transform: `matrix(${tMap.a}, ${tMap.b}, ${tMap.c}, ${tMap.d}, ${tMap.e}, ${tMap.f})`,
+      //   gArr,
+      //   tArr: [
+      //     [tMap.a, tMap.b, 0],
+      //     [tMap.c, tMap.d, 0],
+      //     [tMap.e, tMap.f, 1]
+      //   ]
+      // }
+      // 方法二 end
+    }
+
+    var configuration = {
+      gTransform: 'matrix(1.3213573921353612,0.9252244066423031,-0.8213299252069679,1.17298069556198,441.43363502771507,154.03718345158777)',
+      image: {
+        rotate: 35
+      }
+    };
+    let result = calcMatrixFromNewDesigner(configuration);
+    console.log('result => ', result);
+
+    // 反向验证
+    console.log('反向验证：')
+    let g = result.gArr;
+    let t = result.tArr;
+    let c = matrixMuliply(t, g);
+    console.log('g=>', g);
+    console.log('t=>', t);
+    console.log('c=>', c);
+  </script>
+</body>
+
+</html>
