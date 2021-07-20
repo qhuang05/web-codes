@@ -12,13 +12,18 @@
             overflow: hidden;
             background-color: #f0f0f0;
         }
+        #container{
+            position: relative;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 
 <body>
-    <button id="btn1">放大到1.5</button>
-    <button id="btn2">缩小到0.5</button>
-    <button id="btn3">恢复</button>
+    <button id="increase">放大到1.5</button>
+    <button id="reduce">缩小到0.5</button>
+    <button id="restore">恢复</button>
     <div id="container"></div>
     <script>
         window.onload = function () {
@@ -27,8 +32,11 @@
                 container: 'container',
                 width: stageWidth,
                 height: stageHeight,
+                x: 0,
+                y: 0
             });
 
+            // layerBg
             var layerBg = new Konva.Layer({
                 name: 'layerBg'
             });
@@ -48,31 +56,8 @@
                 layerBg.batchDraw();
             }
             layerBg.add(bgRect);
-
-
-            document.getElementById('btn1').onclick = function () {
-                stage.width(900);
-                stage.height(900);
-                layerBg.scale({ x: 1.5, y: 1.5 });
-                layer.setAttrs({ x: 150, y: 150, scaleX: 1.5, scaleY: 1.5 });
-                stage.batchDraw();
-            }
-            document.getElementById('btn2').onclick = function () {
-                stage.width(300);
-                stage.height(300);
-                layerBg.scale({ x: 0.5, y: 0.5 });
-                layer.setAttrs({ x: 50, y: 50, scaleX: 0.5, scaleY: 0.5 });
-                stage.batchDraw();
-            }
-            document.getElementById('btn3').onclick = function () {
-                stage.width(600);
-                stage.height(600);
-                layerBg.scale({ x: 1, y: 1 });
-                layer.setAttrs({ x: 100, y: 100, scaleX: 1, scaleY: 1 });
-                stage.batchDraw();
-            }
-
-
+            
+            // layer
             var layer = new Konva.Layer({
                 x: 100,
                 y: 100,
@@ -100,6 +85,50 @@
                     let pos = stage.getPointerPosition();  //getPointerPosition方法只能用在stage
                     console.log('pos => ', pos);
                 });
+            }
+
+            let $container = document.querySelector('#container');
+            document.getElementById('increase').onclick = function () {
+                // stage.width(900);
+                // stage.height(900);
+                // layerBg.scale({ x: 1.5, y: 1.5 });
+                // layer.setAttrs({ x: 150, y: 150, scaleX: 1.5, scaleY: 1.5 });
+                // stage.batchDraw();
+
+                stage.width(900);
+                stage.height(900);
+                stage.scale({x: 1.5, y: 1.5});
+                $container.style.left = -(900-600)/2 + 'px';
+                $container.style.top = -(900-600)/2 + 'px';
+                stage.batchDraw();
+            }
+            document.getElementById('reduce').onclick = function () {
+                // stage.width(300);
+                // stage.height(300);
+                // layerBg.scale({ x: 0.5, y: 0.5 });
+                // layer.setAttrs({ x: 50, y: 50, scaleX: 0.5, scaleY: 0.5 });
+                // stage.batchDraw();
+
+                stage.width(300);
+                stage.height(300);
+                stage.scale({x: 0.5, y: 0.5});
+                $container.style.left = -(300-600)/2 + 'px';
+                $container.style.top = -(300-600)/2 + 'px';
+                stage.batchDraw();
+            }
+            document.getElementById('restore').onclick = function () {
+                // stage.width(600);
+                // stage.height(600);
+                // layerBg.scale({ x: 1, y: 1 });
+                // layer.setAttrs({ x: 100, y: 100, scaleX: 1, scaleY: 1 });
+                // stage.batchDraw();
+
+                stage.width(600);
+                stage.height(600);
+                stage.scale({x: 1, y: 1});
+                $container.style.left = 0;
+                $container.style.top = 0;
+                stage.batchDraw();
             }
         }
     </script>
