@@ -60,16 +60,23 @@
       stage.add(layer);
 
       var group = new Konva.Group({
-        clip: {
-          x: 0,
-          y: 0,
-          width: 300,
-          height: 300
-        },
-        // clipFunc: function (ctx) {
-        //   ctx.rect(0, 0, 300, 300);
-        //   ctx.stroke();
+        // clip: {
+        //   x: 0,
+        //   y: 0,
+        //   width: 300,
+        //   height: 300
         // },
+        clipFunc: function (ctx) {
+          ctx.rect(0, 0, 300, 300);
+          ctx.stroke();
+
+          // let path = new Konva.Path({
+          //   x: 0,
+          //   y: 0,
+          //   data: 'M38,38H0V0h38V38z',
+          //   fill: 'green',
+          // });
+        },
       });
       var image = new Image();
       image.src = './images/sm001.jpg';
@@ -89,6 +96,17 @@
         layer.add(group);
         layer.batchDraw();
       }
+
+      // var path = new Konva.Path({
+      //   x: 0,
+      //   y: 0,
+      //   data: 'M38,38H0V0h38V38z',
+      //   fill: 'green',
+      //   scaleX: 2,
+      //   scaleY: 2
+      // })
+      // layer.add(path);
+      // layer.batchDraw();
     }
 
   </script>
