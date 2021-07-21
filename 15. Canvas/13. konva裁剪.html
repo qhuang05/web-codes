@@ -67,15 +67,18 @@
         //   height: 300
         // },
         clipFunc: function (ctx) {
-          ctx.rect(0, 0, 300, 300);
-          ctx.stroke();
+          // ctx.rect(0, 0, 300, 300);
+          // ctx.stroke();
 
-          // let path = new Konva.Path({
-          //   x: 0,
-          //   y: 0,
-          //   data: 'M38,38H0V0h38V38z',
-          //   fill: 'green',
-          // });
+          new Konva.Path({
+            x: 0,
+            y: 0,
+            data: 'M16 20.8v288.9l240 181.5 240-181.5v-288.9h-480z',
+            stroke: 'red',
+            strokeWidth: 2,
+            scaleX: 0.8,
+            scaleY: 0.8
+          })._sceneFunc(ctx)
         },
       });
       var image = new Image();
@@ -96,17 +99,6 @@
         layer.add(group);
         layer.batchDraw();
       }
-
-      // var path = new Konva.Path({
-      //   x: 0,
-      //   y: 0,
-      //   data: 'M38,38H0V0h38V38z',
-      //   fill: 'green',
-      //   scaleX: 2,
-      //   scaleY: 2
-      // })
-      // layer.add(path);
-      // layer.batchDraw();
     }
 
   </script>
