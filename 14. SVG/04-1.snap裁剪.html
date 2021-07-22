@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>svg clipPath</title>
+  <script src="./js/jquery-1.11.3.min.js"></script>
+  <script src="./js/snap.svg-min.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    <svg viewBox="0 0 100 100" width="200" height="200" style="border:1px solid #000">
+      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" stroke="red" stroke-width="0.5"></path>
+      <clipPath id="myClip">
+        <circle cx="40" cy="35" r="35" fill="red"></circle>
+      </clipPath>
+      <use xlink:href="#heart" fill="green" clip-path="url(#myClip)"></use>
+    </svg>
+
+    <svg viewBox="0 0 100 100" width="200" height="200" style="border:1px solid #000">
+      <clipPath id="myClip">
+        <circle cx="40" cy="35" r="35" fill="red"></circle>
+      </clipPath>
+      <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" stroke="red" stroke-width="0.5" clip-path="url(#myClip)"></path>
+    </svg>
+
+    <svg viewBox="0 0 100 100" width="200" height="200" style="border:1px solid #000">
+      <clipPath id="myClip1" clipPathUnits="userSpaceOnUse">
+        <circle cx="50" cy="50" r="35" />
+      </clipPath>
+      <clipPath id="myClip2" clipPathUnits="objectBoundingBox">
+        <!-- objectBoundingBox相对于被裁剪物体的盒子的左上角x=0,y=0，并且单位是1, clipPathUnits用于clipPath标签上 -->
+        <circle cx=".5" cy=".5" r="0.5" />
+      </clipPath>
+      <!-- clip-path属性可以用于任何元素 -->
+      <rect id="r1" x="0"  y="0"  width="45" height="45" clip-path="url(#myClip1)" fill="red" />
+      <rect id="r2" x="0"  y="55" width="45" height="45" clip-path="url(#myClip2)" fill="green" />
+      <rect id="r3" x="55" y="55" width="45" height="45" clip-path="url(#myClip2)" fill="blue" />
+      <rect id="r4" x="55" y="0"  width="45" height="45" clip-path="url(#myClip2)" fill="yellow" />
+    </svg>
+
+    <svg viewBox="0 0 100 100" width="200" height="200" style="border:1px solid #000">
+      <defs>
+        <path d="M50,0 21,90 98,35 2,35 79,90z" id="star" stroke="red" stroke-width="1" />
+      </defs>
+      <clipPath id="emptyStar">
+        <use xlink:href="#star" clip-rule="evenodd" />
+      </clipPath>
+      <rect clip-path="url(#emptyStar)" width="50" height="90" fill="blue" />
+
+      <clipPath id="filledStar">
+        <use xlink:href="#star" clip-rule="nonzero" />
+      </clipPath>
+      <rect clip-path="url(#filledStar)" width="50" height="90" x="50" fill="red" />
+    </svg>
+  </div>
+</body>
+
+</html>
