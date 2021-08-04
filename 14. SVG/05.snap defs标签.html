@@ -13,16 +13,18 @@
   <!-- defs用于定义需要重复使用的图形元素，类似于vue的component，在需要使用的地方用use来呈现这些元素 -->
   <div id="box">
     <svg viewBox="0 0 100 100" width="200" height="200" style="border:1px solid #000">
-      <g id="group1">
-        <circle cx="10" cy="10" r="10" fill="red"></circle>
-        <circle cx="20" cy="10" r="10" fill="yellow"></circle>
-      </g>
-      <g id="group2">
-        <rect width="20" height="20" x="30" fill="red"></rect>
-        <rect width="20" height="20" x="30" fill="yellow"></rect>
-      </g>
       <defs>
+        <g id="group1">
+          <circle cx="10" cy="10" r="10" fill="red"></circle>
+          <circle cx="20" cy="10" r="10" fill="yellow"></circle>
+        </g>
+        <g id="group2">
+          <rect width="20" height="20" x="30" fill="red"></rect>
+          <rect width="20" height="20" x="30" fill="yellow"></rect>
+        </g>
       </defs>
+      <use xlink:href="#group1"></use>
+      <!-- <use xlink:href="#group2"></use> -->
     </svg>
   </div>
 </body>
