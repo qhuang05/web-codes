@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片平铺效果</title>
+  <style>
+    #container{
+      width: 600px;
+      height: 600px;
+      border:1px solid red;
+      position: relative;
+    }
+    .opt-img{
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      transform: rotate(30deg);
+    }
+  </style>
+</head>
+<body>
+  平铺：
+  <button onclick="imgTile('basic')">基础</button>
+  <button onclick="imgTile('mirror')">镜像</button>
+  <button onclick="imgTile('xSpace')">横向错开</button>
+  <button onclick="imgTile('ySpace')">纵向错开</button>
+  <div id="container">
+    <img class="opt-img" src="https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF" width="200" />
+  </div>
+  <script>
+    let config = {
+      spacingH: 2,
+      spacingV: 1,
+      rotation:30
+    }
+    let $container = document.querySelector('#container');
+    let $optImg = document.querySelector('.opt-img');
+    function imgTile(type){
+
+      let canvas = document.createElement("canvas");
+      canvas.width = $container.clientWidth;
+      canvas.height = $container.clientHeight;
+      let context = canvas.getContext("2d");
+      let img = new Image();
+      img.setAttribute("crossOrigin", "anonymous");
+      img.src = 'https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF';
+      img.onload = function () {
+        let spacingH = config.spacingH || 0;
+        let spacingV = config.spacingV || 0;
+        let JQspacingH = spacingH / 2;
+        let JQspacingV = spacingV / 2;
+        let width = $optImg.width, height = $optImg.height;
+        let canvasTemp = document.createElement("canvas");
+        let contextTemp = canvasTemp.getContext("2d");
+        let $repeatImg = document.querySelector('.repeat-img');
+        if($repeatImg){
+          $repeatImg.parentNode.removeChild($repeatImg);
+        }
+        switch(type){
+          case 'basic':
+            canvasTemp.width = (width + spacingH) * 2;
+            canvasTemp.height = (height + spacingV) * 2;
+
+            contextTemp.save();
+            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+            break;
+          case 'mirror':
+            canvasTemp.width = (width + spacingH) * 2;
+            canvasTemp.height = (height + spacingV) * 2;
+
+            contextTemp.save();
+            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.scale(-1, 1);
+            contextTemp.drawImage(
+              this,
+              -canvasTemp.width + JQspacingH,
+              JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.scale(1, -1);
+            contextTemp.drawImage(
+              this,
+              JQspacingH,
+              -canvasTemp.height + JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.scale(-1, -1);
+            contextTemp.drawImage(
+              this,
+              -canvasTemp.width + JQspacingH,
+              -canvasTemp.height + JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+            break;
+          case 'xSpace':
+            canvasTemp.width = (width + spacingH) * 2;
+            canvasTemp.height = (height + spacingV) * 2;
+
+            contextTemp.save();
+            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              -width / 2,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width / 2 + 2 * JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              1.5 * width + 4 * JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+            break;
+          case 'ySpace':
+            canvasTemp.width = (width + spacingH) * 2;
+            canvasTemp.height = (height + spacingV) * 2;
+
+            contextTemp.save();
+            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              -0.5 * height,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              0.5 * height + 2 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              1.5 * height + 4 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+            break;
+        }
+        let pattern = context.createPattern(canvasTemp, "repeat");
+        let r = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)) / 2; //图片中心点绕圆旋转的半径
+        let oringAngle = Math.atan(height / width); //两个图片中心点的初始角度
+        let tansAngle = (config.rotation * Math.PI) / 180 + oringAngle; //旋转后两个图片中心点的角度
+        //兼容火狐
+        let svgM = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        let matrix = svgM.createSVGMatrix();
+        let containerRect = $container.getBoundingClientRect();
+        let imgRect = $optImg.getBoundingClientRect();
+        let imgHCenter = (imgRect.x - containerRect.x) + imgRect.width/2, imgVCenter = (imgRect.y - containerRect.y) + imgRect.height/2;
+        pattern.setTransform(
+          matrix.translate(imgHCenter * 3, imgVCenter * 3) //平移到旋转点
+            .translate(r * Math.cos(tansAngle), r * Math.sin(tansAngle)) //让两个图片中心点的重合
+            .rotate(config.rotation) //平移后再旋转
+            .translate(spacingH * 0.5, spacingV * 0.5)
+        );
+        context.fillStyle = pattern;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        let base = canvas.toDataURL("image/png", 1.0);
+        let repeatImg = new Image();
+        repeatImg.src = base;
+        repeatImg.onload = function () {
+          let nImg = document.createElement('img');
+          nImg.src = base;
+          nImg.className = 'repeat-img';
+          document.querySelector('#container').appendChild(nImg);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
