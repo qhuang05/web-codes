@@ -9,7 +9,7 @@
     #container{
       width: 600px;
       height: 600px;
-      border:1px solid red;
+      background-color: #efefef;
       position: relative;
     }
     .opt-img{
@@ -27,31 +27,31 @@
   <button onclick="imgTile('xSpace')">横向错开</button>
   <button onclick="imgTile('ySpace')">纵向错开</button>
   <div id="container">
-    <img class="opt-img" src="https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF" width="200" />
+    <img class="opt-img" src="https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF" width="260" />
   </div>
   <script>
     let config = {
-      spacingH: 2,
-      spacingV: 1,
-      rotation:30
+      spacingH: 20,
+      spacingV: 10,
+      rotation: 30
     }
     let $container = document.querySelector('#container');
     let $optImg = document.querySelector('.opt-img');
     function imgTile(type){
-
+      let canvasScale = 2; //画布放大倍数
       let canvas = document.createElement("canvas");
-      canvas.width = $container.clientWidth;
-      canvas.height = $container.clientHeight;
+      canvas.width = $container.clientWidth * canvasScale;
+      canvas.height = $container.clientHeight * canvasScale;
       let context = canvas.getContext("2d");
       let img = new Image();
       img.setAttribute("crossOrigin", "anonymous");
       img.src = 'https://t7.baidu.com/it/u=4162611394,4275913936&fm=193&f=GIF';
       img.onload = function () {
-        let spacingH = config.spacingH || 0;
-        let spacingV = config.spacingV || 0;
+        let spacingH = config.spacingH * canvasScale || 0;
+        let spacingV = config.spacingV * canvasScale || 0;
         let JQspacingH = spacingH / 2;
         let JQspacingV = spacingV / 2;
-        let width = $optImg.width, height = $optImg.height;
+        let width = $optImg.width * canvasScale, height = $optImg.height * canvasScale;
         let canvasTemp = document.createElement("canvas");
         let contextTemp = canvasTemp.getContext("2d");
         let $repeatImg = document.querySelector('.repeat-img');
@@ -249,7 +249,7 @@
         let imgRect = $optImg.getBoundingClientRect();
         let imgHCenter = (imgRect.x - containerRect.x) + imgRect.width/2, imgVCenter = (imgRect.y - containerRect.y) + imgRect.height/2;
         pattern.setTransform(
-          matrix.translate(imgHCenter * 3, imgVCenter * 3) //平移到旋转点
+          matrix.translate(imgHCenter * canvasScale, imgVCenter * canvasScale) //平移到旋转点
             .translate(r * Math.cos(tansAngle), r * Math.sin(tansAngle)) //让两个图片中心点的重合
             .rotate(config.rotation) //平移后再旋转
             .translate(spacingH * 0.5, spacingV * 0.5)
@@ -263,6 +263,8 @@
           let nImg = document.createElement('img');
           nImg.src = base;
           nImg.className = 'repeat-img';
+          nImg.width = nImg.width/canvasScale;
+          nImg.height = nImg.height/canvasScale;
           document.querySelector('#container').appendChild(nImg);
         }
       }
