@@ -60,11 +60,17 @@
         }
         switch(type){
           case 'basic':
-            canvasTemp.width = (width + spacingH) * 2;
-            canvasTemp.height = (height + spacingV) * 2;
+            canvasTemp.width = (width + spacingH);
+            canvasTemp.height = (height + spacingV);
 
             contextTemp.save();
-            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.drawImage(
+              this, 
+              JQspacingH, 
+              JQspacingV, 
+              width, 
+              height
+            );
             contextTemp.restore();
 
             contextTemp.save();
@@ -102,15 +108,21 @@
             canvasTemp.height = (height + spacingV) * 2;
 
             contextTemp.save();
-            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.drawImage(
+              this,
+              canvasTemp.width / 2 + JQspacingH,
+              canvasTemp.height / 2 + JQspacingV,
+              width,
+              height
+            );
             contextTemp.restore();
 
             contextTemp.save();
             contextTemp.scale(-1, 1);
             contextTemp.drawImage(
               this,
-              -canvasTemp.width + JQspacingH,
-              JQspacingV,
+              -canvasTemp.width / 2 + JQspacingH,
+              canvasTemp.height / 2 + JQspacingV,
               width,
               height
             );
@@ -120,8 +132,8 @@
             contextTemp.scale(1, -1);
             contextTemp.drawImage(
               this,
-              JQspacingH,
-              -canvasTemp.height + JQspacingV,
+              canvasTemp.width / 2 + JQspacingH,
+              -canvasTemp.height / 2 + JQspacingV,
               width,
               height
             );
@@ -131,8 +143,8 @@
             contextTemp.scale(-1, -1);
             contextTemp.drawImage(
               this,
-              -canvasTemp.width + JQspacingH,
-              -canvasTemp.height + JQspacingV,
+              -canvasTemp.width / 2 + JQspacingH,
+              -canvasTemp.height / 2 + JQspacingV,
               width,
               height
             );
@@ -143,13 +155,19 @@
             canvasTemp.height = (height + spacingV) * 2;
 
             contextTemp.save();
-            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
+            contextTemp.drawImage(
+              this, 
+              -width / 2, 
+              JQspacingV, 
+              width, 
+              height
+            );
             contextTemp.restore();
 
             contextTemp.save();
             contextTemp.drawImage(
               this,
-              width + 3 * JQspacingH,
+              width / 2 + 2 * JQspacingH,
               JQspacingV,
               width,
               height
@@ -159,27 +177,27 @@
             contextTemp.save();
             contextTemp.drawImage(
               this,
-              -width / 2,
-              height + 3 * JQspacingV,
-              width,
-              height
-            );
-            contextTemp.restore();
-
-            contextTemp.save();
-            contextTemp.drawImage(
-              this,
-              width / 2 + 2 * JQspacingH,
-              height + 3 * JQspacingV,
-              width,
-              height
-            );
-            contextTemp.restore();
-
-            contextTemp.save();
-            contextTemp.drawImage(
-              this,
               1.5 * width + 4 * JQspacingH,
+              JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              JQspacingH,
+              height + 3 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
               height + 3 * JQspacingV,
               width,
               height
@@ -191,23 +209,9 @@
             canvasTemp.height = (height + spacingV) * 2;
 
             contextTemp.save();
-            contextTemp.drawImage(this, JQspacingH, JQspacingV, width, height);
-            contextTemp.restore();
-
-            contextTemp.save();
             contextTemp.drawImage(
               this,
               JQspacingH,
-              height + 3 * JQspacingV,
-              width,
-              height
-            );
-            contextTemp.restore();
-
-            contextTemp.save();
-            contextTemp.drawImage(
-              this,
-              width + 3 * JQspacingH,
               -0.5 * height,
               width,
               height
@@ -217,7 +221,7 @@
             contextTemp.save();
             contextTemp.drawImage(
               this,
-              width + 3 * JQspacingH,
+              JQspacingH,
               0.5 * height + 2 * JQspacingV,
               width,
               height
@@ -227,8 +231,28 @@
             contextTemp.save();
             contextTemp.drawImage(
               this,
-              width + 3 * JQspacingH,
+              JQspacingH,
               1.5 * height + 4 * JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              JQspacingV,
+              width,
+              height
+            );
+            contextTemp.restore();
+
+            contextTemp.save();
+            contextTemp.drawImage(
+              this,
+              width + 3 * JQspacingH,
+              height + 3 * JQspacingV,
               width,
               height
             );
