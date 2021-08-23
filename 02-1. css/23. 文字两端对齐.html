@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文字两端对齐</title>
+  <style>
+    #div1{ width:500px; border:1px solid red; text-align: justify;}
+    #div2, #div3, #div4{ width:500px; border:1px solid red; text-align-last: justify;} /*chrome要使用text-align-last才生效*/
+  </style>
+</head>
+<body>
+  <div id="div1">这世间唯有梦想和好姑娘不可辜负！</div>
+  <div id="div2">这世间唯有梦想和好姑娘不可辜负！</div>
+  <div id="div3">这世间唯有梦想和好姑娘不可辜负！<br/>123<br/>HELLO</div>
+  <div id="div4">这世间唯有梦想和好姑娘不可辜负！<br/>1 2 3<br/>H E L L O</div>
+
+  <!-- text-align: justify有浏览器兼容性问题 -->
+  <!-- 1. chrome中,使用text-align-last: justify即可, 英文或数字没有空格的当成一个字处理 -->
+  <!-- 2. firefox中,使用text-align-last:justify, 并且文字之间要有空格才会生效 -->
+  <!-- 3. IE中,使用text-align-last:justify;text-align:justify;并且文字之间要有空格才会生效 -->
+</body>
+</html>
