@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      margin:0;
+      padding: 0;
+    }
+    #box{
+      position: absolute;
+      top: 150px;
+      left: 250px;
+      width: 300px;
+      height: 400px;
+    }
+    #box img{
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    #controler{
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border:2px solid red;
+      z-index: 999;
+      display: none;
+      pointer-events: none;
+    }
+    #controler .pointer{
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      border-radius: 50%;
+      background-color: #fff;
+      border:1px solid #000;
+      pointer-events: initial;
+    }
+    #controler .pointer.tl{
+      left:-8px;
+      top:-8px;
+    }
+    #controler .pointer.tr{
+      right:-8px;
+      top:-8px;
+    }
+    #controler .pointer.bl{
+      left:-8px;
+      bottom:-8px;
+    }
+    #controler .pointer.br{
+      right:-8px;
+      bottom:-8px;
+    }
+    #controler .rotate{
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="controler">
+    <a class="pointer tl"></a>
+    <a class="pointer tr"></a>
+    <a class="pointer bl"></a>
+    <a class="pointer br"></a>
+    <a class="rotate"></a>
+  </div>  
+  <div id="box">
+    <img src="images/640-960.jpg">
+  </div>
+
+  <script>
+    window.onload = function(){
+      var $box = document.querySelector('#box');
+      var $controler = document.getElementById('controler');
+      var $pointer = document.querySelectorAll('#controler .pointer');
+      // 平移
+      $box.addEventListener('mousedown', function(e){
+        let objRect = this.getBoundingClientRect();
+        let startPos = {x: e.clientX, y: e.clientY, left: objRect.x, top: objRect.y};
+        $controler.style.width = objRect.width+'px';
+        $controler.style.height = objRect.height+'px';
+        $controler.style.left = objRect.x+'px';
+        $controler.style.top = objRect.y+'px';
+        $controler.style.display = 'block';
+        this.moveFun = function(e){
+          let changeX = e.clientX - startPos.x, changeY = e.clientY - startPos.y;
+          $box.style.left = startPos.left+changeX+'px';
+          $box.style.top = startPos.top+changeY+'px';
+          $controler.style.left = startPos.left+changeX+'px';
+          $controler.style.top = startPos.top+changeY+'px';
+        }
+        document.addEventListener('mousemove', this.moveFun, false);
+      })
+      document.addEventListener('mouseup', function(e){
+        document.removeEventListener('mousemove', $box.moveFun, false);
+      }, false);
+      // 缩放
+      let isEqualRatio = true;
+      $controler.addEventListener('mousedown', function(e){
+        let direction = '';
+        if(e.target.className.indexOf('tl') > -1){
+          direction = 'tl';
+        } else if(e.target.className.indexOf('tr') > -1){
+          direction = 'tr';
+        } else if(e.target.className.indexOf('bl') > -1){
+          direction = 'bl';
+        } else if(e.target.className.indexOf('br') > -1){
+          direction = 'br';
+        }
+        if(direction){
+          let objRect = this.getBoundingClientRect();
+          let startPos = {x: e.clientX, y: e.clientY, width: objRect.width, height: objRect.height, left: parseFloat(this.style.left), top: parseFloat(this.style.top)};
+          this.scaleFun = function(e){
+            let changeX = e.clientX - startPos.x, changeY = e.clientY - startPos.y;
+            console.log('change>>', changeX, changeY)
+            let changeDis = Math.max(Math.abs(changeX), Math.abs(changeY));
+            let scale;
+            switch(direction){
+              case 'tl':
+                if(isEqualRatio){
+                  scale = changeX < 0 ? (startPos.width + changeDis)/startPos.width : (startPos.width - changeDis)/startPos.width;
+                  $controler.style.width = startPos.width*scale + 'px';
+                  $controler.style.height = startPos.height*scale + 'px';
+                  $box.style.width = startPos.width*scale + 'px';
+                  $box.style.height = startPos.height*scale + 'px';
+                  $controler.style.left = startPos.left - (startPos.width*scale - startPos.width) + 'px';
+                  $controler.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                  $box.style.left = startPos.left - (startPos.width*scale - startPos.width) + 'px';
+                  $box.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                } else {
+                  $controler.style.width = startPos.width - changeX + 'px';
+                  $controler.style.height = startPos.height - changeY + 'px';
+                  $controler.style.left = startPos.left + changeX + 'px';
+                  $controler.style.top = startPos.top + changeY + 'px';
+                  $box.style.width = startPos.width - changeX + 'px';
+                  $box.style.height = startPos.height - changeY + 'px';
+                  $box.style.left = startPos.left + changeX + 'px';
+                  $box.style.top = startPos.top + changeY + 'px';
+                }
+                break;
+              case 'tr':
+                if(isEqualRatio){
+                  scale = changeX > 0 ? (startPos.width + changeDis)/startPos.width : (startPos.width - changeDis)/startPos.width;
+                  $controler.style.width = startPos.width*scale + 'px';
+                  $controler.style.height = startPos.height*scale + 'px';
+                  $box.style.width = startPos.width*scale + 'px';
+                  $box.style.height = startPos.height*scale + 'px';
+                  $controler.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                  $box.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                } else {
+                  $controler.style.width = startPos.width + changeX + 'px';
+                  $controler.style.height = startPos.height + changeY + 'px';
+                  $box.style.width = startPos.width - changeX + 'px';
+                  $box.style.height = startPos.height - changeY + 'px';
+                  $controler.style.top = startPos.top - changeY + 'px';
+                  $box.style.top = startPos.top - changeY + 'px';
+                }
+                break;
+              case 'bl':
+                if(isEqualRatio){
+                  scale = changeX < 0 ? (startPos.width + changeDis)/startPos.width : (startPos.width - changeDis)/startPos.width;
+                  $controler.style.width = startPos.width*scale + 'px';
+                  $controler.style.height = startPos.height*scale + 'px';
+                  $box.style.width = startPos.width*scale + 'px';
+                  $box.style.height = startPos.height*scale + 'px';
+                  $controler.style.left = startPos.left - (startPos.width*scale - startPos.width) + 'px';
+                  $controler.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                  $box.style.left = startPos.left - (startPos.width*scale - startPos.width) + 'px';
+                  $box.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                } else {
+                  $controler.style.width = startPos.width - changeX + 'px';
+                  $controler.style.height = startPos.height - changeY + 'px';
+                  $controler.style.left = startPos.left + changeX + 'px';
+                  $controler.style.top = startPos.top + changeY + 'px';
+                  $box.style.width = startPos.width - changeX + 'px';
+                  $box.style.height = startPos.height - changeY + 'px';
+                  $box.style.left = startPos.left + changeX + 'px';
+                  $box.style.top = startPos.top + changeY + 'px';
+                }
+                break;
+              case 'br':
+                if(isEqualRatio){
+                  scale = changeX > 0 ? (startPos.width + changeDis)/startPos.width : (startPos.width - changeDis)/startPos.width;
+                  $controler.style.width = startPos.width*scale + 'px';
+                  $controler.style.height = startPos.height*scale + 'px';
+                  $box.style.width = startPos.width*scale + 'px';
+                  $box.style.height = startPos.height*scale + 'px';
+                  $controler.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                  $box.style.top = startPos.top - (startPos.height*scale - startPos.height) + 'px';
+                } else {
+                  $controler.style.width = startPos.width + changeX + 'px';
+                  $controler.style.height = startPos.height + changeY + 'px';
+                  $box.style.width = startPos.width - changeX + 'px';
+                  $box.style.height = startPos.height - changeY + 'px';
+                  $controler.style.top = startPos.top - changeY + 'px';
+                  $box.style.top = startPos.top - changeY + 'px';
+                }
+                break;
+            }
+          }
+          document.addEventListener('mousemove', this.scaleFun, false);
+        }
+      })
+      document.addEventListener('mouseup', function(e){
+        document.removeEventListener('mousemove', $controler.scaleFun, false);
+      }, false);
+    }
+  </script>
+</body>
+</html>
