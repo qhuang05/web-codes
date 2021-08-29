@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>transform矩阵matrix</title>
   <style>
-    .imgbox{
-      width:600px;
+    .imgbox {
+      width: 600px;
       height: 600px;
       border: 1px solid red;
       position: absolute;
       top: 100px;
       left: 100px;
     }
-    .imgbox img{
+
+    .imgbox img {
       max-width: 400px;
       max-height: 400px;
     }
-    .imgbox.change img{
-      opacity: 0.4;
+
+    .imgbox.change img {
       transform-origin: center center;
+      /* 默认 */
+      /* transform: matrix(1, 0, 0, 1, 0, 0); */
+
       /* 平移 */
       /* transform: translate(30px, 40px); */
       /* transform: matrix(1,0,0,1,30,40);  */
+
       /* 缩放 */
       /* transform: scale(2, 2); */
       /* transform: matrix(2,0,0,2,0,0); */
+
       /* 旋转 */
       /* transform: rotate(30deg); */
       /* transform: matrix(0.8660254037844387, 0.49999999999999994, -0.49999999999999994, 0.8660254037844387, 0, 0); */
       /* transform: rotate(180deg); */
       /* transform: matrix(-1, 1.2246467991473532e-16, -1.2246467991473532e-16, -1, 0, 0); */
-      transform: rotate(30deg) scale(2,2) translate(100px, 100px);
+
+      /* transform: translate(30px, 40px) scale(2, 2) rotate(30deg); */
+      transform: matrix(1.7320508075688774, 0.9999999999999999, -0.9999999999999999, 1.7320508075688774, 30, 40);
     }
   </style>
 </head>
+
 <body>
-  <div class="imgbox">
+  <!-- <div class="imgbox">
     <img src="images/1920-1200.jpg">
-  </div>
+  </div> -->
   <div class="imgbox change">
     <img src="images/1920-1200.jpg">
   </div>
+  <script>
+    // 矩阵相乘
+    function matrixMuliply(a, b) {
+      var c = new Array(a.length);
+      for (var i = 0; i < a.length; i++) {
+        c[i] = new Array(b[0].length);
+        for (var j = 0; j < b[0].length; j++) {
+          c[i][j] = 0;
+          for (var k = 0; k < b.length; k++) {
+            c[i][j] += a[i][k] * b[k][j];
+          }
+        }
+      }
+      return c;
+    }
+    // transform: translate(30px, 40px) rotate(30deg) scale(2, 2) 转化为矩阵
+    // matrix(a,b,c,d,e,f)用二维数组来表示[[a,c,e],[b,d,f],[0,0,1]]
+    var a = matrixMuliply([[1, 0, 30], [0, 1, 40], [0, 0, 1]], [[2, 0, 0], [0, 2, 0], [0, 0, 1]]);
+    var b = matrixMuliply(a, [[0.8660254037844387, -0.49999999999999994, 0], [0.49999999999999994, 0.8660254037844387, 0], [0, 0, 1]]);
+  </script>
 </body>
+
 </html>
