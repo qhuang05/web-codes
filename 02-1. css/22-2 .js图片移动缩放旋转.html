@@ -104,11 +104,11 @@
       // 平移
       $box.addEventListener('mousedown', function (e) {
         let objRect = this.getBoundingClientRect();
-        let startPos = { x: e.clientX, y: e.clientY, left: objRect.x, top: objRect.y };
-        $controler.style.width = objRect.width + 'px';
-        $controler.style.height = objRect.height + 'px';
+        $controler.style.width = parseFloat($box.clientWidth) + 'px';
+        $controler.style.height = parseFloat($box.clientHeight) + 'px';
         $controler.style.left = objRect.x + 'px';
         $controler.style.top = objRect.y + 'px';
+        let startPos = { x: e.clientX, y: e.clientY, left: objRect.x, top: objRect.y };
         $controler.style.display = 'block';
         this.moveFun = function (e) {
           let changeX = e.clientX - startPos.x, changeY = e.clientY - startPos.y;
@@ -227,6 +227,8 @@
       let initAngle = 0;
       var $rotate = document.querySelector('#controler .rotate');
       $rotate.addEventListener('mousedown', function (e) {
+        $controler.style.width = parseFloat($box.style.width);
+        $controler.style.height = parseFloat($box.style.height);
         initAngle = parseInt($box.getAttribute('rotate') || 0);
         // 旋转中心点cx,cy
         let ctlRect = $controler.getBoundingClientRect();
