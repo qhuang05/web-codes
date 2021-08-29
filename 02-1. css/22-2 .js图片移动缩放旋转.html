@@ -224,19 +224,35 @@
         document.removeEventListener('mousemove', $controler.scaleFun);
       }, false);
       // 旋转
+      let initAngle = 0;
       var $rotate = document.querySelector('#controler .rotate');
       $rotate.addEventListener('mousedown', function (e) {
+        initAngle = parseInt($box.getAttribute('rotate') || 0);
         // 旋转中心点cx,cy
         let ctlRect = $controler.getBoundingClientRect();
         let cx = ctlRect.x + ctlRect.width / 2, cy = ctlRect.y + ctlRect.height / 2;
         let startPos = { x: e.clientX, y: e.clientY };
         let startAngle = Math.atan2(startPos.y - cy, startPos.x - cx) * 180 / Math.PI;
+        let angle;
         $controler.rotateFun = function (e) {
           let endPos = { x: e.clientX, y: e.clientY };
-          let endAngle = Math.atan2(endPos.y - cy, endPos.x - cx) * 180 / Math.PI;
-          let angle = startAngle - endAngle;
+          // 向量判断旋转方向为顺时针或逆时针, C为中心点,A为起始点,B为终点
+          let CA = { x: startPos.x - cx, y: startPos.y - cy }, CB = { x: endPos.x - cx, y: endPos.y - cy };
+          let direct = CA.x * CB.y - CA.y * CB.x; //direct为负表示逆时针，正表示顺时针
+          // 余弦定理求旋转角
+          let lengthCA = Math.sqrt(Math.pow(CA.x, 2) + Math.pow(CA.y, 2));
+          let lengthCB = Math.sqrt(Math.pow(CB.x, 2) + Math.pow(CB.y, 2));
+          let lengthAB = Math.sqrt(Math.pow(endPos.x - startPos.x, 2) + Math.pow(endPos.y - startPos.y, 2));
+          let cosA = (Math.pow(lengthCA, 2) + Math.pow(lengthCB, 2) - Math.pow(lengthAB, 2)) / (2 * lengthCA * lengthCB);
+          let changeAngle = Math.round(Math.acos(cosA) * 180 / Math.PI);
+          if (direct < 0) {
+            angle = initAngle - changeAngle;
+          } else {
+            angle = initAngle + changeAngle;
+          }
           $controler.style.transform = `rotate(${angle}deg)`;
           $box.style.transform = `rotate(${angle}deg)`;
+          $box.setAttribute('rotate', angle);
         }
         document.addEventListener('mousemove', $controler.rotateFun, false);
       });
