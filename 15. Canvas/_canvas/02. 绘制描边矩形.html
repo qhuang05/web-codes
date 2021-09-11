@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>绘制描边矩形</title>
+  <link type="text/css" rel="stylesheet" href="css/reset.css" />
+</head>
+
+<body>
+  <canvas id="canvas1" width="400px" height="400px" style="background: #ccc; margin:20px;"></canvas>
+
+  <script>
+    var div1 = document.getElementById('canvas1');
+    if (div1.getContext) {
+      var ctx1 = div1.getContext('2d');
+      ctx1.strokeStyle = '#f00';      //定义描边样式--纯色
+      ctx1.lineWidth = 20;
+      ctx1.lineJoin = 'bevel';        // round,bevel,默认miter
+      ctx1.lineCap = 'round';        // round,square,默认butt
+      ctx1.strokeRect(10, 10, 100, 100);   //上、左边框默认宽度会减小一半,???
+
+
+      ctx1.strokeStyle = 'rgba(255,0,0,0.5)'; //定义描边样式--半透明
+      ctx1.lineWidth = 20;
+      ctx1.lineJoin = 'bevel';        // round,bevel,默认miter
+      ctx1.lineCap = 'round';        // round,square,默认butt
+      ctx1.strokeRect(150, 10, 100, 100);   //上、左边框默认宽度会减小一半,???
+
+
+      var line = ctx1.createLinearGradient(10, 150, 90, 150);    // 定义描边样式--线性渐变
+      line.addColorStop(0, 'rgba(255,0,0,0.5)');
+      line.addColorStop(0.5, 'rgba(0,255,0,0.8)');
+      line.addColorStop(1, 'rgba(0,0,255,0.5)');
+      ctx1.strokeStyle = line;
+      ctx1.lineWidth = 20;
+      ctx1.lineJoin = 'round';
+      ctx1.lineCap = 'square';
+      ctx1.strokeRect(10, 150, 100, 100);
+
+
+      var rad = ctx1.createRadialGradient(200, 200, 40, 200, 200, 70);     // 定义描边样式--放射性渐变
+      rad.addColorStop(0, 'red');
+      rad.addColorStop(1, 'green');
+      ctx1.strokeStyle = rad;
+      ctx1.lineWidth = 20;
+      ctx1.lineJoin = 'round';
+      ctx1.lineCap = 'square';
+      ctx1.strokeRect(150, 150, 100, 100);
+    }
+  </script>
+</body>
+
+</html>

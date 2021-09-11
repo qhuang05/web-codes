@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>进度条加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #canvas1 {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -200px;
+            border: 2px solid #000;
+        }
+
+        #content {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 300px;
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width="400" height="400"></canvas>
+    <div id="content">内容显示内容显示内容显示内容显示</div>
+
+    <script>
+        var div1 = document.getElementById('canvas1');
+        if (div1.getContext) {
+            var ctx1 = div1.getContext('2d');
+        }
+        var centerX = div1.width / 2,
+            centerY = div1.height / 2,
+            rad = Math.PI * 2 / 100,
+            percent = 0;
+        requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        function whiteCircle() {
+            ctx1.save();
+            ctx1.beginPath();
+            ctx1.strokeStyle = '#fff';
+            ctx1.lineWidth = 15;
+            ctx1.arc(centerX, centerY, 100, 0, Math.PI * 2, false);
+            ctx1.stroke();
+            ctx1.closePath();
+            ctx1.restore();
+        }
+        function blueCircle(percent) {
+            ctx1.save();
+            ctx1.beginPath();
+            ctx1.strokeStyle = '#00f';
+            ctx1.lineWidth = 15;
+            ctx1.arc(centerX, centerY, 100, -Math.PI / 2, -Math.PI / 2 + percent * rad, false);
+            ctx1.stroke();
+            ctx1.closePath();
+            ctx1.restore();
+        }
+        function textPercent(percent) {
+            ctx1.save();
+            ctx1.font = '20px Verdana';
+            ctx1.fillStyle = '#E81010';
+            ctx1.fillText(percent.toFixed(0) + '%', centerX - 20, centerY + 10);
+            ctx1.restore();
+        }
+
+        (function loading() {
+            ctx1.clearRect(0, 0, div1.width, div1.height);
+            whiteCircle();
+            blueCircle(percent);
+            textPercent(percent);
+            if (percent > 100) {
+                percent = 0;
+                $('#canvas1').fadeOut();
+                $('#content').fadeIn();
+            }
+            percent += 0.1;
+            //        setTimeout(loading,20);
+            requestAnimationFrame(loading);
+        })();
+    </script>
+</body>
+
+</html>

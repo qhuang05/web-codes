@@ -12,7 +12,8 @@
             overflow: hidden;
             background-color: #f0f0f0;
         }
-        #container{
+
+        #container {
             position: relative;
             top: 0;
             left: 0;
@@ -49,14 +50,14 @@
                 height: stageHeight,
             });
             var bgImage = new Image();
-            bgImage.src = './images/Transparent_bg.png';
+            bgImage.src = '../images/Transparent_bg.png';
             bgImage.onload = function () {
                 bgRect.fillPatternImage(bgImage);
                 bgRect.fillPatternRepeat('repeat');
                 layerBg.batchDraw();
             }
             layerBg.add(bgRect);
-            
+
             // layer
             var layer = new Konva.Layer({
                 x: 100,
@@ -65,7 +66,7 @@
             stage.add(layer);
 
             var image = new Image();
-            image.src = './images/sm001.jpg';
+            image.src = '../images/sm001.jpg';
             image.onload = function () {
                 let imageNode = new Konva.Image({
                     image,
@@ -97,9 +98,9 @@
 
                 stage.width(900);
                 stage.height(900);
-                stage.scale({x: 1.5, y: 1.5});
-                $container.style.left = -(900-600)/2 + 'px';
-                $container.style.top = -(900-600)/2 + 'px';
+                stage.scale({ x: 1.5, y: 1.5 });
+                $container.style.left = -(900 - 600) / 2 + 'px';
+                $container.style.top = -(900 - 600) / 2 + 'px';
                 stage.batchDraw();
             }
             document.getElementById('reduce').onclick = function () {
@@ -111,9 +112,9 @@
 
                 stage.width(300);
                 stage.height(300);
-                stage.scale({x: 0.5, y: 0.5});
-                $container.style.left = -(300-600)/2 + 'px';
-                $container.style.top = -(300-600)/2 + 'px';
+                stage.scale({ x: 0.5, y: 0.5 });
+                $container.style.left = -(300 - 600) / 2 + 'px';
+                $container.style.top = -(300 - 600) / 2 + 'px';
                 stage.batchDraw();
             }
             document.getElementById('restore').onclick = function () {
@@ -125,7 +126,7 @@
 
                 stage.width(600);
                 stage.height(600);
-                stage.scale({x: 1, y: 1});
+                stage.scale({ x: 1, y: 1 });
                 $container.style.left = 0;
                 $container.style.top = 0;
                 stage.batchDraw();

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+  <meta charset="utf-8" />
+  <title>Konva Path Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="../images/path1.svg" width="60" />
+  <img src="../images/path2.svg" width="60" />
+  <button id="addPath">添加路径</button>
+  <div id="container" style="border:1px solid red;width:600px;height:600px;"></div>
+  <script>
+    window.onload = function () {
+      var stage = new Konva.Stage({
+        container: 'container',
+        width: 600,
+        height: 600,
+      });
+
+      var layer = new Konva.Layer({
+        x: 100,
+        y: 100,
+      });
+      stage.add(layer);
+
+      var _image = new Image();
+      _image.src = '../images/sm001.jpg';
+      var image, imgTr;
+      _image.onload = function () {
+        image = new Konva.Image({
+          image: _image,
+          x: 150,
+          y: 150,
+          width: 300,
+          height: 300,
+          offsetX: 150,
+          offsetY: 150,
+          rotation: -0,
+          // scaleX: 0.8,
+          // scaleY: 0.7,
+          draggable: true,
+        })
+        layer.add(image);
+        imgTr = new Konva.Transformer();
+        imgTr.attachTo(image);
+        layer.add(imgTr);
+        layer.batchDraw();
+      }
+
+      document.getElementById('addPath').onclick = function () {
+        var path = new Konva.Rect({
+          width: 300,
+          height: 240,
+          draggable: true,
+        });
+        var pathImg = new Image();
+        pathImg.src = '../images/path1.svg';
+        pathImg.onload = function () {
+          var imageWidth = image.width() * image.scaleX();
+          var imageHeight = image.height() * image.scaleY();
+          var scale = Math.min(
+            imageWidth / pathImg.width,
+            imageHeight / pathImg.height
+          );
+          path.width(pathImg.width * scale);
+          path.height(pathImg.height * scale);
+          path.fillPatternImage(pathImg);
+          path.fillPatternRepeat('no-repeat');
+          path.fillPatternScale({ x: scale, y: scale });
+          path.offsetX(pathImg.width * scale / 2);
+          path.offsetY(pathImg.height * scale / 2);
+          path.x(image.x());
+          path.y(image.y());
+          path.rotation(image.rotation());
+          path.listening(false);
+          layer.add(path);
+          var pathTr = new Konva.Transformer({
+            rotateEnabled: false
+          });
+          pathTr.attachTo(path)
+          layer.add(pathTr);
+          layer.batchDraw();
+
+          // 裁剪区域必须始终保持在图片内部
+          image.dragBoundFunc(function (pos) {
+            let imgRect = image.getClientRect(),
+              pathRect = path.getClientRect(),
+              rotationDeg = (image.rotation() * Math.PI) / 180;
+            // 设计器中的图片都设了偏移，pos.x和pox.y指的是图片的中心点
+            let minX = pathRect.x - (imgRect.width / 2 - pathRect.width);
+            let maxX = pathRect.x + imgRect.width / 2;
+            let minY = pathRect.y - (imgRect.height / 2 - pathRect.height);
+            let maxY = pathRect.y + imgRect.height / 2;
+            let _x = Math.max(minX, pos.x);
+            _x = Math.min(maxX, _x);
+            let _y = Math.max(minY, pos.y);
+            _y = Math.min(maxY, _y);
+            return {
+              x: _x,
+              y: _y,
+            };
+          });
+          imgTr.boundBoxFunc(function (oldBoundBox, newBoundBox) {
+            let pathRect = path.getClientRect();
+            console.log("img transform => ", newBoundBox, pathRect, path.getAttrs());
+            // return newBoundBox; 
+            if (
+              newBoundBox.x > pathRect.x ||
+              newBoundBox.x < pathRect.x - (newBoundBox.width - pathRect.width) ||
+              newBoundBox.y > pathRect.y ||
+              newBoundBox.y < pathRect.y - (newBoundBox.height - pathRect.height)
+            ) {
+              return oldBoundBox;
+            } else {
+              return newBoundBox;
+            }
+          });
+
+          // 路径缩放不能超出图片范围
+          pathTr.boundBoxFunc(function (oldBoundBox, newBoundBox) {
+            let imgRect = image.getClientRect();
+            console.log("path transform => ", newBoundBox, imgRect);
+            return newBoundBox;
+            if (
+              newBoundBox.x < imgRect.x ||
+              newBoundBox.x > imgRect.x + (imgRect.width - newBoundBox.width) ||
+              newBoundBox.y < imgRect.y ||
+              newBoundBox.y > imgRect.x + (imgRect.height - newBoundBox.height)
+            ) {
+              return oldBoundBox;
+            } else {
+              return newBoundBox;
+            }
+          });
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

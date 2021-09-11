@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/konva@4.0.18/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Konva Path Demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="border:1px solid red;width:600px;height:600px;"></div>
+    <button id="addPath">添加路径</button>
+    <img src="../images/path1.svg" width="60" />
+    <img src="../images/path2.svg" width="60" />
+    <script>
+        window.onload = function () {
+            var stage = new Konva.Stage({
+                container: 'container',
+                width: 600,
+                height: 600,
+            });
+
+            var layer = new Konva.Layer({
+                x: 100,
+                y: 100,
+            });
+            stage.add(layer);
+
+            var image = new Image();
+            image.src = '../images/sm001.jpg';
+            var imageNode;
+            image.onload = function () {
+                imageNode = new Konva.Image({
+                    image,
+                    x: 150,
+                    y: 150,
+                    width: 300,
+                    height: 300,
+                    offsetX: 150,
+                    offsetY: 150,
+                    rotation: 45,
+                    scaleX: 0.8,
+                    scaleY: 0.7,
+                    draggable: true
+                })
+                layer.add(imageNode);
+                layer.batchDraw();
+            }
+
+            document.getElementById('addPath').onclick = function () {
+                var path = new Konva.Path({
+                    fill: 'red',
+                    data: 'M16 20.8v288.9l240 181.5 240-181.5v-288.9h-480z',
+                    draggable: true
+                    // data: 'M256 136l120-87.8-16.1 147.8 136.1 60-136.1 60 16.1 147.8-120-87.8-120 87.8 16.1-147.8-136.1-60 136.1-60-16.1-147.8z',
+                    // data: 'M294.9 16.4l15.7 42.2c-171.4 70.3-294 242.3-289.1 437.4l14.7-1c9.1-.6 18.1-1.2 27.1-1.9l14.7-1c-4.3-170.1 102.5-320 252-381.3l15.7 42.2c34.7-40.5 83.1-76.6 144.8-99.8-58.1-26.2-124.9-39.6-195.6-36.8z',
+                    // data: 'M12.582,9.551C3.251,16.237,0.921,29.021,7.08,38.564l-2.36,1.689l4.893,2.262l4.893,2.262l-0.568-5.36l-0.567-5.359l-2.365,1.694c-4.657-7.375-2.83-17.185,4.352-22.33c7.451-5.338,17.817-3.625,23.156,3.824c5.337,7.449,3.625,17.813-3.821,23.152l2.857,3.988c9.617-6.893,11.827-20.277,4.935-29.896C35.591,4.87,22.204,2.658,12.582,9.551z',
+                });
+
+                path = new Konva.Rect({
+                    width: 500,
+                    height: 320,
+                    fill: 'red',
+                    draggable: true
+                })
+                layer.add(path);
+                // var tr = new Konva.Transformer();
+                // tr.attachTo(path)
+                // layer.add(tr);
+
+                let imageRect = imageNode.getClientRect(),
+                    pathRect = path.getClientRect();
+                let imageWidth = imageNode.width() * imageNode.scaleX(),
+                    imageHeight = imageNode.height() * imageNode.scaleY();
+                let pathScale = Math.min(
+                    imageWidth / pathRect.width,
+                    imageHeight / pathRect.height
+                );
+                let pathWidth = pathRect.width * pathScale,
+                    pathHeight = pathRect.height * pathScale;
+                path.x(imageNode.x());
+                path.y(imageNode.y());
+                path.scale({ x: pathScale, y: pathScale });
+                path.offsetX(pathRect.width / 2);
+                path.offsetY(pathRect.height / 2);
+                path.rotation(imageNode.rotation())
+
+
+                layer.batchDraw();
+            }
+        }
+    </script>
+</body>
+
+</html>

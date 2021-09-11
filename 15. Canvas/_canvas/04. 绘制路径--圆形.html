@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制圆形路径</title>
+    <link type="text/css" rel="stylesheet" href="css/reset.css" />
+</head>
+
+<body>
+    <canvas id="canvas1" width="400" height="400" style="background: #ccc"></canvas>
+
+    <script>
+        var div1 = document.getElementById('canvas1');
+        if (div1.getContext) {
+            var ctx1 = div1.getContext('2d');
+            ctx1.beginPath();       //开始路径
+            ctx1.strokeStyle = '#75548F';
+            ctx1.lineWidth = 5;
+            ctx1.fillStyle = "#FFCE42";
+            ctx1.arc(180, 180, 100, 0, 2 * Math.PI, false);    //外圆
+
+            ctx1.moveTo(270, 180);                       //内圆
+            ctx1.arc(180, 180, 90, 0, 2 * Math.PI, false);
+            ctx1.arc(180, 180, 90, -.5 * Math.PI, 0, false);
+            ctx1.stroke();                              //开始描边
+            ctx1.fill();                                //开始填充
+
+            ctx1.beginPath();
+            ctx1.strokeStyle = '#0069C9';
+            ctx1.lineWidth = 5;
+            ctx1.lineCap = 'round';
+            ctx1.moveTo(240, 180);     //时针
+            ctx1.lineTo(180, 180);
+
+            ctx1.moveTo(130, 130);     //分针
+            ctx1.lineTo(180, 180);
+            ctx1.stroke();          //开始描边
+
+        }
+    </script>
+</body>
+
+</html>

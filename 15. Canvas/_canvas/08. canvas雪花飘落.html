@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>雪花飘落</title>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" style="background: black"></canvas>
+
+    <script>
+        var div1 = document.getElementById('canvas1'),
+            w = $(window).width(),
+            h = $(window).height(),
+            snowNum = 600,
+            snowInfo = [];
+        $('#canvas1').attr('width', w);
+        $('#canvas1').attr('height', h);
+        for (var i = 0; i < snowNum; i++) {
+            snowInfo[i] = {};
+            snowInfo[i].x = Math.random() * w;
+            snowInfo[i].y = Math.random() * h;
+            snowInfo[i].r = Math.random() * 5 + 1;
+            snowInfo.push(snowInfo[i]);
+        }
+        if (div1.getContext) {
+            var ctx1 = div1.getContext('2d');
+
+            //绘制某一时刻的雪花图
+            function snowFall() {
+                ctx1.clearRect(0, 0, w, h);
+                for (var i = 0; i < snowNum; i++) {
+                    ctx1.beginPath();
+                    ctx1.fillStyle = "#fff";
+                    ctx1.moveTo(snowInfo[i].x, snowInfo[i].y);
+                    ctx1.arc(snowInfo[i].x, snowInfo[i].y, snowInfo[i].r, 0, 2 * Math.PI, false);
+                    ctx1.fill();
+                    ctx1.closePath();
+                }
+                snowPosChange();
+            }
+
+            //雪花飘落位置偏移,改变snowInfo数组的值
+            function snowPosChange() {
+                for (var i = 0; i < snowNum; i++) {
+                    snowInfo[i].x += Math.random() * 2;
+                    snowInfo[i].y += Math.random() * 2;
+                    if (snowInfo[i].x > w) {
+                        snowInfo[i].x = 0;
+                    }
+                    if (snowInfo[i].y > h) {
+                        snowInfo[i].y = 0;
+                    }
+                }
+            }
+
+            // 开始动画
+            setInterval(snowFall, 30);
+        }
+    </script>
+</body>
+
+</html>

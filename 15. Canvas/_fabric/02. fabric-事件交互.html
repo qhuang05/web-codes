@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fabric-事件交互</title>
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/fabric.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .content-wrap {
+            display: flex
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-wrap">
+        <canvas id="main" width="800" height="800" style="border:1px solid #666"></canvas>
+        <div class="opt-group">
+            <button id="copyBtn">复制</button>
+            <button id="pasteBtn">粘贴</button>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            let canvas = new fabric.Canvas('main');
+            let circle = new fabric.Circle({
+                left: 50,
+                top: 50,
+                radius: 50, //半径
+                fill: '#039BE5',
+                stroke: 'red',
+                strokeWidth: 3,
+                opacity: 0.7,
+                strokeUniform: false,   //???
+            });
+            canvas.add(circle);
+
+            let img = fabric.Image.fromURL('../images/sm001.jpg', function (img) {
+                img.scale(0.5);
+                img.left = 200;
+                img.top = 50;
+                canvas.add(img);
+
+                // 焦点事件
+                canvas.setActiveObject(img);
+                canvas.getActiveObject().set({
+                    left: 150
+                })
+            })
+
+
+            // 复制粘贴
+            var _clipboard = null;
+            function copy() {
+                canvas.getActiveObject().clone(function (cloned) {
+                    _clipboard = cloned;
+                })
+            }
+            function paste() {
+                _clipboard.clone(function (cloned) {
+                    canvas.discardActiveObject();
+                    cloned.set({
+                        left: cloned.left + 10,
+                        top: cloned.top + 10
+                    })
+                    canvas.add(cloned);
+                })
+            }
+            $('#copyBtn').on('click', function () {
+                copy();
+            })
+            $('#pasteBtn').on('click', function () {
+                paste();
+            })
+        })
+    </script>
+</body>
+
+</html>
