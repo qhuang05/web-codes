@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>绘制图像</title>
+</head>
+
+<body>
+  <canvas id="canvas" width="400" height="400" style="background: #ccc;"></canvas>
+
+  <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      let image = new Image();
+      image.src = "https://img2.baidu.com/it/u=2784663868,2334020525&fm=26&fmt=auto&gp=0.jpg"
+      image.setAttribute("crossOrigin", "anonymous");
+      image.onload = () => {
+        // canvas默认以图像左上角为中心点，先translate再移回来实现以中心绘制
+        ctx.save();
+        ctx.translate(100, 100);
+        ctx.rotate(30 * Math.PI / 180);
+        ctx.scale(0.8, 0.8);
+        ctx.translate(-100, -100);
+        ctx.drawImage(image, 0, 0, 200, 200);
+        ctx.restore();
+      }
+    }
+  </script>
+</body>
+
+</html>
