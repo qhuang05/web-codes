@@ -27,6 +27,7 @@
         "http://www.w3.org/2000/svg",
         "svg"
       );
+      // 借助svg矩阵
       let matrix = svg.createSVGMatrix();
       pattern.setTransform(matrix.translate(120, 120).rotate(5));
       ctx1.fillStyle = pattern;

@@ -53,6 +53,7 @@
         console.log('svgMatrix => ', svgMatrix)
         console.log('points => ', svgMatrix.a, svgMatrix.b, svgMatrix.c, svgMatrix.d, svgMatrix.e, svgMatrix.f);
         ctx1.transform(svgMatrix.a, svgMatrix.b, svgMatrix.c, svgMatrix.d, svgMatrix.e, svgMatrix.f);
+        // ctx1.setTransform(svgMatrix);
         ctx1.drawImage(image, 0, 0, 200, 200);
         ctx1.restore();
       }

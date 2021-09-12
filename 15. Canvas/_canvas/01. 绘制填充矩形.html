@@ -39,10 +39,14 @@
         ctx1.fillRect(100, 100, 100, 100);
 
 
-        var tsImg = document.getElementById('tsImg');
-        var pat = ctx1.createPattern(tsImg, 'repeat');           //定义模式--图像
-        ctx1.fillStyle = pat;
-        ctx1.fillRect(200, 0, 200, 200);
+        // var tsImg = document.getElementById('tsImg');
+        var tsImg = new Image();
+        tsImg.src = '../images/sm001.jpg';
+        tsImg.onload = function () {
+          var pat = ctx1.createPattern(tsImg, 'repeat');           //定义模式--图像
+          ctx1.fillStyle = pat;
+          ctx1.fillRect(200, 0, 200, 200);
+        }
 
 
         //清除矩形
