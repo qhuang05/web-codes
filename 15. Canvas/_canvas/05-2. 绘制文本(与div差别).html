@@ -23,6 +23,9 @@
             color:yellow;
             -webkit-text-stroke: 2px green;
             white-space: nowrap;
+            vertical-align: top;
+            text-align: left;
+            text-align-last: left;
         }
     </style>
 </head>
@@ -41,14 +44,16 @@
         var canvas = document.querySelector('#canvas');
         var ctx = canvas.getContext('2d');
         textArr.forEach((text,i)=>{
+            let x = 50, y = 50*(i+1);
             ctx.save();
             ctx.font = '50px Verdana'; 
             ctx.textBaseline = 'top'; //top, hanging, middle, alphabetic, ideographic, bottom
+            ctx.textAlign = 'left';
             ctx.fillStyle = 'red';
-            ctx.fillText(text, 50, 50*(i+1));
+            ctx.fillText(text, x, y);
             ctx.strokeStyle = 'blue';
             ctx.lineWidth = 2;
-            ctx.strokeText(text, 50, 50*(i+1));
+            ctx.strokeText(text, x, y);
             ctx.restore();
         });
     </script>
