@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>绘制文本</title>
+    <style>
+        #box, 
+        #canvas{
+            position: absolute;
+            top:0;
+            left:0;
+            /* position: relative; */
+            overflow: hidden;
+        }
+        .node{
+            position:absolute;
+            left:50px;
+            top:50px;
+            font-size:50px;
+            line-height: 1;
+            font-family: Verdana;
+            color:yellow;
+            -webkit-text-stroke: 2px green;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" style="width:400px;height:400px;background:#000;">
+        <div class="node">
+            <span>HELLO WORLD测试<br/>TEST</span>
+        </div>
+    </div>
+    <hr/>
+    <canvas id="canvas" width="400" height="400" style="background: rgba(0,0,0,0.5)"></canvas>
+
+    <script>
+        var textArr = ['HELLO WORLD测试', 'TEST'];
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        textArr.forEach((text,i)=>{
+            ctx.save();
+            ctx.font = '50px Verdana'; 
+            ctx.textBaseline = 'top'; //top, hanging, middle, alphabetic, ideographic, bottom
+            ctx.fillStyle = 'red';
+            ctx.fillText(text, 50, 50*(i+1));
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 2;
+            ctx.strokeText(text, 50, 50*(i+1));
+            ctx.restore();
+        });
+    </script>
+</body>
+
+</html>
