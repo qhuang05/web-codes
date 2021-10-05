@@ -10,48 +10,54 @@
             position: absolute;
             top:0;
             left:0;
-            /* position: relative; */
             overflow: hidden;
         }
         .node{
             position:absolute;
-            left:50px;
-            top:50px;
-            font-size:50px;
+            left:0;
+            top:80px;
+            font-size:40px;
             line-height: 1;
-            font-family: Verdana;
+            font-family: Verdana;   
             color:yellow;
             -webkit-text-stroke: 2px green;
             white-space: nowrap;
-            vertical-align: top;
-            text-align: left;
-            text-align-last: left;
+            text-align: center;
+            /* transform: scale(1.2) rotate(30deg); */
         }
     </style>
 </head>
 
 <body>
     <div id="box" style="width:400px;height:400px;background:#000;">
-        <div class="node">
+        <div class="node" style="font-size: 40px;text-align:center;">
             <span>HELLO WORLD测试<br/>TEST</span>
         </div>
     </div>
-    <hr/>
-    <canvas id="canvas" width="400" height="400" style="background: rgba(0,0,0,0.5)"></canvas>
+    <canvas id="canvas" width="400" height="400" style="background: transparent"></canvas>
 
     <script>
         var textArr = ['HELLO WORLD测试', 'TEST'];
         var canvas = document.querySelector('#canvas');
         var ctx = canvas.getContext('2d');
+        var nodeWidth = document.querySelector('#box .node').clientWidth;
+        var textnode = document.querySelector('#box .node');
+        var textnodespan = document.querySelector('#box .node>span');
+        var offsetHeight = textnodespan.offsetHeight - textnode.offsetHeight;
+        var fontSize = parseFloat(textnode.style.fontSize);
+        var textAlign = textnode.style.textAlign;
+        
         textArr.forEach((text,i)=>{
-            let x = 50, y = 50*(i+1);
+            let x = 0, y = 80 + fontSize*i + offsetHeight/2;
+            if(textAlign == 'center') x = nodeWidth/2;
+            if(textAlign == 'right') x = nodeWidth;
             ctx.save();
-            ctx.font = '50px Verdana'; 
+            ctx.font = `${fontSize}px Verdana`; 
             ctx.textBaseline = 'top'; //top, hanging, middle, alphabetic, ideographic, bottom
-            ctx.textAlign = 'left';
-            ctx.fillStyle = 'red';
+            ctx.textAlign = textAlign;
+            ctx.fillStyle = 'yellow';
             ctx.fillText(text, x, y);
-            ctx.strokeStyle = 'blue';
+            ctx.strokeStyle = 'green';
             ctx.lineWidth = 2;
             ctx.strokeText(text, x, y);
             ctx.restore();
