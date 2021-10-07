@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>svg绘图</title>
+	<style>
+		*{margin: 0;padding: 0;}
+	</style>
+</head>
+
+<body>
+  <svg id="svg" width="500" height="500" style="background: #ccc;" viewBox="0 0 600 600">
+    <!-- 矩形 -->
+    <rect x="10" y="20" width="100" height="50" fill="red" fill-opacity="0.5" stroke="blue" stroke-width="2" stroke-opacity="0.4" />
+    <rect x="150" y="20" width="100" height="50" fill="blue" opacity="0.5" />
+    <rect x="300" y="20" rx="30" ry="30" width="100" height="50" style="fill:green;opacity:0.7" />
+
+    <!-- 圆形 -->
+    <circle cx="200" cy="200" r="50" fill="red" stroke="blue"></circle>
+
+    <!-- 椭圆 -->
+    <ellipse cx="400" cy="200" rx="100" ry="50" fill="yellow"></ellipse>
+
+    <!-- 直线 -->
+    <line x1="20" y1="200" x2="100" y2="220" stroke="green" stroke-width="5"></line>
+    <line x1="20" y1="220" x2="100" y2="240" stroke="green" stroke-width="5" stroke-linecap="round" stroke-dasharray="10,10"></line>
+
+    <!-- 多边形，fill-rule属性值：nonzero/evenodd -->
+    <polygon points="100,10 40,198 190,78 10,78 160,198" fill="blue" stroke-width="3" stroke="red" fill-rule="evenodd"></polygon>
+
+    <!-- 多线段 -->
+    <polyline points="20,20 40,25 60,40 80,120 120,140 200,180" fill="none" stroke="green" stroke-width="3"></polyline>
+
+    <!-- 路径 -->
+    <path d="M150 0 L75 200 L225 200 Z" stroke-width="2" stroke="yellow" fill="none" />
+
+    <!-- 图像 -->
+    <image xlink:href="../images/bao.png" y="300" width="200"></image>
+
+    <!-- 文字 -->
+    <text x="300" y="10" fill="red" transform="rotate(30 300,10)">HELLO WORLD</text>
+    <text fill="red" font="30">
+      <tspan x="300" y="100">HELLO WORLD</tspan>
+      <tspan x="300" y="120">HELLO SVG</tspan>
+    </text>
+    <a target="_blank" xlink:href="http://www.baidu.com">
+      <text x="500" y="100" fill="blue">Link</text>
+    </a>
+    <defs>
+      <path id="textPath1" d="M500,0 a1,1 0 0,0 100,0"></path>
+    </defs>
+    <text x="0" y="0" fill="green">
+      <textPath xlink:href="#textPath1">hello svg hello world</textPath>
+    </text>
+
+    <!-- 滤镜 -->
+    <defs>
+      <filter id="f1" x=0 y=0>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+      </filter>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect x=700 y=0 width="90" height="90" stroke="green" stroke-width="3" fill="yellow" filter="url(#f1)" />
+    <ellipse cx="400" cy="400" rx="85" ry="55" fill="url(#grad1)" />
+  </svg>
+</body>
+
+</html>
