@@ -25,7 +25,7 @@
 
     <!-- 直线 -->
     <line x1="20" y1="200" x2="100" y2="220" stroke="green" stroke-width="5"></line>
-    <line x1="20" y1="220" x2="100" y2="240" stroke="green" stroke-width="5" stroke-linecap="round" stroke-dasharray="10,10"></line>
+    <line x1="20" y1="220" x2="100" y2="240" stroke="green" stroke-width="5" stroke-linecap="round" stroke-linejoin="miter" stroke-dasharray="10,10"></line>
 
     <!-- 多边形，fill-rule属性值：nonzero/evenodd -->
     <polygon points="100,10 40,198 190,78 10,78 160,198" fill="blue" stroke-width="3" stroke="red" fill-rule="evenodd"></polygon>
@@ -40,7 +40,7 @@
     <image xlink:href="../images/bao.png" y="300" width="200"></image>
 
     <!-- 文字 -->
-    <text x="300" y="10" fill="red" transform="rotate(30 300,10)">HELLO WORLD</text>
+    <text x="300" y="10" fill="red" font-size="30" transform="rotate(30 300,10)">HELLO WORLD</text>
     <text fill="red" font="30">
       <tspan x="300" y="100">HELLO WORLD</tspan>
       <tspan x="300" y="120">HELLO SVG</tspan>
@@ -55,7 +55,7 @@
       <textPath xlink:href="#textPath1">hello svg hello world</textPath>
     </text>
 
-    <!-- 滤镜 -->
+    <!-- 滤镜,渐变 -->
     <defs>
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="15" />

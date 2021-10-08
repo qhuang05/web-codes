@@ -8,16 +8,16 @@
 </head>
 
 <body>
-	<!-- 方法1: 直接在html文件中使用svg -->
+	<!-- 方法1: 直接在html文件中使用svg, svg默认宽300，高150 -->
 	<div class="svg-container">
-		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="400" height="400" style="background: #ccc">
 			<rect width="300" height="100" style="fill:#f00;stroke:#000;stroke-width:1" />
 		</svg>
 	</div>
 
 	<!-- 方法2: 创建svg文件，通过img, background, iframe, embed, object, a标签等嵌入 -->
 	<embed src="../images/circle.svg" type="image/svg+xml"></embed>
-	<img src="../images/path1.svg" />
+	<img src="../images/path1.svg" width="150" />
 </body>
 
 </html>

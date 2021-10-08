@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>pattern图案填充</title>
+	<style>
+		*{margin: 0;padding: 0;}
+	</style>
+</head>
+
+<body>
+  <!-- <pattern>需要放在SVG文档的<defs>内部，专有属性：x, y, width, height, xlink:href，patternUnits, patternContentUnits, patternTransform, preserveAspectRatio-->
+  <svg id="svg" width="500" height="500" style="background: #ccc;" viewBox="0 0 600 600">
+    <defs>
+      <linearGradient id="Gradient1">
+        <stop offset="5%" stop-color="white"/>
+        <stop offset="95%" stop-color="blue"/>
+      </linearGradient>
+      <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="5%" stop-color="red"/>
+        <stop offset="95%" stop-color="orange"/>
+      </linearGradient>
+      <pattern id="p1" x="100" y="100" width="0.25" height="0.25">
+        <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+        <!-- <rect x="0" y="0" width="25" height="25" fill="url(#Gradient2)"/>
+        <circle cx="25" cy="25" r="20" fill="url(#Gradient1)" fill-opacity="0.5"/> -->
+      </pattern>
+    </defs>
+    <rect fill="url(#p1)" stroke="black" x="0" y="0" width="200" height="200"/>
+  </svg>
+</body>
+
+</html>

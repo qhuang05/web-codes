@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>defs标签</title>
+	<style>
+		*{margin: 0;padding: 0;}
+	</style>
+</head>
+
+<body>
+  <!-- defs可以定义一些不会在SVG图形中出现、但是可以被其他元素使用的元素 -->
+  <svg id="svg" width="500" height="500" style="background: #ccc;" viewBox="0 0 600 600">
+    <defs>
+      <style>
+        .rect {
+          stroke: black;
+          fill: red;
+        }
+      </style>
+    </defs>
+    <rect x="10" y="10" width="180" height="180" id="MyRect" class="rect" />
+    <rect x="200" y="10" width="180" height="180" id="MyRect2" class="rect" />
+  </svg>
+</body>
+
+</html>
