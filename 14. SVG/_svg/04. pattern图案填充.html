@@ -18,17 +18,35 @@
         <stop offset="5%" stop-color="white"/>
         <stop offset="95%" stop-color="blue"/>
       </linearGradient>
-      <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
+      <linearGradient id="Gradient2" x1="0" y1="0" x2="0" y2="1">
         <stop offset="5%" stop-color="red"/>
         <stop offset="95%" stop-color="orange"/>
       </linearGradient>
-      <pattern id="p1" x="100" y="100" width="0.25" height="0.25">
+      <pattern id="p1" x="0" y="0" width="25%" height="25%" patternUnits="objectBoundingBox">
         <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
-        <!-- <rect x="0" y="0" width="25" height="25" fill="url(#Gradient2)"/>
-        <circle cx="25" cy="25" r="20" fill="url(#Gradient1)" fill-opacity="0.5"/> -->
+        <rect x="0" y="0" width="25" height="25" fill="url(#Gradient2)"/>
+        <circle cx="25" cy="25" r="20" fill="url(#Gradient1)" fill-opacity="0.5"/>
+      </pattern>
+      <pattern id="p2" x="0" y="0" width="25%" height="25%" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+        <rect x="0" y="0" width="25" height="25" fill="url(#Gradient2)"/>
+        <circle cx="25" cy="25" r="20" fill="url(#Gradient1)" fill-opacity="0.5"/>
+      </pattern>
+      <pattern id="p3" width="25%" height="25%" patternContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="0.25" height="0.25" fill="skyblue"/>
+        <rect x="0" y="0" width="0.125" height="0.125" fill="url(#Gradient2)"/>
+        <circle cx="0.125" cy="0.125" r="0.1" fill="url(#Gradient1)" fill-opacity="0.5"/>
+      </pattern>
+      <pattern id="p4" width="25%" height="25%" patternContentUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="0.25" height="0.25" fill="skyblue"/>
+        <rect x="0" y="0" width="0.125" height="0.125" fill="url(#Gradient2)"/>
+        <circle cx="0.125" cy="0.125" r="0.1" fill="url(#Gradient1)" fill-opacity="0.5"/>
       </pattern>
     </defs>
-    <rect fill="url(#p1)" stroke="black" x="0" y="0" width="200" height="200"/>
+    <rect fill="url(#p1)" stroke="black" x="0" y="0" width="300" height="200"/>
+    <rect fill="url(#p2)" stroke="black" x="300" y="0" width="300" height="200"/>
+    <rect fill="url(#p3)" stroke="black" x="0" y="300" width="300" height="200"/>
+    <rect fill="url(#p4)" stroke="black" x="300" y="300" width="300" height="200"/>
   </svg>
 </body>
 
