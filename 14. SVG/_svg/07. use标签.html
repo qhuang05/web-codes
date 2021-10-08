@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>use标签</title>
+	<style>
+		*{margin: 0;padding: 0;}
+	</style>
+</head>
+
+<body>
+  <svg id="svg" width="600" height="600" style="background: #ccc;" viewBox="0 0 600 600">
+    <defs>
+      <g id="port">
+        <circle cx="100" cy="100" r="80" fill="red" />
+        <rect x="200" y="20" width="200" height="200" fill="blue" />
+      </g>
+    </defs>
+    <use xlink:href="#port" />
+  </svg>
+</body>
+
+</html>
