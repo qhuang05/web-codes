@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createPattern</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        canvas.width = 600;
+        canvas.height = 600;
+        let img = new Image();
+        img.src = '../images/bao.png';
+        img.onload = function(){
+            let pattern = ctx.createPattern(img, 'repeat');
+            let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            let matrix = svg.createSVGMatrix();
+            // matrix = matrix.translate(100,200).rotate(30).scale(0.5);
+            // pattern.setTransform(matrix);
+            pattern.setTransform(matrix.translate(100,200).rotate(30).scale(0.5));
+            ctx.fillStyle = pattern;
+            ctx.fillRect(0,0,400,400);
+        }
+    </script>
+</body>
+</html>
