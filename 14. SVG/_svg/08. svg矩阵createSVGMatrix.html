@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>svg矩阵createSVGMatrix</title>
+	<style>
+		*{margin: 0;padding: 0;}
+	</style>
+  <script src="./transform.js"></script>
+</head>
+
+<body>
+  <svg id="svg" width="600" height="600" style="background: #ccc;" viewBox="0 0 600 600">
+    <rect x="0" y="0" width="300" height="200" fill="red" id="rect1" />
+    <rect x="0" y="0" width="300" height="200" fill="green" opacity="0.5" id="rect2" transform="translate(300,200) rotate(30) scale(2,2)" />
+    <rect x="0" y="0" width="300" height="200" fill="blue" opacity="0.5" id="rect3" />
+  </svg>
+
+  <script>
+    // 使用svgMatrix
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    let svgMatrix = svg.createSVGMatrix();
+    svgMatrix = svgMatrix.translate(300, 200);
+    svgMatrix = svgMatrix.rotate(30);
+    svgMatrix = svgMatrix.scale(2,2);
+    let {a,b,c,d,e,f} = svgMatrix;
+    console.log('svgMatrix>>', svgMatrix)
+
+    // 使用transform
+    let transform = new Transform();
+    transform.translate(300,200);
+    transform.rotate(30 * Math.PI/180);
+    transform.scale(2,2);
+    console.log("transform>>", transform.m);
+
+    document.querySelector('#rect3').setAttribute('transform',  `matrix(${a},${b},${c},${d},${e},${f})`);
+  </script>
+</body>
+
+</html>
