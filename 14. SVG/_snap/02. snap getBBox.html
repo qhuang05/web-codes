@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snap getBBox</title>
+  <script src="../js/jquery-1.11.3.min.js"></script>
+  <script src="../js/snap.svg-min.js"></script>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    $(function () {
+      var svg = Snap(400, 400);
+      svg.attr({
+        id: 'svg',
+        viewBox: [0, 0, 500, 500]    //viewBox的作用
+      });
+      svg.node.style.border = '1px solid red';
+
+      var img = svg.paper.image('../images/main.png', 0, 0, 200, 300);
+      var box1 = img.getBBox();
+      console.log('box1 >> ', box1)
+
+      var matrix = new Snap.Matrix(1,0,0,1,0,0);
+      matrix.translate(50, 50);
+      matrix.scale(0.8,0.8);
+      matrix.rotate(30);
+      img.transform(matrix);
+      var box2 = img.getBBox();
+      console.log('box2 >> ', box2)
+    });
+  </script>
+</body>
+
+</html>
