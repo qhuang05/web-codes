@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    <my-component @click="cclick" @update="cupdate" data-id="100" data-code="AABB" class="test" style="background:#ccc;"></my-component>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          
+        }
+      },
+      methods: {
+        cclick(data){
+          console.log('cclick>>', data)
+        },
+        cupdate(){
+          console.log('cupdate>>', 123);
+        }
+      }
+    })
+    app.component('my-component', {
+      inheritAttrs: false,
+      props: {},
+      emits: ['click'],
+      methods: {},
+      template: 
+        `<div>我是子组件</div>
+        <div>
+          <div v-bind="$attrs">$attrs测试</div>
+          <button @click="$emit('click', $attrs)">按钮1</button>
+          <button @click="$attrs.onUpdate">按钮2</button>
+        </div>
+        <ul><div is="vue:li">111111</div></ul>`,
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
