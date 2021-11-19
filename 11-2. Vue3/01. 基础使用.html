@@ -11,13 +11,25 @@
 
 <body>
   <div id="app">
+    <div>{{msg}}</div>
+    <div>{{msg2}}</div>
+    <div>{{msg3}}</div>
     <my-component @click="cclick" @update="cupdate" data-id="100" data-code="AABB" class="test" style="background:#ccc;"></my-component>
   </div>
   <script>
     const app = Vue.createApp({
       data() {
         return {
-          
+          msg: 'I am message'
+        }
+      },
+      setup(props, ctx){
+        const msg2 = Vue.ref('I am message2')
+        msg2.value = 'msg2 changed'
+
+        const msg3 = Vue.ref('I am message3');
+        return {
+          msg2
         }
       },
       methods: {
@@ -29,6 +41,7 @@
         }
       }
     })
+
     app.component('my-component', {
       inheritAttrs: false,
       props: {},
@@ -42,7 +55,7 @@
           <button @click="$attrs.onUpdate">按钮2</button>
         </div>
         <ul><div is="vue:li">111111</div></ul>`,
-    })
+    });
 
     app.mount('#app')
   </script>

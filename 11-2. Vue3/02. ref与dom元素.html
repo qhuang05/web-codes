@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ref与dom元素</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div ref="divRef">this is a test</div>
+    <ul>
+      <li v-for="item in 5" :ref="setListRef">{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    const app = Vue.createApp({
+      setup(props, ctx) {
+        const divRef = Vue.ref(null);
+        const listRef = Vue.ref([]);
+        const setListRef = (el) => {
+          listRef.value.push(el);
+        }
+        Vue.onMounted(()=>{
+          console.log('mounted divRef>>', divRef.value);
+          console.log('mounted listRef>>', listRef.value);
+          listRef.value.map((el,i)=>{
+            el.style.background = i%2===0 ? '#f00' : '#0f0';
+          })
+        })
+        return {
+          divRef,
+          setListRef
+        }
+      },
+      methods: {}
+    })
+    app.mount('#app')
+  </script>
+</body>
+
+</html>
